@@ -1,0 +1,14 @@
+<companies>
+    <company>
+        <companyName>TiVo</companyName>
+        <description>Excellent media streamer</description>
+        <website>https://www.tivo.com/</website>
+        <imgUri>tivo.png</imgUri>
+    </company>
+    <company>
+        <companyName>The Product Engine</companyName>
+        <description>We take your vision and make it a reality!</description>
+        <website>https://www.productengine.com/</website >
+        <imgUri>tpe.jpg</imgUri>
+    </company>
+</companies>

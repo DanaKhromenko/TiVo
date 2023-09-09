@@ -1,166 +1,103 @@
 package;
 
-import feathers.controls.Label;
 import feathers.controls.LayoutGroup;
 import feathers.controls.navigators.TabItem;
 import feathers.controls.navigators.TabNavigator;
 import feathers.data.ArrayCollection;
-import haxe.xml.Parser;
-import openfl.Assets;
-import openfl.display.Bitmap;
-import openfl.display.DisplayObject;
 import openfl.display.Sprite;
+import openfl.events.Event;
+import Company;
+import CompanyView;
+import CompaniesXmlParser;
+import TVShow;
+import TVShowsTxtParser;
+import TVShowsView;
+import TVShowsXmlParser;
 
 class Main extends Sprite {
-	static inline var FILES_DIR_PATH:String = "assets/tabs/";
-	static inline var TXT_FILE_PATH:String = FILES_DIR_PATH + "tabs.txt";
-	static inline var XML_FILE_PATH:String = FILES_DIR_PATH + "tabs.xml";
+	static inline var XML_COMPANIES_FILE_PATH:String = "assets/companies/companies.xml";
+	static inline var TXT_TV_SHOWS_FILE_PATH:String = "assets/shows/shows.txt";
+	static inline var XML_TV_SHOWS_FILE_PATH:String = "assets/shows/shows.xml";
+
+	static inline var TV_SHOW_CELLS_IN_ROW:Int = 4;
+	static inline var TV_SHOW_CELL_WIDTH:Int = 380;
+	static inline var TV_SHOW_CELL_HEIGHT:Int = 60;
+	static inline var TV_SHOW_CELLS_START_X:Int = 10;
+	static inline var TV_SHOW_CELLS_START_Y:Int = 400;
+	static inline var TV_SHOW_PREVIEW_WIDTH:Int = 1900;
+	static inline var TV_SHOW_PREVIEW_HEIGHT:Int = 400;
+	static inline var TV_SHOW_PREVIEW_START_X:Int = 10;
+	static inline var TV_SHOW_PREVIEW_START_Y:Int = 40;
+
+	private var rootContainer:LayoutGroup;
+	private var navigator:TabNavigator;
+	private var tabsContainers = new ArrayCollection<LayoutGroup>();
 
 	public function new() {
 		super();
 
-		var navigator:TabNavigator = new TabNavigator();
-		addChild(navigator);
+		rootContainer = new LayoutGroup();
+		addChild(rootContainer);
 
-		var tabCollection:ArrayCollection<TabItem> = new ArrayCollection<TabItem>();
-		tabCollection.addAll(loadTabsFromXmlFile());
-		tabCollection.addAll(loadTabsFromTxtFile());
-		navigator.dataProvider = tabCollection;
+		var bgSprite:Sprite = new Sprite();
+		bgSprite.graphics.beginFill(0x2A2A2A);
+		bgSprite.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
+		bgSprite.graphics.endFill();
+		rootContainer.addChild(bgSprite);
+
+		navigator = new TabNavigator();
+		navigator.dataProvider = getAllTabs();
+		navigator.addEventListener(Event.CHANGE, tabNavigatorChangeHandler);
+		rootContainer.addChild(navigator);
 	}
 
-	private function loadTabsFromXmlFile():ArrayCollection<TabItem> {
+	private function getAllTabs():ArrayCollection<TabItem> {
 		var tabs = new ArrayCollection<TabItem>();
-		try {
-			var fileContent:String = Assets.getText(XML_FILE_PATH);
-			var xmlData:Xml = Parser.parse(fileContent);
 
-			for (elements in xmlData.firstElement().elementsNamed("tab")) {
-				var companyName = getStringValueByName(elements, "companyName");
-				var companyLayoutGroup = new CompanyLayoutGroupBuilder().withCompanyName(companyName)
-					.withDescription(getStringValueByName(elements, "description"))
-					.withWebsite(getStringValueByName(elements, "website"))
-					.withImgUri(getStringValueByName(elements, "imgUri"))
-					.build();
-				tabs.add(TabItem.withDisplayObject(companyName, companyLayoutGroup));
-			}
-		} catch (e:Dynamic) {
-			trace("Cannot parse XML-file: " + e);
+		// 1.1. Get all TV shows
+		var tvShows:ArrayCollection<TVShow> = new ArrayCollection<TVShow>();
+
+		var tvShowsXmlParser = new TVShowsXmlParser(XML_TV_SHOWS_FILE_PATH);
+		tvShows.addAll(tvShowsXmlParser.getTVShows());
+
+		var tvShowsTxtParser = new TVShowsTxtParser(TXT_TV_SHOWS_FILE_PATH);
+		tvShows.addAll(tvShowsTxtParser.getTVShows());
+
+		// 1.2. Get tab for the TV shows
+		var tabDto:TabDto = TVShowsView.getTVShowsTabDto(tvShows, rootContainer, TV_SHOW_CELLS_IN_ROW, TV_SHOW_CELL_WIDTH, TV_SHOW_CELL_HEIGHT,
+			TV_SHOW_CELLS_START_X, TV_SHOW_CELLS_START_Y, TV_SHOW_PREVIEW_WIDTH, TV_SHOW_PREVIEW_HEIGHT, TV_SHOW_PREVIEW_START_X, TV_SHOW_PREVIEW_START_Y);
+
+		// 1.3. Add tab with the TV shows
+		tabs.add(tabDto.tabItem);
+		tabsContainers.add(tabDto.container);
+
+		// 2.1. Get all companies
+		var companiesXmlParser = new CompaniesXmlParser(XML_COMPANIES_FILE_PATH);
+		var companies:ArrayCollection<Company> = companiesXmlParser.getCompanies();
+
+		for (i in 0...companies.length) {
+			// 2.2. Get tabs for the companies
+			var company = companies.get(i);
+			var tabDto:TabDto = CompanyView.getCompanyTabDto(company, rootContainer);
+
+			// 2.3. Add tabs with the companies
+			tabs.add(tabDto.tabItem);
+			tabsContainers.add(tabDto.container);
 		}
+
 		return tabs;
 	}
 
-	private function loadTabsFromTxtFile():ArrayCollection<TabItem> {
-		var tabs = new ArrayCollection<TabItem>();
-		try {
-			var fileContent:String = Assets.getText(TXT_FILE_PATH);
-			fileContent = StringTools.trim(fileContent);
+	private function tabNavigatorChangeHandler(event:Event):Void {
+		var activeTabId:Int = Std.parseInt(this.navigator.activeItemID);
 
-			for (line in fileContent.split('\n')) {
-				var companyName = getAttributeValueFromLine(line, ~/companyName: (.*?) \|/);
-				var companyLayoutGroup = new CompanyLayoutGroupBuilder().withCompanyName(companyName)
-					.withDescription(getAttributeValueFromLine(line, ~/description: (.*?) \|/))
-					.withWebsite(getAttributeValueFromLine(line, ~/website: (.*?) \|/))
-					.withImgUri(getAttributeValueFromLine(line, ~/imgUri: (.*?) \}/))
-					.build();
+		for (i in 0...tabsContainers.length) {
+			var tabContainer = tabsContainers.get(i);
+			var visible:Bool = (i == activeTabId);
+			
+			tabContainer.visible = visible;
 
-				tabs.add(TabItem.withDisplayObject(companyName, companyLayoutGroup));
-			}
-		} catch (e:Dynamic) {
-			trace("Cannot parse txt-file: " + e);
+			trace('Container\'s №${i} (${tabContainer} visibility is ${tabContainer.visible})');
 		}
-		return tabs;
-	}
-
-	private function getStringValueByName(elements:Xml, name:String):String {
-		for (element in elements.elementsNamed(name)) {
-			return element.firstChild().nodeValue;
-		}
-		return "";
-	}
-
-	private function getAttributeValueFromLine(line:String, regexp:EReg):String {
-		return (regexp.match(line) ? regexp.matched(1) : "");
-	}
-}
-
-class CompanyLayoutGroupBuilder extends LayoutGroup {
-	private var companyName:String;
-	private var description:String;
-	private var website:String;
-	private var imgUri:String;
-
-	public function new() {
-		super();
-	}
-
-	public function withCompanyName(companyName:String):CompanyLayoutGroupBuilder {
-		this.companyName = companyName;
-		return this;
-	}
-
-	public function withDescription(description:String):CompanyLayoutGroupBuilder {
-		this.description = description;
-		return this;
-	}
-
-	public function withWebsite(website:String):CompanyLayoutGroupBuilder {
-		this.website = website;
-		return this;
-	}
-
-	public function withImgUri(imgUri:String):CompanyLayoutGroupBuilder {
-		this.imgUri = imgUri;
-		return this;
-	}
-
-	public function build():CompanyLayoutGroup {
-		return new CompanyLayoutGroup(companyName, description, website, imgUri);
-	}
-}
-
-class CompanyLayoutGroup extends LayoutGroup {
-	static inline var IMG_DIR_PATH:String = "assets/img/";
-	static inline var LOGO_HEIGHT:Int = 200;
-
-	private var companyName:String;
-	private var description:String;
-	private var website:String;
-	private var imgUri:String;
-
-	public function new(companyName:String, description:String, website:String, imgUri:String) {
-		super();
-
-		this.companyName = companyName;
-		this.description = description;
-		this.website = website;
-		this.imgUri = imgUri;
-
-		updateForm();
-	}
-
-	private function updateForm() {
-		// TODO: simplify lines print (\n\n)
-
-		var companyNameLabel = new Label();
-		companyNameLabel.text = "Company name: " + companyName;
-		addChild(companyNameLabel);
-
-		var companyDescriptionLabel = new Label();
-		companyDescriptionLabel.text = "\nDescription: " + description;
-		addChild(companyDescriptionLabel);
-
-		var companyWebsiteLabel = new Label();
-		companyWebsiteLabel.text = "\n\nWebsite: " + website;
-		addChild(companyWebsiteLabel);
-
-		var bitmapData = Assets.getBitmapData(IMG_DIR_PATH + imgUri);
-		var scaleFactor = LOGO_HEIGHT / bitmapData.height;
-		var bitmap = new Bitmap(bitmapData);
-		bitmap.x = 100;
-        bitmap.y = 200;
-		bitmap.scaleX = scaleFactor;
-		bitmap.scaleY = scaleFactor;
-
-		addChild(bitmap);
 	}
 }

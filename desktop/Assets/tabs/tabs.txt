@@ -1,2 +1,0 @@
-{ companyName: Xperi | description: We make the ordinary extraordinary | website: https://xperi.com/ | imgUri: xperi.jpg },
-{ companyName: GitHub | description: Let's build from here | website: https://github.com/ | imgUri: github.png },
