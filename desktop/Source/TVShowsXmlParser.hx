@@ -58,7 +58,7 @@ class TVShowsXmlParser {
 
 		var startDate = getIntValueFromXml(elements, "startDate");
 		if (startDate != 0) {
-			tvShowBuilder.withStartDate(year);
+			tvShowBuilder.withStartDate(startDate);
 		}
 
 		var endDate = getIntValueFromXml(elements, "endDate");

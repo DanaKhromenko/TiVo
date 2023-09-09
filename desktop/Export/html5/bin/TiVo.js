@@ -891,7 +891,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "1";
+	app.meta.h["build"] = "2";
 	app.meta.h["company"] = "Company Name";
 	app.meta.h["file"] = "TiVo";
 	app.meta.h["name"] = "TiVo";
@@ -3381,9 +3381,7 @@ Main.prototype = $extend(openfl_display_Sprite.prototype,{
 		while(_g < _g1) {
 			var i = _g++;
 			var tabContainer = this.tabsContainers.get(i);
-			var visible = i == activeTabId;
-			tabContainer.set_visible(visible);
-			haxe_Log.trace("Container's №" + i + " (" + Std.string(tabContainer) + " visibility is " + Std.string(tabContainer.get_visible()) + ")",{ fileName : "Source/Main.hx", lineNumber : 100, className : "Main", methodName : "tabNavigatorChangeHandler"});
+			tabContainer.set_visible(i == activeTabId);
 		}
 	}
 	,__class__: Main
@@ -5329,7 +5327,352 @@ feathers_controls_LayoutGroup.prototype = $extend(feathers_core_FeathersControl.
 	,__class__: feathers_controls_LayoutGroup
 	,__properties__: $extend(feathers_core_FeathersControl.prototype.__properties__,{set_xmlContent:"set_xmlContent",get_xmlContent:"get_xmlContent",get__numChildren:"get__numChildren",set_autoSizeMode:"set_autoSizeMode",get_autoSizeMode:"get_autoSizeMode",set_maskSkin:"set_maskSkin",get_maskSkin:"get_maskSkin",set_disabledBackgroundSkin:"set_disabledBackgroundSkin",get_disabledBackgroundSkin:"get_disabledBackgroundSkin",set_backgroundSkin:"set_backgroundSkin",get_backgroundSkin:"get_backgroundSkin",set_layout:"set_layout",get_layout:"get_layout"})
 });
+var feathers_text_TextFormat = function(font,size,color,bold,italic,underline,url,target,align,leftMargin,rightMargin,indent,leading) {
+	openfl_events_EventDispatcher.call(this);
+	this._textFormat = new openfl_text_TextFormat(font,size,color,bold,italic,underline,url,target,align,leftMargin,rightMargin,indent,leading);
+};
+$hxClasses["feathers.text.TextFormat"] = feathers_text_TextFormat;
+feathers_text_TextFormat.__name__ = "feathers.text.TextFormat";
+feathers_text_TextFormat.__super__ = openfl_events_EventDispatcher;
+feathers_text_TextFormat.prototype = $extend(openfl_events_EventDispatcher.prototype,{
+	get_font: function() {
+		return this._textFormat.font;
+	}
+	,set_font: function(value) {
+		if(this._textFormat.font == value) {
+			return this._textFormat.font;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.font = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.font;
+	}
+	,get_size: function() {
+		return this._textFormat.size;
+	}
+	,set_size: function(value) {
+		if(this._textFormat.size == value) {
+			return this._textFormat.size;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.size = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.size;
+	}
+	,get_color: function() {
+		return this._textFormat.color;
+	}
+	,set_color: function(value) {
+		if(this._textFormat.color == value) {
+			return this._textFormat.color;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.color = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.color;
+	}
+	,get_bold: function() {
+		return this._textFormat.bold;
+	}
+	,set_bold: function(value) {
+		if(this._textFormat.bold == value) {
+			return this._textFormat.bold;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.bold = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.bold;
+	}
+	,get_italic: function() {
+		return this._textFormat.italic;
+	}
+	,set_italic: function(value) {
+		if(this._textFormat.italic == value) {
+			return this._textFormat.italic;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.italic = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.italic;
+	}
+	,get_underline: function() {
+		return this._textFormat.underline;
+	}
+	,set_underline: function(value) {
+		if(this._textFormat.underline == value) {
+			return this._textFormat.underline;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.underline = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.underline;
+	}
+	,get_url: function() {
+		return this._textFormat.url;
+	}
+	,set_url: function(value) {
+		if(this._textFormat.url == value) {
+			return this._textFormat.url;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.url = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.url;
+	}
+	,get_target: function() {
+		return this._textFormat.target;
+	}
+	,set_target: function(value) {
+		if(this._textFormat.target == value) {
+			return this._textFormat.target;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.target = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.target;
+	}
+	,get_align: function() {
+		return this._textFormat.align;
+	}
+	,set_align: function(value) {
+		if(this._textFormat.align == value) {
+			return this._textFormat.align;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.align = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.align;
+	}
+	,get_leftMargin: function() {
+		return this._textFormat.leftMargin;
+	}
+	,set_leftMargin: function(value) {
+		if(this._textFormat.leftMargin == value) {
+			return this._textFormat.leftMargin;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.leftMargin = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.leftMargin;
+	}
+	,get_rightMargin: function() {
+		return this._textFormat.rightMargin;
+	}
+	,set_rightMargin: function(value) {
+		if(this._textFormat.rightMargin == value) {
+			return this._textFormat.rightMargin;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.rightMargin = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.rightMargin;
+	}
+	,get_indent: function() {
+		return this._textFormat.indent;
+	}
+	,set_indent: function(value) {
+		if(this._textFormat.indent == value) {
+			return this._textFormat.indent;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.indent = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.indent;
+	}
+	,get_leading: function() {
+		return this._textFormat.leading;
+	}
+	,set_leading: function(value) {
+		if(this._textFormat.leading == value) {
+			return this._textFormat.leading;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.leading = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.leading;
+	}
+	,get_blockIndent: function() {
+		return this._textFormat.blockIndent;
+	}
+	,set_blockIndent: function(value) {
+		if(this._textFormat.blockIndent == value) {
+			return this._textFormat.blockIndent;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.blockIndent = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.blockIndent;
+	}
+	,get_bullet: function() {
+		return this._textFormat.bullet;
+	}
+	,set_bullet: function(value) {
+		if(this._textFormat.bullet == value) {
+			return this._textFormat.bullet;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.bullet = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.bullet;
+	}
+	,get_kerning: function() {
+		return this._textFormat.kerning;
+	}
+	,set_kerning: function(value) {
+		if(this._textFormat.kerning == value) {
+			return this._textFormat.kerning;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.kerning = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.kerning;
+	}
+	,get_letterSpacing: function() {
+		return this._textFormat.letterSpacing;
+	}
+	,set_letterSpacing: function(value) {
+		if(this._textFormat.letterSpacing == value) {
+			return this._textFormat.letterSpacing;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.letterSpacing = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.letterSpacing;
+	}
+	,get_tabStops: function() {
+		return this._textFormat.tabStops;
+	}
+	,set_tabStops: function(value) {
+		if(this._textFormat.tabStops == value) {
+			return this._textFormat.tabStops;
+		}
+		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
+		this._textFormat.tabStops = value;
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._textFormat.tabStops;
+	}
+	,clone: function() {
+		var clone = new feathers_text_TextFormat(this.get_font(),this.get_size(),this.get_color(),this.get_bold(),this.get_italic(),this.get_underline(),this.get_url(),this.get_target(),this.get_align(),this.get_leftMargin(),this.get_rightMargin(),this.get_indent(),this.get_leading());
+		clone._textFormat.blockIndent = this.get_blockIndent();
+		clone._textFormat.bullet = this.get_bullet();
+		clone._textFormat.kerning = this.get_kerning();
+		clone._textFormat.letterSpacing = this.get_letterSpacing();
+		clone._textFormat.tabStops = this.get_tabStops();
+		return clone;
+	}
+	,toSimpleTextFormat: function() {
+		return this._textFormat;
+	}
+	,__class__: feathers_text_TextFormat
+	,__properties__: {set_tabStops:"set_tabStops",get_tabStops:"get_tabStops",set_letterSpacing:"set_letterSpacing",get_letterSpacing:"get_letterSpacing",set_kerning:"set_kerning",get_kerning:"get_kerning",set_bullet:"set_bullet",get_bullet:"get_bullet",set_blockIndent:"set_blockIndent",get_blockIndent:"get_blockIndent",set_leading:"set_leading",get_leading:"get_leading",set_indent:"set_indent",get_indent:"get_indent",set_rightMargin:"set_rightMargin",get_rightMargin:"get_rightMargin",set_leftMargin:"set_leftMargin",get_leftMargin:"get_leftMargin",set_align:"set_align",get_align:"get_align",set_target:"set_target",get_target:"get_target",set_url:"set_url",get_url:"get_url",set_underline:"set_underline",get_underline:"get_underline",set_italic:"set_italic",get_italic:"get_italic",set_bold:"set_bold",get_bold:"get_bold",set_color:"set_color",get_color:"get_color",set_size:"set_size",get_size:"get_size",set_font:"set_font",get_font:"get_font"}
+});
+var openfl_text_TextFormat = function(font,size,color,bold,italic,underline,url,target,align,leftMargin,rightMargin,indent,leading) {
+	this.font = font;
+	this.size = size;
+	this.color = color;
+	this.bold = bold;
+	this.italic = italic;
+	this.underline = underline;
+	this.url = url;
+	this.target = target;
+	this.align = align;
+	this.leftMargin = leftMargin;
+	this.rightMargin = rightMargin;
+	this.indent = indent;
+	this.leading = leading;
+};
+$hxClasses["openfl.text.TextFormat"] = openfl_text_TextFormat;
+openfl_text_TextFormat.__name__ = "openfl.text.TextFormat";
+openfl_text_TextFormat.prototype = {
+	clone: function() {
+		var newFormat = new openfl_text_TextFormat(this.font,this.size,this.color,this.bold,this.italic,this.underline,this.url,this.target);
+		newFormat.align = this.align;
+		newFormat.leftMargin = this.leftMargin;
+		newFormat.rightMargin = this.rightMargin;
+		newFormat.indent = this.indent;
+		newFormat.leading = this.leading;
+		newFormat.blockIndent = this.blockIndent;
+		newFormat.bullet = this.bullet;
+		newFormat.kerning = this.kerning;
+		newFormat.letterSpacing = this.letterSpacing;
+		newFormat.tabStops = this.tabStops;
+		newFormat.__ascent = this.__ascent;
+		newFormat.__descent = this.__descent;
+		newFormat.__cacheKey = this.__toCacheKey();
+		return newFormat;
+	}
+	,__merge: function(format) {
+		if(format.font != null) {
+			this.font = format.font;
+		}
+		if(format.size != null) {
+			this.size = format.size;
+		}
+		if(format.color != null) {
+			this.color = format.color;
+		}
+		if(format.bold != null) {
+			this.bold = format.bold;
+		}
+		if(format.italic != null) {
+			this.italic = format.italic;
+		}
+		if(format.underline != null) {
+			this.underline = format.underline;
+		}
+		if(format.url != null) {
+			this.url = format.url;
+		}
+		if(format.target != null) {
+			this.target = format.target;
+		}
+		if(format.align != null) {
+			this.align = format.align;
+		}
+		if(format.leftMargin != null) {
+			this.leftMargin = format.leftMargin;
+		}
+		if(format.rightMargin != null) {
+			this.rightMargin = format.rightMargin;
+		}
+		if(format.indent != null) {
+			this.indent = format.indent;
+		}
+		if(format.leading != null) {
+			this.leading = format.leading;
+		}
+		if(format.blockIndent != null) {
+			this.blockIndent = format.blockIndent;
+		}
+		if(format.bullet != null) {
+			this.bullet = format.bullet;
+		}
+		if(format.kerning != null) {
+			this.kerning = format.kerning;
+		}
+		if(format.letterSpacing != null) {
+			this.letterSpacing = format.letterSpacing;
+		}
+		if(format.tabStops != null) {
+			this.tabStops = format.tabStops;
+		}
+		if(format.__ascent != null) {
+			this.__ascent = format.__ascent;
+		}
+		if(format.__descent != null) {
+			this.__descent = format.__descent;
+		}
+		this.__toCacheKey();
+	}
+	,__toCacheKey: function() {
+		return this.__cacheKey = "" + this.font + this.size + Std.string(this.bold) + Std.string(this.italic);
+	}
+	,__class__: openfl_text_TextFormat
+};
 var CompanyLayoutGroup = function(company,tabsContainer) {
+	this.labelWidth = 160;
+	this.labelHeight = 40;
+	this.labelY = 40;
 	feathers_controls_LayoutGroup.call(this);
 	var container = new feathers_controls_LayoutGroup();
 	tabsContainer.addChild(container);
@@ -5342,26 +5685,134 @@ CompanyLayoutGroup.__name__ = "CompanyLayoutGroup";
 CompanyLayoutGroup.__super__ = feathers_controls_LayoutGroup;
 CompanyLayoutGroup.prototype = $extend(feathers_controls_LayoutGroup.prototype,{
 	printCompanyInfo: function() {
-		var companyNameLabel = new feathers_controls_Label();
-		companyNameLabel.set_text("Company name: " + this.company.companyName);
-		this.container.addChild(companyNameLabel);
-		var companyDescriptionLabel = new feathers_controls_Label();
-		companyDescriptionLabel.set_text("\nDescription: " + this.company.description);
-		this.container.addChild(companyDescriptionLabel);
-		var companyWebsiteLabel = new feathers_controls_Label();
-		companyWebsiteLabel.set_text("\n\nWebsite: " + this.company.website);
-		this.container.addChild(companyWebsiteLabel);
+		this.addLabel("Company name",this.company.companyName);
+		this.addLabel("Description",this.company.description);
+		this.addLabel("Website",this.company.website);
 		var bitmapData = openfl_utils_Assets.getBitmapData("assets/img/companies/" + this.company.imgUri);
-		var scaleFactor = 100 / bitmapData.height;
+		var scaleFactor = 200 / bitmapData.height;
 		var bitmap = new openfl_display_Bitmap(bitmapData);
-		bitmap.set_x(50);
-		bitmap.set_y(50);
+		bitmap.set_x(10);
+		bitmap.set_y(this.labelY);
 		bitmap.set_scaleX(scaleFactor);
 		bitmap.set_scaleY(scaleFactor);
 		this.container.addChild(bitmap);
+		this.labelY += Math.round(bitmap.get_height());
+	}
+	,addLabel: function(key,value) {
+		var labelKey = new feathers_controls_Label();
+		labelKey.set_text(key + ": ");
+		labelKey.set_textFormat(CompanyLayoutGroup.keyTextFormat);
+		labelKey.set_x(10);
+		labelKey.set_y(this.labelY);
+		labelKey.set_height(this.labelHeight);
+		labelKey.set_width(this.labelWidth);
+		this.container.addChild(labelKey);
+		var labelValue = new feathers_controls_Label();
+		labelValue.set_text(value);
+		labelValue.set_textFormat(CompanyLayoutGroup.valueTextFormat);
+		labelValue.set_x(10 + this.labelWidth);
+		labelValue.set_y(this.labelY);
+		labelValue.set_height(this.labelHeight);
+		this.container.addChild(labelValue);
+		this.labelY += this.labelHeight;
 	}
 	,__class__: CompanyLayoutGroup
 });
+var DateTools = function() { };
+$hxClasses["DateTools"] = DateTools;
+DateTools.__name__ = "DateTools";
+DateTools.__format_get = function(d,e) {
+	switch(e) {
+	case "%":
+		return "%";
+	case "A":
+		return DateTools.DAY_NAMES[d.getDay()];
+	case "B":
+		return DateTools.MONTH_NAMES[d.getMonth()];
+	case "C":
+		return StringTools.lpad(Std.string(d.getFullYear() / 100 | 0),"0",2);
+	case "D":
+		return DateTools.__format(d,"%m/%d/%y");
+	case "F":
+		return DateTools.__format(d,"%Y-%m-%d");
+	case "M":
+		return StringTools.lpad(Std.string(d.getMinutes()),"0",2);
+	case "R":
+		return DateTools.__format(d,"%H:%M");
+	case "S":
+		return StringTools.lpad(Std.string(d.getSeconds()),"0",2);
+	case "T":
+		return DateTools.__format(d,"%H:%M:%S");
+	case "Y":
+		return Std.string(d.getFullYear());
+	case "a":
+		return DateTools.DAY_SHORT_NAMES[d.getDay()];
+	case "d":
+		return StringTools.lpad(Std.string(d.getDate()),"0",2);
+	case "e":
+		return Std.string(d.getDate());
+	case "b":case "h":
+		return DateTools.MONTH_SHORT_NAMES[d.getMonth()];
+	case "H":case "k":
+		return StringTools.lpad(Std.string(d.getHours()),e == "H" ? "0" : " ",2);
+	case "I":case "l":
+		var hour = d.getHours() % 12;
+		return StringTools.lpad(Std.string(hour == 0 ? 12 : hour),e == "I" ? "0" : " ",2);
+	case "m":
+		return StringTools.lpad(Std.string(d.getMonth() + 1),"0",2);
+	case "n":
+		return "\n";
+	case "p":
+		if(d.getHours() > 11) {
+			return "PM";
+		} else {
+			return "AM";
+		}
+		break;
+	case "r":
+		return DateTools.__format(d,"%I:%M:%S %p");
+	case "s":
+		return Std.string(d.getTime() / 1000 | 0);
+	case "t":
+		return "\t";
+	case "u":
+		var t = d.getDay();
+		if(t == 0) {
+			return "7";
+		} else if(t == null) {
+			return "null";
+		} else {
+			return "" + t;
+		}
+		break;
+	case "w":
+		return Std.string(d.getDay());
+	case "y":
+		return StringTools.lpad(Std.string(d.getFullYear() % 100),"0",2);
+	default:
+		throw new haxe_exceptions_NotImplementedException("Date.format %" + e + "- not implemented yet.",null,{ fileName : "DateTools.hx", lineNumber : 101, className : "DateTools", methodName : "__format_get"});
+	}
+};
+DateTools.__format = function(d,f) {
+	var r_b = "";
+	var p = 0;
+	while(true) {
+		var np = f.indexOf("%",p);
+		if(np < 0) {
+			break;
+		}
+		var len = np - p;
+		r_b += len == null ? HxOverrides.substr(f,p,null) : HxOverrides.substr(f,p,len);
+		r_b += Std.string(DateTools.__format_get(d,HxOverrides.substr(f,np + 1,1)));
+		p = np + 2;
+	}
+	var len = f.length - p;
+	r_b += len == null ? HxOverrides.substr(f,p,null) : HxOverrides.substr(f,p,len);
+	return r_b;
+};
+DateTools.format = function(d,f) {
+	return DateTools.__format(d,f);
+};
 var EReg = function(r,opt) {
 	this.r = new RegExp(r,opt.split("u").join(""));
 };
@@ -5532,7 +5983,7 @@ ManifestResources.init = function(config) {
 		ManifestResources.rootPath = "./";
 	}
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy34:assets%2Fcompanies%2Fcompanies.xmly4:sizei504y4:typey4:TEXTy2:idR1y7:preloadtgoR0y35:assets%2Fimg%2Fcompanies%2Ftivo.pngR2i72178R3y5:IMAGER5R7R6tgoR0y34:assets%2Fimg%2Fcompanies%2Ftpe.jpgR2i5147R3R8R5R9R6tgoR0y47:assets%2Fimg%2Fshows%2Fdesperate-housewives.jpgR2i122952R3R8R5R10R6tgoR0y35:assets%2Fimg%2Fshows%2Fdr-house.jpgR2i523400R3R8R5R11R6tgoR0y40:assets%2Fimg%2Fshows%2Fgravity-falls.jpgR2i346909R3R8R5R12R6tgoR0y39:assets%2Fimg%2Fshows%2Fhell-kitchen.jpgR2i1571740R3R8R5R13R6tgoR0y36:assets%2Fimg%2Fshows%2Finsidious.jpgR2i105400R3R8R5R14R6tgoR0y31:assets%2Fimg%2Fshows%2Fleon.jpgR2i2211479R3R8R5R15R6tgoR0y34:assets%2Fimg%2Fshows%2Fmatilda.jpgR2i71555R3R8R5R16R6tgoR0y40:assets%2Fimg%2Fshows%2Fmortal-combat.jpgR2i1565309R3R8R5R17R6tgoR0y43:assets%2Fimg%2Fshows%2Fphineas-and-ferb.jpgR2i404628R3R8R5R18R6tgoR0y39:assets%2Fimg%2Fshows%2Fpulp-fiction.jpgR2i1039506R3R8R5R19R6tgoR0y46:assets%2Fimg%2Fshows%2Fshakespeare-in-love.jpgR2i368123R3R8R5R20R6tgoR0y34:assets%2Fimg%2Fshows%2Fshining.jpgR2i724987R3R8R5R21R6tgoR0y33:assets%2Fimg%2Fshows%2Fsnatch.jpgR2i656451R3R8R5R22R6tgoR0y59:assets%2Fimg%2Fshows%2Fthe-hobbit-an-unexpected-journey.jpgR2i86592R3R8R5R23R6tgoR0y67:assets%2Fimg%2Fshows%2Fthe-hobbit-the-battle-of-the-five-armies.jpgR2i160288R3R8R5R24R6tgoR0y61:assets%2Fimg%2Fshows%2Fthe-hobbit-the-desolation-of-smaug.jpgR2i21069R3R8R5R25R6tgoR0y26:assets%2Fshows%2Fshows.txtR2i1170R3R4R5R26R6tgoR0y26:assets%2Fshows%2Fshows.xmlR2i6460R3R4R5R27R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy34:assets%2Fcompanies%2Fcompanies.xmly4:sizei504y4:typey4:TEXTy2:idR1y7:preloadtgoR0y35:assets%2Fimg%2Fcompanies%2Ftivo.pngR2i72178R3y5:IMAGER5R7R6tgoR0y34:assets%2Fimg%2Fcompanies%2Ftpe.jpgR2i5147R3R8R5R9R6tgoR0y47:assets%2Fimg%2Fshows%2Fdesperate-housewives.jpgR2i122952R3R8R5R10R6tgoR0y35:assets%2Fimg%2Fshows%2Fdr-house.jpgR2i523400R3R8R5R11R6tgoR0y40:assets%2Fimg%2Fshows%2Fgravity-falls.jpgR2i346909R3R8R5R12R6tgoR0y39:assets%2Fimg%2Fshows%2Fhell-kitchen.jpgR2i1571740R3R8R5R13R6tgoR0y36:assets%2Fimg%2Fshows%2Finsidious.jpgR2i105400R3R8R5R14R6tgoR0y31:assets%2Fimg%2Fshows%2Fleon.jpgR2i2211479R3R8R5R15R6tgoR0y34:assets%2Fimg%2Fshows%2Fmatilda.jpgR2i71555R3R8R5R16R6tgoR0y40:assets%2Fimg%2Fshows%2Fmortal-combat.jpgR2i1565309R3R8R5R17R6tgoR0y43:assets%2Fimg%2Fshows%2Fphineas-and-ferb.jpgR2i404628R3R8R5R18R6tgoR0y39:assets%2Fimg%2Fshows%2Fpulp-fiction.jpgR2i1039506R3R8R5R19R6tgoR0y46:assets%2Fimg%2Fshows%2Fshakespeare-in-love.jpgR2i368123R3R8R5R20R6tgoR0y34:assets%2Fimg%2Fshows%2Fshining.jpgR2i724987R3R8R5R21R6tgoR0y33:assets%2Fimg%2Fshows%2Fsnatch.jpgR2i656451R3R8R5R22R6tgoR0y59:assets%2Fimg%2Fshows%2Fthe-hobbit-an-unexpected-journey.jpgR2i86592R3R8R5R23R6tgoR0y67:assets%2Fimg%2Fshows%2Fthe-hobbit-the-battle-of-the-five-armies.jpgR2i160288R3R8R5R24R6tgoR0y61:assets%2Fimg%2Fshows%2Fthe-hobbit-the-desolation-of-smaug.jpgR2i21069R3R8R5R25R6tgoR0y26:assets%2Fshows%2Fshows.txtR2i1168R3R4R5R26R6tgoR0y26:assets%2Fshows%2Fshows.xmlR2i7643R3R4R5R27R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -5544,6 +5995,41 @@ ManifestResources.init = function(config) {
 	}
 };
 Math.__name__ = "Math";
+var Popup = function() { };
+$hxClasses["Popup"] = Popup;
+Popup.__name__ = "Popup";
+Popup.Show = function(header,message,parent) {
+	var panel = new feathers_controls_Panel();
+	panel.set_width(500);
+	panel.set_height(300);
+	var header1 = new feathers_controls_Header(header);
+	header1.set_height(60);
+	panel.set_header(header1);
+	var buttonHeight = 30;
+	var textArea = new feathers_controls_TextArea();
+	textArea.set_text(message);
+	textArea.set_smoothScrolling(true);
+	textArea.set_editable(false);
+	textArea.set_enabled(false);
+	textArea.set_wordWrap(true);
+	textArea.set_x(10);
+	textArea.set_y(10);
+	textArea.set_width(panel.get_width() - 4 * textArea.get_x());
+	var headerHeight = panel.get_header().get_height();
+	haxe_Log.trace("headerHeight" + headerHeight,{ fileName : "Source/Popup.hx", lineNumber : 32, className : "Popup", methodName : "Show"});
+	textArea.set_height(panel.get_height() - buttonHeight - textArea.get_y() * 2 - headerHeight);
+	textArea.set_backgroundSkin(null);
+	panel.addChild(textArea);
+	var button = new feathers_controls_Button("OK");
+	button.set_height(buttonHeight);
+	button.set_x(textArea.get_width() / 2 - button.get_width() / 2);
+	button.set_y(textArea.get_height() + buttonHeight / 2);
+	button.addEventListener("trigger",function(event) {
+		feathers_core_PopUpManager.removeAllPopUps();
+	});
+	panel.addChild(button);
+	feathers_core_PopUpManager.addPopUp(panel,parent,true,true);
+};
 var Reflect = function() { };
 $hxClasses["Reflect"] = Reflect;
 Reflect.__name__ = "Reflect";
@@ -5765,6 +6251,16 @@ StringTools.rtrim = function(s) {
 StringTools.trim = function(s) {
 	return StringTools.ltrim(StringTools.rtrim(s));
 };
+StringTools.lpad = function(s,c,l) {
+	if(c.length <= 0) {
+		return s;
+	}
+	var buf_b = "";
+	l -= s.length;
+	while(buf_b.length < l) buf_b += c == null ? "null" : "" + c;
+	buf_b += s == null ? "null" : "" + s;
+	return buf_b;
+};
 StringTools.replace = function(s,sub,by) {
 	return s.split(sub).join(by);
 };
@@ -5886,7 +6382,7 @@ TVShowsTxtParser.prototype = {
 		}
 		var startDate = this.getIntValueFromStrLine(line,"startDate");
 		if(startDate != 0) {
-			tvShowBuilder.withStartDate(year);
+			tvShowBuilder.withStartDate(startDate);
 		}
 		var endDate = this.getIntValueFromStrLine(line,"endDate");
 		if(endDate != 0) {
@@ -5920,12 +6416,14 @@ TVShowsTxtParser.prototype = {
 var TVShowsView = function() { };
 $hxClasses["TVShowsView"] = TVShowsView;
 TVShowsView.__name__ = "TVShowsView";
-TVShowsView.getTVShowsTabDto = function(tvShows,container,cellsInRow,cellWidth,cellHeight,startX,startY,previewWidth,previewHeight,previewX,previewY) {
-	var tvShowsLayoutGroup = new TVShowsLayoutGroup(tvShows,container,cellsInRow,cellWidth,cellHeight,startX,startY,previewWidth,previewHeight,previewX,previewY);
+TVShowsView.getTVShowsTabDto = function(tvShows,container,cellsInRow,cellWidth,cellHeight,cellStartXPosition,cellStartYPosition,previewWidth,previewHeight,previewX,previewY) {
+	var tvShowsLayoutGroup = new TVShowsLayoutGroup(tvShows,container,cellsInRow,cellWidth,cellHeight,cellStartXPosition,cellStartYPosition,previewWidth,previewHeight,previewX,previewY);
 	var tvShowsTab = feathers_controls_navigators_TabItem.withDisplayObject("TV Shows",tvShowsLayoutGroup);
 	return new TabDto(tvShowsTab,tvShowsLayoutGroup.container);
 };
-var TVShowsLayoutGroup = function(tvShows,tabsContainer,cellsInRow,cellWidth,cellHeight,startX,startY,previewWidth,previewHeight,previewX,previewY) {
+var TVShowsLayoutGroup = function(tvShows,tabsContainer,cellsInRow,cellWidth,cellHeight,cellStartXPosition,cellStartYPosition,previewWidth,previewHeight,previewX,previewY) {
+	this.previewInfoStartYPosition = 60;
+	this.previewInfoStartXPosition = 350;
 	feathers_controls_LayoutGroup.call(this);
 	var container = new feathers_controls_LayoutGroup();
 	tabsContainer.addChild(container);
@@ -5934,8 +6432,8 @@ var TVShowsLayoutGroup = function(tvShows,tabsContainer,cellsInRow,cellWidth,cel
 	this.cellsInRow = cellsInRow;
 	this.cellWidth = cellWidth;
 	this.cellHeight = cellHeight;
-	this.startX = startX;
-	this.startY = startY;
+	this.cellStartXPosition = cellStartXPosition;
+	this.cellStartYPosition = cellStartYPosition;
 	this.previewWidth = previewWidth;
 	this.previewHeight = previewHeight;
 	this.previewX = previewX;
@@ -5957,8 +6455,8 @@ TVShowsLayoutGroup.prototype = $extend(feathers_controls_LayoutGroup.prototype,{
 				columnNumber = 0;
 				++rowNumber;
 			}
-			var x = this.startX + columnNumber * this.cellWidth;
-			var y = this.startY + rowNumber * this.cellHeight;
+			var x = this.cellStartXPosition + columnNumber * this.cellWidth;
+			var y = this.cellStartYPosition + rowNumber * this.cellHeight;
 			++columnNumber;
 			var tvShow = this.tvShows.get(i);
 			this.drawCell(tvShow,x,y);
@@ -5975,7 +6473,8 @@ TVShowsLayoutGroup.prototype = $extend(feathers_controls_LayoutGroup.prototype,{
 		button.set_height(this.cellHeight);
 		button.addEventListener("trigger",function(event) {
 			if(_gthis.activePreviewIndex >= 0) {
-				_gthis.container.removeChildAt(_gthis.container.get_numChildren() - 1);
+				_gthis.container.removeChildAt(_gthis.activePreviewInfoIndex);
+				_gthis.container.removeChildAt(_gthis.activePreviewIndex);
 				_gthis.activePreviewIndex = -1;
 			}
 			var bitmapData = openfl_utils_Assets.getBitmapData(imgPath);
@@ -5988,6 +6487,8 @@ TVShowsLayoutGroup.prototype = $extend(feathers_controls_LayoutGroup.prototype,{
 			_gthis.container.addChild(bitmap);
 			var tmp = _gthis.container.get_numChildren();
 			_gthis.activePreviewIndex = tmp - 1;
+			_gthis.printTVShowInfoOnPreview(tvShow);
+			Popup.Show(tvShow.showName,tvShow.description,_gthis.parent);
 		});
 		var bitmapData = openfl_utils_Assets.getBitmapData(imgPath);
 		var icon = new openfl_display_Bitmap(openfl_utils_Assets.getBitmapData(imgPath));
@@ -5998,6 +6499,65 @@ TVShowsLayoutGroup.prototype = $extend(feathers_controls_LayoutGroup.prototype,{
 		icon.set_scaleY(scaleFactor);
 		button.addChild(icon);
 		this.container.addChild(button);
+	}
+	,printTVShowInfoOnPreview: function(tvShow) {
+		var layoutGroup = new feathers_controls_LayoutGroup();
+		this.container.addChild(layoutGroup);
+		this.activePreviewInfoIndex = this.container.get_numChildren() - 1;
+		var x = this.previewInfoStartXPosition;
+		var y = this.previewInfoStartYPosition;
+		if(tvShow.showId != 0) {
+			var textFormat = new feathers_text_TextFormat("Helvetica",14,13619665);
+			this.addLabel(layoutGroup,"Show #" + tvShow.showId,textFormat,x,y);
+			if(tvShow.channelId != 0) {
+				this.addLabel(layoutGroup,"Ch #" + tvShow.channelId,textFormat,x + 500,y);
+			}
+			y += 40;
+		}
+		var showName = tvShow.showName;
+		if(showName == "") {
+			showName = "Unknown";
+		}
+		this.addLabel(layoutGroup,showName,new feathers_text_TextFormat("Helvetica",24,15132647),x,y);
+		y += 50;
+		if(tvShow.description != "") {
+			this.addTextField(layoutGroup,tvShow.description,new feathers_text_TextFormat("Helvetica",18,13945767),x,y,Math.round(this.previewWidth / 1.8),Math.round(this.previewHeight / 1.8));
+		}
+		if(tvShow.startDate != 0) {
+			var dateString = tvShow.startDate == null ? "null" : "" + tvShow.startDate;
+			var startDate = new Date(Std.parseInt(HxOverrides.substr(dateString,0,4)),Std.parseInt(HxOverrides.substr(dateString,4,2)) - 1,Std.parseInt(HxOverrides.substr(dateString,6,2)),Std.parseInt(HxOverrides.substr(dateString,8,2)),Std.parseInt(HxOverrides.substr(dateString,10,2)),Std.parseInt(HxOverrides.substr(dateString,12,2)));
+			var format = "%m/%d/%Y %H:%M";
+			var time = DateTools.format(startDate,format);
+			if(tvShow.endDate != 0) {
+				dateString = tvShow.endDate == null ? "null" : "" + tvShow.endDate;
+				var endDate = new Date(Std.parseInt(HxOverrides.substr(dateString,0,4)),Std.parseInt(HxOverrides.substr(dateString,4,2)) - 1,Std.parseInt(HxOverrides.substr(dateString,6,2)),Std.parseInt(HxOverrides.substr(dateString,8,2)),Std.parseInt(HxOverrides.substr(dateString,10,2)),Std.parseInt(HxOverrides.substr(dateString,12,2)));
+				time += " - " + DateTools.format(endDate,format);
+			}
+			this.addLabel(layoutGroup,time,new feathers_text_TextFormat("Helvetica",16,15394750),x,this.previewHeight + 20);
+		}
+	}
+	,addLabel: function(layoutGroup,text,textFormat,x,y) {
+		var labelKey = new feathers_controls_Label();
+		labelKey.set_text(text);
+		labelKey.set_textFormat(textFormat);
+		labelKey.set_x(x);
+		labelKey.set_y(y);
+		layoutGroup.addChild(labelKey);
+	}
+	,addTextField: function(layoutGroup,text,textFormat,x,y,width,height) {
+		var textArea = new feathers_controls_TextArea();
+		textArea.set_text(text);
+		textArea.set_smoothScrolling(true);
+		textArea.set_editable(false);
+		textArea.set_textFormat(textFormat);
+		textArea.set_wordWrap(true);
+		var leftShift = 10;
+		textArea.set_x(x - leftShift);
+		textArea.set_y(y);
+		textArea.set_width(width);
+		textArea.set_height(height);
+		textArea.set_backgroundSkin(null);
+		layoutGroup.addChild(textArea);
 	}
 	,__class__: TVShowsLayoutGroup
 });
@@ -6048,7 +6608,7 @@ TVShowsXmlParser.prototype = {
 		}
 		var startDate = this.getIntValueFromXml(elements,"startDate");
 		if(startDate != 0) {
-			tvShowBuilder.withStartDate(year);
+			tvShowBuilder.withStartDate(startDate);
 		}
 		var endDate = this.getIntValueFromXml(elements,"endDate");
 		if(endDate != 0) {
@@ -8252,6 +8812,2780 @@ var feathers_controls_ButtonState = $hxEnums["feathers.controls.ButtonState"] = 
 	,DISABLED: {_hx_name:"DISABLED",_hx_index:3,__enum__:"feathers.controls.ButtonState",toString:$estr}
 };
 feathers_controls_ButtonState.__constructs__ = [feathers_controls_ButtonState.UP,feathers_controls_ButtonState.HOVER,feathers_controls_ButtonState.DOWN,feathers_controls_ButtonState.DISABLED];
+var feathers_core_InvalidationFlag = $hxEnums["feathers.core.InvalidationFlag"] = { __ename__:"feathers.core.InvalidationFlag",__constructs__:null
+	,STATE: {_hx_name:"STATE",_hx_index:0,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
+	,SIZE: {_hx_name:"SIZE",_hx_index:1,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
+	,STYLES: {_hx_name:"STYLES",_hx_index:2,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
+	,SKIN: {_hx_name:"SKIN",_hx_index:3,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
+	,LAYOUT: {_hx_name:"LAYOUT",_hx_index:4,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
+	,DATA: {_hx_name:"DATA",_hx_index:5,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
+	,SCROLL: {_hx_name:"SCROLL",_hx_index:6,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
+	,SELECTION: {_hx_name:"SELECTION",_hx_index:7,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
+	,FOCUS: {_hx_name:"FOCUS",_hx_index:8,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
+	,SORT: {_hx_name:"SORT",_hx_index:9,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
+	,CUSTOM: ($_=function(value) { return {_hx_index:10,value:value,__enum__:"feathers.core.InvalidationFlag",toString:$estr}; },$_._hx_name="CUSTOM",$_.__params__ = ["value"],$_)
+};
+feathers_core_InvalidationFlag.__constructs__ = [feathers_core_InvalidationFlag.STATE,feathers_core_InvalidationFlag.SIZE,feathers_core_InvalidationFlag.STYLES,feathers_core_InvalidationFlag.SKIN,feathers_core_InvalidationFlag.LAYOUT,feathers_core_InvalidationFlag.DATA,feathers_core_InvalidationFlag.SCROLL,feathers_core_InvalidationFlag.SELECTION,feathers_core_InvalidationFlag.FOCUS,feathers_core_InvalidationFlag.SORT,feathers_core_InvalidationFlag.CUSTOM];
+var feathers_controls_Callout = function(content) {
+	this.__leftArrowGap = 0.0;
+	this.__bottomArrowGap = 0.0;
+	this.__rightArrowGap = 0.0;
+	this.__topArrowGap = 0.0;
+	this.__leftArrowSkin = null;
+	this.__bottomArrowSkin = null;
+	this.__rightArrowSkin = null;
+	this.__topArrowSkin = null;
+	this.__backgroundSkin = null;
+	this.__arrowPosition = feathers_layout_RelativePosition.TOP;
+	this.__verticalAlign = feathers_layout_VerticalAlign.MIDDLE;
+	this.__horizontalAlign = feathers_layout_HorizontalAlign.CENTER;
+	this.__paddingLeft = 0.0;
+	this.__paddingBottom = 0.0;
+	this.__paddingRight = 0.0;
+	this.__paddingTop = 0.0;
+	this.__marginLeft = 0.0;
+	this.__marginBottom = 0.0;
+	this.__marginRight = 0.0;
+	this.__marginTop = 0.0;
+	this.__gap = 0.0;
+	this.closeOnPointerOutside = true;
+	this._ignoreContentResize = false;
+	this._arrowOffset = 0.0;
+	this.initializeCalloutTheme();
+	feathers_core_FeathersControl.call(this);
+	this.set_content(content);
+	this.addEventListener("addedToStage",$bind(this,this.callout_addedToStageHandler));
+	this.addEventListener("removedFromStage",$bind(this,this.callout_removedFromStageHandler));
+};
+$hxClasses["feathers.controls.Callout"] = feathers_controls_Callout;
+feathers_controls_Callout.__name__ = "feathers.controls.Callout";
+feathers_controls_Callout.show = function(content,origin,supportedPositions,modal,customOverlayFactory) {
+	if(modal == null) {
+		modal = true;
+	}
+	var callout = new feathers_controls_Callout();
+	callout.set_content(content);
+	return feathers_controls_Callout.showCallout(callout,origin,supportedPositions,modal,customOverlayFactory);
+};
+feathers_controls_Callout.showCallout = function(callout,origin,supportedPositions,modal,customOverlayFactory) {
+	if(modal == null) {
+		modal = true;
+	}
+	callout.supportedPositions = supportedPositions;
+	callout.set_origin(origin);
+	var overlayFactory = customOverlayFactory;
+	if(overlayFactory == null) {
+		overlayFactory = function() {
+			var overlay = new openfl_display_Sprite();
+			overlay.get_graphics().beginFill(16711935,0.0);
+			overlay.get_graphics().drawRect(0,0,1,1);
+			overlay.get_graphics().endFill();
+			return overlay;
+		};
+	}
+	feathers_core_PopUpManager.addPopUp(callout,origin,modal,false,overlayFactory);
+	return callout;
+};
+feathers_controls_Callout.positionBelowOrigin = function(callout,originBounds) {
+	callout.measureWithArrowPosition(feathers_layout_RelativePosition.TOP);
+	var popUpRoot = feathers_core_PopUpManager.forStage(callout.stage).get_root();
+	var stageTopLeft = new openfl_geom_Point();
+	stageTopLeft = popUpRoot.globalToLocal(stageTopLeft);
+	var stageBottomRight = new openfl_geom_Point(callout.stage.stageWidth,callout.stage.stageHeight);
+	stageBottomRight = popUpRoot.globalToLocal(stageBottomRight);
+	var idealXPosition = originBounds.x;
+	switch(callout.get_horizontalAlign()._hx_index) {
+	case 1:
+		idealXPosition += (originBounds.width - callout.get_width()) / 2.0;
+		break;
+	case 2:
+		idealXPosition += originBounds.width - callout.get_width();
+		break;
+	default:
+	}
+	var minX = stageTopLeft.x + callout.get_marginLeft();
+	var maxX = stageBottomRight.x - callout.get_width() - callout.get_marginRight();
+	var xPosition = idealXPosition;
+	if(xPosition < minX) {
+		xPosition = minX;
+	} else if(xPosition > maxX) {
+		xPosition = maxX;
+	}
+	callout.set_x(xPosition);
+	callout.set_y(originBounds.y + originBounds.height + callout.get_gap());
+	callout._arrowOffset = idealXPosition - xPosition;
+	callout.set_arrowPosition(feathers_layout_RelativePosition.TOP);
+};
+feathers_controls_Callout.positionAboveOrigin = function(callout,originBounds) {
+	callout.measureWithArrowPosition(feathers_layout_RelativePosition.BOTTOM);
+	var popUpRoot = feathers_core_PopUpManager.forStage(callout.stage).get_root();
+	var stageTopLeft = new openfl_geom_Point();
+	stageTopLeft = popUpRoot.globalToLocal(stageTopLeft);
+	var stageBottomRight = new openfl_geom_Point(callout.stage.stageWidth,callout.stage.stageHeight);
+	stageBottomRight = popUpRoot.globalToLocal(stageBottomRight);
+	var idealXPosition = originBounds.x;
+	switch(callout.get_horizontalAlign()._hx_index) {
+	case 1:
+		idealXPosition += (originBounds.width - callout.get_width()) / 2.0;
+		break;
+	case 2:
+		idealXPosition += originBounds.width - callout.get_width();
+		break;
+	default:
+	}
+	var minX = stageTopLeft.x + callout.get_marginLeft();
+	var maxX = stageBottomRight.x - callout.get_width() - callout.get_marginRight();
+	var xPosition = idealXPosition;
+	if(xPosition < minX) {
+		xPosition = minX;
+	} else if(xPosition > maxX) {
+		xPosition = maxX;
+	}
+	callout.set_x(xPosition);
+	callout.set_y(originBounds.y - callout.get_height() - callout.get_gap());
+	callout._arrowOffset = idealXPosition - xPosition;
+	callout.set_arrowPosition(feathers_layout_RelativePosition.BOTTOM);
+};
+feathers_controls_Callout.positionLeftOfOrigin = function(callout,originBounds) {
+	callout.measureWithArrowPosition(feathers_layout_RelativePosition.RIGHT);
+	var popUpRoot = feathers_core_PopUpManager.forStage(callout.stage).get_root();
+	var stageTopLeft = new openfl_geom_Point();
+	stageTopLeft = popUpRoot.globalToLocal(stageTopLeft);
+	var stageBottomRight = new openfl_geom_Point(callout.stage.stageWidth,callout.stage.stageHeight);
+	stageBottomRight = popUpRoot.globalToLocal(stageBottomRight);
+	var idealYPosition = originBounds.y;
+	switch(callout.get_verticalAlign()._hx_index) {
+	case 1:
+		idealYPosition += (originBounds.height - callout.get_height()) / 2.0;
+		break;
+	case 2:
+		idealYPosition += originBounds.height - callout.get_height();
+		break;
+	default:
+	}
+	var minY = stageTopLeft.y + callout.get_marginTop();
+	var maxY = stageBottomRight.y - callout.get_height() - callout.get_marginBottom();
+	var yPosition = idealYPosition;
+	if(yPosition < minY) {
+		yPosition = minY;
+	} else if(yPosition > maxY) {
+		yPosition = maxY;
+	}
+	callout.set_x(originBounds.x - callout.get_width() - callout.get_gap());
+	callout.set_y(yPosition);
+	callout._arrowOffset = idealYPosition - yPosition;
+	callout.set_arrowPosition(feathers_layout_RelativePosition.RIGHT);
+};
+feathers_controls_Callout.positionRightOfOrigin = function(callout,originBounds) {
+	callout.measureWithArrowPosition(feathers_layout_RelativePosition.RIGHT);
+	var popUpRoot = feathers_core_PopUpManager.forStage(callout.stage).get_root();
+	var stageTopLeft = new openfl_geom_Point();
+	stageTopLeft = popUpRoot.globalToLocal(stageTopLeft);
+	var stageBottomRight = new openfl_geom_Point(callout.stage.stageWidth,callout.stage.stageHeight);
+	stageBottomRight = popUpRoot.globalToLocal(stageBottomRight);
+	var idealYPosition = originBounds.y;
+	switch(callout.get_verticalAlign()._hx_index) {
+	case 1:
+		idealYPosition += (originBounds.height - callout.get_height()) / 2.0;
+		break;
+	case 2:
+		idealYPosition += originBounds.height - callout.get_height();
+		break;
+	default:
+	}
+	var minY = stageTopLeft.y + callout.get_marginTop();
+	var maxY = stageBottomRight.y - callout.get_height() - callout.get_marginBottom();
+	var yPosition = idealYPosition;
+	if(yPosition < minY) {
+		yPosition = minY;
+	} else if(yPosition > maxY) {
+		yPosition = maxY;
+	}
+	callout.set_x(originBounds.x + originBounds.width + callout.get_gap());
+	callout.set_y(yPosition);
+	callout._arrowOffset = idealYPosition - yPosition;
+	callout.set_arrowPosition(feathers_layout_RelativePosition.LEFT);
+};
+feathers_controls_Callout.__super__ = feathers_core_FeathersControl;
+feathers_controls_Callout.prototype = $extend(feathers_core_FeathersControl.prototype,{
+	get_content: function() {
+		return this._content;
+	}
+	,set_content: function(value) {
+		if(this._content == value) {
+			return this._content;
+		}
+		if(this._content != null) {
+			this._content.removeEventListener("resize",$bind(this,this.callout_content_resizeHandler));
+			this._contentMeasurements.restore(this._content);
+			if(this._content.parent == this) {
+				this.removeChild(this._content);
+			}
+		}
+		this._content = value;
+		if(this._content != null) {
+			this._content.addEventListener("resize",$bind(this,this.callout_content_resizeHandler),false,0,true);
+			this.addChild(this._content);
+			if(js_Boot.__implements(this._content,feathers_core_IUIControl)) {
+				(js_Boot.__cast(this._content , feathers_core_IUIControl)).initializeNow();
+			}
+			if(this._contentMeasurements == null) {
+				this._contentMeasurements = new feathers_layout_Measurements(this._content);
+			} else {
+				this._contentMeasurements.save(this._content);
+			}
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		return this._content;
+	}
+	,get_origin: function() {
+		return this._origin;
+	}
+	,set_origin: function(value) {
+		if(this._origin == value) {
+			return this._origin;
+		}
+		if(value != null && value.stage == null) {
+			throw new openfl_errors_ArgumentError("origin must be added to the stage.");
+		}
+		if(this._origin != null) {
+			this._origin.removeEventListener("removedFromStage",$bind(this,this.callout_origin_removedFromStageHandler));
+			this.removeEventListener("enterFrame",$bind(this,this.callout_enterFrameHandler));
+		}
+		this._origin = value;
+		if(this._origin != null) {
+			this._origin.addEventListener("removedFromStage",$bind(this,this.callout_origin_removedFromStageHandler));
+			if(this.stage != null) {
+				this.addEventListener("enterFrame",$bind(this,this.callout_enterFrameHandler));
+			}
+		}
+		this._lastPopUpOriginBounds = null;
+		this.setInvalid(feathers_controls_Callout.INVALIDATION_FLAG_ORIGIN);
+		return this._origin;
+	}
+	,close: function() {
+		if(this.parent != null) {
+			this.parent.removeChild(this);
+		}
+	}
+	,setPadding: function(value) {
+		this.set_paddingTop(value);
+		this.set_paddingRight(value);
+		this.set_paddingBottom(value);
+		this.set_paddingLeft(value);
+	}
+	,dispose: function() {
+		if(this._content != null) {
+			this.set_content(null);
+		}
+		if(this._origin != null) {
+			this.set_origin(null);
+		}
+		feathers_core_FeathersControl.prototype.dispose.call(this);
+	}
+	,initializeCalloutTheme: function() {
+		feathers_themes_steel_components_SteelCalloutStyles.initialize();
+	}
+	,update: function() {
+		var dataInvalid = this.isInvalid(feathers_core_InvalidationFlag.DATA);
+		var originInvalid = this.isInvalid(feathers_controls_Callout.INVALIDATION_FLAG_ORIGIN);
+		var sizeInvalid = this.isInvalid(feathers_core_InvalidationFlag.SIZE);
+		var stateInvalid = this.isInvalid(feathers_core_InvalidationFlag.STATE);
+		var stylesInvalid = this.isInvalid(feathers_core_InvalidationFlag.STYLES);
+		if(sizeInvalid) {
+			this._lastPopUpOriginBounds = null;
+			originInvalid = true;
+		}
+		if(stylesInvalid || stateInvalid) {
+			this.refreshBackgroundSkin();
+		}
+		if(stylesInvalid || stateInvalid) {
+			this.refreshArrowSkin();
+		}
+		if(originInvalid) {
+			this.positionRelativeToOrigin();
+		}
+		if(stateInvalid || dataInvalid) {
+			this.refreshEnabled();
+		}
+		if(this.measure()) {
+			sizeInvalid = true;
+		}
+		this.layoutChildren();
+	}
+	,measure: function() {
+		return this.measureWithArrowPosition(this.get_arrowPosition());
+	}
+	,measureWithArrowPosition: function(arrowPosition) {
+		var needsWidth = this.get_explicitWidth() == null;
+		var needsHeight = this.get_explicitHeight() == null;
+		var needsMinWidth = this.get_explicitMinWidth() == null;
+		var needsMinHeight = this.get_explicitMinHeight() == null;
+		var needsMaxWidth = this.get_explicitMaxWidth() == null;
+		var needsMaxHeight = this.get_explicitMaxHeight() == null;
+		if(!needsWidth && !needsHeight && !needsMinWidth && !needsMinHeight && !needsMaxWidth && !needsMaxHeight) {
+			return false;
+		}
+		var stageWidth = 0.0;
+		var stageHeight = 0.0;
+		if(this.stage != null) {
+			var stageTopLeft = new openfl_geom_Point();
+			stageTopLeft = this.globalToLocal(stageTopLeft);
+			var stageBottomRight = new openfl_geom_Point(this.stage.stageWidth,this.stage.stageHeight);
+			stageBottomRight = this.globalToLocal(stageBottomRight);
+			stageWidth = stageBottomRight.x - stageTopLeft.x;
+			stageHeight = stageBottomRight.y - stageTopLeft.y;
+		}
+		var maxWidthWithStage = this.get_explicitMaxWidth();
+		if(this.stage != null) {
+			var stageMaxWidth = stageWidth - this.get_marginLeft() - this.get_marginRight();
+			if(maxWidthWithStage == null || maxWidthWithStage < stageMaxWidth) {
+				maxWidthWithStage = stageMaxWidth;
+			}
+		} else {
+			maxWidthWithStage = 1.0 / 0.0;
+		}
+		var maxHeightWithStage = this.get_explicitMaxHeight();
+		if(this.stage != null) {
+			var stageMaxHeight = stageHeight - this.get_marginTop() - this.get_marginBottom();
+			if(maxHeightWithStage == null || maxHeightWithStage < stageMaxHeight) {
+				maxHeightWithStage = stageMaxHeight;
+			}
+		} else {
+			maxHeightWithStage = 1.0 / 0.0;
+		}
+		if(this._currentBackgroundSkin != null) {
+			feathers_utils_MeasurementsUtil.resetFluidlyWithParentValues(this._backgroundSkinMeasurements,this._currentBackgroundSkin,this.get_explicitWidth(),this.get_explicitHeight(),this.get_explicitMinWidth(),this.get_explicitMinHeight(),maxWidthWithStage,maxHeightWithStage);
+		}
+		var measureSkin = null;
+		if(js_Boot.__implements(this._currentBackgroundSkin,feathers_core_IMeasureObject)) {
+			measureSkin = js_Boot.__cast(this._currentBackgroundSkin , feathers_core_IMeasureObject);
+		}
+		if(js_Boot.__implements(this._currentBackgroundSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentBackgroundSkin , feathers_core_IValidating)).validateNow();
+		}
+		if(js_Boot.__implements(this.get_topArrowSkin(),feathers_core_IValidating)) {
+			(js_Boot.__cast(this.get_topArrowSkin() , feathers_core_IValidating)).validateNow();
+		}
+		if(js_Boot.__implements(this.get_rightArrowSkin(),feathers_core_IValidating)) {
+			(js_Boot.__cast(this.get_rightArrowSkin() , feathers_core_IValidating)).validateNow();
+		}
+		if(js_Boot.__implements(this.get_bottomArrowSkin(),feathers_core_IValidating)) {
+			(js_Boot.__cast(this.get_bottomArrowSkin() , feathers_core_IValidating)).validateNow();
+		}
+		if(js_Boot.__implements(this.get_leftArrowSkin(),feathers_core_IValidating)) {
+			(js_Boot.__cast(this.get_leftArrowSkin() , feathers_core_IValidating)).validateNow();
+		}
+		var leftOrRightArrowWidth = 0.0;
+		var leftOrRightArrowHeight = 0.0;
+		var topOrBottomArrowWidth = 0.0;
+		var topOrBottomArrowHeight = 0.0;
+		if(this._currentArrowSkin != null) {
+			switch(arrowPosition._hx_index) {
+			case 1:
+				leftOrRightArrowWidth = this.get_rightArrowSkin().get_width() + this.get_rightArrowGap();
+				leftOrRightArrowHeight = this.get_rightArrowSkin().get_height();
+				break;
+			case 2:
+				topOrBottomArrowWidth = this.get_bottomArrowSkin().get_width();
+				topOrBottomArrowHeight = this.get_bottomArrowSkin().get_height() + this.get_bottomArrowGap();
+				break;
+			case 3:
+				leftOrRightArrowWidth = this.get_leftArrowSkin().get_width() + this.get_leftArrowGap();
+				leftOrRightArrowHeight = this.get_leftArrowSkin().get_height();
+				break;
+			default:
+				topOrBottomArrowWidth = this.get_topArrowSkin().get_width();
+				topOrBottomArrowHeight = this.get_topArrowSkin().get_height() + this.get_topArrowGap();
+			}
+		}
+		var measureContent = null;
+		if(js_Boot.__implements(this._content,feathers_core_IMeasureObject)) {
+			measureContent = js_Boot.__cast(this._content , feathers_core_IMeasureObject);
+		}
+		if(this._content != null) {
+			var oldIgnoreContentResize = this._ignoreContentResize;
+			this._ignoreContentResize = true;
+			feathers_utils_MeasurementsUtil.resetFluidlyWithParentValues(this._contentMeasurements,this._content,this.get_explicitWidth() != null ? this.get_explicitWidth() - leftOrRightArrowWidth - this.get_paddingLeft() - this.get_paddingRight() : null,this.get_explicitHeight() != null ? this.get_explicitHeight() - topOrBottomArrowHeight - this.get_paddingTop() - this.get_paddingBottom() : null,this.get_explicitMinWidth() != null ? this.get_explicitMinWidth() - leftOrRightArrowWidth - this.get_paddingLeft() - this.get_paddingRight() : null,this.get_explicitMinHeight() != null ? this.get_explicitMinHeight() - topOrBottomArrowHeight - this.get_paddingLeft() - this.get_paddingRight() : null,maxWidthWithStage != null ? maxWidthWithStage - leftOrRightArrowWidth - this.get_paddingLeft() - this.get_paddingRight() : null,maxHeightWithStage != null ? maxHeightWithStage - topOrBottomArrowHeight - this.get_paddingLeft() - this.get_paddingRight() : null);
+			if(js_Boot.__implements(this._content,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._content , feathers_core_IValidating)).validateNow();
+			}
+			this._ignoreContentResize = oldIgnoreContentResize;
+		}
+		var newWidth = this.get_explicitWidth();
+		if(needsWidth) {
+			var contentWidth = 0.0;
+			if(this._content != null) {
+				contentWidth = this._content.get_width();
+			}
+			if(contentWidth < topOrBottomArrowWidth) {
+				contentWidth = topOrBottomArrowWidth;
+			}
+			newWidth = contentWidth + this.get_paddingLeft() + this.get_paddingRight();
+			if(this._currentBackgroundSkin != null) {
+				var backgroundWidth = this._currentBackgroundSkin.get_width();
+				if(newWidth < backgroundWidth) {
+					newWidth = backgroundWidth;
+				}
+			}
+			newWidth += leftOrRightArrowWidth;
+		}
+		var newHeight = this.get_explicitHeight();
+		if(needsHeight) {
+			var contentHeight = 0.0;
+			if(this._content != null) {
+				contentHeight = this._content.get_height();
+			}
+			if(contentHeight < leftOrRightArrowHeight) {
+				contentHeight = leftOrRightArrowHeight;
+			}
+			newHeight = contentHeight + this.get_paddingTop() + this.get_paddingBottom();
+			if(this._currentBackgroundSkin != null) {
+				var backgroundHeight = this._currentBackgroundSkin.get_height();
+				if(newHeight < backgroundHeight) {
+					newHeight = backgroundHeight;
+				}
+			}
+			newHeight += topOrBottomArrowHeight;
+		}
+		var newMinWidth = this.get_explicitMinWidth();
+		if(needsMinWidth) {
+			var contentMinWidth = 0.0;
+			if(measureContent != null) {
+				contentMinWidth = measureContent.get_minWidth();
+			} else if(this._contentMeasurements != null) {
+				contentMinWidth = this._contentMeasurements.minWidth;
+			}
+			if(contentMinWidth < topOrBottomArrowWidth) {
+				contentMinWidth = topOrBottomArrowWidth;
+			}
+			newMinWidth = contentMinWidth + this.get_paddingLeft() + this.get_paddingRight();
+			var backgroundMinWidth = 0.0;
+			if(measureSkin != null) {
+				backgroundMinWidth = measureSkin.get_minWidth();
+			} else if(this._backgroundSkinMeasurements != null) {
+				backgroundMinWidth = this._backgroundSkinMeasurements.minWidth;
+			}
+			if(newMinWidth < backgroundMinWidth) {
+				newMinWidth = backgroundMinWidth;
+			}
+			newMinWidth += leftOrRightArrowWidth;
+			if(newMinWidth > maxWidthWithStage) {
+				newMinWidth = maxWidthWithStage;
+			}
+		}
+		var newMinHeight = this.get_explicitMinHeight();
+		if(needsMinHeight) {
+			var contentMinHeight = 0.0;
+			if(measureContent != null) {
+				contentMinHeight = measureContent.get_minWidth();
+			} else if(this._contentMeasurements != null) {
+				contentMinHeight = this._contentMeasurements.minHeight;
+			}
+			if(contentMinHeight < leftOrRightArrowHeight) {
+				contentMinHeight = leftOrRightArrowHeight;
+			}
+			newMinHeight = contentMinHeight + this.get_paddingTop() + this.get_paddingBottom();
+			var backgroundMinHeight = 0.0;
+			if(measureSkin != null) {
+				backgroundMinHeight = measureSkin.get_minHeight();
+			} else if(this._backgroundSkinMeasurements != null) {
+				backgroundMinHeight = this._backgroundSkinMeasurements.minHeight;
+			}
+			if(newMinHeight < backgroundMinHeight) {
+				newMinHeight = backgroundMinHeight;
+			}
+			newMinHeight += topOrBottomArrowHeight;
+			if(newMinHeight > maxHeightWithStage) {
+				newMinHeight = maxHeightWithStage;
+			}
+		}
+		var newMaxWidth = maxWidthWithStage;
+		var newMaxHeight = maxHeightWithStage;
+		return this.saveMeasurements(newWidth,newHeight,newMinWidth,newMinHeight,newMaxWidth,newMaxHeight);
+	}
+	,getCurrentBackgroundSkin: function() {
+		return this.get_backgroundSkin();
+	}
+	,refreshBackgroundSkin: function() {
+		var oldSkin = this._currentBackgroundSkin;
+		this._currentBackgroundSkin = this.getCurrentBackgroundSkin();
+		if(this._currentBackgroundSkin == oldSkin) {
+			return;
+		}
+		this.removeCurrentBackgroundSkin(oldSkin);
+		this.addCurrentBackgroundSkin(this._currentBackgroundSkin);
+	}
+	,addCurrentBackgroundSkin: function(skin) {
+		if(skin == null) {
+			this._backgroundSkinMeasurements = null;
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_core_IUIControl)) {
+			(js_Boot.__cast(skin , feathers_core_IUIControl)).initializeNow();
+		}
+		if(this._backgroundSkinMeasurements == null) {
+			this._backgroundSkinMeasurements = new feathers_layout_Measurements(skin);
+		} else {
+			this._backgroundSkinMeasurements.save(skin);
+		}
+		if(js_Boot.__implements(skin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(skin , feathers_skins_IProgrammaticSkin)).set_uiContext(this);
+		}
+		this.addChildAt(skin,0);
+	}
+	,removeCurrentBackgroundSkin: function(skin) {
+		if(skin == null) {
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(skin , feathers_skins_IProgrammaticSkin)).set_uiContext(this);
+		}
+		this._backgroundSkinMeasurements.restore(skin);
+		if(skin.parent == this) {
+			this.removeChild(skin);
+		}
+	}
+	,refreshArrowSkin: function() {
+		var oldArrowSkin = this._currentArrowSkin;
+		this._currentArrowSkin = this.getCurrentArrowSkin();
+		if(oldArrowSkin == this._currentArrowSkin) {
+			return;
+		}
+		this.removeCurrentArrowSkin(oldArrowSkin);
+		if(js_Boot.__implements(this._currentArrowSkin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(this._currentArrowSkin , feathers_skins_IProgrammaticSkin)).set_uiContext(this);
+		}
+		this.addChild(this._currentArrowSkin);
+	}
+	,getCurrentArrowSkin: function() {
+		switch(this.get_arrowPosition()._hx_index) {
+		case 1:
+			return this.get_rightArrowSkin();
+		case 2:
+			return this.get_bottomArrowSkin();
+		case 3:
+			return this.get_leftArrowSkin();
+		default:
+			return this.get_topArrowSkin();
+		}
+	}
+	,removeCurrentArrowSkin: function(skin) {
+		if(skin == null) {
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(skin , feathers_skins_IProgrammaticSkin)).set_uiContext(null);
+		}
+		if(skin.parent == this) {
+			this.removeChild(skin);
+		}
+	}
+	,refreshEnabled: function() {
+		if(js_Boot.__implements(this._content,feathers_core_IUIControl)) {
+			(js_Boot.__cast(this._content , feathers_core_IUIControl)).set_enabled(this._enabled);
+		}
+	}
+	,layoutChildren: function() {
+		if(js_Boot.__implements(this._currentArrowSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentArrowSkin , feathers_core_IValidating)).validateNow();
+		}
+		var xPosition = 0.0;
+		var yPosition = 0.0;
+		var widthOffset = 0.0;
+		var heightOffset = 0.0;
+		if(this._currentArrowSkin != null) {
+			switch(this.get_arrowPosition()._hx_index) {
+			case 1:
+				widthOffset = this._currentArrowSkin.get_width() + this.get_rightArrowGap();
+				break;
+			case 2:
+				heightOffset = this._currentArrowSkin.get_height() + this.get_bottomArrowGap();
+				break;
+			case 3:
+				xPosition = this._currentArrowSkin.get_width() + this.get_leftArrowGap();
+				break;
+			default:
+				yPosition = this._currentArrowSkin.get_height() + this.get_topArrowGap();
+			}
+		}
+		var backgroundWidth = this.actualWidth - xPosition - widthOffset;
+		var backgroundHeight = this.actualHeight - yPosition - heightOffset;
+		if(this._currentBackgroundSkin != null) {
+			this._currentBackgroundSkin.set_x(xPosition);
+			this._currentBackgroundSkin.set_y(yPosition);
+			this._currentBackgroundSkin.set_width(backgroundWidth);
+			this._currentBackgroundSkin.set_height(backgroundHeight);
+		}
+		if(this._currentArrowSkin != null) {
+			var contentWidth = backgroundWidth - this.get_paddingLeft() - this.get_paddingRight();
+			var contentHeight = backgroundHeight - this.get_paddingTop() - this.get_paddingBottom();
+			switch(this.get_arrowPosition()._hx_index) {
+			case 1:
+				this.get_rightArrowSkin().set_x(xPosition + backgroundWidth + this.get_rightArrowGap());
+				var rightArrowSkinY = this._arrowOffset + yPosition + this.get_paddingTop();
+				if(this.get_verticalAlign() == feathers_layout_VerticalAlign.MIDDLE) {
+					rightArrowSkinY += Math.round((contentHeight - this.get_rightArrowSkin().get_height()) / 2.0);
+				} else if(this.get_verticalAlign() == feathers_layout_VerticalAlign.BOTTOM) {
+					rightArrowSkinY += contentHeight - this.get_rightArrowSkin().get_height();
+				}
+				var minRightArrowSkinY = yPosition + this.get_paddingTop();
+				if(minRightArrowSkinY > rightArrowSkinY) {
+					rightArrowSkinY = minRightArrowSkinY;
+				} else {
+					var maxRightArrowSkinY = yPosition + this.get_paddingTop() + contentHeight - this.get_rightArrowSkin().get_height();
+					if(maxRightArrowSkinY < rightArrowSkinY) {
+						rightArrowSkinY = maxRightArrowSkinY;
+					}
+				}
+				this.get_rightArrowSkin().set_y(rightArrowSkinY);
+				break;
+			case 2:
+				var bottomArrowSkinX = this._arrowOffset + xPosition + this.get_paddingLeft();
+				if(this.get_horizontalAlign() == feathers_layout_HorizontalAlign.CENTER) {
+					bottomArrowSkinX += Math.round((contentWidth - this.get_bottomArrowSkin().get_width()) / 2.0);
+				} else if(this.get_horizontalAlign() == feathers_layout_HorizontalAlign.RIGHT) {
+					bottomArrowSkinX += contentWidth - this.get_bottomArrowSkin().get_width();
+				}
+				var minBottomArrowSkinX = xPosition + this.get_paddingLeft();
+				if(minBottomArrowSkinX > bottomArrowSkinX) {
+					bottomArrowSkinX = minBottomArrowSkinX;
+				} else {
+					var maxBottomArrowSkinX = xPosition + this.get_paddingLeft() + contentWidth - this.get_bottomArrowSkin().get_width();
+					if(maxBottomArrowSkinX < bottomArrowSkinX) {
+						bottomArrowSkinX = maxBottomArrowSkinX;
+					}
+				}
+				this.get_bottomArrowSkin().set_x(bottomArrowSkinX);
+				this.get_bottomArrowSkin().set_y(yPosition + backgroundHeight + this.get_bottomArrowGap());
+				break;
+			case 3:
+				this.get_leftArrowSkin().set_x(xPosition - this.get_leftArrowSkin().get_width() - this.get_leftArrowGap());
+				var leftArrowSkinY = this._arrowOffset + yPosition + this.get_paddingTop();
+				if(this.get_verticalAlign() == feathers_layout_VerticalAlign.MIDDLE) {
+					leftArrowSkinY += Math.round((contentHeight - this.get_leftArrowSkin().get_height()) / 2.0);
+				} else if(this.get_verticalAlign() == feathers_layout_VerticalAlign.BOTTOM) {
+					leftArrowSkinY += contentHeight - this.get_leftArrowSkin().get_height();
+				}
+				var minLeftArrowSkinY = yPosition + this.get_paddingTop();
+				if(minLeftArrowSkinY > leftArrowSkinY) {
+					leftArrowSkinY = minLeftArrowSkinY;
+				} else {
+					var maxLeftArrowSkinY = yPosition + this.get_paddingTop() + contentHeight - this.get_leftArrowSkin().get_height();
+					if(maxLeftArrowSkinY < leftArrowSkinY) {
+						leftArrowSkinY = maxLeftArrowSkinY;
+					}
+				}
+				this.get_leftArrowSkin().set_y(leftArrowSkinY);
+				break;
+			default:
+				var topArrowSkinX = this._arrowOffset + xPosition + this.get_paddingLeft();
+				if(this.get_horizontalAlign() == feathers_layout_HorizontalAlign.CENTER) {
+					topArrowSkinX += Math.round((contentWidth - this.get_topArrowSkin().get_width()) / 2.0);
+				} else if(this.get_horizontalAlign() == feathers_layout_HorizontalAlign.RIGHT) {
+					topArrowSkinX += contentWidth - this.get_topArrowSkin().get_width();
+				}
+				var minTopArrowSkinX = xPosition + this.get_paddingLeft();
+				if(minTopArrowSkinX > topArrowSkinX) {
+					topArrowSkinX = minTopArrowSkinX;
+				} else {
+					var maxTopArrowSkinX = xPosition + this.get_paddingLeft() + contentWidth - this.get_topArrowSkin().get_width();
+					if(maxTopArrowSkinX < topArrowSkinX) {
+						topArrowSkinX = maxTopArrowSkinX;
+					}
+				}
+				this.get_topArrowSkin().set_x(topArrowSkinX);
+				this.get_topArrowSkin().set_y(yPosition - this.get_topArrowSkin().get_height() - this.get_topArrowGap());
+			}
+		}
+		if(this._content != null) {
+			this._content.set_x(xPosition + this.get_paddingLeft());
+			this._content.set_y(yPosition + this.get_paddingTop());
+			var oldIgnoreContentResize = this._ignoreContentResize;
+			this._ignoreContentResize = true;
+			this._content.set_width(backgroundWidth - this.get_paddingLeft() - this.get_paddingRight());
+			this._content.set_height(backgroundHeight - this.get_paddingTop() - this.get_paddingBottom());
+			if(js_Boot.__implements(this._content,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._content , feathers_core_IValidating)).validateNow();
+			}
+			this._ignoreContentResize = oldIgnoreContentResize;
+		}
+	}
+	,checkForOriginMoved: function() {
+		if(this._origin == null) {
+			if(this._lastPopUpOriginBounds == null) {
+				this._lastPopUpOriginBounds = new openfl_geom_Rectangle();
+			} else {
+				this._lastPopUpOriginBounds.setEmpty();
+			}
+			return false;
+		}
+		var popUpRoot = feathers_core_PopUpManager.forStage(this.stage).get_root();
+		var originTopLeft = new openfl_geom_Point(this.get_origin().get_x(),this.get_origin().get_y());
+		originTopLeft = this.get_origin().parent.localToGlobal(originTopLeft);
+		originTopLeft = popUpRoot.globalToLocal(originTopLeft);
+		var originBottomRight = new openfl_geom_Point(this.get_origin().get_x() + this.get_origin().get_width(),this.get_origin().get_y() + this.get_origin().get_height());
+		originBottomRight = this.get_origin().parent.localToGlobal(originBottomRight);
+		originBottomRight = popUpRoot.globalToLocal(originBottomRight);
+		var bounds = new openfl_geom_Rectangle(originTopLeft.x,originTopLeft.y,originBottomRight.x - originTopLeft.x,originBottomRight.y - originTopLeft.y);
+		var hasPopUpBounds = this._lastPopUpOriginBounds != null;
+		if(hasPopUpBounds && this._lastPopUpOriginBounds.equals(bounds)) {
+			return false;
+		}
+		this._lastPopUpOriginBounds = bounds;
+		return true;
+	}
+	,positionRelativeToOrigin: function() {
+		this.checkForOriginMoved();
+		var popUpRoot = feathers_core_PopUpManager.forStage(this.stage).get_root();
+		var stageBottomRight = new openfl_geom_Point(this.stage.stageWidth,this.stage.stageHeight);
+		stageBottomRight = popUpRoot.globalToLocal(stageBottomRight);
+		var upSpace = -Infinity;
+		var downSpace = -Infinity;
+		var rightSpace = -Infinity;
+		var leftSpace = -Infinity;
+		var positions = this.supportedPositions;
+		if(positions == null) {
+			positions = [feathers_layout_RelativePosition.BOTTOM,feathers_layout_RelativePosition.TOP,feathers_layout_RelativePosition.RIGHT,feathers_layout_RelativePosition.LEFT];
+		}
+		var _g = 0;
+		while(_g < positions.length) {
+			var position = positions[_g];
+			++_g;
+			switch(position._hx_index) {
+			case 0:
+				this.measureWithArrowPosition(feathers_layout_RelativePosition.BOTTOM);
+				upSpace = this._lastPopUpOriginBounds.y - this.actualHeight;
+				if(upSpace >= this.get_marginTop()) {
+					feathers_controls_Callout.positionAboveOrigin(this,this._lastPopUpOriginBounds);
+					return;
+				}
+				if(upSpace < 0.0) {
+					upSpace = 0.0;
+				}
+				break;
+			case 1:
+				this.measureWithArrowPosition(feathers_layout_RelativePosition.LEFT);
+				rightSpace = stageBottomRight.x - this.actualWidth - (this._lastPopUpOriginBounds.x + this._lastPopUpOriginBounds.width);
+				if(rightSpace >= this.get_marginRight()) {
+					feathers_controls_Callout.positionRightOfOrigin(this,this._lastPopUpOriginBounds);
+					return;
+				}
+				if(rightSpace < 0.0) {
+					rightSpace = 0.0;
+				}
+				break;
+			case 3:
+				this.measureWithArrowPosition(feathers_layout_RelativePosition.RIGHT);
+				leftSpace = this._lastPopUpOriginBounds.x - this.actualWidth;
+				if(leftSpace >= this.get_marginLeft()) {
+					feathers_controls_Callout.positionLeftOfOrigin(this,this._lastPopUpOriginBounds);
+					return;
+				}
+				if(leftSpace < 0.0) {
+					leftSpace = 0.0;
+				}
+				break;
+			default:
+				this.measureWithArrowPosition(feathers_layout_RelativePosition.TOP);
+				downSpace = stageBottomRight.y - this.actualHeight - (this._lastPopUpOriginBounds.y + this._lastPopUpOriginBounds.height);
+				if(downSpace >= this.get_marginBottom()) {
+					feathers_controls_Callout.positionBelowOrigin(this,this._lastPopUpOriginBounds);
+					return;
+				}
+				if(downSpace < 0.0) {
+					downSpace = 0.0;
+				}
+			}
+		}
+		if(downSpace != -Infinity && downSpace >= upSpace && downSpace >= rightSpace && downSpace >= leftSpace) {
+			feathers_controls_Callout.positionBelowOrigin(this,this._lastPopUpOriginBounds);
+		} else if(upSpace != -Infinity && upSpace >= rightSpace && upSpace >= leftSpace) {
+			feathers_controls_Callout.positionAboveOrigin(this,this._lastPopUpOriginBounds);
+		} else if(rightSpace != -Infinity && rightSpace >= leftSpace) {
+			feathers_controls_Callout.positionRightOfOrigin(this,this._lastPopUpOriginBounds);
+		} else if(leftSpace != -Infinity) {
+			feathers_controls_Callout.positionLeftOfOrigin(this,this._lastPopUpOriginBounds);
+		} else {
+			feathers_controls_Callout.positionBelowOrigin(this,this._lastPopUpOriginBounds);
+		}
+	}
+	,callout_addedToStageHandler: function(event) {
+		this.stage.addEventListener("mouseDown",$bind(this,this.callout_stage_mouseDownHandler),false,0,true);
+		this.stage.addEventListener("touchBegin",$bind(this,this.callout_stage_touchBeginHandler),false,0,true);
+		if(this._origin != null) {
+			this.addEventListener("enterFrame",$bind(this,this.callout_enterFrameHandler));
+		}
+	}
+	,callout_removedFromStageHandler: function(event) {
+		this.stage.removeEventListener("mouseDown",$bind(this,this.callout_stage_mouseDownHandler));
+		this.stage.removeEventListener("touchBegin",$bind(this,this.callout_stage_touchBeginHandler));
+		this.removeEventListener("enterFrame",$bind(this,this.callout_enterFrameHandler));
+		feathers_events_FeathersEvent.dispatch(this,"close");
+	}
+	,callout_enterFrameHandler: function(event) {
+		if(!this.checkForOriginMoved()) {
+			return;
+		}
+		this.setInvalid(feathers_controls_Callout.INVALIDATION_FLAG_ORIGIN);
+	}
+	,callout_origin_removedFromStageHandler: function(event) {
+		this.close();
+	}
+	,callout_content_resizeHandler: function(event) {
+		if(this._ignoreContentResize) {
+			return;
+		}
+		this._contentMeasurements.save(this.get_content());
+		this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+	}
+	,callout_stage_mouseDownHandler: function(event) {
+		if(!this.closeOnPointerOutside) {
+			return;
+		}
+		if(this.hitTestPoint(event.stageX,event.stageY)) {
+			return;
+		}
+		this.close();
+	}
+	,callout_stage_touchBeginHandler: function(event) {
+		if(event.isPrimaryTouchPoint) {
+			return;
+		}
+		if(!this.closeOnPointerOutside) {
+			return;
+		}
+		if(this.hitTestPoint(event.stageX,event.stageY)) {
+			return;
+		}
+		this.close();
+	}
+	,get_gap: function() {
+		return this.__gap;
+	}
+	,set_gap: function(value) {
+		if(!this.setStyle("gap")) {
+			return this.__gap;
+		}
+		if(this.__gap == value) {
+			return this.__gap;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_gap);
+		this.__gap = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__gap;
+	}
+	,clearStyle_gap: function() {
+		this.set_gap(0.0);
+		return this.get_gap();
+	}
+	,get_marginTop: function() {
+		return this.__marginTop;
+	}
+	,set_marginTop: function(value) {
+		if(!this.setStyle("marginTop")) {
+			return this.__marginTop;
+		}
+		if(this.__marginTop == value) {
+			return this.__marginTop;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_marginTop);
+		this.__marginTop = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__marginTop;
+	}
+	,clearStyle_marginTop: function() {
+		this.set_marginTop(0.0);
+		return this.get_marginTop();
+	}
+	,get_marginRight: function() {
+		return this.__marginRight;
+	}
+	,set_marginRight: function(value) {
+		if(!this.setStyle("marginRight")) {
+			return this.__marginRight;
+		}
+		if(this.__marginRight == value) {
+			return this.__marginRight;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_marginRight);
+		this.__marginRight = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__marginRight;
+	}
+	,clearStyle_marginRight: function() {
+		this.set_marginRight(0.0);
+		return this.get_marginRight();
+	}
+	,get_marginBottom: function() {
+		return this.__marginBottom;
+	}
+	,set_marginBottom: function(value) {
+		if(!this.setStyle("marginBottom")) {
+			return this.__marginBottom;
+		}
+		if(this.__marginBottom == value) {
+			return this.__marginBottom;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_marginBottom);
+		this.__marginBottom = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__marginBottom;
+	}
+	,clearStyle_marginBottom: function() {
+		this.set_marginBottom(0.0);
+		return this.get_marginBottom();
+	}
+	,get_marginLeft: function() {
+		return this.__marginLeft;
+	}
+	,set_marginLeft: function(value) {
+		if(!this.setStyle("marginLeft")) {
+			return this.__marginLeft;
+		}
+		if(this.__marginLeft == value) {
+			return this.__marginLeft;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_marginLeft);
+		this.__marginLeft = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__marginLeft;
+	}
+	,clearStyle_marginLeft: function() {
+		this.set_marginLeft(0.0);
+		return this.get_marginLeft();
+	}
+	,get_paddingTop: function() {
+		return this.__paddingTop;
+	}
+	,set_paddingTop: function(value) {
+		if(!this.setStyle("paddingTop")) {
+			return this.__paddingTop;
+		}
+		if(this.__paddingTop == value) {
+			return this.__paddingTop;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingTop);
+		this.__paddingTop = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingTop;
+	}
+	,clearStyle_paddingTop: function() {
+		this.set_paddingTop(0.0);
+		return this.get_paddingTop();
+	}
+	,get_paddingRight: function() {
+		return this.__paddingRight;
+	}
+	,set_paddingRight: function(value) {
+		if(!this.setStyle("paddingRight")) {
+			return this.__paddingRight;
+		}
+		if(this.__paddingRight == value) {
+			return this.__paddingRight;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingRight);
+		this.__paddingRight = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingRight;
+	}
+	,clearStyle_paddingRight: function() {
+		this.set_paddingRight(0.0);
+		return this.get_paddingRight();
+	}
+	,get_paddingBottom: function() {
+		return this.__paddingBottom;
+	}
+	,set_paddingBottom: function(value) {
+		if(!this.setStyle("paddingBottom")) {
+			return this.__paddingBottom;
+		}
+		if(this.__paddingBottom == value) {
+			return this.__paddingBottom;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingBottom);
+		this.__paddingBottom = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingBottom;
+	}
+	,clearStyle_paddingBottom: function() {
+		this.set_paddingBottom(0.0);
+		return this.get_paddingBottom();
+	}
+	,get_paddingLeft: function() {
+		return this.__paddingLeft;
+	}
+	,set_paddingLeft: function(value) {
+		if(!this.setStyle("paddingLeft")) {
+			return this.__paddingLeft;
+		}
+		if(this.__paddingLeft == value) {
+			return this.__paddingLeft;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingLeft);
+		this.__paddingLeft = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingLeft;
+	}
+	,clearStyle_paddingLeft: function() {
+		this.set_paddingLeft(0.0);
+		return this.get_paddingLeft();
+	}
+	,get_horizontalAlign: function() {
+		return this.__horizontalAlign;
+	}
+	,set_horizontalAlign: function(value) {
+		if(!this.setStyle("horizontalAlign")) {
+			return this.__horizontalAlign;
+		}
+		if(this.__horizontalAlign == value) {
+			return this.__horizontalAlign;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_horizontalAlign);
+		this.__horizontalAlign = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__horizontalAlign;
+	}
+	,clearStyle_horizontalAlign: function() {
+		this.set_horizontalAlign(feathers_layout_HorizontalAlign.CENTER);
+		return this.get_horizontalAlign();
+	}
+	,get_verticalAlign: function() {
+		return this.__verticalAlign;
+	}
+	,set_verticalAlign: function(value) {
+		if(!this.setStyle("verticalAlign")) {
+			return this.__verticalAlign;
+		}
+		if(this.__verticalAlign == value) {
+			return this.__verticalAlign;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_verticalAlign);
+		this.__verticalAlign = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__verticalAlign;
+	}
+	,clearStyle_verticalAlign: function() {
+		this.set_verticalAlign(feathers_layout_VerticalAlign.MIDDLE);
+		return this.get_verticalAlign();
+	}
+	,get_arrowPosition: function() {
+		return this.__arrowPosition;
+	}
+	,set_arrowPosition: function(value) {
+		if(!this.setStyle("arrowPosition")) {
+			return this.__arrowPosition;
+		}
+		if(this.__arrowPosition == value) {
+			return this.__arrowPosition;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_arrowPosition);
+		this.__arrowPosition = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__arrowPosition;
+	}
+	,clearStyle_arrowPosition: function() {
+		this.set_arrowPosition(feathers_layout_RelativePosition.TOP);
+		return this.get_arrowPosition();
+	}
+	,get_backgroundSkin: function() {
+		return this.__backgroundSkin;
+	}
+	,set_backgroundSkin: function(value) {
+		if(!this.setStyle("backgroundSkin")) {
+			return this.__backgroundSkin;
+		}
+		if(this.__backgroundSkin == value) {
+			return this.__backgroundSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_backgroundSkin);
+		this.__backgroundSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__backgroundSkin;
+	}
+	,clearStyle_backgroundSkin: function() {
+		this.set_backgroundSkin(null);
+		return this.get_backgroundSkin();
+	}
+	,get_topArrowSkin: function() {
+		return this.__topArrowSkin;
+	}
+	,set_topArrowSkin: function(value) {
+		if(!this.setStyle("topArrowSkin")) {
+			return this.__topArrowSkin;
+		}
+		if(this.__topArrowSkin == value) {
+			return this.__topArrowSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_topArrowSkin);
+		this.__topArrowSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__topArrowSkin;
+	}
+	,clearStyle_topArrowSkin: function() {
+		this.set_topArrowSkin(null);
+		return this.get_topArrowSkin();
+	}
+	,get_rightArrowSkin: function() {
+		return this.__rightArrowSkin;
+	}
+	,set_rightArrowSkin: function(value) {
+		if(!this.setStyle("rightArrowSkin")) {
+			return this.__rightArrowSkin;
+		}
+		if(this.__rightArrowSkin == value) {
+			return this.__rightArrowSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_rightArrowSkin);
+		this.__rightArrowSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__rightArrowSkin;
+	}
+	,clearStyle_rightArrowSkin: function() {
+		this.set_rightArrowSkin(null);
+		return this.get_rightArrowSkin();
+	}
+	,get_bottomArrowSkin: function() {
+		return this.__bottomArrowSkin;
+	}
+	,set_bottomArrowSkin: function(value) {
+		if(!this.setStyle("bottomArrowSkin")) {
+			return this.__bottomArrowSkin;
+		}
+		if(this.__bottomArrowSkin == value) {
+			return this.__bottomArrowSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_bottomArrowSkin);
+		this.__bottomArrowSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__bottomArrowSkin;
+	}
+	,clearStyle_bottomArrowSkin: function() {
+		this.set_bottomArrowSkin(null);
+		return this.get_bottomArrowSkin();
+	}
+	,get_leftArrowSkin: function() {
+		return this.__leftArrowSkin;
+	}
+	,set_leftArrowSkin: function(value) {
+		if(!this.setStyle("leftArrowSkin")) {
+			return this.__leftArrowSkin;
+		}
+		if(this.__leftArrowSkin == value) {
+			return this.__leftArrowSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_leftArrowSkin);
+		this.__leftArrowSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__leftArrowSkin;
+	}
+	,clearStyle_leftArrowSkin: function() {
+		this.set_leftArrowSkin(null);
+		return this.get_leftArrowSkin();
+	}
+	,get_topArrowGap: function() {
+		return this.__topArrowGap;
+	}
+	,set_topArrowGap: function(value) {
+		if(!this.setStyle("topArrowGap")) {
+			return this.__topArrowGap;
+		}
+		if(this.__topArrowGap == value) {
+			return this.__topArrowGap;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_topArrowGap);
+		this.__topArrowGap = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__topArrowGap;
+	}
+	,clearStyle_topArrowGap: function() {
+		this.set_topArrowGap(0.0);
+		return this.get_topArrowGap();
+	}
+	,get_rightArrowGap: function() {
+		return this.__rightArrowGap;
+	}
+	,set_rightArrowGap: function(value) {
+		if(!this.setStyle("rightArrowGap")) {
+			return this.__rightArrowGap;
+		}
+		if(this.__rightArrowGap == value) {
+			return this.__rightArrowGap;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_rightArrowGap);
+		this.__rightArrowGap = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__rightArrowGap;
+	}
+	,clearStyle_rightArrowGap: function() {
+		this.set_rightArrowGap(0.0);
+		return this.get_rightArrowGap();
+	}
+	,get_bottomArrowGap: function() {
+		return this.__bottomArrowGap;
+	}
+	,set_bottomArrowGap: function(value) {
+		if(!this.setStyle("bottomArrowGap")) {
+			return this.__bottomArrowGap;
+		}
+		if(this.__bottomArrowGap == value) {
+			return this.__bottomArrowGap;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_bottomArrowGap);
+		this.__bottomArrowGap = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__bottomArrowGap;
+	}
+	,clearStyle_bottomArrowGap: function() {
+		this.set_bottomArrowGap(0.0);
+		return this.get_bottomArrowGap();
+	}
+	,get_leftArrowGap: function() {
+		return this.__leftArrowGap;
+	}
+	,set_leftArrowGap: function(value) {
+		if(!this.setStyle("leftArrowGap")) {
+			return this.__leftArrowGap;
+		}
+		if(this.__leftArrowGap == value) {
+			return this.__leftArrowGap;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_leftArrowGap);
+		this.__leftArrowGap = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__leftArrowGap;
+	}
+	,clearStyle_leftArrowGap: function() {
+		this.set_leftArrowGap(0.0);
+		return this.get_leftArrowGap();
+	}
+	,get_styleContext: function() {
+		return feathers_controls_Callout;
+	}
+	,__class__: feathers_controls_Callout
+	,__properties__: $extend(feathers_core_FeathersControl.prototype.__properties__,{set_leftArrowGap:"set_leftArrowGap",get_leftArrowGap:"get_leftArrowGap",set_bottomArrowGap:"set_bottomArrowGap",get_bottomArrowGap:"get_bottomArrowGap",set_rightArrowGap:"set_rightArrowGap",get_rightArrowGap:"get_rightArrowGap",set_topArrowGap:"set_topArrowGap",get_topArrowGap:"get_topArrowGap",set_leftArrowSkin:"set_leftArrowSkin",get_leftArrowSkin:"get_leftArrowSkin",set_bottomArrowSkin:"set_bottomArrowSkin",get_bottomArrowSkin:"get_bottomArrowSkin",set_rightArrowSkin:"set_rightArrowSkin",get_rightArrowSkin:"get_rightArrowSkin",set_topArrowSkin:"set_topArrowSkin",get_topArrowSkin:"get_topArrowSkin",set_backgroundSkin:"set_backgroundSkin",get_backgroundSkin:"get_backgroundSkin",set_arrowPosition:"set_arrowPosition",get_arrowPosition:"get_arrowPosition",set_verticalAlign:"set_verticalAlign",get_verticalAlign:"get_verticalAlign",set_horizontalAlign:"set_horizontalAlign",get_horizontalAlign:"get_horizontalAlign",set_paddingLeft:"set_paddingLeft",get_paddingLeft:"get_paddingLeft",set_paddingBottom:"set_paddingBottom",get_paddingBottom:"get_paddingBottom",set_paddingRight:"set_paddingRight",get_paddingRight:"get_paddingRight",set_paddingTop:"set_paddingTop",get_paddingTop:"get_paddingTop",set_marginLeft:"set_marginLeft",get_marginLeft:"get_marginLeft",set_marginBottom:"set_marginBottom",get_marginBottom:"get_marginBottom",set_marginRight:"set_marginRight",get_marginRight:"get_marginRight",set_marginTop:"set_marginTop",get_marginTop:"get_marginTop",set_gap:"set_gap",get_gap:"get_gap",set_origin:"set_origin",get_origin:"get_origin",set_content:"set_content",get_content:"get_content"})
+});
+var feathers_controls_IRange = function() { };
+$hxClasses["feathers.controls.IRange"] = feathers_controls_IRange;
+feathers_controls_IRange.__name__ = "feathers.controls.IRange";
+feathers_controls_IRange.__isInterface__ = true;
+feathers_controls_IRange.__interfaces__ = [feathers_core_IUIControl];
+feathers_controls_IRange.prototype = {
+	__class__: feathers_controls_IRange
+	,__properties__: {set_maximum:"set_maximum",get_maximum:"get_maximum",set_minimum:"set_minimum",get_minimum:"get_minimum",set_value:"set_value",get_value:"get_value"}
+};
+var feathers_controls_IScrollBar = function() { };
+$hxClasses["feathers.controls.IScrollBar"] = feathers_controls_IScrollBar;
+feathers_controls_IScrollBar.__name__ = "feathers.controls.IScrollBar";
+feathers_controls_IScrollBar.__isInterface__ = true;
+feathers_controls_IScrollBar.__interfaces__ = [feathers_controls_IRange];
+feathers_controls_IScrollBar.prototype = {
+	__class__: feathers_controls_IScrollBar
+	,__properties__: {set_page:"set_page",get_page:"get_page",set_step:"set_step",get_step:"get_step"}
+};
+var feathers_controls_supportClasses_BaseScrollBar = function(value,minimum,maximum,changeListener) {
+	if(maximum == null) {
+		maximum = 1.0;
+	}
+	if(minimum == null) {
+		minimum = 0.0;
+	}
+	if(value == null) {
+		value = 0.0;
+	}
+	this.__hideThumbWhenDisabled = false;
+	this.__paddingLeft = 0.0;
+	this.__paddingBottom = 0.0;
+	this.__paddingRight = 0.0;
+	this.__paddingTop = 0.0;
+	this.__fixedThumbSize = false;
+	this.__secondaryTrackSkin = null;
+	this.__trackSkin = null;
+	this.__thumbSkin = null;
+	this._previousFallbackTrackHeight = 0.0;
+	this._previousFallbackTrackWidth = 0.0;
+	this._thumbStartY = 0.0;
+	this._thumbStartX = 0.0;
+	this._pointerStartY = 0.0;
+	this._pointerStartX = 0.0;
+	this._dragging = false;
+	this._secondaryTrackSkinMeasurements = null;
+	this._currentSecondaryTrackSkin = null;
+	this._trackSkinMeasurements = null;
+	this._currentTrackSkin = null;
+	this._thumbSkinMeasurements = null;
+	this._currentThumbSkin = null;
+	this.liveDragging = true;
+	this._page = 0.0;
+	this._snapInterval = 0.0;
+	this._step = 0.01;
+	this._maximum = 1.0;
+	this._minimum = 0.0;
+	this._value = 0.0;
+	this._isDefaultValue = true;
+	feathers_core_FeathersControl.call(this);
+	this.set_tabChildren(false);
+	this.focusRect = null;
+	this.set_minimum(minimum);
+	this.set_maximum(maximum);
+	this.set_value(value);
+	if(changeListener != null) {
+		this.addEventListener("change",changeListener);
+	}
+};
+$hxClasses["feathers.controls.supportClasses.BaseScrollBar"] = feathers_controls_supportClasses_BaseScrollBar;
+feathers_controls_supportClasses_BaseScrollBar.__name__ = "feathers.controls.supportClasses.BaseScrollBar";
+feathers_controls_supportClasses_BaseScrollBar.__interfaces__ = [feathers_controls_IScrollBar];
+feathers_controls_supportClasses_BaseScrollBar.__super__ = feathers_core_FeathersControl;
+feathers_controls_supportClasses_BaseScrollBar.prototype = $extend(feathers_core_FeathersControl.prototype,{
+	get_value: function() {
+		return this._value;
+	}
+	,set_value: function(value) {
+		if(this._value == value) {
+			return this._value;
+		}
+		this._isDefaultValue = false;
+		this._value = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		if(this.liveDragging || !this._dragging) {
+			feathers_events_FeathersEvent.dispatch(this,"change");
+		}
+		return this._value;
+	}
+	,get_minimum: function() {
+		return this._minimum;
+	}
+	,set_minimum: function(value) {
+		if(this._minimum == value) {
+			return this._minimum;
+		}
+		this._minimum = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._minimum;
+	}
+	,get_maximum: function() {
+		return this._maximum;
+	}
+	,set_maximum: function(value) {
+		if(this._maximum == value) {
+			return this._maximum;
+		}
+		this._maximum = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._maximum;
+	}
+	,get_step: function() {
+		return this._step;
+	}
+	,set_step: function(value) {
+		if(this._step == value) {
+			return this._step;
+		}
+		this._step = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._step;
+	}
+	,get_snapInterval: function() {
+		return this._snapInterval;
+	}
+	,set_snapInterval: function(value) {
+		if(this._snapInterval == value) {
+			return this._snapInterval;
+		}
+		this._snapInterval = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._snapInterval;
+	}
+	,get_page: function() {
+		return this._page;
+	}
+	,set_page: function(value) {
+		if(this._page == value) {
+			return this._page;
+		}
+		this._page = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._page;
+	}
+	,setPadding: function(value) {
+		this.set_paddingTop(value);
+		this.set_paddingRight(value);
+		this.set_paddingBottom(value);
+		this.set_paddingLeft(value);
+	}
+	,applyValueRestrictions: function() {
+		this.set_value(this.restrictValue(this._value));
+	}
+	,initialize: function() {
+		feathers_core_FeathersControl.prototype.initialize.call(this);
+		if(this._isDefaultValue) {
+			this.set_value(this.restrictValue(this._value));
+		}
+	}
+	,update: function() {
+		var sizeInvalid = this.isInvalid(feathers_core_InvalidationFlag.SIZE);
+		var stateInvalid = this.isInvalid(feathers_core_InvalidationFlag.STATE);
+		var stylesInvalid = this.isInvalid(feathers_core_InvalidationFlag.STYLES);
+		if(stylesInvalid) {
+			this.refreshThumb();
+			this.refreshTrack();
+			this.refreshSecondaryTrack();
+		}
+		if(stateInvalid || stylesInvalid) {
+			this.refreshEnabled();
+		}
+		if(this.measure()) {
+			sizeInvalid = true;
+		}
+		this.layoutContent();
+	}
+	,measure: function() {
+		var c = js_Boot.getClass(this);
+		throw new openfl_errors_TypeError("Missing override for 'measure' in type " + c.__name__);
+	}
+	,refreshThumb: function() {
+		var oldSkin = this._currentThumbSkin;
+		this._currentThumbSkin = this.get_thumbSkin();
+		if(this._currentThumbSkin == oldSkin) {
+			return;
+		}
+		if(oldSkin != null) {
+			if(js_Boot.__implements(oldSkin,feathers_skins_IProgrammaticSkin)) {
+				(js_Boot.__cast(oldSkin , feathers_skins_IProgrammaticSkin)).set_uiContext(null);
+			}
+			oldSkin.removeEventListener("mouseDown",$bind(this,this.thumbSkin_mouseDownHandler));
+			this.removeChild(oldSkin);
+		}
+		if(this._currentThumbSkin != null) {
+			if(js_Boot.__implements(this._currentThumbSkin,feathers_core_IUIControl)) {
+				(js_Boot.__cast(this._currentThumbSkin , feathers_core_IUIControl)).initializeNow();
+			}
+			if(this._thumbSkinMeasurements == null) {
+				this._thumbSkinMeasurements = new feathers_layout_Measurements(this._currentThumbSkin);
+			} else {
+				this._thumbSkinMeasurements.save(this._currentThumbSkin);
+			}
+			this.addChild(this._currentThumbSkin);
+			this._currentThumbSkin.addEventListener("mouseDown",$bind(this,this.thumbSkin_mouseDownHandler));
+			if(js_Boot.__implements(this._currentThumbSkin,feathers_skins_IProgrammaticSkin)) {
+				(js_Boot.__cast(this._currentThumbSkin , feathers_skins_IProgrammaticSkin)).set_uiContext(this);
+			}
+		} else {
+			this._thumbSkinMeasurements = null;
+		}
+	}
+	,refreshTrack: function() {
+		var oldSkin = this._currentTrackSkin;
+		this._currentTrackSkin = this.get_trackSkin();
+		if(this._currentTrackSkin == oldSkin) {
+			return;
+		}
+		if(oldSkin != null) {
+			if(js_Boot.__implements(oldSkin,feathers_skins_IProgrammaticSkin)) {
+				(js_Boot.__cast(oldSkin , feathers_skins_IProgrammaticSkin)).set_uiContext(null);
+			}
+			this.removeChild(oldSkin);
+			oldSkin.removeEventListener("mouseDown",$bind(this,this.trackSkin_mouseDownHandler));
+		}
+		if(this._currentTrackSkin != null) {
+			if(js_Boot.__implements(this._currentTrackSkin,feathers_core_IUIControl)) {
+				(js_Boot.__cast(this._currentTrackSkin , feathers_core_IUIControl)).initializeNow();
+			}
+			if(this._trackSkinMeasurements == null) {
+				this._trackSkinMeasurements = new feathers_layout_Measurements(this._currentTrackSkin);
+			} else {
+				this._trackSkinMeasurements.save(this._currentTrackSkin);
+			}
+			this.addChildAt(this._currentTrackSkin,0);
+			this._currentTrackSkin.addEventListener("mouseDown",$bind(this,this.trackSkin_mouseDownHandler));
+			if(js_Boot.__implements(this._currentTrackSkin,feathers_skins_IProgrammaticSkin)) {
+				(js_Boot.__cast(this._currentTrackSkin , feathers_skins_IProgrammaticSkin)).set_uiContext(this);
+			}
+		} else {
+			this._trackSkinMeasurements = null;
+		}
+	}
+	,refreshSecondaryTrack: function() {
+		var oldSkin = this._currentSecondaryTrackSkin;
+		this._currentSecondaryTrackSkin = this.get_secondaryTrackSkin();
+		if(this._currentSecondaryTrackSkin == oldSkin) {
+			return;
+		}
+		if(oldSkin != null) {
+			if(js_Boot.__implements(oldSkin,feathers_skins_IProgrammaticSkin)) {
+				(js_Boot.__cast(oldSkin , feathers_skins_IProgrammaticSkin)).set_uiContext(null);
+			}
+			this.removeChild(oldSkin);
+			oldSkin.removeEventListener("mouseDown",$bind(this,this.trackSkin_mouseDownHandler));
+		}
+		if(this._currentSecondaryTrackSkin != null) {
+			if(js_Boot.__implements(this._currentSecondaryTrackSkin,feathers_core_IUIControl)) {
+				(js_Boot.__cast(this._currentSecondaryTrackSkin , feathers_core_IUIControl)).initializeNow();
+			}
+			if(this._secondaryTrackSkinMeasurements == null) {
+				this._secondaryTrackSkinMeasurements = new feathers_layout_Measurements(this._currentSecondaryTrackSkin);
+			} else {
+				this._secondaryTrackSkinMeasurements.save(this._currentSecondaryTrackSkin);
+			}
+			var index = this._currentTrackSkin != null ? 1 : 0;
+			this.addChildAt(this._currentSecondaryTrackSkin,index);
+			this._currentSecondaryTrackSkin.addEventListener("mouseDown",$bind(this,this.trackSkin_mouseDownHandler));
+			if(js_Boot.__implements(this._currentSecondaryTrackSkin,feathers_skins_IProgrammaticSkin)) {
+				(js_Boot.__cast(this._currentSecondaryTrackSkin , feathers_skins_IProgrammaticSkin)).set_uiContext(this);
+			}
+		} else {
+			this._secondaryTrackSkinMeasurements = null;
+		}
+	}
+	,refreshEnabled: function() {
+		if(js_Boot.__implements(this._currentThumbSkin,feathers_core_IUIControl)) {
+			(js_Boot.__cast(this._currentThumbSkin , feathers_core_IUIControl)).set_enabled(this._enabled);
+		}
+	}
+	,layoutContent: function() {
+		if(this._currentTrackSkin != null && this._currentSecondaryTrackSkin != null) {
+			this.get_graphics().clear();
+			this.layoutSplitTrack();
+		} else if(this._currentTrackSkin != null) {
+			this.get_graphics().clear();
+			this.layoutSingleTrack();
+		} else {
+			this.drawFallbackTrack();
+		}
+		this.layoutThumb();
+	}
+	,layoutSplitTrack: function() {
+		var c = js_Boot.getClass(this);
+		throw new openfl_errors_TypeError("Missing override for 'layoutSplitTrack' in type " + c.__name__);
+	}
+	,layoutSingleTrack: function() {
+		var c = js_Boot.getClass(this);
+		throw new openfl_errors_TypeError("Missing override for 'layoutSingleTrack' in type " + c.__name__);
+	}
+	,layoutThumb: function() {
+		var c = js_Boot.getClass(this);
+		throw new openfl_errors_TypeError("Missing override for 'layoutThumb' in type " + c.__name__);
+	}
+	,drawFallbackTrack: function() {
+		if(this.actualWidth == this._previousFallbackTrackWidth && this.actualHeight == this._previousFallbackTrackHeight) {
+			return;
+		}
+		this.get_graphics().clear();
+		this.get_graphics().beginFill(16711935,0.0);
+		this.get_graphics().drawRect(0,0,this.actualWidth,this.actualHeight);
+		this.get_graphics().endFill();
+		this._previousFallbackTrackWidth = this.actualWidth;
+		this._previousFallbackTrackHeight = this.actualHeight;
+	}
+	,normalizeValue: function(value) {
+		var normalized = 0.0;
+		if(this._minimum != this._maximum) {
+			normalized = (value - this._minimum) / (this._maximum - this._minimum);
+			if(normalized < 0.0) {
+				normalized = 0.0;
+			} else if(normalized > 1.0) {
+				normalized = 1.0;
+			}
+		}
+		return normalized;
+	}
+	,restrictValue: function(value) {
+		if(this._snapInterval != 0.0 && value != this._minimum && value != this._maximum) {
+			value = feathers_utils_MathUtil.roundToNearest(value,this._snapInterval);
+		}
+		if(value < this._minimum) {
+			value = this._minimum;
+		} else if(value > this._maximum) {
+			value = this._maximum;
+		}
+		return value;
+	}
+	,valueToLocation: function(value) {
+		var c = js_Boot.getClass(this);
+		throw new openfl_errors_TypeError("Missing override for 'valueToLocation' in type " + c.__name__);
+	}
+	,locationToValue: function(x,y) {
+		var c = js_Boot.getClass(this);
+		throw new openfl_errors_TypeError("Missing override for 'locationToValue' in type " + c.__name__);
+	}
+	,saveThumbStart: function(x,y) {
+		var c = js_Boot.getClass(this);
+		throw new openfl_errors_TypeError("Missing override for 'saveThumbStart' in type " + c.__name__);
+	}
+	,getAdjustedPage: function() {
+		var range = this._maximum - this._minimum;
+		var adjustedPage = this._page;
+		if(adjustedPage == 0.0) {
+			adjustedPage = this._step;
+		} else if(adjustedPage > range) {
+			adjustedPage = range;
+		}
+		return adjustedPage;
+	}
+	,thumbSkin_mouseDownHandler: function(event) {
+		if(!this._enabled || this.stage == null) {
+			return;
+		}
+		var exclusivePointer = feathers_utils_ExclusivePointer.forStage(this.stage);
+		var result = exclusivePointer.claimMouse(this);
+		if(!result) {
+			return;
+		}
+		this.stage.addEventListener("mouseMove",$bind(this,this.thumbSkin_stage_mouseMoveHandler),false,0,true);
+		this.stage.addEventListener("mouseUp",$bind(this,this.thumbSkin_stage_mouseUpHandler),false,0,true);
+		this._thumbStartX = this._currentThumbSkin.get_x();
+		this._thumbStartY = this._currentThumbSkin.get_y();
+		this._pointerStartX = this.get_mouseX();
+		this._pointerStartY = this.get_mouseY();
+		this._dragging = true;
+		feathers_events_ScrollEvent.dispatch(this,"scrollStart");
+	}
+	,thumbSkin_stage_mouseMoveHandler: function(event) {
+		var newValue = this.locationToValue(this.get_mouseX(),this.get_mouseY());
+		newValue = this.restrictValue(newValue);
+		this.set_value(newValue);
+	}
+	,thumbSkin_stage_mouseUpHandler: function(event) {
+		var stage = js_Boot.__cast(event.currentTarget , openfl_display_Stage);
+		stage.removeEventListener("mouseMove",$bind(this,this.thumbSkin_stage_mouseMoveHandler));
+		stage.removeEventListener("mouseUp",$bind(this,this.thumbSkin_stage_mouseUpHandler));
+		this._dragging = false;
+		feathers_events_ScrollEvent.dispatch(this,"scrollComplete");
+		if(!this.liveDragging) {
+			feathers_events_FeathersEvent.dispatch(this,"change");
+		}
+	}
+	,trackSkin_mouseDownHandler: function(event) {
+		if(!this._enabled || this.stage == null) {
+			return;
+		}
+		var exclusivePointer = feathers_utils_ExclusivePointer.forStage(this.stage);
+		var result = exclusivePointer.claimMouse(this);
+		if(!result) {
+			return;
+		}
+		this.stage.addEventListener("mouseMove",$bind(this,this.trackSkin_stage_mouseMoveHandler),false,0,true);
+		this.stage.addEventListener("mouseUp",$bind(this,this.trackSkin_stage_mouseUpHandler),false,0,true);
+		this.saveThumbStart(this.get_mouseX(),this.get_mouseY());
+		this._pointerStartX = this.get_mouseX();
+		this._pointerStartY = this.get_mouseY();
+		this._dragging = true;
+		feathers_events_ScrollEvent.dispatch(this,"scrollStart");
+		var newValue = this.locationToValue(this.get_mouseX(),this.get_mouseY());
+		newValue = this.restrictValue(newValue);
+		this.set_value(newValue);
+	}
+	,trackSkin_stage_mouseMoveHandler: function(event) {
+		var newValue = this.locationToValue(this.get_mouseX(),this.get_mouseY());
+		newValue = this.restrictValue(newValue);
+		this.set_value(newValue);
+	}
+	,trackSkin_stage_mouseUpHandler: function(event) {
+		var stage = js_Boot.__cast(event.currentTarget , openfl_display_Stage);
+		stage.removeEventListener("mouseMove",$bind(this,this.trackSkin_stage_mouseMoveHandler));
+		stage.removeEventListener("mouseUp",$bind(this,this.trackSkin_stage_mouseUpHandler));
+		this._dragging = false;
+		feathers_events_ScrollEvent.dispatch(this,"scrollComplete");
+		if(!this.liveDragging) {
+			feathers_events_FeathersEvent.dispatch(this,"change");
+		}
+	}
+	,get_thumbSkin: function() {
+		return this.__thumbSkin;
+	}
+	,set_thumbSkin: function(value) {
+		if(!this.setStyle("thumbSkin")) {
+			return this.__thumbSkin;
+		}
+		if(this.__thumbSkin == value) {
+			return this.__thumbSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_thumbSkin);
+		this.__thumbSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__thumbSkin;
+	}
+	,clearStyle_thumbSkin: function() {
+		this.set_thumbSkin(null);
+		return this.get_thumbSkin();
+	}
+	,get_trackSkin: function() {
+		return this.__trackSkin;
+	}
+	,set_trackSkin: function(value) {
+		if(!this.setStyle("trackSkin")) {
+			return this.__trackSkin;
+		}
+		if(this.__trackSkin == value) {
+			return this.__trackSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_trackSkin);
+		this.__trackSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__trackSkin;
+	}
+	,clearStyle_trackSkin: function() {
+		this.set_trackSkin(null);
+		return this.get_trackSkin();
+	}
+	,get_secondaryTrackSkin: function() {
+		return this.__secondaryTrackSkin;
+	}
+	,set_secondaryTrackSkin: function(value) {
+		if(!this.setStyle("secondaryTrackSkin")) {
+			return this.__secondaryTrackSkin;
+		}
+		if(this.__secondaryTrackSkin == value) {
+			return this.__secondaryTrackSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_secondaryTrackSkin);
+		this.__secondaryTrackSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__secondaryTrackSkin;
+	}
+	,clearStyle_secondaryTrackSkin: function() {
+		this.set_secondaryTrackSkin(null);
+		return this.get_secondaryTrackSkin();
+	}
+	,get_fixedThumbSize: function() {
+		return this.__fixedThumbSize;
+	}
+	,set_fixedThumbSize: function(value) {
+		if(!this.setStyle("fixedThumbSize")) {
+			return this.__fixedThumbSize;
+		}
+		if(this.__fixedThumbSize == value) {
+			return this.__fixedThumbSize;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_fixedThumbSize);
+		this.__fixedThumbSize = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__fixedThumbSize;
+	}
+	,clearStyle_fixedThumbSize: function() {
+		this.set_fixedThumbSize(false);
+		return this.get_fixedThumbSize();
+	}
+	,get_paddingTop: function() {
+		return this.__paddingTop;
+	}
+	,set_paddingTop: function(value) {
+		if(!this.setStyle("paddingTop")) {
+			return this.__paddingTop;
+		}
+		if(this.__paddingTop == value) {
+			return this.__paddingTop;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingTop);
+		this.__paddingTop = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingTop;
+	}
+	,clearStyle_paddingTop: function() {
+		this.set_paddingTop(0.0);
+		return this.get_paddingTop();
+	}
+	,get_paddingRight: function() {
+		return this.__paddingRight;
+	}
+	,set_paddingRight: function(value) {
+		if(!this.setStyle("paddingRight")) {
+			return this.__paddingRight;
+		}
+		if(this.__paddingRight == value) {
+			return this.__paddingRight;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingRight);
+		this.__paddingRight = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingRight;
+	}
+	,clearStyle_paddingRight: function() {
+		this.set_paddingRight(0.0);
+		return this.get_paddingRight();
+	}
+	,get_paddingBottom: function() {
+		return this.__paddingBottom;
+	}
+	,set_paddingBottom: function(value) {
+		if(!this.setStyle("paddingBottom")) {
+			return this.__paddingBottom;
+		}
+		if(this.__paddingBottom == value) {
+			return this.__paddingBottom;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingBottom);
+		this.__paddingBottom = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingBottom;
+	}
+	,clearStyle_paddingBottom: function() {
+		this.set_paddingBottom(0.0);
+		return this.get_paddingBottom();
+	}
+	,get_paddingLeft: function() {
+		return this.__paddingLeft;
+	}
+	,set_paddingLeft: function(value) {
+		if(!this.setStyle("paddingLeft")) {
+			return this.__paddingLeft;
+		}
+		if(this.__paddingLeft == value) {
+			return this.__paddingLeft;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingLeft);
+		this.__paddingLeft = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingLeft;
+	}
+	,clearStyle_paddingLeft: function() {
+		this.set_paddingLeft(0.0);
+		return this.get_paddingLeft();
+	}
+	,get_hideThumbWhenDisabled: function() {
+		return this.__hideThumbWhenDisabled;
+	}
+	,set_hideThumbWhenDisabled: function(value) {
+		if(!this.setStyle("hideThumbWhenDisabled")) {
+			return this.__hideThumbWhenDisabled;
+		}
+		if(this.__hideThumbWhenDisabled == value) {
+			return this.__hideThumbWhenDisabled;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_hideThumbWhenDisabled);
+		this.__hideThumbWhenDisabled = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__hideThumbWhenDisabled;
+	}
+	,clearStyle_hideThumbWhenDisabled: function() {
+		this.set_hideThumbWhenDisabled(false);
+		return this.get_hideThumbWhenDisabled();
+	}
+	,__class__: feathers_controls_supportClasses_BaseScrollBar
+	,__properties__: $extend(feathers_core_FeathersControl.prototype.__properties__,{set_hideThumbWhenDisabled:"set_hideThumbWhenDisabled",get_hideThumbWhenDisabled:"get_hideThumbWhenDisabled",set_paddingLeft:"set_paddingLeft",get_paddingLeft:"get_paddingLeft",set_paddingBottom:"set_paddingBottom",get_paddingBottom:"get_paddingBottom",set_paddingRight:"set_paddingRight",get_paddingRight:"get_paddingRight",set_paddingTop:"set_paddingTop",get_paddingTop:"get_paddingTop",set_fixedThumbSize:"set_fixedThumbSize",get_fixedThumbSize:"get_fixedThumbSize",set_secondaryTrackSkin:"set_secondaryTrackSkin",get_secondaryTrackSkin:"get_secondaryTrackSkin",set_trackSkin:"set_trackSkin",get_trackSkin:"get_trackSkin",set_thumbSkin:"set_thumbSkin",get_thumbSkin:"get_thumbSkin",set_page:"set_page",get_page:"get_page",set_snapInterval:"set_snapInterval",get_snapInterval:"get_snapInterval",set_step:"set_step",get_step:"get_step",set_maximum:"set_maximum",get_maximum:"get_maximum",set_minimum:"set_minimum",get_minimum:"get_minimum",set_value:"set_value",get_value:"get_value"})
+});
+var feathers_controls_HScrollBar = function(value,minimum,maximum,changeListener) {
+	if(maximum == null) {
+		maximum = 1.0;
+	}
+	if(minimum == null) {
+		minimum = 0.0;
+	}
+	if(value == null) {
+		value = 0.0;
+	}
+	this.initializeHScrollBarTheme();
+	feathers_controls_supportClasses_BaseScrollBar.call(this,value,minimum,maximum,changeListener);
+};
+$hxClasses["feathers.controls.HScrollBar"] = feathers_controls_HScrollBar;
+feathers_controls_HScrollBar.__name__ = "feathers.controls.HScrollBar";
+feathers_controls_HScrollBar.__super__ = feathers_controls_supportClasses_BaseScrollBar;
+feathers_controls_HScrollBar.prototype = $extend(feathers_controls_supportClasses_BaseScrollBar.prototype,{
+	initializeHScrollBarTheme: function() {
+		feathers_themes_steel_components_SteelHScrollBarStyles.initialize();
+	}
+	,valueToLocation: function(value) {
+		if(js_Boot.__implements(this._currentThumbSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentThumbSkin , feathers_core_IValidating)).validateNow();
+		}
+		var normalized = this.normalizeValue(value);
+		var trackScrollableWidth = this.actualWidth - this.get_paddingLeft() - this.get_paddingRight() - this._currentThumbSkin.get_width();
+		return this.get_paddingLeft() + trackScrollableWidth * normalized;
+	}
+	,locationToValue: function(x,y) {
+		var percentage = 0.0;
+		var trackScrollableWidth = this.actualWidth - this.get_paddingLeft() - this.get_paddingRight() - this._currentThumbSkin.get_width();
+		var xOffset = x - this._pointerStartX;
+		var xPosition = Math.min(Math.max(0.0,this._thumbStartX - this.get_paddingLeft() + xOffset),trackScrollableWidth);
+		percentage = xPosition / trackScrollableWidth;
+		return this._minimum + percentage * (this._maximum - this._minimum);
+	}
+	,saveThumbStart: function(x,y) {
+		var trackWidthMinusThumbWidth = this.actualWidth;
+		var locationMinusHalfThumbWidth = x;
+		if(this._currentThumbSkin != null) {
+			trackWidthMinusThumbWidth -= this._currentThumbSkin.get_width();
+			locationMinusHalfThumbWidth -= this._currentThumbSkin.get_width() / 2.0;
+		}
+		this._thumbStartX = Math.min(trackWidthMinusThumbWidth,locationMinusHalfThumbWidth);
+		this._thumbStartY = y;
+	}
+	,measure: function() {
+		var needsWidth = this.get_explicitWidth() == null;
+		var needsHeight = this.get_explicitHeight() == null;
+		var needsMinWidth = this.get_explicitMinWidth() == null;
+		var needsMinHeight = this.get_explicitMinHeight() == null;
+		var needsMaxWidth = this.get_explicitMaxWidth() == null;
+		var needsMaxHeight = this.get_explicitMaxHeight() == null;
+		if(!needsWidth && !needsHeight && !needsMinWidth && !needsMinHeight && !needsMaxWidth && !needsMaxHeight) {
+			return false;
+		}
+		if(this._currentThumbSkin != null) {
+			this._thumbSkinMeasurements.restore(this._currentThumbSkin);
+			if(js_Boot.__implements(this._currentThumbSkin,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._currentThumbSkin , feathers_core_IValidating)).validateNow();
+			}
+		}
+		if(this._currentTrackSkin != null) {
+			this._trackSkinMeasurements.restore(this._currentTrackSkin);
+			if(js_Boot.__implements(this._currentTrackSkin,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._currentTrackSkin , feathers_core_IValidating)).validateNow();
+			}
+		}
+		if(this._currentSecondaryTrackSkin != null) {
+			this._secondaryTrackSkinMeasurements.restore(this._currentSecondaryTrackSkin);
+			if(js_Boot.__implements(this._currentSecondaryTrackSkin,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._currentSecondaryTrackSkin , feathers_core_IValidating)).validateNow();
+			}
+		}
+		var newWidth = this.get_explicitWidth();
+		if(needsWidth) {
+			newWidth = 0.0;
+			if(this._currentTrackSkin != null) {
+				newWidth += this._currentTrackSkin.get_width();
+				if(this._currentSecondaryTrackSkin != null) {
+					newWidth += this._currentSecondaryTrackSkin.get_width();
+				}
+			}
+			var thumbWidth = this.get_paddingLeft() + this.get_paddingRight();
+			if(this._currentThumbSkin != null) {
+				thumbWidth += this._currentThumbSkin.get_width();
+			}
+			if(newWidth < thumbWidth) {
+				newWidth = thumbWidth;
+			}
+		}
+		var newHeight = this.get_explicitHeight();
+		if(needsHeight) {
+			newHeight = this.get_paddingTop() + this.get_paddingBottom();
+			if(this._currentThumbSkin != null) {
+				newHeight += this._currentThumbSkin.get_height();
+			}
+			if(this._currentTrackSkin != null) {
+				if(newHeight < this._currentTrackSkin.get_height()) {
+					newHeight = this._currentTrackSkin.get_height();
+				}
+				if(this._currentSecondaryTrackSkin != null && newHeight < this._currentSecondaryTrackSkin.get_height()) {
+					newHeight = this._currentSecondaryTrackSkin.get_height();
+				}
+			}
+		}
+		var newMinWidth = newWidth;
+		var newMinHeight = newHeight;
+		var newMaxHeight = newHeight;
+		return this.saveMeasurements(newWidth,newHeight,newMinWidth,newMinHeight,null,newMaxHeight);
+	}
+	,layoutSplitTrack: function() {
+		var location = this.valueToLocation(this.get_value());
+		if(this._currentThumbSkin != null) {
+			if(js_Boot.__implements(this._currentThumbSkin,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._currentThumbSkin , feathers_core_IValidating)).validateNow();
+			}
+			location += Math.round(this._currentThumbSkin.get_width() / 2.0);
+		}
+		this._currentTrackSkin.set_x(0.0);
+		this._currentTrackSkin.set_width(location);
+		this._currentSecondaryTrackSkin.set_x(location);
+		this._currentSecondaryTrackSkin.set_width(this.actualWidth - location);
+		if(js_Boot.__implements(this._currentTrackSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentTrackSkin , feathers_core_IValidating)).validateNow();
+		}
+		if(js_Boot.__implements(this._currentSecondaryTrackSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentSecondaryTrackSkin , feathers_core_IValidating)).validateNow();
+		}
+		this._currentTrackSkin.set_y((this.actualHeight - this._currentTrackSkin.get_height()) / 2.0);
+		this._currentSecondaryTrackSkin.set_y((this.actualHeight - this._currentSecondaryTrackSkin.get_height()) / 2.0);
+	}
+	,layoutSingleTrack: function() {
+		if(this._currentTrackSkin == null) {
+			return;
+		}
+		this._currentTrackSkin.set_x(0.0);
+		this._currentTrackSkin.set_width(this.actualWidth);
+		if(js_Boot.__implements(this._currentTrackSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentTrackSkin , feathers_core_IValidating)).validateNow();
+		}
+		this._currentTrackSkin.set_y((this.actualHeight - this._currentTrackSkin.get_height()) / 2.0);
+	}
+	,layoutThumb: function() {
+		if(this._currentThumbSkin == null) {
+			return;
+		}
+		var range = this._maximum - this._minimum;
+		this._currentThumbSkin.set_visible((!this.get_hideThumbWhenDisabled() || this._enabled) && range > 0.0);
+		if(!this._currentThumbSkin.get_visible()) {
+			return;
+		}
+		if(js_Boot.__implements(this._currentThumbSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentThumbSkin , feathers_core_IValidating)).validateNow();
+		}
+		var valueOffset = 0.0;
+		if(this._value < this._minimum) {
+			valueOffset = this._minimum - this._value;
+		} else if(this._value > this._maximum) {
+			valueOffset = this._value - this._maximum;
+		}
+		var contentWidth = this.actualWidth - this.get_paddingLeft() - this.get_paddingRight();
+		var contentHeight = this.actualHeight - this.get_paddingTop() - this.get_paddingBottom();
+		if(this.get_fixedThumbSize()) {
+			if(this._thumbSkinMeasurements.width != null) {
+				this._currentThumbSkin.set_width(this._thumbSkinMeasurements.width);
+			}
+		} else {
+			var adjustedPage = this.getAdjustedPage();
+			var thumbWidth = contentWidth * adjustedPage / (range + adjustedPage);
+			if(thumbWidth > 0.0) {
+				var widthOffset = contentWidth - thumbWidth;
+				if(widthOffset > thumbWidth) {
+					widthOffset = thumbWidth;
+				}
+				widthOffset *= valueOffset / (range * thumbWidth / contentWidth);
+				thumbWidth -= widthOffset;
+			}
+			if(this._thumbSkinMeasurements.minWidth != null) {
+				if(thumbWidth < this._thumbSkinMeasurements.minWidth) {
+					thumbWidth = this._thumbSkinMeasurements.minWidth;
+				}
+			} else if(js_Boot.__implements(this._currentThumbSkin,feathers_core_IMeasureObject)) {
+				var measureSkin = js_Boot.__cast(this._currentThumbSkin , feathers_core_IMeasureObject);
+				if(thumbWidth < measureSkin.get_minWidth()) {
+					thumbWidth = measureSkin.get_minWidth();
+				}
+			}
+			if(thumbWidth < 0.0) {
+				thumbWidth = 0.0;
+			}
+			this._currentThumbSkin.set_width(thumbWidth);
+		}
+		this._currentThumbSkin.set_x(this.valueToLocation(this._value));
+		this._currentThumbSkin.set_y(this.get_paddingTop() + (contentHeight - this._currentThumbSkin.get_height()) / 2.0);
+	}
+	,get_styleContext: function() {
+		return feathers_controls_HScrollBar;
+	}
+	,__class__: feathers_controls_HScrollBar
+});
+var feathers_controls_Header = function(text) {
+	if(text == null) {
+		text = "";
+	}
+	this.__verticalAlign = feathers_layout_VerticalAlign.MIDDLE;
+	this.__minGap = 0.0;
+	this.__paddingLeft = 0.0;
+	this.__paddingBottom = 0.0;
+	this.__paddingRight = 0.0;
+	this.__paddingTop = 0.0;
+	this.__disabledBackgroundSkin = null;
+	this.__backgroundSkin = null;
+	this.__disabledTextFormat = null;
+	this.__embedFonts = false;
+	this.__styleSheet = null;
+	this.__textFormat = null;
+	this._rightView = null;
+	this._ignoreRightViewResize = false;
+	this._leftView = null;
+	this._ignoreLeftViewResize = false;
+	this._backgroundSkinMeasurements = null;
+	this._currentBackgroundSkin = null;
+	this._htmlText = null;
+	this._updatedTextStyles = false;
+	this._previousSimpleTextFormat = null;
+	this._previousTextFormat = null;
+	this._previousHTMLText = null;
+	this._previousText = null;
+	this.initializeHeaderTheme();
+	feathers_core_FeathersControl.call(this);
+	this.set_text(text);
+};
+$hxClasses["feathers.controls.Header"] = feathers_controls_Header;
+feathers_controls_Header.__name__ = "feathers.controls.Header";
+feathers_controls_Header.__interfaces__ = [feathers_core_ITextControl];
+feathers_controls_Header.__super__ = feathers_core_FeathersControl;
+feathers_controls_Header.prototype = $extend(feathers_core_FeathersControl.prototype,{
+	get_text: function() {
+		return this._text;
+	}
+	,set_text: function(value) {
+		if(value == null) {
+			if(this._text.length == 0) {
+				return this._text;
+			}
+			value = "";
+		}
+		if(this._text == value) {
+			return this._text;
+		}
+		this._text = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._text;
+	}
+	,get_baseline: function() {
+		if(this.textField == null) {
+			return 0.0;
+		}
+		var hasText = this._text != null && this._text.length > 0;
+		var hasHTMLText = this._htmlText != null && this._htmlText.length > 0;
+		if(!hasText && !hasHTMLText) {
+			this.textField.set_text("​");
+			var result = this.textField.get_y() + this.textField.getLineMetrics(0).ascent;
+			this.textField.set_text("");
+			return result;
+		}
+		return this.textField.get_y() + this.textField.getLineMetrics(0).ascent;
+	}
+	,get_htmlText: function() {
+		return this._htmlText;
+	}
+	,set_htmlText: function(value) {
+		if(this._htmlText == value) {
+			return this._htmlText;
+		}
+		this._htmlText = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._htmlText;
+	}
+	,get_leftView: function() {
+		return this._leftView;
+	}
+	,set_leftView: function(value) {
+		if(this._leftView == value) {
+			return this._leftView;
+		}
+		if(this._leftView != null) {
+			this._leftView.removeEventListener("resize",$bind(this,this.header_leftView_resizeHandler));
+			if(this._leftView.parent == this) {
+				this.removeChild(this._leftView);
+			}
+		}
+		this._leftView = value;
+		if(this._leftView != null) {
+			this.addChild(this._leftView);
+			this._leftView.addEventListener("resize",$bind(this,this.header_leftView_resizeHandler),false,0,true);
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		return this._leftView;
+	}
+	,get_rightView: function() {
+		return this._rightView;
+	}
+	,set_rightView: function(value) {
+		if(this._rightView == value) {
+			return this._rightView;
+		}
+		if(this._rightView != null) {
+			this._rightView.removeEventListener("resize",$bind(this,this.header_rightView_resizeHandler));
+			if(this._rightView.parent == this) {
+				this.removeChild(this._rightView);
+			}
+		}
+		this._rightView = value;
+		if(this._rightView != null) {
+			this.addChild(this._rightView);
+			this._rightView.addEventListener("resize",$bind(this,this.header_rightView_resizeHandler),false,0,true);
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		return this._rightView;
+	}
+	,dispose: function() {
+		this.set_leftView(null);
+		this.set_rightView(null);
+		feathers_core_FeathersControl.prototype.dispose.call(this);
+	}
+	,initializeHeaderTheme: function() {
+		feathers_themes_steel_components_SteelHeaderStyles.initialize();
+	}
+	,initialize: function() {
+		feathers_core_FeathersControl.prototype.initialize.call(this);
+		if(this.textField == null) {
+			this.textField = new openfl_text_TextField();
+			this.textField.set_multiline(true);
+			this.textField.set_selectable(false);
+			this.addChild(this.textField);
+		}
+	}
+	,update: function() {
+		var dataInvalid = this.isInvalid(feathers_core_InvalidationFlag.DATA);
+		var selectionInvalid = this.isInvalid(feathers_core_InvalidationFlag.SELECTION);
+		var sizeInvalid = this.isInvalid(feathers_core_InvalidationFlag.SIZE);
+		var stateInvalid = this.isInvalid(feathers_core_InvalidationFlag.STATE);
+		var stylesInvalid = this.isInvalid(feathers_core_InvalidationFlag.STYLES);
+		this._updatedTextStyles = false;
+		if(stylesInvalid || stateInvalid) {
+			this.refreshBackgroundSkin();
+		}
+		if(stylesInvalid || stateInvalid) {
+			this.refreshTextStyles();
+		}
+		if(dataInvalid || stylesInvalid || stateInvalid || sizeInvalid) {
+			this.refreshText(sizeInvalid);
+		}
+		if(this.measure()) {
+			sizeInvalid = true;
+		}
+		if(stylesInvalid || stateInvalid || dataInvalid || sizeInvalid) {
+			this.layoutContent();
+		}
+	}
+	,measure: function() {
+		var needsWidth = this.get_explicitWidth() == null;
+		var needsHeight = this.get_explicitHeight() == null;
+		var needsMinWidth = this.get_explicitMinWidth() == null;
+		var needsMinHeight = this.get_explicitMinHeight() == null;
+		var needsMaxWidth = this.get_explicitMaxWidth() == null;
+		var needsMaxHeight = this.get_explicitMaxHeight() == null;
+		if(!needsWidth && !needsHeight && !needsMinWidth && !needsMinHeight && !needsMaxWidth && !needsMaxHeight) {
+			return false;
+		}
+		var oldIgnoreLeftViewResize = this._ignoreLeftViewResize;
+		this._ignoreLeftViewResize = true;
+		var oldIgnoreRightViewResize = this._ignoreRightViewResize;
+		this._ignoreRightViewResize = true;
+		if(this._currentBackgroundSkin != null) {
+			feathers_utils_MeasurementsUtil.resetFluidlyWithParent(this._backgroundSkinMeasurements,this._currentBackgroundSkin,this);
+		}
+		var measureSkin = null;
+		if(js_Boot.__implements(this._currentBackgroundSkin,feathers_core_IMeasureObject)) {
+			measureSkin = js_Boot.__cast(this._currentBackgroundSkin , feathers_core_IMeasureObject);
+		}
+		if(js_Boot.__implements(this._currentBackgroundSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentBackgroundSkin , feathers_core_IValidating)).validateNow();
+		}
+		if(js_Boot.__implements(this._leftView,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._leftView , feathers_core_IValidating)).validateNow();
+		}
+		if(js_Boot.__implements(this._rightView,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._rightView , feathers_core_IValidating)).validateNow();
+		}
+		var newWidth = this.get_explicitWidth();
+		if(needsWidth) {
+			newWidth = this._textMeasuredWidth + this.get_paddingLeft() + this.get_paddingRight();
+			if(this._leftView != null) {
+				newWidth += this._leftView.get_width() + this.get_minGap();
+			}
+			if(this._rightView != null) {
+				newWidth += this._rightView.get_width() + this.get_minGap();
+			}
+			if(this._currentBackgroundSkin != null) {
+				newWidth = Math.max(this._currentBackgroundSkin.get_width(),newWidth);
+			}
+		}
+		var newHeight = this.get_explicitHeight();
+		if(needsHeight) {
+			newHeight = this._textMeasuredHeight;
+			if(this._leftView != null) {
+				newHeight = Math.max(newHeight,this._leftView.get_height());
+			}
+			if(this._rightView != null) {
+				newHeight = Math.max(newHeight,this._rightView.get_height());
+			}
+			newHeight += this.get_paddingTop() + this.get_paddingBottom();
+			if(this._currentBackgroundSkin != null) {
+				newHeight = Math.max(this._currentBackgroundSkin.get_height(),newHeight);
+			}
+		}
+		var newMinWidth = this.get_explicitMinWidth();
+		if(needsMinWidth) {
+			newMinWidth = this._textMeasuredWidth + this.get_paddingLeft() + this.get_paddingRight();
+			if(this._leftView != null) {
+				newMinWidth += this._leftView.get_width() + this.get_minGap();
+			}
+			if(this._rightView != null) {
+				newMinWidth += this._rightView.get_width() + this.get_minGap();
+			}
+			if(measureSkin != null) {
+				newMinWidth = Math.max(measureSkin.get_minWidth(),newMinWidth);
+			} else if(this._backgroundSkinMeasurements != null) {
+				newMinWidth = Math.max(this._backgroundSkinMeasurements.minWidth,newMinWidth);
+			}
+		}
+		var newMinHeight = this.get_explicitMinHeight();
+		if(needsMinHeight) {
+			newMinHeight = this._textMeasuredHeight;
+			if(this._leftView != null) {
+				newMinHeight = Math.max(newMinHeight,this._leftView.get_height());
+			}
+			if(this._rightView != null) {
+				newMinHeight = Math.max(newMinHeight,this._rightView.get_height());
+			}
+			newMinHeight += this.get_paddingTop() + this.get_paddingBottom();
+			if(measureSkin != null) {
+				newMinHeight = Math.max(measureSkin.get_minHeight(),newMinHeight);
+			} else if(this._backgroundSkinMeasurements != null) {
+				newMinHeight = Math.max(this._backgroundSkinMeasurements.minHeight,newMinHeight);
+			}
+		}
+		var newMaxWidth = this.get_explicitMaxWidth();
+		if(needsMaxWidth) {
+			if(measureSkin != null) {
+				newMaxWidth = measureSkin.get_maxWidth();
+			} else if(this._backgroundSkinMeasurements != null) {
+				newMaxWidth = this._backgroundSkinMeasurements.maxWidth;
+			} else {
+				newMaxWidth = 1.0 / 0.0;
+			}
+		}
+		var newMaxHeight = this.get_explicitMaxHeight();
+		if(needsMaxHeight) {
+			if(measureSkin != null) {
+				newMaxHeight = measureSkin.get_maxHeight();
+			} else if(this._backgroundSkinMeasurements != null) {
+				newMaxHeight = this._backgroundSkinMeasurements.maxHeight;
+			} else {
+				newMaxHeight = 1.0 / 0.0;
+			}
+		}
+		this._ignoreLeftViewResize = oldIgnoreLeftViewResize;
+		this._ignoreRightViewResize = oldIgnoreRightViewResize;
+		return this.saveMeasurements(newWidth,newHeight,newMinWidth,newMinHeight,newMaxWidth,newMaxHeight);
+	}
+	,refreshTextStyles: function() {
+		if(this.textField.get_embedFonts() != this.get_embedFonts()) {
+			this.textField.set_embedFonts(this.get_embedFonts());
+			this._updatedTextStyles = true;
+		}
+		if(this.textField.get_styleSheet() != this.get_styleSheet()) {
+			this.textField.set_styleSheet(this.get_styleSheet());
+			this._updatedTextStyles = true;
+		}
+		var textFormat = this.getCurrentTextFormat();
+		var simpleTextFormat = textFormat != null ? textFormat.toSimpleTextFormat() : null;
+		if(simpleTextFormat == this._previousSimpleTextFormat) {
+			return;
+		}
+		if(this._previousTextFormat != null) {
+			this._previousTextFormat.removeEventListener("change",$bind(this,this.header_textFormat_changeHandler));
+		}
+		if(textFormat != null) {
+			textFormat.addEventListener("change",$bind(this,this.header_textFormat_changeHandler),false,0,true);
+			this.textField.set_defaultTextFormat(simpleTextFormat);
+			this._updatedTextStyles = true;
+		}
+		this._previousTextFormat = textFormat;
+		this._previousSimpleTextFormat = simpleTextFormat;
+	}
+	,refreshText: function(forceMeasurement) {
+		var hasText = this._text != null && this._text.length > 0;
+		var hasHTMLText = this._htmlText != null && this._htmlText.length > 0;
+		this.textField.set_visible(hasText || hasHTMLText);
+		if(this._text == this._previousText && this._htmlText == this._previousHTMLText && !this._updatedTextStyles && !forceMeasurement) {
+			return;
+		}
+		this.textField.set_autoSize(1);
+		if(hasHTMLText) {
+			this.textField.set_htmlText(this._htmlText);
+		} else if(hasText) {
+			this.textField.set_text(this._text);
+		} else {
+			this.textField.set_text("​");
+		}
+		var textFieldWidth = null;
+		if(this.get_explicitWidth() != null) {
+			textFieldWidth = this.get_explicitWidth();
+		} else if(this.get_explicitMaxWidth() != null) {
+			textFieldWidth = this.get_explicitMaxWidth();
+		}
+		if(textFieldWidth != null) {
+			this.textField.set_width(textFieldWidth);
+		}
+		this._textMeasuredWidth = this.textField.get_width();
+		this._textMeasuredHeight = this.textField.get_height();
+		this.textField.set_autoSize(2);
+		if(!hasText && !hasHTMLText) {
+			this.textField.set_text("");
+		}
+		this._previousText = this._text;
+		this._previousHTMLText = this._htmlText;
+	}
+	,getCurrentTextFormat: function() {
+		if(this.get_styleSheet() != null) {
+			return null;
+		}
+		if(!this._enabled && this.get_disabledTextFormat() != null) {
+			return this.get_disabledTextFormat();
+		}
+		return this.get_textFormat();
+	}
+	,refreshBackgroundSkin: function() {
+		var oldSkin = this._currentBackgroundSkin;
+		this._currentBackgroundSkin = this.getCurrentBackgroundSkin();
+		if(this._currentBackgroundSkin == oldSkin) {
+			return;
+		}
+		this.removeCurrentBackgroundSkin(oldSkin);
+		this.addCurrentBackgroundSkin(this._currentBackgroundSkin);
+	}
+	,getCurrentBackgroundSkin: function() {
+		if(!this._enabled && this.get_disabledBackgroundSkin() != null) {
+			return this.get_disabledBackgroundSkin();
+		}
+		return this.get_backgroundSkin();
+	}
+	,addCurrentBackgroundSkin: function(skin) {
+		if(skin == null) {
+			this._backgroundSkinMeasurements = null;
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_core_IUIControl)) {
+			(js_Boot.__cast(skin , feathers_core_IUIControl)).initializeNow();
+		}
+		if(this._backgroundSkinMeasurements == null) {
+			this._backgroundSkinMeasurements = new feathers_layout_Measurements(skin);
+		} else {
+			this._backgroundSkinMeasurements.save(skin);
+		}
+		if(js_Boot.__implements(skin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(skin , feathers_skins_IProgrammaticSkin)).set_uiContext(this);
+		}
+		this.addChildAt(skin,0);
+	}
+	,removeCurrentBackgroundSkin: function(skin) {
+		if(skin == null) {
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(skin , feathers_skins_IProgrammaticSkin)).set_uiContext(null);
+		}
+		this._backgroundSkinMeasurements.restore(skin);
+		if(skin.parent == this) {
+			this.removeChild(skin);
+		}
+	}
+	,layoutContent: function() {
+		this.layoutBackgroundSkin();
+		var textFieldMinX = this.get_paddingLeft();
+		var textFieldMaxX = this.actualWidth - this.get_paddingRight();
+		var maxContentWidth = this.actualWidth - this.get_paddingLeft() - this.get_paddingRight();
+		var maxContentHeight = this.actualHeight - this.get_paddingTop() - this.get_paddingBottom();
+		var textFieldMaxWidth = maxContentWidth;
+		if(this._leftView != null) {
+			if(js_Boot.__implements(this._leftView,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._leftView , feathers_core_IValidating)).validateNow();
+			}
+			this._leftView.set_x(this.get_paddingLeft());
+			switch(this.get_verticalAlign()._hx_index) {
+			case 0:
+				this._leftView.set_y(this.get_paddingTop());
+				break;
+			case 2:
+				this._leftView.set_y(this.actualHeight - this.get_paddingBottom() - this._leftView.get_height());
+				break;
+			default:
+				this._leftView.set_y(this.get_paddingTop() + (maxContentHeight - this._leftView.get_height()) / 2.0);
+			}
+			textFieldMaxWidth -= this._leftView.get_width() + this.get_minGap();
+			textFieldMinX = this._leftView.get_x() + this._leftView.get_width() + this.get_minGap();
+		}
+		if(this._rightView != null) {
+			if(js_Boot.__implements(this._rightView,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._rightView , feathers_core_IValidating)).validateNow();
+			}
+			this._rightView.set_x(this.actualWidth - this.get_paddingRight() - this._rightView.get_width());
+			switch(this.get_verticalAlign()._hx_index) {
+			case 0:
+				this._rightView.set_y(this.get_paddingTop());
+				break;
+			case 2:
+				this._rightView.set_y(this.actualHeight - this.get_paddingBottom() - this._rightView.get_height());
+				break;
+			default:
+				this._rightView.set_y(this.get_paddingTop() + (maxContentHeight - this._rightView.get_height()) / 2.0);
+			}
+			textFieldMaxWidth -= this._rightView.get_width() + this.get_minGap();
+			textFieldMaxX = this._rightView.get_x() - this.get_minGap();
+		}
+		var textFieldWidth = this._textMeasuredWidth;
+		if(textFieldWidth > textFieldMaxWidth) {
+			textFieldWidth = textFieldMaxWidth;
+		}
+		this.textField.set_width(textFieldWidth);
+		textFieldMaxX -= textFieldWidth;
+		var textFieldHeight = this._textMeasuredHeight;
+		if(textFieldHeight > maxContentHeight) {
+			textFieldHeight = maxContentHeight;
+		}
+		this.textField.set_height(textFieldHeight);
+		var textFieldX = this.get_paddingLeft() + (maxContentWidth - textFieldWidth) / 2.0;
+		if(textFieldX < textFieldMinX) {
+			textFieldX = textFieldMinX;
+		} else if(textFieldX > textFieldMaxX) {
+			textFieldX = textFieldMaxX;
+		}
+		this.textField.set_x(textFieldX);
+		switch(this.get_verticalAlign()._hx_index) {
+		case 0:
+			this.textField.set_y(this.get_paddingTop());
+			break;
+		case 2:
+			this.textField.set_y(this.actualHeight - this.get_paddingBottom() - textFieldHeight);
+			break;
+		default:
+			this.textField.set_y(this.get_paddingTop() + (maxContentHeight - textFieldHeight) / 2.0);
+		}
+	}
+	,layoutBackgroundSkin: function() {
+		if(this._currentBackgroundSkin == null) {
+			return;
+		}
+		this._currentBackgroundSkin.set_x(0.0);
+		this._currentBackgroundSkin.set_y(0.0);
+		if(this._currentBackgroundSkin.get_width() != this.actualWidth) {
+			this._currentBackgroundSkin.set_width(this.actualWidth);
+		}
+		if(this._currentBackgroundSkin.get_height() != this.actualHeight) {
+			this._currentBackgroundSkin.set_height(this.actualHeight);
+		}
+		if(js_Boot.__implements(this._currentBackgroundSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentBackgroundSkin , feathers_core_IValidating)).validateNow();
+		}
+	}
+	,header_textFormat_changeHandler: function(event) {
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+	}
+	,header_leftView_resizeHandler: function(event) {
+		if(this._ignoreLeftViewResize) {
+			return;
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+	}
+	,header_rightView_resizeHandler: function(event) {
+		if(this._ignoreRightViewResize) {
+			return;
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+	}
+	,get_textFormat: function() {
+		return this.__textFormat;
+	}
+	,set_textFormat: function(value) {
+		if(!this.setStyle("textFormat")) {
+			return this.__textFormat;
+		}
+		if(this.__textFormat == value) {
+			return this.__textFormat;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_textFormat);
+		this.__textFormat = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__textFormat;
+	}
+	,clearStyle_textFormat: function() {
+		this.set_textFormat(null);
+		return this.get_textFormat();
+	}
+	,get_styleSheet: function() {
+		return this.__styleSheet;
+	}
+	,set_styleSheet: function(value) {
+		if(!this.setStyle("styleSheet")) {
+			return this.__styleSheet;
+		}
+		if(this.__styleSheet == value) {
+			return this.__styleSheet;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_styleSheet);
+		this.__styleSheet = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__styleSheet;
+	}
+	,clearStyle_styleSheet: function() {
+		this.set_styleSheet(null);
+		return this.get_styleSheet();
+	}
+	,get_embedFonts: function() {
+		return this.__embedFonts;
+	}
+	,set_embedFonts: function(value) {
+		if(!this.setStyle("embedFonts")) {
+			return this.__embedFonts;
+		}
+		if(this.__embedFonts == value) {
+			return this.__embedFonts;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_embedFonts);
+		this.__embedFonts = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__embedFonts;
+	}
+	,clearStyle_embedFonts: function() {
+		this.set_embedFonts(false);
+		return this.get_embedFonts();
+	}
+	,get_disabledTextFormat: function() {
+		return this.__disabledTextFormat;
+	}
+	,set_disabledTextFormat: function(value) {
+		if(!this.setStyle("disabledTextFormat")) {
+			return this.__disabledTextFormat;
+		}
+		if(this.__disabledTextFormat == value) {
+			return this.__disabledTextFormat;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_disabledTextFormat);
+		this.__disabledTextFormat = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__disabledTextFormat;
+	}
+	,clearStyle_disabledTextFormat: function() {
+		this.set_disabledTextFormat(null);
+		return this.get_disabledTextFormat();
+	}
+	,get_backgroundSkin: function() {
+		return this.__backgroundSkin;
+	}
+	,set_backgroundSkin: function(value) {
+		if(!this.setStyle("backgroundSkin")) {
+			return this.__backgroundSkin;
+		}
+		if(this.__backgroundSkin == value) {
+			return this.__backgroundSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_backgroundSkin);
+		this.__backgroundSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__backgroundSkin;
+	}
+	,clearStyle_backgroundSkin: function() {
+		this.set_backgroundSkin(null);
+		return this.get_backgroundSkin();
+	}
+	,get_disabledBackgroundSkin: function() {
+		return this.__disabledBackgroundSkin;
+	}
+	,set_disabledBackgroundSkin: function(value) {
+		if(!this.setStyle("disabledBackgroundSkin")) {
+			return this.__disabledBackgroundSkin;
+		}
+		if(this.__disabledBackgroundSkin == value) {
+			return this.__disabledBackgroundSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_disabledBackgroundSkin);
+		this.__disabledBackgroundSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__disabledBackgroundSkin;
+	}
+	,clearStyle_disabledBackgroundSkin: function() {
+		this.set_disabledBackgroundSkin(null);
+		return this.get_disabledBackgroundSkin();
+	}
+	,get_paddingTop: function() {
+		return this.__paddingTop;
+	}
+	,set_paddingTop: function(value) {
+		if(!this.setStyle("paddingTop")) {
+			return this.__paddingTop;
+		}
+		if(this.__paddingTop == value) {
+			return this.__paddingTop;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingTop);
+		this.__paddingTop = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingTop;
+	}
+	,clearStyle_paddingTop: function() {
+		this.set_paddingTop(0.0);
+		return this.get_paddingTop();
+	}
+	,get_paddingRight: function() {
+		return this.__paddingRight;
+	}
+	,set_paddingRight: function(value) {
+		if(!this.setStyle("paddingRight")) {
+			return this.__paddingRight;
+		}
+		if(this.__paddingRight == value) {
+			return this.__paddingRight;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingRight);
+		this.__paddingRight = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingRight;
+	}
+	,clearStyle_paddingRight: function() {
+		this.set_paddingRight(0.0);
+		return this.get_paddingRight();
+	}
+	,get_paddingBottom: function() {
+		return this.__paddingBottom;
+	}
+	,set_paddingBottom: function(value) {
+		if(!this.setStyle("paddingBottom")) {
+			return this.__paddingBottom;
+		}
+		if(this.__paddingBottom == value) {
+			return this.__paddingBottom;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingBottom);
+		this.__paddingBottom = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingBottom;
+	}
+	,clearStyle_paddingBottom: function() {
+		this.set_paddingBottom(0.0);
+		return this.get_paddingBottom();
+	}
+	,get_paddingLeft: function() {
+		return this.__paddingLeft;
+	}
+	,set_paddingLeft: function(value) {
+		if(!this.setStyle("paddingLeft")) {
+			return this.__paddingLeft;
+		}
+		if(this.__paddingLeft == value) {
+			return this.__paddingLeft;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingLeft);
+		this.__paddingLeft = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingLeft;
+	}
+	,clearStyle_paddingLeft: function() {
+		this.set_paddingLeft(0.0);
+		return this.get_paddingLeft();
+	}
+	,get_minGap: function() {
+		return this.__minGap;
+	}
+	,set_minGap: function(value) {
+		if(!this.setStyle("minGap")) {
+			return this.__minGap;
+		}
+		if(this.__minGap == value) {
+			return this.__minGap;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_minGap);
+		this.__minGap = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__minGap;
+	}
+	,clearStyle_minGap: function() {
+		this.set_minGap(0.0);
+		return this.get_minGap();
+	}
+	,get_verticalAlign: function() {
+		return this.__verticalAlign;
+	}
+	,set_verticalAlign: function(value) {
+		if(!this.setStyle("verticalAlign")) {
+			return this.__verticalAlign;
+		}
+		if(this.__verticalAlign == value) {
+			return this.__verticalAlign;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_verticalAlign);
+		this.__verticalAlign = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__verticalAlign;
+	}
+	,clearStyle_verticalAlign: function() {
+		this.set_verticalAlign(feathers_layout_VerticalAlign.MIDDLE);
+		return this.get_verticalAlign();
+	}
+	,__class__: feathers_controls_Header
+	,__properties__: $extend(feathers_core_FeathersControl.prototype.__properties__,{set_rightView:"set_rightView",get_rightView:"get_rightView",set_leftView:"set_leftView",get_leftView:"get_leftView",set_verticalAlign:"set_verticalAlign",get_verticalAlign:"get_verticalAlign",set_minGap:"set_minGap",get_minGap:"get_minGap",set_paddingLeft:"set_paddingLeft",get_paddingLeft:"get_paddingLeft",set_paddingBottom:"set_paddingBottom",get_paddingBottom:"get_paddingBottom",set_paddingRight:"set_paddingRight",get_paddingRight:"get_paddingRight",set_paddingTop:"set_paddingTop",get_paddingTop:"get_paddingTop",set_disabledBackgroundSkin:"set_disabledBackgroundSkin",get_disabledBackgroundSkin:"get_disabledBackgroundSkin",set_backgroundSkin:"set_backgroundSkin",get_backgroundSkin:"get_backgroundSkin",set_disabledTextFormat:"set_disabledTextFormat",get_disabledTextFormat:"get_disabledTextFormat",set_embedFonts:"set_embedFonts",get_embedFonts:"get_embedFonts",set_styleSheet:"set_styleSheet",get_styleSheet:"get_styleSheet",set_textFormat:"set_textFormat",get_textFormat:"get_textFormat",set_htmlText:"set_htmlText",get_htmlText:"get_htmlText",get_baseline:"get_baseline",set_text:"set_text",get_text:"get_text"})
+});
 var feathers_core_IStageFocusDelegate = function() { };
 $hxClasses["feathers.core.IStageFocusDelegate"] = feathers_core_IStageFocusDelegate;
 feathers_core_IStageFocusDelegate.__name__ = "feathers.core.IStageFocusDelegate";
@@ -8932,6 +12266,3029 @@ feathers_controls_Label.prototype = $extend(feathers_core_FeathersControl.protot
 	,__class__: feathers_controls_Label
 	,__properties__: $extend(feathers_core_FeathersControl.prototype.__properties__,{set_disabledBackgroundSkin:"set_disabledBackgroundSkin",get_disabledBackgroundSkin:"get_disabledBackgroundSkin",set_backgroundSkin:"set_backgroundSkin",get_backgroundSkin:"get_backgroundSkin",set_wordWrap:"set_wordWrap",get_wordWrap:"get_wordWrap",set_verticalAlign:"set_verticalAlign",get_verticalAlign:"get_verticalAlign",set_paddingLeft:"set_paddingLeft",get_paddingLeft:"get_paddingLeft",set_paddingBottom:"set_paddingBottom",get_paddingBottom:"get_paddingBottom",set_paddingRight:"set_paddingRight",get_paddingRight:"get_paddingRight",set_paddingTop:"set_paddingTop",get_paddingTop:"get_paddingTop",set_disabledTextFormat:"set_disabledTextFormat",get_disabledTextFormat:"get_disabledTextFormat",get_selectionEndIndex:"get_selectionEndIndex",get_selectionBeginIndex:"get_selectionBeginIndex",get_stageFocusTarget:"get_stageFocusTarget",set_selectable:"set_selectable",get_selectable:"get_selectable",set_embedFonts:"set_embedFonts",get_embedFonts:"get_embedFonts",set_styleSheet:"set_styleSheet",get_styleSheet:"get_styleSheet",set_textFormat:"set_textFormat",get_textFormat:"get_textFormat",set_htmlText:"set_htmlText",get_htmlText:"get_htmlText",get_baseline:"get_baseline",set_text:"set_text",get_text:"get_text"})
 });
+var feathers_utils_DisplayObjectFactory = function() {
+};
+$hxClasses["feathers.utils.DisplayObjectFactory"] = feathers_utils_DisplayObjectFactory;
+feathers_utils_DisplayObjectFactory.__name__ = "feathers.utils.DisplayObjectFactory";
+feathers_utils_DisplayObjectFactory.withDisplayObject = function(displayObject,destroy) {
+	var item = new feathers_utils_DisplayObjectFactory();
+	item.create = function() {
+		return displayObject;
+	};
+	item.destroy = destroy;
+	return item;
+};
+feathers_utils_DisplayObjectFactory.withClass = function(displayObjectType,destroy) {
+	if(destroy == null) {
+		destroy = function(target) {
+			if(js_Boot.__implements(target,feathers_core_IUIControl)) {
+				(js_Boot.__cast(target , feathers_core_IUIControl)).dispose();
+			}
+		};
+	}
+	var item = new feathers_utils_DisplayObjectFactory();
+	item.create = function() {
+		return Type.createInstance(displayObjectType,[]);
+	};
+	item.destroy = destroy;
+	return item;
+};
+feathers_utils_DisplayObjectFactory.withFunction = function(create,destroy) {
+	var item = new feathers_utils_DisplayObjectFactory();
+	item.create = create;
+	item.destroy = destroy;
+	return item;
+};
+feathers_utils_DisplayObjectFactory.prototype = {
+	create: function() {
+		return null;
+	}
+	,destroy: function(target) {
+	}
+	,__class__: feathers_utils_DisplayObjectFactory
+};
+var js_Boot = function() { };
+$hxClasses["js.Boot"] = js_Boot;
+js_Boot.__name__ = "js.Boot";
+js_Boot.getClass = function(o) {
+	if(o == null) {
+		return null;
+	} else if(((o) instanceof Array)) {
+		return Array;
+	} else {
+		var cl = o.__class__;
+		if(cl != null) {
+			return cl;
+		}
+		var name = js_Boot.__nativeClassName(o);
+		if(name != null) {
+			return js_Boot.__resolveNativeClass(name);
+		}
+		return null;
+	}
+};
+js_Boot.__string_rec = function(o,s) {
+	if(o == null) {
+		return "null";
+	}
+	if(s.length >= 5) {
+		return "<...>";
+	}
+	var t = typeof(o);
+	if(t == "function" && (o.__name__ || o.__ename__)) {
+		t = "object";
+	}
+	switch(t) {
+	case "function":
+		return "<function>";
+	case "object":
+		if(o.__enum__) {
+			var e = $hxEnums[o.__enum__];
+			var con = e.__constructs__[o._hx_index];
+			var n = con._hx_name;
+			if(con.__params__) {
+				s = s + "\t";
+				return n + "(" + ((function($this) {
+					var $r;
+					var _g = [];
+					{
+						var _g1 = 0;
+						var _g2 = con.__params__;
+						while(true) {
+							if(!(_g1 < _g2.length)) {
+								break;
+							}
+							var p = _g2[_g1];
+							_g1 = _g1 + 1;
+							_g.push(js_Boot.__string_rec(o[p],s));
+						}
+					}
+					$r = _g;
+					return $r;
+				}(this))).join(",") + ")";
+			} else {
+				return n;
+			}
+		}
+		if(((o) instanceof Array)) {
+			var str = "[";
+			s += "\t";
+			var _g = 0;
+			var _g1 = o.length;
+			while(_g < _g1) {
+				var i = _g++;
+				str += (i > 0 ? "," : "") + js_Boot.__string_rec(o[i],s);
+			}
+			str += "]";
+			return str;
+		}
+		var tostr;
+		try {
+			tostr = o.toString;
+		} catch( _g ) {
+			haxe_NativeStackTrace.lastError = _g;
+			return "???";
+		}
+		if(tostr != null && tostr != Object.toString && typeof(tostr) == "function") {
+			var s2 = o.toString();
+			if(s2 != "[object Object]") {
+				return s2;
+			}
+		}
+		var str = "{\n";
+		s += "\t";
+		var hasp = o.hasOwnProperty != null;
+		var k = null;
+		for( k in o ) {
+		if(hasp && !o.hasOwnProperty(k)) {
+			continue;
+		}
+		if(k == "prototype" || k == "__class__" || k == "__super__" || k == "__interfaces__" || k == "__properties__") {
+			continue;
+		}
+		if(str.length != 2) {
+			str += ", \n";
+		}
+		str += s + k + " : " + js_Boot.__string_rec(o[k],s);
+		}
+		s = s.substring(1);
+		str += "\n" + s + "}";
+		return str;
+	case "string":
+		return o;
+	default:
+		return String(o);
+	}
+};
+js_Boot.__interfLoop = function(cc,cl) {
+	if(cc == null) {
+		return false;
+	}
+	if(cc == cl) {
+		return true;
+	}
+	var intf = cc.__interfaces__;
+	if(intf != null) {
+		var _g = 0;
+		var _g1 = intf.length;
+		while(_g < _g1) {
+			var i = _g++;
+			var i1 = intf[i];
+			if(i1 == cl || js_Boot.__interfLoop(i1,cl)) {
+				return true;
+			}
+		}
+	}
+	return js_Boot.__interfLoop(cc.__super__,cl);
+};
+js_Boot.__instanceof = function(o,cl) {
+	if(cl == null) {
+		return false;
+	}
+	switch(cl) {
+	case Array:
+		return ((o) instanceof Array);
+	case Bool:
+		return typeof(o) == "boolean";
+	case Dynamic:
+		return o != null;
+	case Float:
+		return typeof(o) == "number";
+	case Int:
+		if(typeof(o) == "number") {
+			return ((o | 0) === o);
+		} else {
+			return false;
+		}
+		break;
+	case String:
+		return typeof(o) == "string";
+	default:
+		if(o != null) {
+			if(typeof(cl) == "function") {
+				if(js_Boot.__downcastCheck(o,cl)) {
+					return true;
+				}
+			} else if(typeof(cl) == "object" && js_Boot.__isNativeObj(cl)) {
+				if(((o) instanceof cl)) {
+					return true;
+				}
+			}
+		} else {
+			return false;
+		}
+		if(cl == Class ? o.__name__ != null : false) {
+			return true;
+		}
+		if(cl == Enum ? o.__ename__ != null : false) {
+			return true;
+		}
+		return o.__enum__ != null ? $hxEnums[o.__enum__] == cl : false;
+	}
+};
+js_Boot.__downcastCheck = function(o,cl) {
+	if(!((o) instanceof cl)) {
+		if(cl.__isInterface__) {
+			return js_Boot.__interfLoop(js_Boot.getClass(o),cl);
+		} else {
+			return false;
+		}
+	} else {
+		return true;
+	}
+};
+js_Boot.__implements = function(o,iface) {
+	return js_Boot.__interfLoop(js_Boot.getClass(o),iface);
+};
+js_Boot.__cast = function(o,t) {
+	if(o == null || js_Boot.__instanceof(o,t)) {
+		return o;
+	} else {
+		throw haxe_Exception.thrown("Cannot cast " + Std.string(o) + " to " + Std.string(t));
+	}
+};
+js_Boot.__nativeClassName = function(o) {
+	var name = js_Boot.__toStr.call(o).slice(8,-1);
+	if(name == "Object" || name == "Function" || name == "Math" || name == "JSON") {
+		return null;
+	}
+	return name;
+};
+js_Boot.__isNativeObj = function(o) {
+	return js_Boot.__nativeClassName(o) != null;
+};
+js_Boot.__resolveNativeClass = function(name) {
+	return $global[name];
+};
+var feathers_controls_VScrollBar = function(value,minimum,maximum,changeListener) {
+	if(maximum == null) {
+		maximum = 1.0;
+	}
+	if(minimum == null) {
+		minimum = 0.0;
+	}
+	if(value == null) {
+		value = 0.0;
+	}
+	this.initializeVScrollBarTheme();
+	feathers_controls_supportClasses_BaseScrollBar.call(this,value,minimum,maximum,changeListener);
+};
+$hxClasses["feathers.controls.VScrollBar"] = feathers_controls_VScrollBar;
+feathers_controls_VScrollBar.__name__ = "feathers.controls.VScrollBar";
+feathers_controls_VScrollBar.__super__ = feathers_controls_supportClasses_BaseScrollBar;
+feathers_controls_VScrollBar.prototype = $extend(feathers_controls_supportClasses_BaseScrollBar.prototype,{
+	initializeVScrollBarTheme: function() {
+		feathers_themes_steel_components_SteelVScrollBarStyles.initialize();
+	}
+	,valueToLocation: function(value) {
+		if(js_Boot.__implements(this._currentThumbSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentThumbSkin , feathers_core_IValidating)).validateNow();
+		}
+		var normalized = this.normalizeValue(value);
+		var trackScrollableHeight = this.actualHeight - this.get_paddingTop() - this.get_paddingBottom() - this._currentThumbSkin.get_height();
+		return this.get_paddingTop() + trackScrollableHeight * normalized;
+	}
+	,locationToValue: function(x,y) {
+		var percentage = 0.0;
+		var trackScrollableHeight = this.actualHeight - this.get_paddingTop() - this.get_paddingBottom() - this._currentThumbSkin.get_height();
+		var yOffset = y - this._pointerStartY;
+		var yPosition = Math.min(Math.max(0.0,this._thumbStartY - this.get_paddingTop() + yOffset),trackScrollableHeight);
+		percentage = yPosition / trackScrollableHeight;
+		return this._minimum + percentage * (this._maximum - this._minimum);
+	}
+	,saveThumbStart: function(x,y) {
+		var trackHeightMinusThumbHeight = this.actualHeight;
+		var locationMinusHalfThumbHeight = y;
+		if(this._currentThumbSkin != null) {
+			trackHeightMinusThumbHeight -= this._currentThumbSkin.get_height();
+			locationMinusHalfThumbHeight -= this._currentThumbSkin.get_height() / 2.0;
+		}
+		this._thumbStartX = x;
+		this._thumbStartY = Math.min(trackHeightMinusThumbHeight,locationMinusHalfThumbHeight);
+	}
+	,measure: function() {
+		var needsWidth = this.get_explicitWidth() == null;
+		var needsHeight = this.get_explicitHeight() == null;
+		var needsMinWidth = this.get_explicitMinWidth() == null;
+		var needsMinHeight = this.get_explicitMinHeight() == null;
+		var needsMaxWidth = this.get_explicitMaxWidth() == null;
+		var needsMaxHeight = this.get_explicitMaxHeight() == null;
+		if(!needsWidth && !needsHeight && !needsMinWidth && !needsMinHeight && !needsMaxWidth && !needsMaxHeight) {
+			return false;
+		}
+		if(this._currentThumbSkin != null) {
+			this._thumbSkinMeasurements.restore(this._currentThumbSkin);
+			if(js_Boot.__implements(this._currentThumbSkin,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._currentThumbSkin , feathers_core_IValidating)).validateNow();
+			}
+		}
+		if(this._currentTrackSkin != null) {
+			this._trackSkinMeasurements.restore(this._currentTrackSkin);
+			if(js_Boot.__implements(this._currentTrackSkin,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._currentTrackSkin , feathers_core_IValidating)).validateNow();
+			}
+		}
+		if(this._currentSecondaryTrackSkin != null) {
+			this._secondaryTrackSkinMeasurements.restore(this._currentSecondaryTrackSkin);
+			if(js_Boot.__implements(this._currentSecondaryTrackSkin,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._currentSecondaryTrackSkin , feathers_core_IValidating)).validateNow();
+			}
+		}
+		var newWidth = this.get_explicitWidth();
+		if(needsWidth) {
+			newWidth = this.get_paddingLeft() + this.get_paddingRight();
+			if(this._currentThumbSkin != null) {
+				newWidth += this._currentThumbSkin.get_width();
+			}
+			if(this._currentTrackSkin != null) {
+				if(newWidth < this._currentTrackSkin.get_width()) {
+					newWidth = this._currentTrackSkin.get_width();
+				}
+				if(this._currentSecondaryTrackSkin != null && newWidth < this._currentSecondaryTrackSkin.get_width()) {
+					newWidth = this._currentSecondaryTrackSkin.get_width();
+				}
+			}
+		}
+		var newHeight = this.get_explicitHeight();
+		if(needsHeight) {
+			newHeight = 0.0;
+			if(this._currentTrackSkin != null) {
+				newHeight += this._currentTrackSkin.get_height();
+				if(this._currentSecondaryTrackSkin != null) {
+					newHeight += this._currentSecondaryTrackSkin.get_height();
+				}
+			}
+			var thumbHeight = this.get_paddingTop() + this.get_paddingBottom();
+			if(this._currentThumbSkin != null) {
+				thumbHeight += this._currentThumbSkin.get_height();
+			}
+			if(newHeight < thumbHeight) {
+				newHeight = thumbHeight;
+			}
+		}
+		var newMinWidth = newWidth;
+		var newMinHeight = newHeight;
+		var newMaxWidth = newWidth;
+		return this.saveMeasurements(newWidth,newHeight,newMinWidth,newMinHeight,newMaxWidth,null);
+	}
+	,layoutSplitTrack: function() {
+		var location = this.valueToLocation(this.get_value());
+		if(this._currentThumbSkin != null) {
+			if(js_Boot.__implements(this._currentThumbSkin,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._currentThumbSkin , feathers_core_IValidating)).validateNow();
+			}
+			location += Math.round(this._currentThumbSkin.get_height() / 2.0);
+		}
+		this._currentSecondaryTrackSkin.set_y(0.0);
+		this._currentSecondaryTrackSkin.set_height(location);
+		this._currentTrackSkin.set_y(location);
+		this._currentTrackSkin.set_height(this.actualHeight - location);
+		if(js_Boot.__implements(this._currentSecondaryTrackSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentSecondaryTrackSkin , feathers_core_IValidating)).validateNow();
+		}
+		if(js_Boot.__implements(this._currentTrackSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentTrackSkin , feathers_core_IValidating)).validateNow();
+		}
+		this._currentSecondaryTrackSkin.set_x((this.actualWidth - this._currentSecondaryTrackSkin.get_width()) / 2.0);
+		this._currentTrackSkin.set_x((this.actualWidth - this._currentTrackSkin.get_width()) / 2.0);
+	}
+	,layoutSingleTrack: function() {
+		if(this._currentTrackSkin == null) {
+			return;
+		}
+		this._currentTrackSkin.set_y(0.0);
+		this._currentTrackSkin.set_height(this.actualHeight);
+		if(js_Boot.__implements(this._currentTrackSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentTrackSkin , feathers_core_IValidating)).validateNow();
+		}
+		this._currentTrackSkin.set_x((this.actualWidth - this._currentTrackSkin.get_width()) / 2.0);
+	}
+	,layoutThumb: function() {
+		if(this._currentThumbSkin == null) {
+			return;
+		}
+		var range = this._maximum - this._minimum;
+		this._currentThumbSkin.set_visible((!this.get_hideThumbWhenDisabled() || this._enabled) && range > 0.0);
+		if(!this._currentThumbSkin.get_visible()) {
+			return;
+		}
+		if(js_Boot.__implements(this._currentThumbSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentThumbSkin , feathers_core_IValidating)).validateNow();
+		}
+		var valueOffset = 0.0;
+		if(this._value < this._minimum) {
+			valueOffset = this._minimum - this._value;
+		} else if(this._value > this._maximum) {
+			valueOffset = this._value - this._maximum;
+		}
+		var contentWidth = this.actualWidth - this.get_paddingLeft() - this.get_paddingRight();
+		var contentHeight = this.actualHeight - this.get_paddingTop() - this.get_paddingBottom();
+		if(this.get_fixedThumbSize()) {
+			if(this._thumbSkinMeasurements.height != null) {
+				this._currentThumbSkin.set_height(this._thumbSkinMeasurements.height);
+			}
+		} else {
+			var adjustedPage = this.getAdjustedPage();
+			var thumbHeight = contentHeight * adjustedPage / (range + adjustedPage);
+			if(thumbHeight > 0.0) {
+				var heightOffset = contentHeight - thumbHeight;
+				if(heightOffset > thumbHeight) {
+					heightOffset = thumbHeight;
+				}
+				heightOffset *= valueOffset / (range * thumbHeight / contentHeight);
+				thumbHeight -= heightOffset;
+			}
+			if(this._thumbSkinMeasurements.minHeight != null) {
+				if(thumbHeight < this._thumbSkinMeasurements.minHeight) {
+					thumbHeight = this._thumbSkinMeasurements.minHeight;
+				}
+			} else if(js_Boot.__implements(this._currentThumbSkin,feathers_core_IMeasureObject)) {
+				var measureSkin = js_Boot.__cast(this._currentThumbSkin , feathers_core_IMeasureObject);
+				if(thumbHeight < measureSkin.get_minHeight()) {
+					thumbHeight = measureSkin.get_minHeight();
+				}
+			}
+			if(thumbHeight < 0.0) {
+				thumbHeight = 0.0;
+			}
+			this._currentThumbSkin.set_height(thumbHeight);
+		}
+		this._currentThumbSkin.set_x(this.get_paddingLeft() + (contentWidth - this._currentThumbSkin.get_width()) / 2.0);
+		this._currentThumbSkin.set_y(this.valueToLocation(this._value));
+	}
+	,get_styleContext: function() {
+		return feathers_controls_VScrollBar;
+	}
+	,__class__: feathers_controls_VScrollBar
+});
+var feathers_controls_supportClasses_BaseScrollContainer = function() {
+	this.__scrollPixelSnapping = false;
+	this.__hideScrollBarEase = motion_easing_Quart.easeOut;
+	this.__hideScrollBarDuration = 0.2;
+	this.__showScrollBarMinimumDuration = 0.5;
+	this.__scrollBarYPosition = feathers_layout_RelativePosition.RIGHT;
+	this.__scrollBarXPosition = feathers_layout_RelativePosition.BOTTOM;
+	this.__autoHideScrollBars = true;
+	this.__showScrollBars = true;
+	this.__fixedScrollBars = false;
+	this.__viewPortMaskSkin = null;
+	this.__maskSkin = null;
+	this.__disabledBackgroundSkin = null;
+	this.__backgroundSkin = null;
+	this.__paddingLeft = 0.0;
+	this.__paddingBottom = 0.0;
+	this.__paddingRight = 0.0;
+	this.__paddingTop = 0.0;
+	this._scrollMode = feathers_controls_ScrollMode.MASK;
+	this._ignoreViewPortResizing = false;
+	this._settingScrollerDimensions = false;
+	this._ignoreScrollerChanges = false;
+	this._scrollRect2 = new openfl_geom_Rectangle();
+	this._scrollRect1 = new openfl_geom_Rectangle();
+	this._prevMaxScrollY = 0.0;
+	this._prevMinScrollY = 0.0;
+	this._prevMaxScrollX = 0.0;
+	this._prevMinScrollX = 0.0;
+	this._hideScrollBarY = null;
+	this._hideScrollBarX = null;
+	this._scrollPolicyY = feathers_controls_ScrollPolicy.AUTO;
+	this._scrollPolicyX = feathers_controls_ScrollPolicy.AUTO;
+	this._scrollStepY = 0.0;
+	this._scrollStepX = 0.0;
+	this._temporaryRestrictedScrollY = null;
+	this._temporaryScrollY = null;
+	this._temporaryRestrictedScrollX = null;
+	this._temporaryScrollX = null;
+	this.showScrollBarY = false;
+	this.showScrollBarX = false;
+	this._ignoreScrollBarYChange = false;
+	this._ignoreScrollBarXChange = false;
+	this.chromeMeasuredMaxHeight = 1.0 / 0.0;
+	this.chromeMeasuredMinHeight = 0.0;
+	this.chromeMeasuredHeight = 0.0;
+	this.chromeMeasuredMaxWidth = 1.0 / 0.0;
+	this.chromeMeasuredMinWidth = 0.0;
+	this.chromeMeasuredWidth = 0.0;
+	this.leftViewPortOffset = 0.0;
+	this.bottomViewPortOffset = 0.0;
+	this.rightViewPortOffset = 0.0;
+	this.topViewPortOffset = 0.0;
+	this._fallbackViewPortMaskSkin = null;
+	this._currentViewPortMaskSkin = null;
+	this._currentMaskSkin = null;
+	this._backgroundSkinMeasurements = null;
+	this._currentBackgroundSkin = null;
+	this._scrollBarYHover = false;
+	this._scrollBarXHover = false;
+	this._scrollerDraggingY = false;
+	this._scrollerDraggingX = false;
+	feathers_core_FeathersControl.call(this);
+	this.set_tabEnabled(true);
+	this.set_tabChildren(true);
+	this.focusRect = null;
+	this.addEventListener("keyDown",$bind(this,this.baseScrollContainer_keyDownHandler));
+	this.addEventListener("addedToStage",$bind(this,this.baseScrollContainer_addedToStageHandler));
+	this.addEventListener("removedFromStage",$bind(this,this.baseScrollContainer_removedFromStageHandler));
+};
+$hxClasses["feathers.controls.supportClasses.BaseScrollContainer"] = feathers_controls_supportClasses_BaseScrollContainer;
+feathers_controls_supportClasses_BaseScrollContainer.__name__ = "feathers.controls.supportClasses.BaseScrollContainer";
+feathers_controls_supportClasses_BaseScrollContainer.__interfaces__ = [feathers_core_IFocusObject];
+feathers_controls_supportClasses_BaseScrollContainer.__super__ = feathers_core_FeathersControl;
+feathers_controls_supportClasses_BaseScrollContainer.prototype = $extend(feathers_core_FeathersControl.prototype,{
+	get_viewPort: function() {
+		return this._viewPort;
+	}
+	,set_viewPort: function(value) {
+		if(this._viewPort == value) {
+			return this._viewPort;
+		}
+		if(this._viewPort != null) {
+			this._viewPort.removeEventListener("resize",$bind(this,this.viewPort_resizeHandler));
+		}
+		if(this.scroller != null) {
+			this.scroller.set_target(null);
+		}
+		this._viewPort = value;
+		if(this._viewPort != null) {
+			this._viewPort.addEventListener("resize",$bind(this,this.viewPort_resizeHandler));
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.SCROLL);
+		return this._viewPort;
+	}
+	,get_tabEnabled: function() {
+		if(this.get_maxScrollY() != this.get_minScrollY() || this.get_maxScrollX() != this.get_minScrollX()) {
+			return this.get_rawTabEnabled();
+		} else {
+			return false;
+		}
+	}
+	,get_scrollBarXFactory: function() {
+		return this._scrollBarXFactory;
+	}
+	,set_scrollBarXFactory: function(value) {
+		if(this._scrollBarXFactory == value) {
+			return this._scrollBarXFactory;
+		}
+		this._scrollBarXFactory = value;
+		this.setInvalid(feathers_controls_supportClasses_BaseScrollContainer.INVALIDATION_FLAG_SCROLL_BAR_FACTORY);
+		return this._scrollBarXFactory;
+	}
+	,get_scrollBarYFactory: function() {
+		return this._scrollBarYFactory;
+	}
+	,set_scrollBarYFactory: function(value) {
+		if(this._scrollBarYFactory == value) {
+			return this._scrollBarYFactory;
+		}
+		this._scrollBarYFactory = value;
+		this.setInvalid(feathers_controls_supportClasses_BaseScrollContainer.INVALIDATION_FLAG_SCROLL_BAR_FACTORY);
+		return this._scrollBarYFactory;
+	}
+	,get_scrollerFactory: function() {
+		return this._scrollerFactory;
+	}
+	,set_scrollerFactory: function(value) {
+		if(this._scrollerFactory == value) {
+			return this._scrollerFactory;
+		}
+		this._scrollerFactory = value;
+		this.setInvalid(feathers_controls_supportClasses_BaseScrollContainer.INVALIDATION_FLAG_SCROLLER_FACTORY);
+		return this._scrollerFactory;
+	}
+	,get_scrollX: function() {
+		if(this.scroller == null) {
+			if(this._temporaryRestrictedScrollX != null) {
+				return this._temporaryRestrictedScrollX;
+			}
+			if(this._temporaryScrollX != null) {
+				return this._temporaryScrollX;
+			}
+			return 0.0;
+		}
+		return this.scroller.get_scrollX();
+	}
+	,set_scrollX: function(value) {
+		if(this.scroller == null) {
+			this._temporaryScrollX = value;
+			this._temporaryRestrictedScrollX = null;
+			feathers_events_ScrollEvent.dispatch(this,"scroll",false,false,this._temporaryScrollX,this._temporaryScrollY);
+			return this._temporaryScrollX;
+		}
+		this.scroller.set_scrollX(value);
+		return this.scroller.get_scrollX();
+	}
+	,get_restrictedScrollX: function() {
+		if(this.scroller == null) {
+			return this.get_scrollX();
+		}
+		return this.scroller.get_restrictedScrollX();
+	}
+	,set_restrictedScrollX: function(value) {
+		if(this.scroller == null) {
+			this._temporaryRestrictedScrollX = value;
+			this._temporaryScrollX = null;
+			feathers_events_ScrollEvent.dispatch(this,"scroll",false,false,this._temporaryScrollX,this._temporaryScrollY);
+			return this._temporaryRestrictedScrollX;
+		}
+		this.scroller.set_restrictedScrollX(value);
+		return this.scroller.get_restrictedScrollX();
+	}
+	,get_scrollY: function() {
+		if(this.scroller == null) {
+			if(this._temporaryRestrictedScrollY != null) {
+				return this._temporaryRestrictedScrollY;
+			}
+			if(this._temporaryScrollY != null) {
+				return this._temporaryScrollY;
+			}
+			return 0.0;
+		}
+		return this.scroller.get_scrollY();
+	}
+	,set_scrollY: function(value) {
+		if(this.scroller == null) {
+			this._temporaryScrollY = value;
+			this._temporaryRestrictedScrollY = null;
+			feathers_events_ScrollEvent.dispatch(this,"scroll",false,false,this._temporaryScrollX,this._temporaryScrollY);
+			return this._temporaryScrollY;
+		}
+		this.scroller.set_scrollY(value);
+		return this.scroller.get_scrollY();
+	}
+	,get_restrictedScrollY: function() {
+		if(this.scroller == null) {
+			this.get_scrollY();
+		}
+		return this.scroller.get_restrictedScrollY();
+	}
+	,set_restrictedScrollY: function(value) {
+		if(this.scroller == null) {
+			this._temporaryRestrictedScrollY = value;
+			this._temporaryScrollY = null;
+			feathers_events_ScrollEvent.dispatch(this,"scroll",false,false,this._temporaryScrollX,this._temporaryScrollY);
+			return this._temporaryRestrictedScrollY;
+		}
+		this.scroller.set_restrictedScrollY(value);
+		return this.scroller.get_restrictedScrollY();
+	}
+	,get_minScrollX: function() {
+		if(this.scroller == null) {
+			return 0.0;
+		}
+		return this.scroller.get_minScrollX();
+	}
+	,get_minScrollY: function() {
+		if(this.scroller == null) {
+			return 0.0;
+		}
+		return this.scroller.get_minScrollY();
+	}
+	,get_maxScrollX: function() {
+		if(this.scroller == null) {
+			return 0.0;
+		}
+		return this.scroller.get_maxScrollX();
+	}
+	,get_maxScrollY: function() {
+		if(this.scroller == null) {
+			return 0.0;
+		}
+		return this.scroller.get_maxScrollY();
+	}
+	,get_scrollStepX: function() {
+		return this._scrollStepX;
+	}
+	,set_scrollStepX: function(value) {
+		if(this._scrollStepX == value) {
+			return this._scrollStepX;
+		}
+		this._scrollStepX = value;
+		this.setInvalid(feathers_core_InvalidationFlag.SCROLL);
+		return this._scrollStepX;
+	}
+	,get_scrollStepY: function() {
+		return this._scrollStepY;
+	}
+	,set_scrollStepY: function(value) {
+		if(this._scrollStepY == value) {
+			return this._scrollStepY;
+		}
+		this._scrollStepY = value;
+		this.setInvalid(feathers_core_InvalidationFlag.SCROLL);
+		return this._scrollStepY;
+	}
+	,get_scrollPolicyX: function() {
+		return this._scrollPolicyX;
+	}
+	,set_scrollPolicyX: function(value) {
+		if(this._scrollPolicyX == value) {
+			return this._scrollPolicyX;
+		}
+		this._scrollPolicyX = value;
+		this.setInvalid(feathers_core_InvalidationFlag.SCROLL);
+		return this._scrollPolicyX;
+	}
+	,get_scrollPolicyY: function() {
+		return this._scrollPolicyY;
+	}
+	,set_scrollPolicyY: function(value) {
+		if(this._scrollPolicyY == value) {
+			return this._scrollPolicyY;
+		}
+		this._scrollPolicyY = value;
+		this.setInvalid(feathers_core_InvalidationFlag.SCROLL);
+		return this._scrollPolicyY;
+	}
+	,get_measureViewPort: function() {
+		return true;
+	}
+	,get_scrollMode: function() {
+		return this._scrollMode;
+	}
+	,set_scrollMode: function(value) {
+		if(this._scrollMode == value) {
+			return this._scrollMode;
+		}
+		this._scrollMode = value;
+		this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		return this._scrollMode;
+	}
+	,setPadding: function(value) {
+		this.set_paddingTop(value);
+		this.set_paddingRight(value);
+		this.set_paddingBottom(value);
+		this.set_paddingLeft(value);
+	}
+	,getViewPortVisibleBounds: function(result) {
+		var viewPortX = this.leftViewPortOffset + this.get_paddingLeft();
+		var viewPortY = this.topViewPortOffset + this.get_paddingTop();
+		if(result == null) {
+			result = new openfl_geom_Rectangle(viewPortX,viewPortY,this._viewPort.get_visibleWidth(),this._viewPort.get_visibleHeight());
+		} else {
+			result.setTo(viewPortX,viewPortY,this._viewPort.get_visibleWidth(),this._viewPort.get_visibleHeight());
+		}
+		return result;
+	}
+	,dispose: function() {
+		this.destroyScroller();
+		this.destroyScrollBarX();
+		this.destroyScrollBarY();
+		feathers_core_FeathersControl.prototype.dispose.call(this);
+	}
+	,update: function() {
+		var stylesInvalid = this.isInvalid(feathers_core_InvalidationFlag.STYLES);
+		var sizeInvalid = this.isInvalid(feathers_core_InvalidationFlag.SIZE);
+		var stateInvalid = this.isInvalid(feathers_core_InvalidationFlag.STATE);
+		var scrollerInvalid = this.isInvalid(feathers_controls_supportClasses_BaseScrollContainer.INVALIDATION_FLAG_SCROLLER_FACTORY);
+		var scrollBarFactoryInvalid = this.isInvalid(feathers_controls_supportClasses_BaseScrollContainer.INVALIDATION_FLAG_SCROLL_BAR_FACTORY);
+		var oldIgnoreScrollerChanges = this._ignoreScrollerChanges;
+		this._ignoreScrollerChanges = true;
+		if(scrollerInvalid) {
+			this.createScroller();
+		}
+		if(stylesInvalid || stateInvalid) {
+			this.refreshBackgroundSkin();
+		}
+		if(stylesInvalid) {
+			this.refreshMaskSkin();
+			this.refreshViewPortMaskSkin();
+		}
+		if(scrollBarFactoryInvalid) {
+			this.createScrollBars();
+		}
+		this.refreshEnabled();
+		this.refreshScrollerValues();
+		this.refreshViewPort();
+		this.applyTemporaryScrollPositions();
+		this.refreshScrollRect();
+		this.refreshScrollBarValues();
+		this.layoutChildren();
+		this._ignoreScrollerChanges = oldIgnoreScrollerChanges;
+	}
+	,applyTemporaryScrollPositions: function() {
+		if(this._temporaryScrollX != null) {
+			this.scroller.set_scrollX(this._temporaryScrollX);
+		} else if(this._temporaryRestrictedScrollX != null) {
+			this.scroller.set_restrictedScrollX(this._temporaryRestrictedScrollX);
+		}
+		if(this._temporaryScrollY != null) {
+			this.scroller.set_scrollY(this._temporaryScrollY);
+		} else if(this._temporaryRestrictedScrollY != null) {
+			this.scroller.set_restrictedScrollY(this._temporaryRestrictedScrollY);
+		}
+		this._temporaryScrollX = null;
+		this._temporaryScrollY = null;
+		this._temporaryRestrictedScrollX = null;
+		this._temporaryRestrictedScrollY = null;
+	}
+	,needsMeasurement: function() {
+		if(!(this.isInvalid(feathers_core_InvalidationFlag.SCROLL) && this.needsScrollMeasurement() || this.isInvalid(feathers_core_InvalidationFlag.DATA) || this.isInvalid(feathers_core_InvalidationFlag.SIZE) || this.isInvalid(feathers_core_InvalidationFlag.STYLES) || this.isInvalid(feathers_controls_supportClasses_BaseScrollContainer.INVALIDATION_FLAG_SCROLL_BAR_FACTORY) || this.isInvalid(feathers_core_InvalidationFlag.STATE))) {
+			return this.isInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		} else {
+			return true;
+		}
+	}
+	,needsScrollMeasurement: function() {
+		return false;
+	}
+	,createScroller: function() {
+		this.destroyScroller();
+		this.scroller = this._scrollerFactory != null ? this._scrollerFactory() : new feathers_utils_Scroller();
+		this.scroller.addEventListener("scroll",$bind(this,this.baseScrollContainer_scroller_scrollHandler));
+		this.scroller.addEventListener("scrollStart",$bind(this,this.baseScrollContainer_scroller_scrollStartHandler));
+		this.scroller.addEventListener("scrollComplete",$bind(this,this.baseScrollContainer_scroller_scrollCompleteHandler));
+	}
+	,destroyScroller: function() {
+		if(this.scroller == null) {
+			return;
+		}
+		this._temporaryScrollX = this.scroller.get_scrollX();
+		this._temporaryScrollY = this.scroller.get_scrollY();
+		this._temporaryRestrictedScrollX = null;
+		this._temporaryRestrictedScrollY = null;
+		this.scroller.set_target(null);
+		this.scroller.removeEventListener("scroll",$bind(this,this.baseScrollContainer_scroller_scrollHandler));
+		this.scroller.removeEventListener("scrollStart",$bind(this,this.baseScrollContainer_scroller_scrollStartHandler));
+		this.scroller.removeEventListener("scrollComplete",$bind(this,this.baseScrollContainer_scroller_scrollCompleteHandler));
+		this.scroller = null;
+		this.setInvalidationFlag(feathers_controls_supportClasses_BaseScrollContainer.INVALIDATION_FLAG_SCROLLER_FACTORY);
+	}
+	,createScrollBars: function() {
+		this.createScrollBarX();
+		this.createScrollBarY();
+	}
+	,createScrollBarX: function() {
+		this.destroyScrollBarX();
+		var factory = this._scrollBarXFactory != null ? this._scrollBarXFactory : feathers_controls_supportClasses_BaseScrollContainer.defaultScrollBarXFactory;
+		this._oldScrollBarXFactory = factory;
+		this.scrollBarX = factory.create();
+		if(this.get_autoHideScrollBars()) {
+			this.scrollBarX.set_alpha(0.0);
+		}
+		this.scrollBarX.addEventListener("change",$bind(this,this.scrollBarX_changeHandler));
+		this.scrollBarX.addEventListener("rollOver",$bind(this,this.scrollBarX_rollOverHandler));
+		this.scrollBarX.addEventListener("rollOut",$bind(this,this.scrollBarX_rollOutHandler));
+		this.scrollBarX.addEventListener("scrollStart",$bind(this,this.scrollBarX_scrollStartHandler));
+		this.scrollBarX.addEventListener("scrollComplete",$bind(this,this.scrollBarX_scrollCompleteHandler));
+		this.addChild(js_Boot.__cast(this.scrollBarX , openfl_display_DisplayObject));
+	}
+	,destroyScrollBarX: function() {
+		if(this.scrollBarX == null) {
+			return;
+		}
+		this.scrollBarX.removeEventListener("change",$bind(this,this.scrollBarX_changeHandler));
+		this.scrollBarX.removeEventListener("rollOver",$bind(this,this.scrollBarX_rollOverHandler));
+		this.scrollBarX.removeEventListener("rollOut",$bind(this,this.scrollBarX_rollOutHandler));
+		this.scrollBarX.removeEventListener("scrollStart",$bind(this,this.scrollBarX_scrollStartHandler));
+		this.scrollBarX.removeEventListener("scrollComplete",$bind(this,this.scrollBarX_scrollCompleteHandler));
+		this.removeChild(js_Boot.__cast(this.scrollBarX , openfl_display_DisplayObject));
+		if(this._oldScrollBarXFactory.destroy != null) {
+			this._oldScrollBarXFactory.destroy(this.scrollBarX);
+		}
+		this._oldScrollBarXFactory = null;
+		this.scrollBarX = null;
+	}
+	,createScrollBarY: function() {
+		this.destroyScrollBarY();
+		var factory = this._scrollBarYFactory != null ? this._scrollBarYFactory : feathers_controls_supportClasses_BaseScrollContainer.defaultScrollBarYFactory;
+		this._oldScrollBarYFactory = factory;
+		this.scrollBarY = factory.create();
+		if(this.get_autoHideScrollBars()) {
+			this.scrollBarY.set_alpha(0.0);
+		}
+		this.scrollBarY.addEventListener("change",$bind(this,this.scrollBarY_changeHandler));
+		this.scrollBarY.addEventListener("rollOver",$bind(this,this.scrollBarY_rollOverHandler));
+		this.scrollBarY.addEventListener("rollOut",$bind(this,this.scrollBarY_rollOutHandler));
+		this.scrollBarY.addEventListener("scrollStart",$bind(this,this.scrollBarY_scrollStartHandler));
+		this.scrollBarY.addEventListener("scrollComplete",$bind(this,this.scrollBarY_scrollCompleteHandler));
+		this.addChild(js_Boot.__cast(this.scrollBarY , openfl_display_DisplayObject));
+	}
+	,destroyScrollBarY: function() {
+		if(this.scrollBarY == null) {
+			return;
+		}
+		this.scrollBarY.removeEventListener("change",$bind(this,this.scrollBarY_changeHandler));
+		this.scrollBarY.removeEventListener("rollOver",$bind(this,this.scrollBarY_rollOverHandler));
+		this.scrollBarY.removeEventListener("rollOut",$bind(this,this.scrollBarY_rollOutHandler));
+		this.scrollBarY.removeEventListener("scrollStart",$bind(this,this.scrollBarY_scrollStartHandler));
+		this.scrollBarY.removeEventListener("scrollComplete",$bind(this,this.scrollBarY_scrollCompleteHandler));
+		this.removeChild(js_Boot.__cast(this.scrollBarY , openfl_display_DisplayObject));
+		if(this._oldScrollBarYFactory.destroy != null) {
+			this._oldScrollBarYFactory.destroy(this.scrollBarY);
+		}
+		this._oldScrollBarYFactory = null;
+		this.scrollBarY = null;
+	}
+	,refreshEnabled: function() {
+		this._viewPort.set_enabled(this._enabled);
+		if(this.scrollBarX != null) {
+			this.scrollBarX.set_enabled(this._enabled);
+		}
+		if(this.scrollBarY != null) {
+			this.scrollBarY.set_enabled(this._enabled);
+		}
+	}
+	,restrictScrollAfterRefreshViewPort: function() {
+		if(this.scroller.get_scrolling()) {
+			return;
+		}
+		if(this._prevMinScrollX != this.scroller.get_minScrollX() && this.scroller.get_scrollX() < this.scroller.get_minScrollX()) {
+			this.scroller.set_restrictedScrollX(this.scroller.get_scrollX());
+		} else if(this._prevMaxScrollX != this.scroller.get_maxScrollX() && this.scroller.get_scrollX() > this.scroller.get_maxScrollX()) {
+			this.scroller.set_restrictedScrollX(this.scroller.get_scrollX());
+		}
+		if(this._prevMinScrollY != this.scroller.get_minScrollY() && this.scroller.get_scrollY() < this.scroller.get_minScrollY()) {
+			this.scroller.set_restrictedScrollY(this.scroller.get_scrollY());
+		} else if(this._prevMaxScrollY != this.scroller.get_maxScrollY() && this.scroller.get_scrollY() > this.scroller.get_maxScrollY()) {
+			this.scroller.set_restrictedScrollY(this.scroller.get_scrollY());
+		}
+	}
+	,refreshViewPort: function() {
+		if(js_Boot.__implements(this.scrollBarX,feathers_core_IValidating)) {
+			(js_Boot.__cast(this.scrollBarX , feathers_core_IValidating)).validateNow();
+		}
+		if(js_Boot.__implements(this.scrollBarY,feathers_core_IValidating)) {
+			(js_Boot.__cast(this.scrollBarY , feathers_core_IValidating)).validateNow();
+		}
+		this._viewPort.set_scrollX(this.get_scrollX());
+		this._viewPort.set_scrollY(this.get_scrollY());
+		this._prevMinScrollX = this.scroller.get_minScrollX();
+		this._prevMaxScrollX = this.scroller.get_maxScrollX();
+		this._prevMinScrollY = this.scroller.get_minScrollY();
+		this._prevMaxScrollY = this.scroller.get_maxScrollY();
+		if(!this.needsMeasurement()) {
+			this._viewPort.validateNow();
+			var oldSettingScrollerDimensions = this._settingScrollerDimensions;
+			this._settingScrollerDimensions = true;
+			this.scroller.setDimensions(this._viewPort.get_visibleWidth(),this._viewPort.get_visibleHeight(),this._viewPort.get_width(),this._viewPort.get_height());
+			this._settingScrollerDimensions = oldSettingScrollerDimensions;
+			this.restrictScrollAfterRefreshViewPort();
+			return;
+		}
+		this.resetViewPortOffsets();
+		this.calculateViewPortOffsets(false,false);
+		this.refreshViewPortBoundsForMeasurement();
+		if(this.get_scrollPolicyX() == feathers_controls_ScrollPolicy.AUTO) {
+			var oldShowScrollBarX = this.showScrollBarX;
+			this.calculateViewPortOffsetsForFixedScrollBarX(false);
+			if(this.get_fixedScrollBars() && this.showScrollBarX != oldShowScrollBarX) {
+				this.refreshViewPortBoundsForMeasurement();
+			}
+		}
+		if(this.get_scrollPolicyY() == feathers_controls_ScrollPolicy.AUTO) {
+			var oldShowScrollBarY = this.showScrollBarY;
+			this.calculateViewPortOffsetsForFixedScrollBarY(false);
+			if(this.get_fixedScrollBars() && this.showScrollBarY != oldShowScrollBarY) {
+				this.refreshViewPortBoundsForMeasurement();
+			}
+		}
+		if(this.get_fixedScrollBars() && !this.showScrollBarX && this.showScrollBarY && this.get_scrollPolicyX() == feathers_controls_ScrollPolicy.AUTO && this.get_scrollPolicyY() == feathers_controls_ScrollPolicy.AUTO) {
+			var oldShowScrollBarX = this.showScrollBarX;
+			this.calculateViewPortOffsetsForFixedScrollBarX(false);
+			if(this.showScrollBarX != oldShowScrollBarX) {
+				this.refreshViewPortBoundsForMeasurement();
+			}
+		}
+		var oldSettingScrollerDimensions = this._settingScrollerDimensions;
+		this._settingScrollerDimensions = true;
+		this.scroller.setDimensions(this._viewPort.get_visibleWidth(),this._viewPort.get_visibleHeight(),this._viewPort.get_width(),this._viewPort.get_height());
+		this._settingScrollerDimensions = oldSettingScrollerDimensions;
+		this.measure();
+		this.resetViewPortOffsets();
+		this.calculateViewPortOffsets(false,true);
+		this.refreshViewPortBoundsForLayout();
+		if(this.get_scrollPolicyX() == feathers_controls_ScrollPolicy.AUTO) {
+			var oldShowScrollBarX = this.showScrollBarX;
+			this.calculateViewPortOffsetsForFixedScrollBarX(true);
+			if(this.get_fixedScrollBars() && this.showScrollBarX != oldShowScrollBarX) {
+				this.refreshViewPortBoundsForLayout();
+			}
+		}
+		if(this.get_scrollPolicyY() == feathers_controls_ScrollPolicy.AUTO) {
+			var oldShowScrollBarY = this.showScrollBarY;
+			this.calculateViewPortOffsetsForFixedScrollBarY(true);
+			if(this.get_fixedScrollBars() && this.showScrollBarY != oldShowScrollBarY) {
+				this.refreshViewPortBoundsForLayout();
+			}
+		}
+		if(this.get_fixedScrollBars() && !this.showScrollBarX && this.showScrollBarY && this.get_scrollPolicyX() == feathers_controls_ScrollPolicy.AUTO && this.get_scrollPolicyY() == feathers_controls_ScrollPolicy.AUTO) {
+			var oldShowScrollBarX = this.showScrollBarX;
+			this.calculateViewPortOffsetsForFixedScrollBarX(true);
+			if(this.showScrollBarX != oldShowScrollBarX) {
+				this.refreshViewPortBoundsForLayout();
+			}
+		}
+		var oldSettingScrollerDimensions = this._settingScrollerDimensions;
+		this._settingScrollerDimensions = true;
+		this.scroller.setDimensions(this._viewPort.get_visibleWidth(),this._viewPort.get_visibleHeight(),this._viewPort.get_width(),this._viewPort.get_height());
+		this._settingScrollerDimensions = oldSettingScrollerDimensions;
+		this.restrictScrollAfterRefreshViewPort();
+	}
+	,resetViewPortOffsets: function() {
+		this.showScrollBarX = this.get_showScrollBars() && (this._scrollPolicyX == feathers_controls_ScrollPolicy.ON || this._scrollPolicyX == feathers_controls_ScrollPolicy.AUTO && this.scroller.get_minScrollX() != this.scroller.get_maxScrollX());
+		this.showScrollBarY = this.get_showScrollBars() && (this._scrollPolicyX == feathers_controls_ScrollPolicy.ON || this._scrollPolicyY == feathers_controls_ScrollPolicy.AUTO && this.scroller.get_minScrollY() != this.scroller.get_maxScrollY());
+		this.topViewPortOffset = this.get_fixedScrollBars() && this.showScrollBarX && this.get_scrollBarXPosition() == feathers_layout_RelativePosition.TOP ? this.scrollBarX.get_height() : 0.0;
+		this.bottomViewPortOffset = this.get_fixedScrollBars() && this.showScrollBarX && this.get_scrollBarXPosition() == feathers_layout_RelativePosition.BOTTOM ? this.scrollBarX.get_height() : 0.0;
+		this.leftViewPortOffset = this.get_fixedScrollBars() && this.showScrollBarY && this.get_scrollBarYPosition() == feathers_layout_RelativePosition.LEFT ? this.scrollBarY.get_width() : 0.0;
+		this.rightViewPortOffset = this.get_fixedScrollBars() && this.showScrollBarY && this.get_scrollBarYPosition() == feathers_layout_RelativePosition.RIGHT ? this.scrollBarY.get_width() : 0.0;
+		this.chromeMeasuredWidth = 0.0;
+		this.chromeMeasuredMinWidth = 0.0;
+		this.chromeMeasuredMaxWidth = 1.0 / 0.0;
+		this.chromeMeasuredHeight = 0.0;
+		this.chromeMeasuredMinHeight = 0.0;
+		this.chromeMeasuredMaxHeight = 1.0 / 0.0;
+	}
+	,calculateViewPortOffsets: function(forceScrollBars,useActualBounds) {
+	}
+	,calculateViewPortOffsetsForFixedScrollBarX: function(useActualBounds) {
+		if(this.scrollBarX == null) {
+			return;
+		}
+		var newShowScrollBarX = false;
+		if(this.get_showScrollBars() && this.get_scrollPolicyX() != feathers_controls_ScrollPolicy.OFF) {
+			newShowScrollBarX = this.get_scrollPolicyX() == feathers_controls_ScrollPolicy.ON;
+			if(!newShowScrollBarX && this.get_scrollPolicyX() == feathers_controls_ScrollPolicy.AUTO) {
+				var availableWidth = useActualBounds ? this.actualWidth : this.get_explicitWidth();
+				if(availableWidth != null) {
+					availableWidth -= this.get_paddingLeft() + this.get_paddingRight() + this.leftViewPortOffset + this.rightViewPortOffset;
+					if(availableWidth < 0.0) {
+						availableWidth = 0.0;
+					}
+				}
+				if(availableWidth == null && !useActualBounds) {
+					availableWidth = this._viewPort.get_visibleWidth();
+				}
+				var totalContentWidth = this._viewPort.get_width();
+				newShowScrollBarX = availableWidth != null && totalContentWidth > availableWidth && !feathers_utils_MathUtil.fuzzyEquals(totalContentWidth,availableWidth);
+				if(!newShowScrollBarX) {
+					var maxAvailableWidth = this.get_explicitMaxWidth();
+					if(maxAvailableWidth != null) {
+						maxAvailableWidth -= this.get_paddingLeft() + this.get_paddingRight() + this.leftViewPortOffset + this.rightViewPortOffset;
+						if(maxAvailableWidth < 0.0) {
+							maxAvailableWidth = 0.0;
+						}
+					}
+					newShowScrollBarX = maxAvailableWidth != null && totalContentWidth > maxAvailableWidth && !feathers_utils_MathUtil.fuzzyEquals(totalContentWidth,maxAvailableWidth);
+				}
+			}
+		}
+		if(this.showScrollBarX == newShowScrollBarX) {
+			return;
+		}
+		this.showScrollBarX = newShowScrollBarX;
+		if(!this.get_fixedScrollBars()) {
+			return;
+		}
+		var offset = this.scrollBarX.get_height();
+		if(!this.showScrollBarX) {
+			offset = -offset;
+		}
+		if(this.get_scrollBarXPosition() == feathers_layout_RelativePosition.TOP) {
+			this.topViewPortOffset += offset;
+		} else {
+			this.bottomViewPortOffset += offset;
+		}
+	}
+	,calculateViewPortOffsetsForFixedScrollBarY: function(useActualBounds) {
+		if(this.scrollBarY == null) {
+			return;
+		}
+		var newShowScrollBarY = false;
+		if(this.get_showScrollBars() && this.get_scrollPolicyY() != feathers_controls_ScrollPolicy.OFF) {
+			newShowScrollBarY = this.get_scrollPolicyY() == feathers_controls_ScrollPolicy.ON;
+			if(!newShowScrollBarY && this.get_scrollPolicyY() == feathers_controls_ScrollPolicy.AUTO) {
+				var availableHeight = useActualBounds ? this.actualHeight : this.get_explicitHeight();
+				if(availableHeight != null) {
+					availableHeight -= this.get_paddingTop() + this.get_paddingBottom() + this.topViewPortOffset + this.bottomViewPortOffset;
+					if(availableHeight < 0.0) {
+						availableHeight = 0.0;
+					}
+				}
+				if(availableHeight == null && !useActualBounds) {
+					availableHeight = this._viewPort.get_visibleHeight();
+				}
+				var totalContentHeight = this._viewPort.get_height();
+				newShowScrollBarY = availableHeight != null && totalContentHeight > availableHeight && !feathers_utils_MathUtil.fuzzyEquals(totalContentHeight,availableHeight);
+				if(!newShowScrollBarY) {
+					var maxAvailableHeight = this.get_explicitMaxHeight();
+					if(maxAvailableHeight != null) {
+						maxAvailableHeight -= this.get_paddingTop() + this.get_paddingBottom() + this.topViewPortOffset + this.bottomViewPortOffset;
+						if(maxAvailableHeight < 0.0) {
+							maxAvailableHeight = 0.0;
+						}
+					}
+					newShowScrollBarY = maxAvailableHeight != null && totalContentHeight > maxAvailableHeight && !feathers_utils_MathUtil.fuzzyEquals(totalContentHeight,maxAvailableHeight);
+				}
+			}
+		}
+		if(this.showScrollBarY == newShowScrollBarY) {
+			return;
+		}
+		this.showScrollBarY = newShowScrollBarY;
+		if(!this.get_fixedScrollBars()) {
+			return;
+		}
+		var offset = this.scrollBarY.get_width();
+		if(!this.showScrollBarY) {
+			offset = -offset;
+		}
+		if(this.get_scrollBarYPosition() == feathers_layout_RelativePosition.LEFT) {
+			this.leftViewPortOffset += offset;
+		} else {
+			this.rightViewPortOffset += offset;
+		}
+	}
+	,refreshViewPortBoundsForMeasurement: function() {
+		var oldIgnoreViewPortResizing = this._ignoreViewPortResizing;
+		this._ignoreViewPortResizing = true;
+		var viewPortX = this.get_paddingLeft() + this.leftViewPortOffset;
+		var viewPortY = this.get_paddingTop() + this.topViewPortOffset;
+		if(this._scrollMode == feathers_controls_ScrollMode.MASK || this._scrollMode == feathers_controls_ScrollMode.MASKLESS || this._currentViewPortMaskSkin != null) {
+			viewPortX -= this.get_scrollX();
+			viewPortY -= this.get_scrollY();
+		}
+		this._viewPort.set_x(viewPortX);
+		this._viewPort.set_y(viewPortY);
+		if(this.get_explicitWidth() != null) {
+			var visibleWidth = this.get_explicitWidth() - this.leftViewPortOffset - this.rightViewPortOffset - this.get_paddingLeft() - this.get_paddingRight();
+			if(visibleWidth < 0.0) {
+				visibleWidth = 0.0;
+			}
+			this._viewPort.set_visibleWidth(visibleWidth);
+		} else {
+			this._viewPort.set_visibleWidth(null);
+		}
+		if(this.get_explicitHeight() != null) {
+			var visibleHeight = this.get_explicitHeight() - this.topViewPortOffset - this.bottomViewPortOffset - this.get_paddingTop() - this.get_paddingBottom();
+			if(visibleHeight < 0.0) {
+				visibleHeight = 0.0;
+			}
+			this._viewPort.set_visibleHeight(visibleHeight);
+		} else {
+			this._viewPort.set_visibleHeight(null);
+		}
+		if(this.get_explicitMinWidth() != null) {
+			var minVisibleWidth = this.get_explicitMinWidth() - this.leftViewPortOffset - this.rightViewPortOffset - this.get_paddingLeft() - this.get_paddingRight();
+			if(minVisibleWidth < 0.0) {
+				minVisibleWidth = 0.0;
+			}
+			this._viewPort.set_minVisibleWidth(minVisibleWidth);
+		} else {
+			this._viewPort.set_minVisibleWidth(null);
+		}
+		if(this.get_explicitMinHeight() != null) {
+			var minVisibleHeight = this.get_explicitMinHeight() - this.topViewPortOffset - this.bottomViewPortOffset - this.get_paddingTop() - this.get_paddingBottom();
+			if(minVisibleHeight < 0.0) {
+				minVisibleHeight = 0.0;
+			}
+			this._viewPort.set_minVisibleHeight(minVisibleHeight);
+		} else {
+			this._viewPort.set_minVisibleHeight(null);
+		}
+		if(this.get_explicitMaxWidth() != null) {
+			var maxVisibleWidth = this.get_explicitMaxWidth() - this.leftViewPortOffset - this.rightViewPortOffset - this.get_paddingLeft() - this.get_paddingRight();
+			if(maxVisibleWidth < 0.0) {
+				maxVisibleWidth = 0.0;
+			}
+			this._viewPort.set_maxVisibleWidth(maxVisibleWidth);
+		} else if(this._backgroundSkinMeasurements != null && this._backgroundSkinMeasurements.maxWidth != null) {
+			var maxVisibleWidth = this._backgroundSkinMeasurements.maxWidth - this.leftViewPortOffset - this.rightViewPortOffset - this.get_paddingLeft() - this.get_paddingRight();
+			if(maxVisibleWidth < 0.0) {
+				maxVisibleWidth = 0.0;
+			}
+			this._viewPort.set_maxVisibleWidth(maxVisibleWidth);
+		} else {
+			this._viewPort.set_maxVisibleWidth(1.0 / 0.0);
+		}
+		if(this.get_explicitMaxHeight() != null) {
+			var maxVisibleHeight = this.get_explicitMaxHeight() - this.topViewPortOffset - this.bottomViewPortOffset - this.get_paddingTop() - this.get_paddingBottom();
+			if(maxVisibleHeight < 0.0) {
+				maxVisibleHeight = 0.0;
+			}
+			this._viewPort.set_maxVisibleHeight(maxVisibleHeight);
+		} else if(this._backgroundSkinMeasurements != null && this._backgroundSkinMeasurements.maxHeight != null) {
+			var maxVisibleHeight = this._backgroundSkinMeasurements.maxHeight - this.topViewPortOffset - this.bottomViewPortOffset - this.get_paddingTop() - this.get_paddingBottom();
+			if(maxVisibleHeight < 0.0) {
+				maxVisibleHeight = 0.0;
+			}
+			this._viewPort.set_maxVisibleHeight(maxVisibleHeight);
+		} else {
+			this._viewPort.set_maxVisibleHeight(1.0 / 0.0);
+		}
+		this._viewPort.validateNow();
+		this._ignoreViewPortResizing = oldIgnoreViewPortResizing;
+	}
+	,refreshViewPortBoundsForLayout: function() {
+		var oldIgnoreViewPortResizing = this._ignoreViewPortResizing;
+		this._ignoreViewPortResizing = true;
+		var visibleWidth = this.actualWidth - this.leftViewPortOffset - this.rightViewPortOffset - this.get_paddingLeft() - this.get_paddingRight();
+		if(visibleWidth < 0.0) {
+			visibleWidth = 0.0;
+		}
+		var visibleHeight = this.actualHeight - this.topViewPortOffset - this.bottomViewPortOffset - this.get_paddingTop() - this.get_paddingBottom();
+		if(visibleHeight < 0.0) {
+			visibleHeight = 0.0;
+		}
+		var minVisibleWidth = this.actualMinWidth - this.leftViewPortOffset - this.rightViewPortOffset - this.get_paddingLeft() - this.get_paddingRight();
+		if(minVisibleWidth < 0.0) {
+			minVisibleWidth = 0.0;
+		}
+		var minVisibleHeight = this.actualMinHeight - this.topViewPortOffset - this.bottomViewPortOffset - this.get_paddingTop() - this.get_paddingBottom();
+		if(minVisibleHeight < 0.0) {
+			minVisibleHeight = 0.0;
+		}
+		var maxVisibleWidth = this.actualMaxWidth - this.leftViewPortOffset - this.rightViewPortOffset - this.get_paddingLeft() - this.get_paddingRight();
+		if(maxVisibleWidth < 0.0) {
+			maxVisibleWidth = 0.0;
+		}
+		var maxVisibleHeight = this.actualMaxHeight - this.topViewPortOffset - this.bottomViewPortOffset - this.get_paddingTop() - this.get_paddingBottom();
+		if(maxVisibleHeight < 0.0) {
+			maxVisibleHeight = 0.0;
+		}
+		var viewPortX = this.get_paddingLeft() + this.leftViewPortOffset;
+		var viewPortY = this.get_paddingTop() + this.topViewPortOffset;
+		if(this._scrollMode == feathers_controls_ScrollMode.MASK || this._scrollMode == feathers_controls_ScrollMode.MASKLESS || this._currentViewPortMaskSkin != null) {
+			viewPortX -= this.get_scrollX();
+			viewPortY -= this.get_scrollY();
+		}
+		this._viewPort.set_x(viewPortX);
+		this._viewPort.set_y(viewPortY);
+		this._viewPort.set_visibleWidth(visibleWidth);
+		this._viewPort.set_visibleHeight(visibleHeight);
+		this._viewPort.set_minVisibleWidth(minVisibleWidth);
+		this._viewPort.set_minVisibleHeight(minVisibleHeight);
+		this._viewPort.set_maxVisibleWidth(maxVisibleWidth);
+		this._viewPort.set_maxVisibleHeight(maxVisibleHeight);
+		this._viewPort.validateNow();
+		this._ignoreViewPortResizing = oldIgnoreViewPortResizing;
+	}
+	,refreshScrollerValues: function() {
+		if(this.stage != null) {
+			this.scroller.set_target(js_Boot.__cast(this._viewPort , openfl_display_InteractiveObject));
+		}
+		this.scroller.enabledX = this._enabled && this._scrollPolicyX != feathers_controls_ScrollPolicy.OFF;
+		this.scroller.enabledY = this._enabled && this._scrollPolicyY != feathers_controls_ScrollPolicy.OFF;
+	}
+	,refreshScrollBarValues: function() {
+		if(this.scrollBarX != null) {
+			var oldIgnoreScrollBarXChange = this._ignoreScrollBarXChange;
+			this._ignoreScrollBarXChange = true;
+			this.scrollBarX.set_minimum(this.scroller.get_minScrollX());
+			this.scrollBarX.set_maximum(this.scroller.get_maxScrollX());
+			this.scrollBarX.set_value(this.scroller.get_scrollX());
+			this.scrollBarX.set_page((this.scroller.get_maxScrollX() - this.scroller.get_minScrollX()) * this._viewPort.get_visibleWidth() / this._viewPort.get_width());
+			this.scrollBarX.set_step(this._scrollStepX);
+			var displayScrollBarX = js_Boot.__cast(this.scrollBarX , openfl_display_DisplayObjectContainer);
+			displayScrollBarX.set_visible(this.showScrollBarX);
+			if(this.get_fixedScrollBars() || !this.get_autoHideScrollBars()) {
+				this.scrollBarX.set_alpha(1.0);
+			}
+			this._ignoreScrollBarXChange = oldIgnoreScrollBarXChange;
+		}
+		if(this.scrollBarY != null) {
+			var oldIgnoreScrollBarYChange = this._ignoreScrollBarYChange;
+			this._ignoreScrollBarYChange = true;
+			this.scrollBarY.set_minimum(this.scroller.get_minScrollY());
+			this.scrollBarY.set_maximum(this.scroller.get_maxScrollY());
+			this.scrollBarY.set_value(this.scroller.get_scrollY());
+			this.scrollBarY.set_page((this.scroller.get_maxScrollY() - this.scroller.get_minScrollY()) * this._viewPort.get_visibleHeight() / this._viewPort.get_height());
+			this.scrollBarY.set_step(this._scrollStepY);
+			var displayScrollBarY = js_Boot.__cast(this.scrollBarY , openfl_display_DisplayObjectContainer);
+			displayScrollBarY.set_visible(this.showScrollBarY);
+			if(this.get_fixedScrollBars() || !this.get_autoHideScrollBars()) {
+				this.scrollBarY.set_alpha(1.0);
+			}
+			this._ignoreScrollBarYChange = oldIgnoreScrollBarYChange;
+		}
+	}
+	,measure: function() {
+		var needsWidth = this.get_explicitWidth() == null;
+		var needsHeight = this.get_explicitHeight() == null;
+		var needsMinWidth = this.get_explicitMinWidth() == null;
+		var needsMinHeight = this.get_explicitMinHeight() == null;
+		var needsMaxWidth = this.get_explicitMaxWidth() == null;
+		var needsMaxHeight = this.get_explicitMaxHeight() == null;
+		if(!needsWidth && !needsHeight && !needsMinWidth && !needsMinHeight && !needsMaxWidth && !needsMaxHeight) {
+			return false;
+		}
+		if(this._currentBackgroundSkin != null) {
+			feathers_utils_MeasurementsUtil.resetFluidlyWithParent(this._backgroundSkinMeasurements,this._currentBackgroundSkin,this);
+		}
+		var measureSkin = null;
+		if(js_Boot.__implements(this._currentBackgroundSkin,feathers_core_IMeasureObject)) {
+			measureSkin = js_Boot.__cast(this._currentBackgroundSkin , feathers_core_IMeasureObject);
+		}
+		if(js_Boot.__implements(this._currentBackgroundSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentBackgroundSkin , feathers_core_IValidating)).validateNow();
+		}
+		var newWidth = this.get_explicitWidth();
+		if(needsWidth) {
+			if(this.get_measureViewPort()) {
+				newWidth = this._viewPort.get_visibleWidth();
+			} else {
+				newWidth = 0.0;
+			}
+			newWidth += this.leftViewPortOffset + this.rightViewPortOffset;
+			newWidth = Math.max(newWidth,this.chromeMeasuredWidth);
+			newWidth += this.get_paddingLeft() + this.get_paddingRight();
+			if(this._currentBackgroundSkin != null) {
+				newWidth = Math.max(newWidth,this._currentBackgroundSkin.get_width());
+			}
+		}
+		var newHeight = this.get_explicitHeight();
+		if(needsHeight) {
+			if(this.get_measureViewPort()) {
+				newHeight = this._viewPort.get_visibleHeight();
+			} else {
+				newHeight = 0.0;
+			}
+			newHeight += this.topViewPortOffset + this.bottomViewPortOffset;
+			newHeight = Math.max(newHeight,this.chromeMeasuredHeight);
+			newHeight += this.get_paddingTop() + this.get_paddingBottom();
+			if(this._currentBackgroundSkin != null) {
+				newHeight = Math.max(newHeight,this._currentBackgroundSkin.get_height());
+			}
+		}
+		var newMinWidth = this.get_explicitMinWidth();
+		if(needsMinWidth) {
+			if(this.get_measureViewPort()) {
+				newMinWidth = this._viewPort.get_minVisibleWidth();
+			} else {
+				newMinWidth = 0.0;
+			}
+			newMinWidth += this.leftViewPortOffset + this.rightViewPortOffset;
+			newMinWidth = Math.max(newMinWidth,this.chromeMeasuredMinWidth);
+			newMinWidth += this.get_paddingLeft() + this.get_paddingRight();
+			if(measureSkin != null) {
+				newMinWidth = Math.max(newMinWidth,measureSkin.get_minWidth());
+			} else if(this._backgroundSkinMeasurements != null) {
+				newMinWidth = Math.max(newMinWidth,this._backgroundSkinMeasurements.minWidth);
+			}
+		}
+		var newMinHeight = this.get_explicitMinHeight();
+		if(needsMinHeight) {
+			if(this.get_measureViewPort()) {
+				newMinHeight = this._viewPort.get_minVisibleHeight();
+			} else {
+				newMinHeight = 0.0;
+			}
+			newMinHeight += this.topViewPortOffset + this.bottomViewPortOffset;
+			newMinHeight = Math.max(newMinHeight,this.chromeMeasuredMinHeight);
+			newMinHeight += this.get_paddingTop() + this.get_paddingBottom();
+			if(measureSkin != null) {
+				newMinHeight = Math.max(newMinHeight,measureSkin.get_minHeight());
+			} else if(this._backgroundSkinMeasurements != null) {
+				newMinHeight = Math.max(newMinHeight,this._backgroundSkinMeasurements.minHeight);
+			}
+		}
+		var newMaxWidth = this.get_explicitMaxWidth();
+		if(needsMaxWidth) {
+			if(this.get_measureViewPort()) {
+				newMaxWidth = this._viewPort.get_maxVisibleWidth();
+			} else {
+				newMaxWidth = 1.0 / 0.0;
+			}
+			newMaxWidth += this.leftViewPortOffset + this.rightViewPortOffset;
+			newMaxWidth = Math.min(newMaxWidth,this.chromeMeasuredMaxWidth);
+			newMaxWidth += this.get_paddingLeft() + this.get_paddingRight();
+			if(measureSkin != null) {
+				newMaxWidth = Math.min(newMaxWidth,measureSkin.get_maxWidth());
+			} else if(this._backgroundSkinMeasurements != null) {
+				newMaxWidth = Math.min(newMaxWidth,this._backgroundSkinMeasurements.maxWidth);
+			}
+		}
+		var newMaxHeight = this.get_explicitMaxHeight();
+		if(needsMaxHeight) {
+			if(this.get_measureViewPort()) {
+				newMaxHeight = this._viewPort.get_maxVisibleHeight();
+			} else {
+				newMaxHeight = 1.0 / 0.0;
+			}
+			newMaxHeight += this.topViewPortOffset + this.bottomViewPortOffset;
+			newMaxHeight = Math.min(newMaxHeight,this.chromeMeasuredMaxHeight);
+			newMaxHeight += this.get_paddingTop() + this.get_paddingBottom();
+			if(measureSkin != null) {
+				newMaxHeight = Math.min(newMaxHeight,measureSkin.get_maxHeight());
+			} else if(this._backgroundSkinMeasurements != null) {
+				newMaxHeight = Math.min(newMaxHeight,this._backgroundSkinMeasurements.maxHeight);
+			}
+		}
+		return this.saveMeasurements(newWidth,newHeight,newMinWidth,newMinHeight,newMaxWidth,newMaxHeight);
+	}
+	,refreshBackgroundSkin: function() {
+		var oldSkin = this._currentBackgroundSkin;
+		this._currentBackgroundSkin = this.getCurrentBackgroundSkin();
+		if(this._currentBackgroundSkin == oldSkin) {
+			return;
+		}
+		this.removeCurrentBackgroundSkin(oldSkin);
+		this.addCurrentBackgroundSkin(this._currentBackgroundSkin);
+	}
+	,getCurrentBackgroundSkin: function() {
+		if(!this._enabled && this.get_disabledBackgroundSkin() != null) {
+			return this.get_disabledBackgroundSkin();
+		}
+		return this.get_backgroundSkin();
+	}
+	,addCurrentBackgroundSkin: function(skin) {
+		if(skin == null) {
+			this._backgroundSkinMeasurements = null;
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_core_IUIControl)) {
+			(js_Boot.__cast(skin , feathers_core_IUIControl)).initializeNow();
+		}
+		if(this._backgroundSkinMeasurements == null) {
+			this._backgroundSkinMeasurements = new feathers_layout_Measurements(skin);
+		} else {
+			this._backgroundSkinMeasurements.save(skin);
+		}
+		if(js_Boot.__implements(skin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(skin , feathers_skins_IProgrammaticSkin)).set_uiContext(this);
+		}
+		this.addChildAt(skin,0);
+	}
+	,removeCurrentBackgroundSkin: function(skin) {
+		if(skin == null) {
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(skin , feathers_skins_IProgrammaticSkin)).set_uiContext(null);
+		}
+		this._backgroundSkinMeasurements.restore(skin);
+		if(skin.parent == this) {
+			this.removeChild(skin);
+		}
+	}
+	,refreshMaskSkin: function() {
+		var oldSkin = this._currentMaskSkin;
+		this._currentMaskSkin = this.getCurrentMaskSkin();
+		if(this._currentMaskSkin == oldSkin) {
+			return;
+		}
+		this.removeCurrentMaskSkin(oldSkin);
+		this.addCurrentMaskSkin(this._currentMaskSkin);
+	}
+	,getCurrentMaskSkin: function() {
+		return this.get_maskSkin();
+	}
+	,addCurrentMaskSkin: function(skin) {
+		if(skin == null) {
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_core_IUIControl)) {
+			(js_Boot.__cast(skin , feathers_core_IUIControl)).initializeNow();
+		}
+		if(js_Boot.__implements(skin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(skin , feathers_skins_IProgrammaticSkin)).set_uiContext(this);
+		}
+		this.addChild(skin);
+		this.set_mask(skin);
+	}
+	,removeCurrentMaskSkin: function(skin) {
+		if(skin == null) {
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(skin , feathers_skins_IProgrammaticSkin)).set_uiContext(null);
+		}
+		if(skin.parent == this) {
+			this.removeChild(skin);
+		}
+		this.set_mask(null);
+	}
+	,refreshViewPortMaskSkin: function() {
+		var oldSkin = this._currentViewPortMaskSkin;
+		this._currentViewPortMaskSkin = this.getCurrentViewPortMaskSkin();
+		if(this._currentViewPortMaskSkin == oldSkin) {
+			return;
+		}
+		this.removeCurrentViewPortMaskSkin(oldSkin);
+		this.addCurrentViewPortMaskSkin(this._currentViewPortMaskSkin);
+	}
+	,getCurrentViewPortMaskSkin: function() {
+		if(this.get_viewPortMaskSkin() != null) {
+			return this.get_viewPortMaskSkin();
+		}
+		if(this._scrollMode == feathers_controls_ScrollMode.MASK) {
+			if(this._fallbackViewPortMaskSkin == null) {
+				this._fallbackViewPortMaskSkin = new feathers_skins_RectangleSkin(feathers_graphics_FillStyle.SolidColor(16711935));
+			}
+			return this._fallbackViewPortMaskSkin;
+		}
+		return null;
+	}
+	,addCurrentViewPortMaskSkin: function(skin) {
+		if(skin == null) {
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_core_IUIControl)) {
+			(js_Boot.__cast(skin , feathers_core_IUIControl)).initializeNow();
+		}
+		if(js_Boot.__implements(skin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(skin , feathers_skins_IProgrammaticSkin)).set_uiContext(this);
+		}
+		this.addChild(skin);
+		(js_Boot.__cast(this._viewPort , openfl_display_DisplayObject)).set_mask(skin);
+	}
+	,removeCurrentViewPortMaskSkin: function(skin) {
+		if(skin == null) {
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(skin , feathers_skins_IProgrammaticSkin)).set_uiContext(null);
+		}
+		if(skin.parent == this) {
+			this.removeChild(skin);
+		}
+		(js_Boot.__cast(this._viewPort , openfl_display_DisplayObject)).set_mask(null);
+	}
+	,layoutChildren: function() {
+		this.layoutBackgroundSkin();
+		this.layoutMaskSkin();
+		this.layoutViewPortMaskSkin();
+		this.layoutScrollBars();
+	}
+	,layoutBackgroundSkin: function() {
+		if(this._currentBackgroundSkin == null) {
+			return;
+		}
+		this._currentBackgroundSkin.set_x(0.0);
+		this._currentBackgroundSkin.set_y(0.0);
+		if(this._currentBackgroundSkin.get_width() != this.actualWidth) {
+			this._currentBackgroundSkin.set_width(this.actualWidth);
+		}
+		if(this._currentBackgroundSkin.get_height() != this.actualHeight) {
+			this._currentBackgroundSkin.set_height(this.actualHeight);
+		}
+		if(js_Boot.__implements(this._currentBackgroundSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentBackgroundSkin , feathers_core_IValidating)).validateNow();
+		}
+	}
+	,layoutMaskSkin: function() {
+		if(this._currentMaskSkin == null) {
+			return;
+		}
+		this._currentMaskSkin.set_x(0.0);
+		this._currentMaskSkin.set_y(0.0);
+		this._currentMaskSkin.set_width(this.actualWidth);
+		this._currentMaskSkin.set_height(this.actualHeight);
+		if(js_Boot.__implements(this._currentMaskSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentMaskSkin , feathers_core_IValidating)).validateNow();
+		}
+	}
+	,layoutViewPortMaskSkin: function() {
+		if(this._currentViewPortMaskSkin == null) {
+			return;
+		}
+		var maskX = this.get_paddingLeft() + this.leftViewPortOffset;
+		var maskY = this.get_paddingTop() + this.topViewPortOffset;
+		var maskWidth = this._viewPort.get_visibleWidth();
+		var maskHeight = this._viewPort.get_visibleHeight();
+		if(this.get_fixedScrollBars() && this.scrollBarY.get_visible()) {
+			maskWidth += this.scrollBarY.get_width();
+			if(this.get_scrollBarYPosition() == feathers_layout_RelativePosition.LEFT) {
+				maskX -= this.scrollBarY.get_width();
+			}
+		}
+		if(this.get_fixedScrollBars() && this.scrollBarX.get_visible()) {
+			maskHeight += this.scrollBarX.get_height();
+			if(this.get_scrollBarXPosition() == feathers_layout_RelativePosition.TOP) {
+				maskX -= this.scrollBarX.get_height();
+			}
+		}
+		this._currentViewPortMaskSkin.set_x(maskX);
+		this._currentViewPortMaskSkin.set_y(maskY);
+		this._currentViewPortMaskSkin.set_width(maskWidth);
+		this._currentViewPortMaskSkin.set_height(maskHeight);
+		if(js_Boot.__implements(this._currentViewPortMaskSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentViewPortMaskSkin , feathers_core_IValidating)).validateNow();
+		}
+	}
+	,layoutScrollBars: function() {
+		var visibleWidth = this.actualWidth - this.leftViewPortOffset - this.rightViewPortOffset - this.get_paddingLeft() - this.get_paddingRight();
+		if(visibleWidth < 0.0) {
+			visibleWidth = 0.0;
+		}
+		var visibleHeight = this.actualHeight - this.topViewPortOffset - this.bottomViewPortOffset - this.get_paddingTop() - this.get_paddingBottom();
+		if(visibleHeight < 0.0) {
+			visibleHeight = 0.0;
+		}
+		if(this.scrollBarX != null && js_Boot.__implements(this.scrollBarX,feathers_core_IValidating)) {
+			(js_Boot.__cast(this.scrollBarX , feathers_core_IValidating)).validateNow();
+		}
+		if(this.scrollBarY != null && js_Boot.__implements(this.scrollBarY,feathers_core_IValidating)) {
+			(js_Boot.__cast(this.scrollBarY , feathers_core_IValidating)).validateNow();
+		}
+		if(this.scrollBarX != null) {
+			if(this.get_scrollBarXPosition()._hx_index == 0) {
+				this.scrollBarX.set_y(this.get_paddingTop());
+			} else {
+				this.scrollBarX.set_y(this.get_paddingTop() + this.topViewPortOffset + visibleHeight);
+			}
+			this.scrollBarX.set_x(this.get_paddingLeft() + this.leftViewPortOffset);
+			if(!this.get_fixedScrollBars()) {
+				var fh = this.scrollBarX;
+				fh.set_y(fh.get_y() - this.scrollBarX.get_height());
+				if((this.showScrollBarY || this._hideScrollBarY != null) && this.scrollBarY != null) {
+					var scrollBarXWidth = visibleWidth - this.scrollBarY.get_width();
+					if(scrollBarXWidth < 0.0) {
+						scrollBarXWidth = 0.0;
+					}
+					this.scrollBarX.set_width(scrollBarXWidth);
+				} else {
+					this.scrollBarX.set_width(visibleWidth);
+				}
+			} else {
+				this.scrollBarX.set_width(visibleWidth);
+			}
+		}
+		if(this.scrollBarY != null) {
+			if(this.get_scrollBarYPosition()._hx_index == 3) {
+				this.scrollBarY.set_x(this.get_paddingLeft());
+			} else {
+				this.scrollBarY.set_x(this.get_paddingLeft() + this.leftViewPortOffset + visibleWidth);
+			}
+			this.scrollBarY.set_y(this.get_paddingTop() + this.topViewPortOffset);
+			if(!this.get_fixedScrollBars()) {
+				var fh = this.scrollBarY;
+				fh.set_x(fh.get_x() - this.scrollBarY.get_width());
+				if((this.showScrollBarX || this._hideScrollBarX != null) && this.scrollBarX != null) {
+					var scrollBarYHeight = visibleHeight - this.scrollBarX.get_height();
+					if(scrollBarYHeight < 0.0) {
+						scrollBarYHeight = 0.0;
+					}
+					this.scrollBarY.set_height(scrollBarYHeight);
+				} else {
+					this.scrollBarY.set_height(visibleHeight);
+				}
+			} else {
+				this.scrollBarY.set_height(visibleHeight);
+			}
+		}
+	}
+	,refreshScrollRect: function() {
+		var scrollX = this.scroller.get_scrollX();
+		var scrollY = this.scroller.get_scrollY();
+		if(this.get_scrollPixelSnapping()) {
+			var scaleFactorX = feathers_utils_DisplayUtil.getConcatenatedScaleX(this);
+			var scaleFactorY = feathers_utils_DisplayUtil.getConcatenatedScaleY(this);
+			scrollX = Math.round(scrollX / scaleFactorX) * scaleFactorX;
+			scrollY = Math.round(scrollY / scaleFactorY) * scaleFactorY;
+		}
+		if(this._scrollMode == feathers_controls_ScrollMode.MASK || this._scrollMode == feathers_controls_ScrollMode.MASKLESS || this._currentViewPortMaskSkin != null) {
+			var displayViewPort = js_Boot.__cast(this._viewPort , openfl_display_DisplayObject);
+			displayViewPort.set_scrollRect(null);
+			this._viewPort.set_x(this.get_paddingLeft() + this.leftViewPortOffset - scrollX);
+			this._viewPort.set_y(this.get_paddingTop() + this.topViewPortOffset - scrollY);
+		} else if(this._scrollMode == feathers_controls_ScrollMode.SCROLL_RECT) {
+			var scrollRect = this._scrollRect1;
+			if(this._currentScrollRect == scrollRect) {
+				scrollRect = this._scrollRect2;
+			}
+			this._currentScrollRect = scrollRect;
+			var scrollRectWidth = this.actualWidth - this.leftViewPortOffset - this.rightViewPortOffset - this.get_paddingLeft() - this.get_paddingRight();
+			if(scrollRectWidth < 0.0) {
+				scrollRectWidth = 0.0;
+			}
+			var scrollRectHeight = this.actualHeight - this.topViewPortOffset - this.bottomViewPortOffset - this.get_paddingTop() - this.get_paddingBottom();
+			if(scrollRectHeight < 0.0) {
+				scrollRectHeight = 0.0;
+			}
+			scrollRect.setTo(scrollX,scrollY,scrollRectWidth,scrollRectHeight);
+			var displayViewPort = js_Boot.__cast(this._viewPort , openfl_display_DisplayObject);
+			displayViewPort.set_scrollRect(scrollRect);
+		} else {
+			throw new openfl_errors_ArgumentError("Unknown scrollMode: " + Std.string(this._scrollMode));
+		}
+	}
+	,revealScrollBarX: function() {
+		if(this.scrollBarX == null || this.scroller.get_minScrollX() == this.scroller.get_maxScrollX()) {
+			return;
+		}
+		if(this._hideScrollBarX != null) {
+			motion_Actuate.stop(this._hideScrollBarX);
+		}
+		this.scrollBarX.set_alpha(1.0);
+		this._scrollBarXRevealTime = openfl_Lib.getTimer();
+	}
+	,revealScrollBarY: function() {
+		if(this.scrollBarY == null || this.scroller.get_minScrollY() == this.scroller.get_maxScrollY()) {
+			return;
+		}
+		if(this._hideScrollBarY != null) {
+			motion_Actuate.stop(this._hideScrollBarY);
+		}
+		this.scrollBarY.set_alpha(1.0);
+		this._scrollBarYRevealTime = openfl_Lib.getTimer();
+	}
+	,hideScrollBarX: function() {
+		var _gthis = this;
+		if(this.scrollBarX == null || this._hideScrollBarX != null) {
+			return;
+		}
+		if(this.scrollBarX.get_alpha() == 0.0) {
+			return;
+		}
+		if(this.get_hideScrollBarDuration() == 0.0) {
+			this.scrollBarX.set_alpha(0.0);
+			return;
+		}
+		var tween = motion_Actuate.update(function(alpha) {
+			return _gthis.scrollBarX.set_alpha(alpha);
+		},this.get_hideScrollBarDuration(),[this.scrollBarX.get_alpha()],[0.0],true);
+		this._hideScrollBarX = js_Boot.__cast(tween , motion_actuators_SimpleActuator);
+		this._hideScrollBarX.ease(this.get_hideScrollBarEase());
+		this._hideScrollBarX.autoVisible(false);
+		var visibleTime = (openfl_Lib.getTimer() - this._scrollBarXRevealTime) / 1000.0;
+		if(visibleTime < this.get_showScrollBarMinimumDuration()) {
+			this._hideScrollBarX.delay(this.get_showScrollBarMinimumDuration() - visibleTime);
+		}
+		this._hideScrollBarX.onComplete($bind(this,this.hideScrollBarX_onComplete));
+	}
+	,hideScrollBarY: function() {
+		var _gthis = this;
+		if(this.scrollBarY == null || this._hideScrollBarY != null) {
+			return;
+		}
+		if(this.scrollBarY.get_alpha() == 0.0) {
+			return;
+		}
+		if(this.get_hideScrollBarDuration() == 0.0) {
+			this.scrollBarY.set_alpha(0.0);
+			return;
+		}
+		var tween = motion_Actuate.update(function(alpha) {
+			return _gthis.scrollBarY.set_alpha(alpha);
+		},this.get_hideScrollBarDuration(),[this.scrollBarY.get_alpha()],[0.0],true);
+		this._hideScrollBarY = js_Boot.__cast(tween , motion_actuators_SimpleActuator);
+		this._hideScrollBarY.ease(this.get_hideScrollBarEase());
+		this._hideScrollBarY.autoVisible(false);
+		var visibleTime = (openfl_Lib.getTimer() - this._scrollBarYRevealTime) / 1000.0;
+		if(visibleTime < this.get_showScrollBarMinimumDuration()) {
+			this._hideScrollBarY.delay(this.get_showScrollBarMinimumDuration() - visibleTime);
+		}
+		this._hideScrollBarY.onComplete($bind(this,this.hideScrollBarY_onComplete));
+	}
+	,checkForRevealScrollBars: function() {
+		if(!this._scrollerDraggingX && this.scroller.get_draggingX()) {
+			this._scrollerDraggingX = true;
+			this.revealScrollBarX();
+		}
+		if(!this._scrollerDraggingY && this.scroller.get_draggingY()) {
+			this._scrollerDraggingY = true;
+			this.revealScrollBarY();
+		}
+	}
+	,scrollWithKeyboard: function(event) {
+		if(this._scrollPolicyY == feathers_controls_ScrollPolicy.OFF && this._scrollPolicyX == feathers_controls_ScrollPolicy.OFF) {
+			return;
+		}
+		var stepX = this._scrollStepX;
+		if(stepX <= 0.0) {
+			stepX = 1.0;
+		}
+		var stepY = this._scrollStepY;
+		if(stepY <= 0.0) {
+			stepY = 1.0;
+		}
+		var newScrollX = this.get_scrollX();
+		var newScrollY = this.get_scrollY();
+		switch(event.keyCode) {
+		case 33:
+			newScrollY = this.get_scrollY() - this._viewPort.get_visibleHeight();
+			break;
+		case 34:
+			newScrollY = this.get_scrollY() + this._viewPort.get_visibleHeight();
+			break;
+		case 35:
+			newScrollY = this.get_maxScrollY();
+			break;
+		case 36:
+			newScrollY = this.get_minScrollY();
+			break;
+		case 37:
+			newScrollX = this.get_scrollX() - stepX;
+			break;
+		case 38:
+			newScrollY = this.get_scrollY() - stepY;
+			break;
+		case 39:
+			newScrollX = this.get_scrollX() + stepX;
+			break;
+		case 40:
+			newScrollY = this.get_scrollY() + stepY;
+			break;
+		default:
+			return;
+		}
+		if(newScrollY < this.get_minScrollY()) {
+			newScrollY = this.get_minScrollY();
+		} else if(newScrollY > this.get_maxScrollY()) {
+			newScrollY = this.get_maxScrollY();
+		}
+		if(newScrollX < this.get_minScrollX()) {
+			newScrollX = this.get_minScrollX();
+		} else if(newScrollX > this.get_maxScrollX()) {
+			newScrollX = this.get_maxScrollX();
+		}
+		var scrolled = false;
+		if(this.get_scrollY() != newScrollY && this._scrollPolicyY != feathers_controls_ScrollPolicy.OFF) {
+			scrolled = true;
+			this.set_scrollY(newScrollY);
+		}
+		if(this.get_scrollX() != newScrollX && this._scrollPolicyX != feathers_controls_ScrollPolicy.OFF) {
+			scrolled = true;
+			this.set_scrollX(newScrollX);
+		}
+		if(scrolled) {
+			event.preventDefault();
+		}
+	}
+	,baseScrollContainer_addedToStageHandler: function(event) {
+		this.setInvalid(feathers_core_InvalidationFlag.SCROLL);
+	}
+	,baseScrollContainer_removedFromStageHandler: function(event) {
+		if(this.scroller != null) {
+			this.scroller.set_target(null);
+		}
+	}
+	,baseScrollContainer_keyDownHandler: function(event) {
+		if(!this._enabled || event.isDefaultPrevented()) {
+			return;
+		}
+		this.scrollWithKeyboard(event);
+	}
+	,baseScrollContainer_scroller_scrollStartHandler: function(event) {
+		var touchPointID = this.scroller.get_touchPointID();
+		if(this.scroller.get_touchPointIsSimulated()) {
+			var exclusivePointer = feathers_utils_ExclusivePointer.forStage(this.stage);
+			var result = exclusivePointer.claimMouse(this);
+			if(!result) {
+				this.scroller.stop();
+				return;
+			}
+		} else if(touchPointID != null) {
+			var exclusivePointer = feathers_utils_ExclusivePointer.forStage(this.stage);
+			var result = exclusivePointer.claimTouch(touchPointID,this);
+			if(!result) {
+				this.scroller.stop();
+				return;
+			}
+		}
+		this._viewPort.addEventListener("mouseDown",$bind(this,this.baseScrollContainer_viewPort_mouseDownHandler));
+		this._viewPort.addEventListener("touchBegin",$bind(this,this.baseScrollContainer_viewPort_touchBeginHandler));
+		this._scrollerDraggingX = false;
+		this._scrollerDraggingY = false;
+		this.checkForRevealScrollBars();
+		feathers_events_ScrollEvent.dispatch(this,"scrollStart",false,false,this.scroller.get_scrollX(),this.scroller.get_scrollY());
+	}
+	,baseScrollContainer_scroller_scrollHandler: function(event) {
+		if(this._ignoreScrollerChanges) {
+			if(this._settingScrollerDimensions && this.needsScrollMeasurement()) {
+				this.setInvalid(feathers_core_InvalidationFlag.SCROLL);
+			} else {
+				this._viewPort.set_scrollX(this.get_scrollX());
+				this._viewPort.set_scrollY(this.get_scrollY());
+			}
+			return;
+		}
+		this.checkForRevealScrollBars();
+		if(this.needsScrollMeasurement()) {
+			this.setInvalid(feathers_core_InvalidationFlag.SCROLL);
+		} else {
+			this._viewPort.set_scrollX(this.get_scrollX());
+			this._viewPort.set_scrollY(this.get_scrollY());
+			this.refreshScrollRect();
+			this.refreshScrollBarValues();
+		}
+		feathers_events_ScrollEvent.dispatch(this,"scroll",false,false,this.scroller.get_scrollX(),this.scroller.get_scrollY());
+	}
+	,baseScrollContainer_scroller_scrollCompleteHandler: function(event) {
+		this._viewPort.removeEventListener("mouseDown",$bind(this,this.baseScrollContainer_viewPort_mouseDownHandler));
+		this._viewPort.removeEventListener("touchBegin",$bind(this,this.baseScrollContainer_viewPort_touchBeginHandler));
+		this._scrollerDraggingX = false;
+		this._scrollerDraggingY = false;
+		if(!this._scrollBarXHover && !this.get_fixedScrollBars() && this.get_autoHideScrollBars()) {
+			this.hideScrollBarX();
+		}
+		if(!this._scrollBarYHover && !this.get_fixedScrollBars() && this.get_autoHideScrollBars()) {
+			this.hideScrollBarY();
+		}
+		feathers_events_ScrollEvent.dispatch(this,"scrollComplete",false,false,this.scroller.get_scrollX(),this.scroller.get_scrollY());
+	}
+	,reclaimMouse: function() {
+		if(!this.scroller.get_touchPointIsSimulated()) {
+			return;
+		}
+		var exclusivePointer = feathers_utils_ExclusivePointer.forStage(this.stage);
+		var claim = exclusivePointer.getMouseClaim();
+		if(claim != null) {
+			return;
+		}
+		exclusivePointer.claimMouse(this);
+	}
+	,reclaimTouch: function(touchPointID) {
+		if(this.scroller.get_touchPointIsSimulated() || this.scroller.get_touchPointID() == null || this.scroller.get_touchPointID() != touchPointID) {
+			return;
+		}
+		var exclusivePointer = feathers_utils_ExclusivePointer.forStage(this.stage);
+		var claim = exclusivePointer.getTouchClaim(touchPointID);
+		if(claim != null) {
+			return;
+		}
+		exclusivePointer.claimTouch(touchPointID,this);
+	}
+	,baseScrollContainer_viewPort_mouseDownHandler: function(event) {
+		this.reclaimMouse();
+	}
+	,baseScrollContainer_viewPort_touchBeginHandler: function(event) {
+		this.reclaimTouch(event.touchPointID);
+	}
+	,scrollBarX_changeHandler: function(event) {
+		if(this._ignoreScrollBarXChange) {
+			return;
+		}
+		this.scroller.set_scrollX(this.scrollBarX.get_value());
+	}
+	,scrollBarY_changeHandler: function(event) {
+		if(this._ignoreScrollBarYChange) {
+			return;
+		}
+		this.scroller.set_scrollY(this.scrollBarY.get_value());
+	}
+	,scrollBarX_rollOverHandler: function(event) {
+		this._scrollBarXHover = true;
+		this.revealScrollBarX();
+	}
+	,scrollBarX_rollOutHandler: function(event) {
+		if(!this._scrollBarXHover) {
+			return;
+		}
+		this._scrollBarXHover = false;
+		if(!this._scrollerDraggingX && !this.get_fixedScrollBars() && this.get_autoHideScrollBars()) {
+			this.hideScrollBarX();
+		}
+	}
+	,scrollBarY_rollOverHandler: function(event) {
+		this._scrollBarYHover = true;
+		this.revealScrollBarY();
+	}
+	,scrollBarY_rollOutHandler: function(event) {
+		if(!this._scrollBarYHover) {
+			return;
+		}
+		this._scrollBarYHover = false;
+		if(!this._scrollerDraggingY && !this.get_fixedScrollBars() && this.get_autoHideScrollBars()) {
+			this.hideScrollBarY();
+		}
+	}
+	,scrollBarX_scrollStartHandler: function(event) {
+		this.scroller.stop();
+		this._scrollerDraggingX = true;
+		feathers_events_ScrollEvent.dispatch(this,"scrollStart",false,false,this.scroller.get_scrollX(),this.scroller.get_scrollY());
+	}
+	,scrollBarX_scrollCompleteHandler: function(event) {
+		this._scrollerDraggingX = false;
+		if(!this._scrollBarXHover && !this.get_fixedScrollBars() && this.get_autoHideScrollBars()) {
+			this.hideScrollBarX();
+		}
+		feathers_events_ScrollEvent.dispatch(this,"scrollComplete",false,false,this.scroller.get_scrollX(),this.scroller.get_scrollY());
+	}
+	,scrollBarY_scrollStartHandler: function(event) {
+		this.scroller.stop();
+		this._scrollerDraggingY = true;
+		feathers_events_ScrollEvent.dispatch(this,"scrollStart",false,false,this.scroller.get_scrollX(),this.scroller.get_scrollY());
+	}
+	,scrollBarY_scrollCompleteHandler: function(event) {
+		this._scrollerDraggingY = false;
+		if(!this._scrollBarYHover && !this.get_fixedScrollBars() && this.get_autoHideScrollBars()) {
+			this.hideScrollBarY();
+		}
+		feathers_events_ScrollEvent.dispatch(this,"scrollComplete",false,false,this.scroller.get_scrollX(),this.scroller.get_scrollY());
+	}
+	,hideScrollBarX_onComplete: function() {
+		this._hideScrollBarX = null;
+	}
+	,hideScrollBarY_onComplete: function() {
+		this._hideScrollBarY = null;
+	}
+	,viewPort_resizeHandler: function(event) {
+		if(this._ignoreViewPortResizing) {
+			return;
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+	}
+	,get_paddingTop: function() {
+		return this.__paddingTop;
+	}
+	,set_paddingTop: function(value) {
+		if(!this.setStyle("paddingTop")) {
+			return this.__paddingTop;
+		}
+		if(this.__paddingTop == value) {
+			return this.__paddingTop;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingTop);
+		this.__paddingTop = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingTop;
+	}
+	,clearStyle_paddingTop: function() {
+		this.set_paddingTop(0.0);
+		return this.get_paddingTop();
+	}
+	,get_paddingRight: function() {
+		return this.__paddingRight;
+	}
+	,set_paddingRight: function(value) {
+		if(!this.setStyle("paddingRight")) {
+			return this.__paddingRight;
+		}
+		if(this.__paddingRight == value) {
+			return this.__paddingRight;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingRight);
+		this.__paddingRight = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingRight;
+	}
+	,clearStyle_paddingRight: function() {
+		this.set_paddingRight(0.0);
+		return this.get_paddingRight();
+	}
+	,get_paddingBottom: function() {
+		return this.__paddingBottom;
+	}
+	,set_paddingBottom: function(value) {
+		if(!this.setStyle("paddingBottom")) {
+			return this.__paddingBottom;
+		}
+		if(this.__paddingBottom == value) {
+			return this.__paddingBottom;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingBottom);
+		this.__paddingBottom = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingBottom;
+	}
+	,clearStyle_paddingBottom: function() {
+		this.set_paddingBottom(0.0);
+		return this.get_paddingBottom();
+	}
+	,get_paddingLeft: function() {
+		return this.__paddingLeft;
+	}
+	,set_paddingLeft: function(value) {
+		if(!this.setStyle("paddingLeft")) {
+			return this.__paddingLeft;
+		}
+		if(this.__paddingLeft == value) {
+			return this.__paddingLeft;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingLeft);
+		this.__paddingLeft = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingLeft;
+	}
+	,clearStyle_paddingLeft: function() {
+		this.set_paddingLeft(0.0);
+		return this.get_paddingLeft();
+	}
+	,get_backgroundSkin: function() {
+		return this.__backgroundSkin;
+	}
+	,set_backgroundSkin: function(value) {
+		if(!this.setStyle("backgroundSkin")) {
+			return this.__backgroundSkin;
+		}
+		if(this.__backgroundSkin == value) {
+			return this.__backgroundSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_backgroundSkin);
+		this.__backgroundSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__backgroundSkin;
+	}
+	,clearStyle_backgroundSkin: function() {
+		this.set_backgroundSkin(null);
+		return this.get_backgroundSkin();
+	}
+	,get_disabledBackgroundSkin: function() {
+		return this.__disabledBackgroundSkin;
+	}
+	,set_disabledBackgroundSkin: function(value) {
+		if(!this.setStyle("disabledBackgroundSkin")) {
+			return this.__disabledBackgroundSkin;
+		}
+		if(this.__disabledBackgroundSkin == value) {
+			return this.__disabledBackgroundSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_disabledBackgroundSkin);
+		this.__disabledBackgroundSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__disabledBackgroundSkin;
+	}
+	,clearStyle_disabledBackgroundSkin: function() {
+		this.set_disabledBackgroundSkin(null);
+		return this.get_disabledBackgroundSkin();
+	}
+	,get_maskSkin: function() {
+		return this.__maskSkin;
+	}
+	,set_maskSkin: function(value) {
+		if(!this.setStyle("maskSkin")) {
+			return this.__maskSkin;
+		}
+		if(this.__maskSkin == value) {
+			return this.__maskSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_maskSkin);
+		this.__maskSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__maskSkin;
+	}
+	,clearStyle_maskSkin: function() {
+		this.set_maskSkin(null);
+		return this.get_maskSkin();
+	}
+	,get_viewPortMaskSkin: function() {
+		return this.__viewPortMaskSkin;
+	}
+	,set_viewPortMaskSkin: function(value) {
+		if(!this.setStyle("viewPortMaskSkin")) {
+			return this.__viewPortMaskSkin;
+		}
+		if(this.__viewPortMaskSkin == value) {
+			return this.__viewPortMaskSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_viewPortMaskSkin);
+		this.__viewPortMaskSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__viewPortMaskSkin;
+	}
+	,clearStyle_viewPortMaskSkin: function() {
+		this.set_viewPortMaskSkin(null);
+		return this.get_viewPortMaskSkin();
+	}
+	,get_fixedScrollBars: function() {
+		return this.__fixedScrollBars;
+	}
+	,set_fixedScrollBars: function(value) {
+		if(!this.setStyle("fixedScrollBars")) {
+			return this.__fixedScrollBars;
+		}
+		if(this.__fixedScrollBars == value) {
+			return this.__fixedScrollBars;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_fixedScrollBars);
+		this.__fixedScrollBars = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__fixedScrollBars;
+	}
+	,clearStyle_fixedScrollBars: function() {
+		this.set_fixedScrollBars(false);
+		return this.get_fixedScrollBars();
+	}
+	,get_showScrollBars: function() {
+		return this.__showScrollBars;
+	}
+	,set_showScrollBars: function(value) {
+		if(!this.setStyle("showScrollBars")) {
+			return this.__showScrollBars;
+		}
+		if(this.__showScrollBars == value) {
+			return this.__showScrollBars;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_showScrollBars);
+		this.__showScrollBars = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__showScrollBars;
+	}
+	,clearStyle_showScrollBars: function() {
+		this.set_showScrollBars(true);
+		return this.get_showScrollBars();
+	}
+	,get_autoHideScrollBars: function() {
+		return this.__autoHideScrollBars;
+	}
+	,set_autoHideScrollBars: function(value) {
+		if(!this.setStyle("autoHideScrollBars")) {
+			return this.__autoHideScrollBars;
+		}
+		if(this.__autoHideScrollBars == value) {
+			return this.__autoHideScrollBars;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_autoHideScrollBars);
+		this.__autoHideScrollBars = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__autoHideScrollBars;
+	}
+	,clearStyle_autoHideScrollBars: function() {
+		this.set_autoHideScrollBars(true);
+		return this.get_autoHideScrollBars();
+	}
+	,get_scrollBarXPosition: function() {
+		return this.__scrollBarXPosition;
+	}
+	,set_scrollBarXPosition: function(value) {
+		if(!this.setStyle("scrollBarXPosition")) {
+			return this.__scrollBarXPosition;
+		}
+		if(this.__scrollBarXPosition == value) {
+			return this.__scrollBarXPosition;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_scrollBarXPosition);
+		this.__scrollBarXPosition = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__scrollBarXPosition;
+	}
+	,clearStyle_scrollBarXPosition: function() {
+		this.set_scrollBarXPosition(feathers_layout_RelativePosition.BOTTOM);
+		return this.get_scrollBarXPosition();
+	}
+	,get_scrollBarYPosition: function() {
+		return this.__scrollBarYPosition;
+	}
+	,set_scrollBarYPosition: function(value) {
+		if(!this.setStyle("scrollBarYPosition")) {
+			return this.__scrollBarYPosition;
+		}
+		if(this.__scrollBarYPosition == value) {
+			return this.__scrollBarYPosition;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_scrollBarYPosition);
+		this.__scrollBarYPosition = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__scrollBarYPosition;
+	}
+	,clearStyle_scrollBarYPosition: function() {
+		this.set_scrollBarYPosition(feathers_layout_RelativePosition.RIGHT);
+		return this.get_scrollBarYPosition();
+	}
+	,get_showScrollBarMinimumDuration: function() {
+		return this.__showScrollBarMinimumDuration;
+	}
+	,set_showScrollBarMinimumDuration: function(value) {
+		if(!this.setStyle("showScrollBarMinimumDuration")) {
+			return this.__showScrollBarMinimumDuration;
+		}
+		if(this.__showScrollBarMinimumDuration == value) {
+			return this.__showScrollBarMinimumDuration;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_showScrollBarMinimumDuration);
+		this.__showScrollBarMinimumDuration = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__showScrollBarMinimumDuration;
+	}
+	,clearStyle_showScrollBarMinimumDuration: function() {
+		this.set_showScrollBarMinimumDuration(0.5);
+		return this.get_showScrollBarMinimumDuration();
+	}
+	,get_hideScrollBarDuration: function() {
+		return this.__hideScrollBarDuration;
+	}
+	,set_hideScrollBarDuration: function(value) {
+		if(!this.setStyle("hideScrollBarDuration")) {
+			return this.__hideScrollBarDuration;
+		}
+		if(this.__hideScrollBarDuration == value) {
+			return this.__hideScrollBarDuration;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_hideScrollBarDuration);
+		this.__hideScrollBarDuration = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__hideScrollBarDuration;
+	}
+	,clearStyle_hideScrollBarDuration: function() {
+		this.set_hideScrollBarDuration(0.2);
+		return this.get_hideScrollBarDuration();
+	}
+	,get_hideScrollBarEase: function() {
+		return this.__hideScrollBarEase;
+	}
+	,set_hideScrollBarEase: function(value) {
+		if(!this.setStyle("hideScrollBarEase")) {
+			return this.__hideScrollBarEase;
+		}
+		if(this.__hideScrollBarEase == value) {
+			return this.__hideScrollBarEase;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_hideScrollBarEase);
+		this.__hideScrollBarEase = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__hideScrollBarEase;
+	}
+	,clearStyle_hideScrollBarEase: function() {
+		this.set_hideScrollBarEase(motion_easing_Quart.easeOut);
+		return this.get_hideScrollBarEase();
+	}
+	,get_scrollPixelSnapping: function() {
+		return this.__scrollPixelSnapping;
+	}
+	,set_scrollPixelSnapping: function(value) {
+		if(!this.setStyle("scrollPixelSnapping")) {
+			return this.__scrollPixelSnapping;
+		}
+		if(this.__scrollPixelSnapping == value) {
+			return this.__scrollPixelSnapping;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_scrollPixelSnapping);
+		this.__scrollPixelSnapping = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__scrollPixelSnapping;
+	}
+	,clearStyle_scrollPixelSnapping: function() {
+		this.set_scrollPixelSnapping(false);
+		return this.get_scrollPixelSnapping();
+	}
+	,__class__: feathers_controls_supportClasses_BaseScrollContainer
+	,__properties__: $extend(feathers_core_FeathersControl.prototype.__properties__,{set_scrollMode:"set_scrollMode",get_scrollMode:"get_scrollMode",get_measureViewPort:"get_measureViewPort",set_scrollPixelSnapping:"set_scrollPixelSnapping",get_scrollPixelSnapping:"get_scrollPixelSnapping",set_hideScrollBarEase:"set_hideScrollBarEase",get_hideScrollBarEase:"get_hideScrollBarEase",set_hideScrollBarDuration:"set_hideScrollBarDuration",get_hideScrollBarDuration:"get_hideScrollBarDuration",set_showScrollBarMinimumDuration:"set_showScrollBarMinimumDuration",get_showScrollBarMinimumDuration:"get_showScrollBarMinimumDuration",set_scrollBarYPosition:"set_scrollBarYPosition",get_scrollBarYPosition:"get_scrollBarYPosition",set_scrollBarXPosition:"set_scrollBarXPosition",get_scrollBarXPosition:"get_scrollBarXPosition",set_scrollPolicyY:"set_scrollPolicyY",get_scrollPolicyY:"get_scrollPolicyY",set_scrollPolicyX:"set_scrollPolicyX",get_scrollPolicyX:"get_scrollPolicyX",set_scrollStepY:"set_scrollStepY",get_scrollStepY:"get_scrollStepY",set_scrollStepX:"set_scrollStepX",get_scrollStepX:"get_scrollStepX",get_maxScrollY:"get_maxScrollY",get_maxScrollX:"get_maxScrollX",get_minScrollY:"get_minScrollY",get_minScrollX:"get_minScrollX",set_restrictedScrollY:"set_restrictedScrollY",get_restrictedScrollY:"get_restrictedScrollY",set_scrollY:"set_scrollY",get_scrollY:"get_scrollY",set_restrictedScrollX:"set_restrictedScrollX",get_restrictedScrollX:"get_restrictedScrollX",set_scrollX:"set_scrollX",get_scrollX:"get_scrollX",set_scrollerFactory:"set_scrollerFactory",get_scrollerFactory:"get_scrollerFactory",set_scrollBarYFactory:"set_scrollBarYFactory",get_scrollBarYFactory:"get_scrollBarYFactory",set_scrollBarXFactory:"set_scrollBarXFactory",get_scrollBarXFactory:"get_scrollBarXFactory",set_autoHideScrollBars:"set_autoHideScrollBars",get_autoHideScrollBars:"get_autoHideScrollBars",set_showScrollBars:"set_showScrollBars",get_showScrollBars:"get_showScrollBars",set_fixedScrollBars:"set_fixedScrollBars",get_fixedScrollBars:"get_fixedScrollBars",set_viewPortMaskSkin:"set_viewPortMaskSkin",get_viewPortMaskSkin:"get_viewPortMaskSkin",set_maskSkin:"set_maskSkin",get_maskSkin:"get_maskSkin",set_disabledBackgroundSkin:"set_disabledBackgroundSkin",get_disabledBackgroundSkin:"get_disabledBackgroundSkin",set_backgroundSkin:"set_backgroundSkin",get_backgroundSkin:"get_backgroundSkin",set_paddingLeft:"set_paddingLeft",get_paddingLeft:"get_paddingLeft",set_paddingBottom:"set_paddingBottom",get_paddingBottom:"get_paddingBottom",set_paddingRight:"set_paddingRight",get_paddingRight:"get_paddingRight",set_paddingTop:"set_paddingTop",get_paddingTop:"get_paddingTop",set_viewPort:"set_viewPort",get_viewPort:"get_viewPort"})
+});
+var feathers_core_IFocusContainer = function() { };
+$hxClasses["feathers.core.IFocusContainer"] = feathers_core_IFocusContainer;
+feathers_core_IFocusContainer.__name__ = "feathers.core.IFocusContainer";
+feathers_core_IFocusContainer.__isInterface__ = true;
+feathers_core_IFocusContainer.__interfaces__ = [feathers_core_IFocusObject];
+feathers_core_IFocusContainer.prototype = {
+	__class__: feathers_core_IFocusContainer
+	,__properties__: {set_childFocusEnabled:"set_childFocusEnabled",get_childFocusEnabled:"get_childFocusEnabled"}
+};
+var feathers_controls_ScrollContainer = function() {
+	this.__layout = null;
+	this._manageChildVisibility = false;
+	this._autoSizeMode = feathers_layout_AutoSizeMode.CONTENT;
+	this._childFocusEnabled = true;
+	this._xmlContent = null;
+	this.items = [];
+	this._displayListBypassEnabled = true;
+	this._ignoreChangesButSetFlags = false;
+	this._ignoreChildChanges = false;
+	this.initializeScrollContainerTheme();
+	feathers_controls_supportClasses_BaseScrollContainer.call(this);
+	if(this.get_viewPort() == null) {
+		this.layoutViewPort = new feathers_controls_supportClasses_LayoutViewPort();
+		this.addRawChild(this.layoutViewPort);
+		this.set_viewPort(this.layoutViewPort);
+	}
+	this.addEventListener("addedToStage",$bind(this,this.scrollContainer_addedToStageHandler));
+};
+$hxClasses["feathers.controls.ScrollContainer"] = feathers_controls_ScrollContainer;
+feathers_controls_ScrollContainer.__name__ = "feathers.controls.ScrollContainer";
+feathers_controls_ScrollContainer.__interfaces__ = [feathers_core_IFocusContainer];
+feathers_controls_ScrollContainer.__super__ = feathers_controls_supportClasses_BaseScrollContainer;
+feathers_controls_ScrollContainer.prototype = $extend(feathers_controls_supportClasses_BaseScrollContainer.prototype,{
+	get_xmlContent: function() {
+		return this._xmlContent;
+	}
+	,set_xmlContent: function(value) {
+		if(this._xmlContent == value) {
+			return this._xmlContent;
+		}
+		if(this._xmlContent != null) {
+			var _g = 0;
+			var _g1 = this._xmlContent;
+			while(_g < _g1.length) {
+				var child = _g1[_g];
+				++_g;
+				this.removeChild(child);
+			}
+		}
+		this._xmlContent = value;
+		if(this._xmlContent != null) {
+			var _g = 0;
+			var _g1 = this._xmlContent;
+			while(_g < _g1.length) {
+				var child = _g1[_g];
+				++_g;
+				this.addChild(child);
+			}
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this._xmlContent;
+	}
+	,get_childFocusEnabled: function() {
+		if(this._enabled) {
+			return this._childFocusEnabled;
+		} else {
+			return false;
+		}
+	}
+	,set_childFocusEnabled: function(value) {
+		if(this._childFocusEnabled == value) {
+			return this._childFocusEnabled;
+		}
+		this._childFocusEnabled = value;
+		return this._childFocusEnabled;
+	}
+	,get_autoSizeMode: function() {
+		return this._autoSizeMode;
+	}
+	,set_autoSizeMode: function(value) {
+		if(this._autoSizeMode == value) {
+			return this._autoSizeMode;
+		}
+		this._autoSizeMode = value;
+		this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		if(this.stage != null) {
+			if(this._autoSizeMode == feathers_layout_AutoSizeMode.STAGE) {
+				this.stage.addEventListener("resize",$bind(this,this.scrollContainer_stage_resizeHandler),false,0,true);
+				this.addEventListener("removedFromStage",$bind(this,this.scrollContainer_removedFromStageHandler));
+			} else {
+				this.stage.removeEventListener("resize",$bind(this,this.scrollContainer_stage_resizeHandler));
+				this.removeEventListener("removedFromStage",$bind(this,this.scrollContainer_removedFromStageHandler));
+			}
+		}
+		return this._autoSizeMode;
+	}
+	,get_manageChildVisibility: function() {
+		return this._manageChildVisibility;
+	}
+	,set_manageChildVisibility: function(value) {
+		if(this._manageChildVisibility == value) {
+			return this._manageChildVisibility;
+		}
+		this._manageChildVisibility = value;
+		this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		return this._manageChildVisibility;
+	}
+	,get_numRawChildren: function() {
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = false;
+		var result = this.get_numChildren();
+		this._displayListBypassEnabled = oldBypass;
+		return result;
+	}
+	,get_numChildren: function() {
+		if(!this._displayListBypassEnabled) {
+			return feathers_controls_supportClasses_BaseScrollContainer.prototype.get_numChildren.call(this);
+		}
+		return this.layoutViewPort.get_numChildren();
+	}
+	,addChild: function(child) {
+		if(!this._displayListBypassEnabled) {
+			return feathers_controls_supportClasses_BaseScrollContainer.prototype.addChild.call(this,child);
+		}
+		return this.addChildAt(child,this.layoutViewPort.get_numChildren());
+	}
+	,addChildAt: function(child,index) {
+		if(!this._displayListBypassEnabled) {
+			return feathers_controls_supportClasses_BaseScrollContainer.prototype.addChildAt.call(this,child,index);
+		}
+		var oldIndex = this.items.indexOf(child);
+		if(oldIndex == index) {
+			return child;
+		}
+		if(oldIndex >= 0) {
+			HxOverrides.remove(this.items,child);
+		}
+		this.items.splice(index,0,child);
+		var result = this.layoutViewPort.addChildAt(child,index);
+		child.addEventListener("resize",$bind(this,this.scrollContainer_child_resizeHandler));
+		if(js_Boot.__implements(child,feathers_layout_ILayoutObject)) {
+			child.addEventListener("layoutDataChange",$bind(this,this.scrollContainer_child_layoutDataChangeHandler),false,0,true);
+		}
+		if(this._ignoreChangesButSetFlags) {
+			this.setInvalidationFlag(feathers_core_InvalidationFlag.LAYOUT);
+		} else {
+			this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		}
+		return result;
+	}
+	,removeChild: function(child) {
+		if(!this._displayListBypassEnabled) {
+			return feathers_controls_supportClasses_BaseScrollContainer.prototype.removeChild.call(this,child);
+		}
+		if(child == null || child.parent != this.layoutViewPort) {
+			return child;
+		}
+		HxOverrides.remove(this.items,child);
+		var result = this.layoutViewPort.removeChild(child);
+		child.removeEventListener("resize",$bind(this,this.scrollContainer_child_resizeHandler));
+		if(js_Boot.__implements(child,feathers_layout_ILayoutObject)) {
+			child.removeEventListener("layoutDataChange",$bind(this,this.scrollContainer_child_layoutDataChangeHandler));
+		}
+		if(this._ignoreChangesButSetFlags) {
+			this.setInvalidationFlag(feathers_core_InvalidationFlag.LAYOUT);
+		} else {
+			this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		}
+		return result;
+	}
+	,removeChildAt: function(index) {
+		if(!this._displayListBypassEnabled) {
+			return feathers_controls_supportClasses_BaseScrollContainer.prototype.removeChildAt.call(this,index);
+		}
+		return this.removeChild(this.layoutViewPort.getChildAt(index));
+	}
+	,getChildAt: function(index) {
+		if(!this._displayListBypassEnabled) {
+			return feathers_controls_supportClasses_BaseScrollContainer.prototype.removeChildAt.call(this,index);
+		}
+		return this.layoutViewPort.getChildAt(index);
+	}
+	,getChildIndex: function(child) {
+		if(!this._displayListBypassEnabled) {
+			return feathers_controls_supportClasses_BaseScrollContainer.prototype.getChildIndex.call(this,child);
+		}
+		return this.items.indexOf(child);
+	}
+	,setChildIndex: function(child,index) {
+		if(!this._displayListBypassEnabled) {
+			feathers_controls_supportClasses_BaseScrollContainer.prototype.setChildIndex.call(this,child,index);
+			return;
+		}
+		var oldIndex = this.getChildIndex(child);
+		if(oldIndex == index) {
+			return;
+		}
+		HxOverrides.remove(this.items,child);
+		this.items.splice(index,0,child);
+		if(this._ignoreChangesButSetFlags) {
+			this.setInvalidationFlag(feathers_core_InvalidationFlag.LAYOUT);
+		} else {
+			this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		}
+	}
+	,getChildByName: function(name) {
+		if(!this._displayListBypassEnabled) {
+			return feathers_controls_supportClasses_BaseScrollContainer.prototype.getChildByName.call(this,name);
+		}
+		var _g = 0;
+		var _g1 = this.items;
+		while(_g < _g1.length) {
+			var child = _g1[_g];
+			++_g;
+			if(child.get_name() == name) {
+				return child;
+			}
+		}
+		return null;
+	}
+	,addRawChild: function(child) {
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = false;
+		var result = this.addChild(child);
+		this._displayListBypassEnabled = oldBypass;
+		return result;
+	}
+	,addRawChildAt: function(child,index) {
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = false;
+		var result = this.addChildAt(child,index);
+		this._displayListBypassEnabled = oldBypass;
+		return result;
+	}
+	,removeRawChild: function(child) {
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = false;
+		var result = this.removeChild(child);
+		this._displayListBypassEnabled = oldBypass;
+		return result;
+	}
+	,removeRawChildAt: function(index) {
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = false;
+		var result = this.removeChildAt(index);
+		this._displayListBypassEnabled = oldBypass;
+		return result;
+	}
+	,getRawChildByName: function(name) {
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = false;
+		var result = this.getChildByName(name);
+		this._displayListBypassEnabled = oldBypass;
+		return result;
+	}
+	,getRawChildAt: function(index) {
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = false;
+		var result = this.getChildAt(index);
+		this._displayListBypassEnabled = oldBypass;
+		return result;
+	}
+	,getRawChildIndex: function(child) {
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = false;
+		var result = this.getChildIndex(child);
+		this._displayListBypassEnabled = oldBypass;
+		return result;
+	}
+	,setRawChildIndex: function(child,index) {
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = false;
+		this.setChildIndex(child,index);
+		this._displayListBypassEnabled = oldBypass;
+	}
+	,removeChildren: function(beginIndex,endIndex) {
+		if(endIndex == null) {
+			endIndex = 2147483647;
+		}
+		if(beginIndex == null) {
+			beginIndex = 0;
+		}
+		if(!this._displayListBypassEnabled) {
+			feathers_controls_supportClasses_BaseScrollContainer.prototype.removeChildren.call(this,beginIndex,endIndex);
+			return;
+		}
+		if(endIndex == 2147483647) {
+			endIndex = this.items.length - 1;
+			if(endIndex < 0) {
+				return;
+			}
+		}
+		if(beginIndex > this.items.length - 1) {
+			return;
+		} else if(endIndex < beginIndex || beginIndex < 0 || endIndex > this.items.length) {
+			throw new openfl_errors_RangeError("The supplied index is out of bounds.");
+		}
+		var numRemovals = endIndex - beginIndex;
+		while(numRemovals >= 0) {
+			this.removeChildAt(beginIndex);
+			--numRemovals;
+		}
+	}
+	,removeRawChildren: function(beginIndex,endIndex) {
+		if(endIndex == null) {
+			endIndex = 2147483647;
+		}
+		if(beginIndex == null) {
+			beginIndex = 0;
+		}
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = false;
+		this.removeChildren(beginIndex,endIndex);
+		this._displayListBypassEnabled = oldBypass;
+	}
+	,initializeScrollContainerTheme: function() {
+		feathers_themes_steel_components_SteelScrollContainerStyles.initialize();
+	}
+	,dispatchEvent: function(event) {
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = true;
+		var result = feathers_controls_supportClasses_BaseScrollContainer.prototype.dispatchEvent.call(this,event);
+		this._displayListBypassEnabled = oldBypass;
+		return result;
+	}
+	,validateNow: function() {
+		var oldIgnoreChildChanges = this._ignoreChangesButSetFlags;
+		this._ignoreChangesButSetFlags = true;
+		feathers_controls_supportClasses_BaseScrollContainer.prototype.validateNow.call(this);
+		this._ignoreChangesButSetFlags = oldIgnoreChildChanges;
+	}
+	,update: function() {
+		this._ignoreChangesButSetFlags = false;
+		var layoutInvalid = this.isInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		var stylesInvalid = this.isInvalid(feathers_core_InvalidationFlag.STYLES);
+		if(layoutInvalid || stylesInvalid) {
+			this.refreshLayout();
+		}
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = false;
+		var oldIgnoreChildChanges = this._ignoreChildChanges;
+		this._ignoreChildChanges = true;
+		feathers_controls_supportClasses_BaseScrollContainer.prototype.update.call(this);
+		this._ignoreChildChanges = oldIgnoreChildChanges;
+		this._displayListBypassEnabled = oldBypass;
+	}
+	,measure: function() {
+		var needsWidth = this.get_explicitWidth() == null;
+		var needsHeight = this.get_explicitHeight() == null;
+		var needsMinWidth = this.get_explicitMinWidth() == null;
+		var needsMinHeight = this.get_explicitMinHeight() == null;
+		var needsMaxWidth = this.get_explicitMaxWidth() == null;
+		var needsMaxHeight = this.get_explicitMaxHeight() == null;
+		if(!needsWidth && !needsHeight && !needsMinWidth && !needsMinHeight && !needsMaxWidth && !needsMaxHeight) {
+			return false;
+		}
+		if(this._autoSizeMode == feathers_layout_AutoSizeMode.STAGE && this.stage != null) {
+			var topLeft = this.globalToLocal(new openfl_geom_Point());
+			var bottomRight = this.globalToLocal(new openfl_geom_Point(this.stage.stageWidth,this.stage.stageHeight));
+			var stageWidth = bottomRight.x - topLeft.x;
+			var stageHeight = bottomRight.y - topLeft.y;
+			return this.saveMeasurements(stageWidth,stageHeight,stageWidth,stageHeight);
+		}
+		return feathers_controls_supportClasses_BaseScrollContainer.prototype.measure.call(this);
+	}
+	,refreshViewPortBoundsForMeasurement: function() {
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = true;
+		feathers_controls_supportClasses_BaseScrollContainer.prototype.refreshViewPortBoundsForMeasurement.call(this);
+		this._displayListBypassEnabled = oldBypass;
+	}
+	,refreshViewPortBoundsForLayout: function() {
+		var oldBypass = this._displayListBypassEnabled;
+		this._displayListBypassEnabled = true;
+		feathers_controls_supportClasses_BaseScrollContainer.prototype.refreshViewPortBoundsForLayout.call(this);
+		this._displayListBypassEnabled = oldBypass;
+	}
+	,refreshScrollerValues: function() {
+		feathers_controls_supportClasses_BaseScrollContainer.prototype.refreshScrollerValues.call(this);
+		if(js_Boot.__implements(this.get_layout(),feathers_layout_IScrollLayout)) {
+			var scrollLayout = js_Boot.__cast(this.get_layout() , feathers_layout_IScrollLayout);
+			this.scroller.forceElasticTop = scrollLayout.get_elasticTop();
+			this.scroller.forceElasticRight = scrollLayout.get_elasticRight();
+			this.scroller.forceElasticBottom = scrollLayout.get_elasticBottom();
+			this.scroller.forceElasticLeft = scrollLayout.get_elasticLeft();
+		} else {
+			this.scroller.forceElasticTop = false;
+			this.scroller.forceElasticRight = false;
+			this.scroller.forceElasticBottom = false;
+			this.scroller.forceElasticLeft = false;
+		}
+		this.scroller.snapPositionsX = this.layoutViewPort.get_snapPositionsX();
+		this.scroller.snapPositionsY = this.layoutViewPort.get_snapPositionsY();
+	}
+	,needsScrollMeasurement: function() {
+		return js_Boot.__implements(this.get_layout(),feathers_layout_IScrollLayout);
+	}
+	,refreshLayout: function() {
+		this.layoutViewPort.set_manageChildVisibility(this._manageChildVisibility);
+		this.layoutViewPort.set_layout(this.get_layout());
+	}
+	,scrollContainer_addedToStageHandler: function(event) {
+		if(this._autoSizeMode == feathers_layout_AutoSizeMode.STAGE) {
+			this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+			this.addEventListener("removedFromStage",$bind(this,this.scrollContainer_removedFromStageHandler));
+			this.stage.addEventListener("resize",$bind(this,this.scrollContainer_stage_resizeHandler),false,0,true);
+		}
+	}
+	,scrollContainer_removedFromStageHandler: function(event) {
+		this.removeEventListener("removedFromStage",$bind(this,this.scrollContainer_removedFromStageHandler));
+		this.stage.removeEventListener("resize",$bind(this,this.scrollContainer_stage_resizeHandler));
+	}
+	,scrollContainer_stage_resizeHandler: function(event) {
+		this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+	}
+	,scrollContainer_child_layoutDataChangeHandler: function(event) {
+		if(this._ignoreChildChanges) {
+			return;
+		}
+		if(this._ignoreChangesButSetFlags) {
+			this.setInvalidationFlag(feathers_core_InvalidationFlag.LAYOUT);
+			return;
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+	}
+	,scrollContainer_child_resizeHandler: function(event) {
+		if(this._ignoreChildChanges) {
+			return;
+		}
+		if(this._ignoreChangesButSetFlags) {
+			this.setInvalidationFlag(feathers_core_InvalidationFlag.LAYOUT);
+			return;
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+	}
+	,get_styleContext: function() {
+		return feathers_controls_ScrollContainer;
+	}
+	,get_layout: function() {
+		return this.__layout;
+	}
+	,set_layout: function(value) {
+		if(!this.setStyle("layout")) {
+			return this.__layout;
+		}
+		if(this.__layout == value) {
+			return this.__layout;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_layout);
+		this.__layout = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__layout;
+	}
+	,clearStyle_layout: function() {
+		this.set_layout(null);
+		return this.get_layout();
+	}
+	,__class__: feathers_controls_ScrollContainer
+	,__properties__: $extend(feathers_controls_supportClasses_BaseScrollContainer.prototype.__properties__,{get_numRawChildren:"get_numRawChildren",set_manageChildVisibility:"set_manageChildVisibility",get_manageChildVisibility:"get_manageChildVisibility",set_autoSizeMode:"set_autoSizeMode",get_autoSizeMode:"get_autoSizeMode",set_childFocusEnabled:"set_childFocusEnabled",get_childFocusEnabled:"get_childFocusEnabled",set_xmlContent:"set_xmlContent",get_xmlContent:"get_xmlContent",set_layout:"set_layout",get_layout:"get_layout"})
+});
+var feathers_core_IFocusExtras = function() { };
+$hxClasses["feathers.core.IFocusExtras"] = feathers_core_IFocusExtras;
+feathers_core_IFocusExtras.__name__ = "feathers.core.IFocusExtras";
+feathers_core_IFocusExtras.__isInterface__ = true;
+feathers_core_IFocusExtras.__interfaces__ = [feathers_core_IFocusManagerAware];
+feathers_core_IFocusExtras.prototype = {
+	__class__: feathers_core_IFocusExtras
+	,__properties__: {get_focusExtrasAfter:"get_focusExtrasAfter",get_focusExtrasBefore:"get_focusExtrasBefore"}
+};
+var feathers_controls_Panel = function() {
+	this._focusExtrasAfter = [];
+	this._focusExtrasBefore = [];
+	this._footer = null;
+	this._footerMeasurements = null;
+	this._ignoreFooterResize = false;
+	this._header = null;
+	this._headerMeasurements = null;
+	this._ignoreHeaderResize = false;
+	this.initializePanelTheme();
+	feathers_controls_ScrollContainer.call(this);
+};
+$hxClasses["feathers.controls.Panel"] = feathers_controls_Panel;
+feathers_controls_Panel.__name__ = "feathers.controls.Panel";
+feathers_controls_Panel.__interfaces__ = [feathers_core_IFocusExtras];
+feathers_controls_Panel.__super__ = feathers_controls_ScrollContainer;
+feathers_controls_Panel.prototype = $extend(feathers_controls_ScrollContainer.prototype,{
+	get_header: function() {
+		return this._header;
+	}
+	,set_header: function(value) {
+		if(this._header == value) {
+			return this._header;
+		}
+		if(this._header != null) {
+			this._header.removeEventListener("resize",$bind(this,this.panel_header_resizeHandler));
+			HxOverrides.remove(this._focusExtrasBefore,this._header);
+			this.removeRawChild(this._header);
+		}
+		this._header = value;
+		if(this._header != null) {
+			this._focusExtrasBefore.push(this._header);
+			var index = this.layoutViewPort != null ? this.getRawChildIndex(this.layoutViewPort) + 1 : 0;
+			this.addRawChildAt(this._header,index);
+			if(js_Boot.__implements(this._header,feathers_core_IUIControl)) {
+				(js_Boot.__cast(this._header , feathers_core_IUIControl)).initializeNow();
+			}
+			if(this._headerMeasurements == null) {
+				this._headerMeasurements = new feathers_layout_Measurements(this._header);
+			} else {
+				this._headerMeasurements.save(this._header);
+			}
+			this._header.addEventListener("resize",$bind(this,this.panel_header_resizeHandler),false,0,true);
+		} else {
+			this._headerMeasurements = null;
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		return this._header;
+	}
+	,get_footer: function() {
+		return this._footer;
+	}
+	,set_footer: function(value) {
+		if(this._footer == value) {
+			return this._footer;
+		}
+		if(this._footer != null) {
+			this._header.removeEventListener("resize",$bind(this,this.panel_header_resizeHandler));
+			HxOverrides.remove(this._focusExtrasAfter,this._footer);
+			this.removeRawChild(this._footer);
+		}
+		this._footer = value;
+		if(this._footer != null) {
+			this._focusExtrasAfter.push(this._footer);
+			this.addRawChild(this._footer);
+			if(js_Boot.__implements(this._footer,feathers_core_IUIControl)) {
+				(js_Boot.__cast(this._footer , feathers_core_IUIControl)).initializeNow();
+			}
+			if(this._footerMeasurements == null) {
+				this._footerMeasurements = new feathers_layout_Measurements(this._footer);
+			} else {
+				this._footerMeasurements.save(this._footer);
+			}
+			this._footer.addEventListener("resize",$bind(this,this.panel_footer_resizeHandler),false,0,true);
+		} else {
+			this._footerMeasurements = null;
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		return this._footer;
+	}
+	,get_focusExtrasBefore: function() {
+		return this._focusExtrasBefore;
+	}
+	,get_focusExtrasAfter: function() {
+		return this._focusExtrasAfter;
+	}
+	,dispose: function() {
+		if(this._header != null) {
+			this.set_header(null);
+		}
+		if(this._footer != null) {
+			this.set_footer(null);
+		}
+		feathers_controls_ScrollContainer.prototype.dispose.call(this);
+	}
+	,initializePanelTheme: function() {
+		feathers_themes_steel_components_SteelPanelStyles.initialize();
+	}
+	,update: function() {
+		this._ignoreChangesButSetFlags = false;
+		feathers_controls_ScrollContainer.prototype.update.call(this);
+		var oldIgnoreHeaderResize = this._ignoreHeaderResize;
+		this._ignoreHeaderResize = true;
+		this.layoutHeader();
+		this._ignoreHeaderResize = oldIgnoreHeaderResize;
+		var oldIgnoreFooterResize = this._ignoreFooterResize;
+		this._ignoreFooterResize = true;
+		this.layoutFooter();
+		this._ignoreFooterResize = oldIgnoreFooterResize;
+	}
+	,calculateViewPortOffsets: function(forceScrollBars,useActualBounds) {
+		if(this._header != null) {
+			var oldIgnoreHeaderResize = this._ignoreHeaderResize;
+			this._ignoreHeaderResize = true;
+			if(this._headerMeasurements != null) {
+				this._headerMeasurements.restore(this._header);
+			}
+			if(useActualBounds) {
+				this._header.set_width(this.actualWidth - this.get_paddingLeft() - this.get_paddingRight());
+			} else if(this.get_explicitWidth() != null) {
+				this._header.set_width(this.get_explicitWidth() - this.get_paddingLeft() - this.get_paddingRight());
+			}
+			if(js_Boot.__implements(this._header,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._header , feathers_core_IValidating)).validateNow();
+			}
+			this.topViewPortOffset += this._header.get_height();
+			this.chromeMeasuredWidth = Math.max(this.chromeMeasuredWidth,this._header.get_width());
+			if(js_Boot.__implements(this._header,feathers_core_IMeasureObject)) {
+				var measureHeader = js_Boot.__cast(this._header , feathers_core_IMeasureObject);
+				this.chromeMeasuredMinWidth = Math.max(this.chromeMeasuredMinWidth,measureHeader.get_minWidth());
+			}
+			this._ignoreHeaderResize = oldIgnoreHeaderResize;
+		}
+		if(this._footer != null) {
+			var oldIgnoreFooterResize = this._ignoreFooterResize;
+			this._ignoreFooterResize = true;
+			if(this._footerMeasurements != null) {
+				this._footerMeasurements.restore(this._footer);
+			}
+			if(useActualBounds) {
+				this._footer.set_width(this.actualWidth - this.get_paddingLeft() - this.get_paddingRight());
+			} else if(this.get_explicitWidth() != null) {
+				this._footer.set_width(this.get_explicitWidth() - this.get_paddingLeft() - this.get_paddingRight());
+			}
+			if(js_Boot.__implements(this._footer,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._footer , feathers_core_IValidating)).validateNow();
+			}
+			this.bottomViewPortOffset += this._footer.get_height();
+			this.chromeMeasuredWidth = Math.max(this.chromeMeasuredWidth,this._footer.get_width());
+			if(js_Boot.__implements(this._footer,feathers_core_IMeasureObject)) {
+				var measureFooter = js_Boot.__cast(this._footer , feathers_core_IMeasureObject);
+				this.chromeMeasuredMinWidth = Math.max(this.chromeMeasuredMinWidth,measureFooter.get_minWidth());
+			}
+			this._ignoreFooterResize = oldIgnoreFooterResize;
+		}
+		feathers_controls_ScrollContainer.prototype.calculateViewPortOffsets.call(this,forceScrollBars,useActualBounds);
+	}
+	,layoutHeader: function() {
+		if(this._header == null) {
+			return;
+		}
+		this._header.set_x(this.get_paddingLeft());
+		this._header.set_y(this.get_paddingTop());
+		this._header.set_width(this.actualWidth - this.get_paddingLeft() - this.get_paddingRight());
+		if(js_Boot.__implements(this._header,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._header , feathers_core_IValidating)).validateNow();
+		}
+	}
+	,layoutFooter: function() {
+		if(this._footer == null) {
+			return;
+		}
+		this._footer.set_x(this.get_paddingLeft());
+		this._footer.set_width(this.actualWidth - this.get_paddingLeft() - this.get_paddingRight());
+		if(js_Boot.__implements(this._footer,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._footer , feathers_core_IValidating)).validateNow();
+		}
+		this._footer.set_y(this.actualHeight - this._footer.get_height() - this.get_paddingBottom());
+	}
+	,panel_header_resizeHandler: function(event) {
+		if(this._ignoreHeaderResize) {
+			return;
+		}
+		if(this._headerMeasurements != null) {
+			this._headerMeasurements.save(this._header);
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+	}
+	,panel_footer_resizeHandler: function(event) {
+		if(this._ignoreFooterResize) {
+			return;
+		}
+		if(this._footerMeasurements != null) {
+			this._footerMeasurements.save(this._footer);
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+	}
+	,get_styleContext: function() {
+		return feathers_controls_Panel;
+	}
+	,__class__: feathers_controls_Panel
+	,__properties__: $extend(feathers_controls_ScrollContainer.prototype.__properties__,{get_focusExtrasAfter:"get_focusExtrasAfter",get_focusExtrasBefore:"get_focusExtrasBefore",set_footer:"set_footer",get_footer:"get_footer",set_header:"set_header",get_header:"get_header"})
+});
+var feathers_controls_ScrollMode = $hxEnums["feathers.controls.ScrollMode"] = { __ename__:"feathers.controls.ScrollMode",__constructs__:null
+	,SCROLL_RECT: {_hx_name:"SCROLL_RECT",_hx_index:0,__enum__:"feathers.controls.ScrollMode",toString:$estr}
+	,MASK: {_hx_name:"MASK",_hx_index:1,__enum__:"feathers.controls.ScrollMode",toString:$estr}
+	,MASKLESS: {_hx_name:"MASKLESS",_hx_index:2,__enum__:"feathers.controls.ScrollMode",toString:$estr}
+};
+feathers_controls_ScrollMode.__constructs__ = [feathers_controls_ScrollMode.SCROLL_RECT,feathers_controls_ScrollMode.MASK,feathers_controls_ScrollMode.MASKLESS];
+var feathers_controls_ScrollPolicy = $hxEnums["feathers.controls.ScrollPolicy"] = { __ename__:"feathers.controls.ScrollPolicy",__constructs__:null
+	,ON: {_hx_name:"ON",_hx_index:0,__enum__:"feathers.controls.ScrollPolicy",toString:$estr}
+	,OFF: {_hx_name:"OFF",_hx_index:1,__enum__:"feathers.controls.ScrollPolicy",toString:$estr}
+	,AUTO: {_hx_name:"AUTO",_hx_index:2,__enum__:"feathers.controls.ScrollPolicy",toString:$estr}
+};
+feathers_controls_ScrollPolicy.__constructs__ = [feathers_controls_ScrollPolicy.ON,feathers_controls_ScrollPolicy.OFF,feathers_controls_ScrollPolicy.AUTO];
 var feathers_core_IDataSelector = function() { };
 $hxClasses["feathers.core.IDataSelector"] = feathers_core_IDataSelector;
 feathers_core_IDataSelector.__name__ = "feathers.core.IDataSelector";
@@ -8948,20 +15305,6 @@ feathers_core_IIndexSelector.prototype = {
 	__class__: feathers_core_IIndexSelector
 	,__properties__: {get_maxSelectedIndex:"get_maxSelectedIndex",set_selectedIndex:"set_selectedIndex",get_selectedIndex:"get_selectedIndex"}
 };
-var feathers_core_InvalidationFlag = $hxEnums["feathers.core.InvalidationFlag"] = { __ename__:"feathers.core.InvalidationFlag",__constructs__:null
-	,STATE: {_hx_name:"STATE",_hx_index:0,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
-	,SIZE: {_hx_name:"SIZE",_hx_index:1,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
-	,STYLES: {_hx_name:"STYLES",_hx_index:2,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
-	,SKIN: {_hx_name:"SKIN",_hx_index:3,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
-	,LAYOUT: {_hx_name:"LAYOUT",_hx_index:4,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
-	,DATA: {_hx_name:"DATA",_hx_index:5,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
-	,SCROLL: {_hx_name:"SCROLL",_hx_index:6,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
-	,SELECTION: {_hx_name:"SELECTION",_hx_index:7,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
-	,FOCUS: {_hx_name:"FOCUS",_hx_index:8,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
-	,SORT: {_hx_name:"SORT",_hx_index:9,__enum__:"feathers.core.InvalidationFlag",toString:$estr}
-	,CUSTOM: ($_=function(value) { return {_hx_index:10,value:value,__enum__:"feathers.core.InvalidationFlag",toString:$estr}; },$_._hx_name="CUSTOM",$_.__params__ = ["value"],$_)
-};
-feathers_core_InvalidationFlag.__constructs__ = [feathers_core_InvalidationFlag.STATE,feathers_core_InvalidationFlag.SIZE,feathers_core_InvalidationFlag.STYLES,feathers_core_InvalidationFlag.SKIN,feathers_core_InvalidationFlag.LAYOUT,feathers_core_InvalidationFlag.DATA,feathers_core_InvalidationFlag.SCROLL,feathers_core_InvalidationFlag.SELECTION,feathers_core_InvalidationFlag.FOCUS,feathers_core_InvalidationFlag.SORT,feathers_core_InvalidationFlag.CUSTOM];
 var feathers_data_TabBarItemState = function(data,index,selected,text) {
 	if(selected == null) {
 		selected = false;
@@ -9882,6 +16225,2313 @@ feathers_controls__$TabBar_TabStorage.__name__ = "feathers.controls._TabBar.TabS
 feathers_controls__$TabBar_TabStorage.prototype = {
 	__class__: feathers_controls__$TabBar_TabStorage
 };
+var feathers_controls_TextArea = function(text,prompt,changeListener) {
+	if(text == null) {
+		text = "";
+	}
+	this.__customErrorCalloutVariant = null;
+	this.__showPromptWhenEmptyAndFocused = true;
+	this.__textPaddingLeft = 0.0;
+	this.__textPaddingBottom = 0.0;
+	this.__textPaddingRight = 0.0;
+	this.__textPaddingTop = 0.0;
+	this.__wordWrap = true;
+	this.__embedFonts = false;
+	this.__promptTextFormat = null;
+	this.__disabledTextFormat = null;
+	this.__textFormat = null;
+	this.__smoothScrolling = false;
+	this._stateToSkin = new haxe_ds_EnumValueMap();
+	this._ignoreViewPortTextChange = false;
+	this._previousCustomErrorCalloutVariant = null;
+	this._maxChars = 0;
+	this._stateToTextFormat = new haxe_ds_EnumValueMap();
+	this._errorString = null;
+	this._displayAsPassword = false;
+	this._currentState = feathers_controls_TextInputState.ENABLED;
+	this._selectable = true;
+	this._editable = true;
+	this._updatedPromptStyles = false;
+	this._previousSimplePromptTextFormat = null;
+	this._previousPromptTextFormat = null;
+	this._previousPrompt = null;
+	this._previousSimpleTextFormat = null;
+	this._previousTextFormat = null;
+	this.initializeTextAreaTheme();
+	feathers_controls_supportClasses_BaseScrollContainer.call(this);
+	this.set_text(text);
+	this.set_prompt(prompt);
+	this.set_tabEnabled(true);
+	this.set_tabChildren(false);
+	this.focusRect = null;
+	if(this.get_viewPort() == null) {
+		this.textFieldViewPort = new feathers_controls_supportClasses_TextFieldViewPort();
+		this.textFieldViewPort.set_wordWrap(true);
+		this.textFieldViewPort.set_multiline(true);
+		this.textFieldViewPort.addEventListener("change",$bind(this,this.textArea_viewPort_changeHandler));
+		this.addChild(this.textFieldViewPort);
+		this.set_viewPort(this.textFieldViewPort);
+	}
+	this.addEventListener("focusIn",$bind(this,this.textArea_focusInHandler));
+	this.addEventListener("focusOut",$bind(this,this.textArea_focusOutHandler));
+	if(changeListener != null) {
+		this.addEventListener("change",changeListener);
+	}
+};
+$hxClasses["feathers.controls.TextArea"] = feathers_controls_TextArea;
+feathers_controls_TextArea.__name__ = "feathers.controls.TextArea";
+feathers_controls_TextArea.__interfaces__ = [feathers_core_IStageFocusDelegate,feathers_core_ITextControl,feathers_core_IStateContext];
+feathers_controls_TextArea.__super__ = feathers_controls_supportClasses_BaseScrollContainer;
+feathers_controls_TextArea.prototype = $extend(feathers_controls_supportClasses_BaseScrollContainer.prototype,{
+	get_tabEnabled: function() {
+		if(this._enabled) {
+			return this.get_rawTabEnabled();
+		} else {
+			return false;
+		}
+	}
+	,get_editable: function() {
+		return this._editable;
+	}
+	,set_editable: function(value) {
+		if(this._editable == value) {
+			return this._editable;
+		}
+		this._editable = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STATE);
+		return this._editable;
+	}
+	,get_selectable: function() {
+		return this._selectable;
+	}
+	,set_selectable: function(value) {
+		if(this._selectable == value) {
+			return this._selectable;
+		}
+		this._selectable = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._selectable;
+	}
+	,get_currentState: function() {
+		return this._currentState;
+	}
+	,set_enabled: function(value) {
+		feathers_controls_supportClasses_BaseScrollContainer.prototype.set_enabled.call(this,value);
+		this.refreshState();
+		return this._enabled;
+	}
+	,get_text: function() {
+		return this._text;
+	}
+	,set_text: function(value) {
+		if(value == null) {
+			if(this._text.length == 0) {
+				return this._text;
+			}
+			value = "";
+		}
+		if(this._text == value) {
+			return this._text;
+		}
+		this._text = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._text;
+	}
+	,get_baseline: function() {
+		if(this.textFieldViewPort == null) {
+			return 0.0;
+		}
+		return this.get_paddingTop() + this.textFieldViewPort.get_baseline();
+	}
+	,get_prompt: function() {
+		return this._prompt;
+	}
+	,set_prompt: function(value) {
+		if(this._prompt == value) {
+			return this._prompt;
+		}
+		this._prompt = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._prompt;
+	}
+	,get_restrict: function() {
+		return this.__restrict;
+	}
+	,set_restrict: function(value) {
+		if(this.__restrict == value) {
+			return this.__restrict;
+		}
+		this.__restrict = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this.__restrict;
+	}
+	,get_displayAsPassword: function() {
+		return this._displayAsPassword;
+	}
+	,set_displayAsPassword: function(value) {
+		if(this._displayAsPassword == value) {
+			return this._displayAsPassword;
+		}
+		this._displayAsPassword = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._displayAsPassword;
+	}
+	,get_errorString: function() {
+		return this._errorString;
+	}
+	,set_errorString: function(value) {
+		if(this._errorString == value) {
+			return this._errorString;
+		}
+		this._errorString = value;
+		this.refreshState();
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._text;
+	}
+	,get_errorStringCalloutOpen: function() {
+		if(this.errorStringCallout != null) {
+			return this.errorStringCallout.parent != null;
+		} else {
+			return false;
+		}
+	}
+	,get_selectionAnchorIndex: function() {
+		return this.textFieldViewPort.get_selectionAnchorIndex();
+	}
+	,get_selectionActiveIndex: function() {
+		return this.textFieldViewPort.get_selectionActiveIndex();
+	}
+	,get_maxChars: function() {
+		return this._maxChars;
+	}
+	,set_maxChars: function(value) {
+		if(this._maxChars == value) {
+			return this._maxChars;
+		}
+		this._maxChars = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._maxChars;
+	}
+	,get_measureViewPort: function() {
+		return false;
+	}
+	,get_stageFocusTarget: function() {
+		return this.textFieldViewPort;
+	}
+	,getSkinForState: function(state) {
+		return this._stateToSkin.get(state);
+	}
+	,setSkinForState: function(state,skin) {
+		if(!this.setStyle("setSkinForState",state)) {
+			return;
+		}
+		var oldSkin = this._stateToSkin.get(state);
+		if(oldSkin != null && oldSkin == this._currentBackgroundSkin) {
+			this.removeCurrentBackgroundSkin(oldSkin);
+			this._currentBackgroundSkin = null;
+		}
+		if(skin == null) {
+			this._stateToSkin.remove(state);
+		} else {
+			this._stateToSkin.set(state,skin);
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+	}
+	,getTextFormatForState: function(state) {
+		return this._stateToTextFormat.get(state);
+	}
+	,setTextFormatForState: function(state,textFormat) {
+		if(!this.setStyle("setTextFormatForState",state)) {
+			return;
+		}
+		if(textFormat == null) {
+			this._stateToTextFormat.remove(state);
+		} else {
+			this._stateToTextFormat.set(state,textFormat);
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+	}
+	,selectRange: function(anchorIndex,activeIndex) {
+		this.textFieldViewPort.selectRange(anchorIndex,activeIndex);
+	}
+	,selectAll: function() {
+		this.textFieldViewPort.selectRange(0,this._text.length);
+	}
+	,setTextPadding: function(value) {
+		this.set_textPaddingTop(value);
+		this.set_textPaddingRight(value);
+		this.set_textPaddingBottom(value);
+		this.set_textPaddingLeft(value);
+	}
+	,showFocus: function(show) {
+		feathers_controls_supportClasses_BaseScrollContainer.prototype.showFocus.call(this,show);
+		if(show) {
+			this.selectRange(this._text.length,0);
+		}
+	}
+	,dispose: function() {
+		this.destroyErrorCallout();
+		feathers_controls_supportClasses_BaseScrollContainer.prototype.dispose.call(this);
+	}
+	,initializeTextAreaTheme: function() {
+		feathers_themes_steel_components_SteelTextAreaStyles.initialize();
+	}
+	,update: function() {
+		var dataInvalid = this.isInvalid(feathers_core_InvalidationFlag.DATA);
+		var sizeInvalid = this.isInvalid(feathers_core_InvalidationFlag.SIZE);
+		var stateInvalid = this.isInvalid(feathers_core_InvalidationFlag.STATE);
+		var stylesInvalid = this.isInvalid(feathers_core_InvalidationFlag.STYLES);
+		if(this._previousCustomErrorCalloutVariant != this.get_customErrorCalloutVariant()) {
+			this.setInvalidationFlag(feathers_controls_TextArea.INVALIDATION_FLAG_ERROR_CALLOUT_FACTORY);
+		}
+		var errorCalloutFactoryInvalid = this.isInvalid(feathers_controls_TextArea.INVALIDATION_FLAG_ERROR_CALLOUT_FACTORY);
+		this._updatedPromptStyles = false;
+		if(errorCalloutFactoryInvalid || dataInvalid) {
+			this.createErrorCallout();
+		}
+		if(dataInvalid || stateInvalid) {
+			this.refreshPrompt();
+		}
+		if(stylesInvalid || stateInvalid) {
+			this.refreshPromptStyles();
+		}
+		if(dataInvalid || stylesInvalid || sizeInvalid) {
+			this.refreshPromptText(sizeInvalid);
+		}
+		if(stylesInvalid) {
+			this.refreshTextStyles();
+			this.textFieldViewPort.set_embedFonts(this.get_embedFonts());
+			this.textFieldViewPort.set_wordWrap(this.get_wordWrap());
+			this.textFieldViewPort.set_paddingTop(this.get_textPaddingTop());
+			this.textFieldViewPort.set_paddingRight(this.get_textPaddingRight());
+			this.textFieldViewPort.set_paddingBottom(this.get_textPaddingBottom());
+			this.textFieldViewPort.set_paddingLeft(this.get_textPaddingLeft());
+			this.textFieldViewPort.set_smoothScrolling(this.get_smoothScrolling());
+		}
+		if(dataInvalid) {
+			var oldIgnoreViewPortTextChange = this._ignoreViewPortTextChange;
+			this._ignoreViewPortTextChange = true;
+			this.textFieldViewPort.set_text(this._text);
+			this._ignoreViewPortTextChange = oldIgnoreViewPortTextChange;
+			this.textFieldViewPort.set_restrict(this.__restrict);
+			this.textFieldViewPort.set_maxChars(this._maxChars);
+			this.textFieldViewPort.set_displayAsPassword(this._displayAsPassword);
+			if(this._editable) {
+				this.textFieldViewPort.set_selectable(this._enabled);
+			} else {
+				this.textFieldViewPort.set_selectable(this._enabled && this._selectable);
+			}
+		}
+		if(stateInvalid) {
+			this.textFieldViewPort.set_enabled(this._enabled);
+			this.textFieldViewPort.set_textFieldType(this._editable ? 1 : 0);
+		}
+		feathers_controls_supportClasses_BaseScrollContainer.prototype.update.call(this);
+		if(errorCalloutFactoryInvalid || stateInvalid || dataInvalid) {
+			this.refreshErrorString();
+		}
+		this._previousCustomErrorCalloutVariant = this.get_customErrorCalloutVariant();
+	}
+	,layoutChildren: function() {
+		feathers_controls_supportClasses_BaseScrollContainer.prototype.layoutChildren.call(this);
+		this.layoutPrompt();
+	}
+	,addCurrentBackgroundSkin: function(skin) {
+		if(skin != null) {
+			if(js_Boot.__implements(skin,feathers_core_IStateObserver)) {
+				(js_Boot.__cast(skin , feathers_core_IStateObserver)).set_stateContext(this);
+			}
+		}
+		feathers_controls_supportClasses_BaseScrollContainer.prototype.addCurrentBackgroundSkin.call(this,skin);
+	}
+	,removeCurrentBackgroundSkin: function(skin) {
+		if(skin == null) {
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_core_IStateObserver)) {
+			(js_Boot.__cast(skin , feathers_core_IStateObserver)).set_stateContext(null);
+		}
+		feathers_controls_supportClasses_BaseScrollContainer.prototype.removeCurrentBackgroundSkin.call(this,skin);
+	}
+	,refreshTextStyles: function() {
+		var textFormat = this.getCurrentTextFormat();
+		var simpleTextFormat = textFormat != null ? textFormat.toSimpleTextFormat() : null;
+		if(simpleTextFormat == this._previousSimpleTextFormat) {
+			return;
+		}
+		if(this._previousTextFormat != null) {
+			this._previousTextFormat.removeEventListener("change",$bind(this,this.textArea_textFormat_changeHandler));
+		}
+		if(textFormat != null) {
+			textFormat.addEventListener("change",$bind(this,this.textArea_textFormat_changeHandler),false,0,true);
+			this.textFieldViewPort.set_textFormat(simpleTextFormat);
+		}
+		this._previousTextFormat = textFormat;
+		this._previousSimpleTextFormat = simpleTextFormat;
+	}
+	,refreshPrompt: function() {
+		if(this._prompt == null) {
+			if(this.promptTextField != null) {
+				this.removeChild(this.promptTextField);
+				this.promptTextField = null;
+			}
+			return;
+		}
+		if(this.promptTextField == null) {
+			this.promptTextField = new openfl_text_TextField();
+			this.promptTextField.set_selectable(false);
+			this.promptTextField.set_mouseWheelEnabled(false);
+			this.promptTextField.mouseEnabled = false;
+			this.promptTextField.set_multiline(true);
+			this.addChildAt(this.promptTextField,this.getChildIndex(this.textFieldViewPort));
+		}
+		this.promptTextField.set_visible(this._text.length == 0 && (this.get_currentState() != feathers_controls_TextInputState.FOCUSED || this.get_showPromptWhenEmptyAndFocused()));
+	}
+	,refreshPromptText: function(sizeInvalid) {
+		if(this._prompt == null || this._prompt == this._previousPrompt && !this._updatedPromptStyles && !sizeInvalid) {
+			return;
+		}
+		this.promptTextField.set_autoSize(1);
+		var hasPromptText = this._prompt.length > 0;
+		if(hasPromptText) {
+			this.promptTextField.set_text(this._prompt);
+		} else {
+			this.promptTextField.set_text("​");
+		}
+		this.promptTextField.set_wordWrap(false);
+		this._promptTextMeasuredWidth = this.promptTextField.get_width();
+		this._promptTextMeasuredHeight = this.promptTextField.get_height();
+		this.promptTextField.set_autoSize(2);
+		this.promptTextField.set_wordWrap(true);
+		if(!hasPromptText) {
+			this.promptTextField.set_text("");
+		}
+		this._previousPrompt = this._prompt;
+	}
+	,refreshPromptStyles: function() {
+		if(this._prompt == null) {
+			return;
+		}
+		if(this.promptTextField.get_embedFonts() != this.get_embedFonts()) {
+			this.promptTextField.set_embedFonts(this.get_embedFonts());
+			this._updatedPromptStyles = true;
+		}
+		var textFormat = this.getCurrentPromptTextFormat();
+		var simpleTextFormat = textFormat != null ? textFormat.toSimpleTextFormat() : null;
+		if(simpleTextFormat == this._previousSimplePromptTextFormat) {
+			return;
+		}
+		if(this._previousPromptTextFormat != null) {
+			this._previousPromptTextFormat.removeEventListener("change",$bind(this,this.textArea_promptTextFormat_changeHandler));
+		}
+		if(textFormat != null) {
+			textFormat.addEventListener("change",$bind(this,this.textArea_promptTextFormat_changeHandler),false,0,true);
+			this.promptTextField.set_defaultTextFormat(simpleTextFormat);
+			this._updatedPromptStyles = true;
+		}
+		this._previousPromptTextFormat = textFormat;
+		this._previousSimplePromptTextFormat = simpleTextFormat;
+	}
+	,getCurrentPromptTextFormat: function() {
+		var textFormat = this.get_promptTextFormat();
+		if(textFormat == null) {
+			textFormat = this.get_textFormat();
+		}
+		return textFormat;
+	}
+	,refreshErrorString: function() {
+		if(this.errorStringCallout == null) {
+			return;
+		}
+		this.errorStringCallout.set_text(this._errorString);
+		if(this._currentState == feathers_controls_TextInputState.FOCUSED && this.errorStringCallout.parent == null) {
+			feathers_core_PopUpManager.addPopUp(this.errorStringCallout,this,false,false);
+		} else if(this._currentState != feathers_controls_TextInputState.FOCUSED && this.errorStringCallout.parent != null) {
+			this.errorStringCallout.parent.removeChild(this.errorStringCallout);
+		}
+	}
+	,layoutPrompt: function() {
+		if(this._prompt == null) {
+			return;
+		}
+		this.promptTextField.set_x(this.leftViewPortOffset + this.get_textPaddingLeft());
+		this.promptTextField.set_y(this.topViewPortOffset + this.get_textPaddingTop());
+		var maxPromptWidth = this.get_viewPort().get_visibleWidth() - this.get_textPaddingLeft() - this.get_textPaddingRight();
+		if(this._promptTextMeasuredWidth > maxPromptWidth) {
+			this.promptTextField.set_width(maxPromptWidth);
+		} else {
+			this.promptTextField.set_width(this._promptTextMeasuredWidth);
+		}
+		this.promptTextField.set_height(this.get_viewPort().get_visibleHeight() - this.get_textPaddingTop() - this.get_textPaddingBottom());
+	}
+	,getCurrentBackgroundSkin: function() {
+		var result = this._stateToSkin.get(this._currentState);
+		if(result != null) {
+			return result;
+		}
+		return feathers_controls_supportClasses_BaseScrollContainer.prototype.getCurrentBackgroundSkin.call(this);
+	}
+	,getCurrentTextFormat: function() {
+		var result = this._stateToTextFormat.get(this._currentState);
+		if(result != null) {
+			return result;
+		}
+		if(!this._enabled && this.get_disabledTextFormat() != null) {
+			return this.get_disabledTextFormat();
+		}
+		return this.get_textFormat();
+	}
+	,createErrorCallout: function() {
+		this.destroyErrorCallout();
+		if(this._errorString == null || this._errorString.length == 0) {
+			return;
+		}
+		this.errorStringCallout = new feathers_controls_TextCallout();
+		if(this.errorStringCallout.get_variant() == null) {
+			this.errorStringCallout.set_variant(this.get_customErrorCalloutVariant() != null ? this.get_customErrorCalloutVariant() : feathers_controls_TextInput.CHILD_VARIANT_ERROR_CALLOUT);
+		}
+		this.errorStringCallout.set_origin(this);
+		this.errorStringCallout.closeOnPointerOutside = false;
+	}
+	,destroyErrorCallout: function() {
+		if(this.errorStringCallout == null) {
+			return;
+		}
+		if(this.errorStringCallout.parent != null) {
+			this.errorStringCallout.parent.removeChild(this.errorStringCallout);
+		}
+		this.errorStringCallout = null;
+	}
+	,changeState: function(state) {
+		if(!this._enabled) {
+			state = feathers_controls_TextInputState.DISABLED;
+		}
+		if(this._currentState == state) {
+			return;
+		}
+		this._currentState = state;
+		this.setInvalid(feathers_core_InvalidationFlag.STATE);
+		feathers_events_FeathersEvent.dispatch(this,"stateChange");
+	}
+	,refreshState: function() {
+		if(this._enabled) {
+			var focused = this.stage != null && this.stage.get_focus() == this.textFieldViewPort.get_textField();
+			if(focused) {
+				this.changeState(feathers_controls_TextInputState.FOCUSED);
+			} else if(this._errorString != null) {
+				this.changeState(feathers_controls_TextInputState.ERROR);
+			} else {
+				this.changeState(feathers_controls_TextInputState.ENABLED);
+			}
+		} else {
+			this.changeState(feathers_controls_TextInputState.DISABLED);
+		}
+	}
+	,textArea_focusInHandler: function(event) {
+		if(this.stage != null && this.stage.get_focus() != null && this.textFieldViewPort != null && !this.textFieldViewPort.contains(this.stage.get_focus())) {
+			event.stopImmediatePropagation();
+			this.stage.set_focus(this.textFieldViewPort);
+		}
+		this.refreshState();
+	}
+	,textArea_focusOutHandler: function(event) {
+		this.refreshState();
+	}
+	,baseScrollContainer_keyDownHandler: function(event) {
+	}
+	,textArea_viewPort_changeHandler: function(event) {
+		if(this._ignoreViewPortTextChange) {
+			return;
+		}
+		this.set_text(this.textFieldViewPort.get_text());
+	}
+	,textArea_textFormat_changeHandler: function(event) {
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+	}
+	,textArea_promptTextFormat_changeHandler: function(event) {
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+	}
+	,get_styleContext: function() {
+		return feathers_controls_TextArea;
+	}
+	,get_smoothScrolling: function() {
+		return this.__smoothScrolling;
+	}
+	,set_smoothScrolling: function(value) {
+		if(!this.setStyle("smoothScrolling")) {
+			return this.__smoothScrolling;
+		}
+		if(this.__smoothScrolling == value) {
+			return this.__smoothScrolling;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_smoothScrolling);
+		this.__smoothScrolling = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__smoothScrolling;
+	}
+	,clearStyle_smoothScrolling: function() {
+		this.set_smoothScrolling(false);
+		return this.get_smoothScrolling();
+	}
+	,get_textFormat: function() {
+		return this.__textFormat;
+	}
+	,set_textFormat: function(value) {
+		if(!this.setStyle("textFormat")) {
+			return this.__textFormat;
+		}
+		if(this.__textFormat == value) {
+			return this.__textFormat;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_textFormat);
+		this.__textFormat = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__textFormat;
+	}
+	,clearStyle_textFormat: function() {
+		this.set_textFormat(null);
+		return this.get_textFormat();
+	}
+	,get_disabledTextFormat: function() {
+		return this.__disabledTextFormat;
+	}
+	,set_disabledTextFormat: function(value) {
+		if(!this.setStyle("disabledTextFormat")) {
+			return this.__disabledTextFormat;
+		}
+		if(this.__disabledTextFormat == value) {
+			return this.__disabledTextFormat;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_disabledTextFormat);
+		this.__disabledTextFormat = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__disabledTextFormat;
+	}
+	,clearStyle_disabledTextFormat: function() {
+		this.set_disabledTextFormat(null);
+		return this.get_disabledTextFormat();
+	}
+	,get_promptTextFormat: function() {
+		return this.__promptTextFormat;
+	}
+	,set_promptTextFormat: function(value) {
+		if(!this.setStyle("promptTextFormat")) {
+			return this.__promptTextFormat;
+		}
+		if(this.__promptTextFormat == value) {
+			return this.__promptTextFormat;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_promptTextFormat);
+		this.__promptTextFormat = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__promptTextFormat;
+	}
+	,clearStyle_promptTextFormat: function() {
+		this.set_promptTextFormat(null);
+		return this.get_promptTextFormat();
+	}
+	,get_embedFonts: function() {
+		return this.__embedFonts;
+	}
+	,set_embedFonts: function(value) {
+		if(!this.setStyle("embedFonts")) {
+			return this.__embedFonts;
+		}
+		if(this.__embedFonts == value) {
+			return this.__embedFonts;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_embedFonts);
+		this.__embedFonts = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__embedFonts;
+	}
+	,clearStyle_embedFonts: function() {
+		this.set_embedFonts(false);
+		return this.get_embedFonts();
+	}
+	,get_wordWrap: function() {
+		return this.__wordWrap;
+	}
+	,set_wordWrap: function(value) {
+		if(!this.setStyle("wordWrap")) {
+			return this.__wordWrap;
+		}
+		if(this.__wordWrap == value) {
+			return this.__wordWrap;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_wordWrap);
+		this.__wordWrap = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__wordWrap;
+	}
+	,clearStyle_wordWrap: function() {
+		this.set_wordWrap(true);
+		return this.get_wordWrap();
+	}
+	,get_textPaddingTop: function() {
+		return this.__textPaddingTop;
+	}
+	,set_textPaddingTop: function(value) {
+		if(!this.setStyle("textPaddingTop")) {
+			return this.__textPaddingTop;
+		}
+		if(this.__textPaddingTop == value) {
+			return this.__textPaddingTop;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_textPaddingTop);
+		this.__textPaddingTop = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__textPaddingTop;
+	}
+	,clearStyle_textPaddingTop: function() {
+		this.set_textPaddingTop(0.0);
+		return this.get_textPaddingTop();
+	}
+	,get_textPaddingRight: function() {
+		return this.__textPaddingRight;
+	}
+	,set_textPaddingRight: function(value) {
+		if(!this.setStyle("textPaddingRight")) {
+			return this.__textPaddingRight;
+		}
+		if(this.__textPaddingRight == value) {
+			return this.__textPaddingRight;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_textPaddingRight);
+		this.__textPaddingRight = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__textPaddingRight;
+	}
+	,clearStyle_textPaddingRight: function() {
+		this.set_textPaddingRight(0.0);
+		return this.get_textPaddingRight();
+	}
+	,get_textPaddingBottom: function() {
+		return this.__textPaddingBottom;
+	}
+	,set_textPaddingBottom: function(value) {
+		if(!this.setStyle("textPaddingBottom")) {
+			return this.__textPaddingBottom;
+		}
+		if(this.__textPaddingBottom == value) {
+			return this.__textPaddingBottom;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_textPaddingBottom);
+		this.__textPaddingBottom = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__textPaddingBottom;
+	}
+	,clearStyle_textPaddingBottom: function() {
+		this.set_textPaddingBottom(0.0);
+		return this.get_textPaddingBottom();
+	}
+	,get_textPaddingLeft: function() {
+		return this.__textPaddingLeft;
+	}
+	,set_textPaddingLeft: function(value) {
+		if(!this.setStyle("textPaddingLeft")) {
+			return this.__textPaddingLeft;
+		}
+		if(this.__textPaddingLeft == value) {
+			return this.__textPaddingLeft;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_textPaddingLeft);
+		this.__textPaddingLeft = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__textPaddingLeft;
+	}
+	,clearStyle_textPaddingLeft: function() {
+		this.set_textPaddingLeft(0.0);
+		return this.get_textPaddingLeft();
+	}
+	,get_showPromptWhenEmptyAndFocused: function() {
+		return this.__showPromptWhenEmptyAndFocused;
+	}
+	,set_showPromptWhenEmptyAndFocused: function(value) {
+		if(!this.setStyle("showPromptWhenEmptyAndFocused")) {
+			return this.__showPromptWhenEmptyAndFocused;
+		}
+		if(this.__showPromptWhenEmptyAndFocused == value) {
+			return this.__showPromptWhenEmptyAndFocused;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_showPromptWhenEmptyAndFocused);
+		this.__showPromptWhenEmptyAndFocused = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__showPromptWhenEmptyAndFocused;
+	}
+	,clearStyle_showPromptWhenEmptyAndFocused: function() {
+		this.set_showPromptWhenEmptyAndFocused(true);
+		return this.get_showPromptWhenEmptyAndFocused();
+	}
+	,get_customErrorCalloutVariant: function() {
+		return this.__customErrorCalloutVariant;
+	}
+	,set_customErrorCalloutVariant: function(value) {
+		if(!this.setStyle("customErrorCalloutVariant")) {
+			return this.__customErrorCalloutVariant;
+		}
+		if(this.__customErrorCalloutVariant == value) {
+			return this.__customErrorCalloutVariant;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_customErrorCalloutVariant);
+		this.__customErrorCalloutVariant = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__customErrorCalloutVariant;
+	}
+	,clearStyle_customErrorCalloutVariant: function() {
+		this.set_customErrorCalloutVariant(null);
+		return this.get_customErrorCalloutVariant();
+	}
+	,__class__: feathers_controls_TextArea
+	,__properties__: $extend(feathers_controls_supportClasses_BaseScrollContainer.prototype.__properties__,{get_stageFocusTarget:"get_stageFocusTarget",set_customErrorCalloutVariant:"set_customErrorCalloutVariant",get_customErrorCalloutVariant:"get_customErrorCalloutVariant",set_maxChars:"set_maxChars",get_maxChars:"get_maxChars",get_selectionActiveIndex:"get_selectionActiveIndex",get_selectionAnchorIndex:"get_selectionAnchorIndex",set_showPromptWhenEmptyAndFocused:"set_showPromptWhenEmptyAndFocused",get_showPromptWhenEmptyAndFocused:"get_showPromptWhenEmptyAndFocused",set_textPaddingLeft:"set_textPaddingLeft",get_textPaddingLeft:"get_textPaddingLeft",set_textPaddingBottom:"set_textPaddingBottom",get_textPaddingBottom:"get_textPaddingBottom",set_textPaddingRight:"set_textPaddingRight",get_textPaddingRight:"get_textPaddingRight",set_textPaddingTop:"set_textPaddingTop",get_textPaddingTop:"get_textPaddingTop",set_wordWrap:"set_wordWrap",get_wordWrap:"get_wordWrap",set_embedFonts:"set_embedFonts",get_embedFonts:"get_embedFonts",set_promptTextFormat:"set_promptTextFormat",get_promptTextFormat:"get_promptTextFormat",set_disabledTextFormat:"set_disabledTextFormat",get_disabledTextFormat:"get_disabledTextFormat",set_textFormat:"set_textFormat",get_textFormat:"get_textFormat",set_smoothScrolling:"set_smoothScrolling",get_smoothScrolling:"get_smoothScrolling",get_errorStringCalloutOpen:"get_errorStringCalloutOpen",set_errorString:"set_errorString",get_errorString:"get_errorString",set_displayAsPassword:"set_displayAsPassword",get_displayAsPassword:"get_displayAsPassword",set_restrict:"set_restrict",get_restrict:"get_restrict",set_prompt:"set_prompt",get_prompt:"get_prompt",get_baseline:"get_baseline",set_text:"set_text",get_text:"get_text",get_currentState:"get_currentState",set_selectable:"set_selectable",get_selectable:"get_selectable",set_editable:"set_editable",get_editable:"get_editable"})
+});
+var feathers_controls_TextCallout = function(text) {
+	if(text == null) {
+		text = "";
+	}
+	this.__wordWrap = false;
+	this.__disabledTextFormat = null;
+	this.__embedFonts = false;
+	this.__styleSheet = null;
+	this.__textFormat = null;
+	this._htmlText = null;
+	this.initializeTextCalloutTheme();
+	feathers_controls_Callout.call(this);
+	this.set_text(text);
+};
+$hxClasses["feathers.controls.TextCallout"] = feathers_controls_TextCallout;
+feathers_controls_TextCallout.__name__ = "feathers.controls.TextCallout";
+feathers_controls_TextCallout.__interfaces__ = [feathers_core_IHTMLTextControl,feathers_core_ITextControl];
+feathers_controls_TextCallout.show = function(text,origin,supportedPositions,modal) {
+	if(modal == null) {
+		modal = true;
+	}
+	var callout = new feathers_controls_TextCallout(text);
+	return js_Boot.__cast(feathers_controls_Callout.showCallout(callout,origin,supportedPositions,modal) , feathers_controls_TextCallout);
+};
+feathers_controls_TextCallout.__super__ = feathers_controls_Callout;
+feathers_controls_TextCallout.prototype = $extend(feathers_controls_Callout.prototype,{
+	get_text: function() {
+		return this._text;
+	}
+	,set_text: function(value) {
+		if(this._text == value) {
+			return this._text;
+		}
+		this._text = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._text;
+	}
+	,get_htmlText: function() {
+		return this._htmlText;
+	}
+	,set_htmlText: function(value) {
+		if(this._htmlText == value) {
+			return this._htmlText;
+		}
+		this._htmlText = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._htmlText;
+	}
+	,get_baseline: function() {
+		if(this.label == null) {
+			return 0.0;
+		}
+		return this.label.get_y() + this.label.get_baseline();
+	}
+	,initializeTextCalloutTheme: function() {
+		feathers_themes_steel_components_SteelTextCalloutStyles.initialize();
+	}
+	,initialize: function() {
+		feathers_controls_Callout.prototype.initialize.call(this);
+		if(this.label == null) {
+			this.label = new feathers_controls_Label();
+			this.addChild(this.label);
+			this.set_content(this.label);
+		}
+	}
+	,update: function() {
+		var dataInvalid = this.isInvalid(feathers_core_InvalidationFlag.DATA);
+		var stateInvalid = this.isInvalid(feathers_core_InvalidationFlag.STATE);
+		var stylesInvalid = this.isInvalid(feathers_core_InvalidationFlag.STYLES);
+		if(stylesInvalid || stateInvalid) {
+			this.refreshTextStyles();
+		}
+		if(dataInvalid || stylesInvalid || stateInvalid) {
+			this.refreshText();
+		}
+		feathers_controls_Callout.prototype.update.call(this);
+	}
+	,refreshTextStyles: function() {
+		this.label.set_wordWrap(this.get_wordWrap());
+		this.label.set_textFormat(this.get_textFormat());
+		this.label.set_disabledTextFormat(this.get_disabledTextFormat());
+		this.label.set_embedFonts(this.get_embedFonts());
+		this.label.set_styleSheet(this.get_styleSheet());
+	}
+	,refreshText: function() {
+		this.label.set_text(this._text);
+		this.label.set_htmlText(this._htmlText);
+	}
+	,get_styleContext: function() {
+		return feathers_controls_TextCallout;
+	}
+	,get_textFormat: function() {
+		return this.__textFormat;
+	}
+	,set_textFormat: function(value) {
+		if(!this.setStyle("textFormat")) {
+			return this.__textFormat;
+		}
+		if(this.__textFormat == value) {
+			return this.__textFormat;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_textFormat);
+		this.__textFormat = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__textFormat;
+	}
+	,clearStyle_textFormat: function() {
+		this.set_textFormat(null);
+		return this.get_textFormat();
+	}
+	,get_styleSheet: function() {
+		return this.__styleSheet;
+	}
+	,set_styleSheet: function(value) {
+		if(!this.setStyle("styleSheet")) {
+			return this.__styleSheet;
+		}
+		if(this.__styleSheet == value) {
+			return this.__styleSheet;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_styleSheet);
+		this.__styleSheet = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__styleSheet;
+	}
+	,clearStyle_styleSheet: function() {
+		this.set_styleSheet(null);
+		return this.get_styleSheet();
+	}
+	,get_embedFonts: function() {
+		return this.__embedFonts;
+	}
+	,set_embedFonts: function(value) {
+		if(!this.setStyle("embedFonts")) {
+			return this.__embedFonts;
+		}
+		if(this.__embedFonts == value) {
+			return this.__embedFonts;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_embedFonts);
+		this.__embedFonts = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__embedFonts;
+	}
+	,clearStyle_embedFonts: function() {
+		this.set_embedFonts(false);
+		return this.get_embedFonts();
+	}
+	,get_disabledTextFormat: function() {
+		return this.__disabledTextFormat;
+	}
+	,set_disabledTextFormat: function(value) {
+		if(!this.setStyle("disabledTextFormat")) {
+			return this.__disabledTextFormat;
+		}
+		if(this.__disabledTextFormat == value) {
+			return this.__disabledTextFormat;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_disabledTextFormat);
+		this.__disabledTextFormat = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__disabledTextFormat;
+	}
+	,clearStyle_disabledTextFormat: function() {
+		this.set_disabledTextFormat(null);
+		return this.get_disabledTextFormat();
+	}
+	,get_wordWrap: function() {
+		return this.__wordWrap;
+	}
+	,set_wordWrap: function(value) {
+		if(!this.setStyle("wordWrap")) {
+			return this.__wordWrap;
+		}
+		if(this.__wordWrap == value) {
+			return this.__wordWrap;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_wordWrap);
+		this.__wordWrap = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__wordWrap;
+	}
+	,clearStyle_wordWrap: function() {
+		this.set_wordWrap(false);
+		return this.get_wordWrap();
+	}
+	,__class__: feathers_controls_TextCallout
+	,__properties__: $extend(feathers_controls_Callout.prototype.__properties__,{set_wordWrap:"set_wordWrap",get_wordWrap:"get_wordWrap",set_disabledTextFormat:"set_disabledTextFormat",get_disabledTextFormat:"get_disabledTextFormat",set_embedFonts:"set_embedFonts",get_embedFonts:"get_embedFonts",set_styleSheet:"set_styleSheet",get_styleSheet:"get_styleSheet",set_textFormat:"set_textFormat",get_textFormat:"get_textFormat",get_baseline:"get_baseline",set_htmlText:"set_htmlText",get_htmlText:"get_htmlText",set_text:"set_text",get_text:"get_text"})
+});
+var feathers_controls_TextInput = function(text,prompt,changeListener) {
+	if(text == null) {
+		text = "";
+	}
+	this.__customErrorCalloutVariant = null;
+	this.__autoSizeWidth = false;
+	this.__verticalAlign = feathers_layout_VerticalAlign.MIDDLE;
+	this.__paddingLeft = 0.0;
+	this.__paddingBottom = 0.0;
+	this.__paddingRight = 0.0;
+	this.__paddingTop = 0.0;
+	this.__embedFonts = false;
+	this.__promptTextFormat = null;
+	this.__disabledTextFormat = null;
+	this.__textFormat = null;
+	this.__rightViewGap = 0.0;
+	this.__rightView = null;
+	this.__leftViewGap = 0.0;
+	this.__leftView = null;
+	this.__showPromptWhenEmptyAndFocused = true;
+	this.__backgroundSkin = null;
+	this._previousCustomErrorCalloutVariant = null;
+	this._maxChars = 0;
+	this._pendingSelectionActiveIndex = -1;
+	this._pendingSelectionAnchorIndex = -1;
+	this._scrollX = 0.0;
+	this._stateToTextFormat = new haxe_ds_EnumValueMap();
+	this._errorString = null;
+	this._displayAsPassword = false;
+	this._measureText = null;
+	this._updatedPromptStyles = false;
+	this._updatedTextStyles = false;
+	this._previousPromptTextFormat = null;
+	this._previousTextFormat = null;
+	this._previousPrompt = null;
+	this._previousMeasureText = null;
+	this._previousText = null;
+	this._stateToSkin = new haxe_ds_EnumValueMap();
+	this._ignoreRightViewResize = false;
+	this._ignoreLeftViewResize = false;
+	this._currentBackgroundSkin = null;
+	this._backgroundSkinMeasurements = null;
+	this._currentState = feathers_controls_TextInputState.ENABLED;
+	this._selectable = true;
+	this._editable = true;
+	this.initializeTextInputTheme();
+	feathers_core_FeathersControl.call(this);
+	this.set_text(text);
+	this.set_prompt(prompt);
+	this.set_tabEnabled(true);
+	this.set_tabChildren(false);
+	this.focusRect = null;
+	this.addEventListener("focusIn",$bind(this,this.textInput_focusInHandler));
+	this.addEventListener("focusOut",$bind(this,this.textInput_focusOutHandler));
+	if(changeListener != null) {
+		this.addEventListener("change",changeListener);
+	}
+};
+$hxClasses["feathers.controls.TextInput"] = feathers_controls_TextInput;
+feathers_controls_TextInput.__name__ = "feathers.controls.TextInput";
+feathers_controls_TextInput.__interfaces__ = [feathers_core_IStageFocusDelegate,feathers_core_ITextControl,feathers_core_IStateContext];
+feathers_controls_TextInput.__super__ = feathers_core_FeathersControl;
+feathers_controls_TextInput.prototype = $extend(feathers_core_FeathersControl.prototype,{
+	get_editable: function() {
+		return this._editable;
+	}
+	,set_editable: function(value) {
+		if(this._editable == value) {
+			return this._editable;
+		}
+		this._editable = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STATE);
+		return this._editable;
+	}
+	,get_selectable: function() {
+		return this._selectable;
+	}
+	,set_selectable: function(value) {
+		if(this._selectable == value) {
+			return this._selectable;
+		}
+		this._selectable = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STATE);
+		return this._selectable;
+	}
+	,get_stageFocusTarget: function() {
+		return this.textField;
+	}
+	,get_currentState: function() {
+		return this._currentState;
+	}
+	,set_enabled: function(value) {
+		feathers_core_FeathersControl.prototype.set_enabled.call(this,value);
+		this.refreshState();
+		return this._enabled;
+	}
+	,get_text: function() {
+		return this._text;
+	}
+	,set_text: function(value) {
+		if(value == null) {
+			if(this._text.length == 0) {
+				return this._text;
+			}
+			value = "";
+		}
+		if(this._text == value) {
+			return this._text;
+		}
+		this._text = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._text;
+	}
+	,get_measureText: function() {
+		return this._measureText;
+	}
+	,set_measureText: function(value) {
+		if(this._measureText == value) {
+			return this._measureText;
+		}
+		this._measureText = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._measureText;
+	}
+	,get_baseline: function() {
+		if(this.textField == null) {
+			return 0.0;
+		}
+		var hasText = this._text != null && this._text.length > 0;
+		if(!hasText) {
+			this.textField.set_text("​");
+			var result = this.textField.get_y() + this.textField.getLineMetrics(0).ascent;
+			this.textField.set_text("");
+			return result;
+		}
+		return this.textField.get_y() + this.textField.getLineMetrics(0).ascent;
+	}
+	,get_prompt: function() {
+		return this._prompt;
+	}
+	,set_prompt: function(value) {
+		if(this._prompt == value) {
+			return this._prompt;
+		}
+		this._prompt = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._prompt;
+	}
+	,get_restrict: function() {
+		return this.__restrict;
+	}
+	,set_restrict: function(value) {
+		if(this.__restrict == value) {
+			return this.__restrict;
+		}
+		this.__restrict = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this.__restrict;
+	}
+	,get_displayAsPassword: function() {
+		return this._displayAsPassword;
+	}
+	,set_displayAsPassword: function(value) {
+		if(this._displayAsPassword == value) {
+			return this._displayAsPassword;
+		}
+		this._displayAsPassword = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._displayAsPassword;
+	}
+	,get_errorString: function() {
+		return this._errorString;
+	}
+	,set_errorString: function(value) {
+		if(this._errorString == value) {
+			return this._errorString;
+		}
+		this._errorString = value;
+		this.refreshState();
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._text;
+	}
+	,get_errorStringCalloutOpen: function() {
+		if(this.errorStringCallout != null) {
+			return this.errorStringCallout.parent != null;
+		} else {
+			return false;
+		}
+	}
+	,get_scrollX: function() {
+		return this._scrollX;
+	}
+	,set_scrollX: function(value) {
+		if(this._scrollX == value) {
+			return this._scrollX;
+		}
+		this._scrollX = value;
+		this.setInvalid(feathers_core_InvalidationFlag.SCROLL);
+		feathers_events_FeathersEvent.dispatch(this,"scroll");
+		return this._scrollX;
+	}
+	,get_selectionAnchorIndex: function() {
+		if(this.textField != null && this._pendingSelectionAnchorIndex == -1) {
+			if(this.textField.get_caretIndex() == this.textField.get_selectionBeginIndex()) {
+				return this.textField.get_selectionEndIndex();
+			}
+			return this.textField.get_selectionBeginIndex();
+		}
+		return this._pendingSelectionAnchorIndex;
+	}
+	,get_selectionActiveIndex: function() {
+		if(this.textField != null && this._pendingSelectionActiveIndex == -1) {
+			return this.textField.get_caretIndex();
+		}
+		return this._pendingSelectionActiveIndex;
+	}
+	,get_maxChars: function() {
+		return this._maxChars;
+	}
+	,set_maxChars: function(value) {
+		if(this._maxChars == value) {
+			return this._maxChars;
+		}
+		this._maxChars = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._maxChars;
+	}
+	,getSkinForState: function(state) {
+		return this._stateToSkin.get(state);
+	}
+	,setSkinForState: function(state,skin) {
+		if(!this.setStyle("setSkinForState",state)) {
+			return;
+		}
+		var oldSkin = this._stateToSkin.get(state);
+		if(oldSkin != null && oldSkin == this._currentBackgroundSkin) {
+			this.removeCurrentBackgroundSkin(oldSkin);
+			this._currentBackgroundSkin = null;
+		}
+		if(skin == null) {
+			this._stateToSkin.remove(state);
+		} else {
+			this._stateToSkin.set(state,skin);
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+	}
+	,getTextFormatForState: function(state) {
+		return this._stateToTextFormat.get(state);
+	}
+	,setTextFormatForState: function(state,textFormat) {
+		if(!this.setStyle("setTextFormatForState",state)) {
+			return;
+		}
+		if(textFormat == null) {
+			this._stateToTextFormat.remove(state);
+		} else {
+			this._stateToTextFormat.set(state,textFormat);
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+	}
+	,selectRange: function(anchorIndex,activeIndex) {
+		this._pendingSelectionAnchorIndex = anchorIndex;
+		this._pendingSelectionActiveIndex = activeIndex;
+		this.setInvalid(feathers_core_InvalidationFlag.SELECTION);
+	}
+	,selectAll: function() {
+		this.selectRange(0,this._text.length);
+	}
+	,setPadding: function(value) {
+		this.set_paddingTop(value);
+		this.set_paddingRight(value);
+		this.set_paddingBottom(value);
+		this.set_paddingLeft(value);
+	}
+	,showFocus: function(show) {
+		feathers_core_FeathersControl.prototype.showFocus.call(this,show);
+		if(show) {
+			this.selectRange(this._text.length,0);
+		}
+	}
+	,dispose: function() {
+		this.destroyErrorCallout();
+		feathers_core_FeathersControl.prototype.dispose.call(this);
+	}
+	,initializeTextInputTheme: function() {
+		feathers_themes_steel_components_SteelTextInputStyles.initialize();
+	}
+	,initialize: function() {
+		feathers_core_FeathersControl.prototype.initialize.call(this);
+		if(this.textField == null) {
+			this.textField = new openfl_text_TextField();
+			this.textField.set_tabEnabled(false);
+			this.refreshTextFieldType();
+			this.textField.addEventListener("change",$bind(this,this.textField_changeHandler));
+			this.textField.addEventListener("scroll",$bind(this,this.textField_scrollHandler));
+			this.addChild(this.textField);
+		}
+	}
+	,update: function() {
+		var dataInvalid = this.isInvalid(feathers_core_InvalidationFlag.DATA);
+		var scrollInvalid = this.isInvalid(feathers_core_InvalidationFlag.SCROLL);
+		var selectionInvalid = this.isInvalid(feathers_core_InvalidationFlag.SELECTION);
+		var sizeInvalid = this.isInvalid(feathers_core_InvalidationFlag.SIZE);
+		var stateInvalid = this.isInvalid(feathers_core_InvalidationFlag.STATE);
+		var stylesInvalid = this.isInvalid(feathers_core_InvalidationFlag.STYLES);
+		if(this._previousCustomErrorCalloutVariant != this.get_customErrorCalloutVariant()) {
+			this.setInvalidationFlag(feathers_controls_TextInput.INVALIDATION_FLAG_ERROR_CALLOUT_FACTORY);
+		}
+		var errorCalloutFactoryInvalid = this.isInvalid(feathers_controls_TextInput.INVALIDATION_FLAG_ERROR_CALLOUT_FACTORY);
+		this._updatedTextStyles = false;
+		this._updatedPromptStyles = false;
+		if(errorCalloutFactoryInvalid || dataInvalid) {
+			this.createErrorCallout();
+		}
+		if(stylesInvalid || stateInvalid) {
+			this.refreshBackgroundSkin();
+			this.refreshLeftView();
+			this.refreshRightView();
+		}
+		if(dataInvalid || stateInvalid) {
+			this.refreshPrompt();
+		}
+		if(stylesInvalid || stateInvalid) {
+			this.refreshTextStyles();
+			this.refreshPromptStyles();
+		}
+		if(dataInvalid || stylesInvalid || stateInvalid || sizeInvalid) {
+			this.refreshText(sizeInvalid);
+		}
+		if(dataInvalid || stylesInvalid || sizeInvalid) {
+			this.refreshPromptText(sizeInvalid);
+		}
+		if(selectionInvalid) {
+			this.refreshSelection();
+		}
+		if(scrollInvalid) {
+			this.refreshScrollPosition();
+		}
+		this.measure();
+		this.layoutContent();
+		if(errorCalloutFactoryInvalid || stateInvalid || dataInvalid) {
+			this.refreshErrorString();
+		}
+		this._previousCustomErrorCalloutVariant = this.get_customErrorCalloutVariant();
+	}
+	,refreshBackgroundSkin: function() {
+		var oldSkin = this._currentBackgroundSkin;
+		this._currentBackgroundSkin = this.getCurrentBackgroundSkin();
+		if(this._currentBackgroundSkin == oldSkin) {
+			return;
+		}
+		this.removeCurrentBackgroundSkin(oldSkin);
+		this.addCurrentBackgroundSkin(this._currentBackgroundSkin);
+	}
+	,getCurrentBackgroundSkin: function() {
+		var result = this._stateToSkin.get(this._currentState);
+		if(result != null) {
+			return result;
+		}
+		return this.get_backgroundSkin();
+	}
+	,addCurrentBackgroundSkin: function(skin) {
+		if(skin == null) {
+			this._backgroundSkinMeasurements = null;
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_core_IUIControl)) {
+			(js_Boot.__cast(skin , feathers_core_IUIControl)).initializeNow();
+		}
+		if(this._backgroundSkinMeasurements == null) {
+			this._backgroundSkinMeasurements = new feathers_layout_Measurements(skin);
+		} else {
+			this._backgroundSkinMeasurements.save(skin);
+		}
+		if(js_Boot.__implements(skin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(skin , feathers_skins_IProgrammaticSkin)).set_uiContext(this);
+		}
+		if(js_Boot.__implements(skin,feathers_core_IStateObserver)) {
+			(js_Boot.__cast(skin , feathers_core_IStateObserver)).set_stateContext(this);
+		}
+		this.addChildAt(skin,0);
+	}
+	,removeCurrentBackgroundSkin: function(skin) {
+		if(skin == null) {
+			return;
+		}
+		if(js_Boot.__implements(skin,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(skin , feathers_skins_IProgrammaticSkin)).set_uiContext(null);
+		}
+		if(js_Boot.__implements(skin,feathers_core_IStateObserver)) {
+			(js_Boot.__cast(skin , feathers_core_IStateObserver)).set_stateContext(null);
+		}
+		this._backgroundSkinMeasurements.restore(skin);
+		if(skin.parent == this) {
+			this.removeChild(skin);
+		}
+	}
+	,refreshLeftView: function() {
+		var oldView = this._currentLeftView;
+		this._currentLeftView = this.getCurrentLeftView();
+		if(this._currentLeftView == oldView) {
+			return;
+		}
+		this.removeCurrentLeftView(oldView);
+		if(this._currentLeftView == null) {
+			this._leftViewMeasurements = null;
+			return;
+		}
+		if(js_Boot.__implements(this._currentLeftView,feathers_core_IUIControl)) {
+			(js_Boot.__cast(this._currentLeftView , feathers_core_IUIControl)).initializeNow();
+		}
+		if(this._leftViewMeasurements == null) {
+			this._leftViewMeasurements = new feathers_layout_Measurements(this._currentLeftView);
+		} else {
+			this._leftViewMeasurements.save(this._currentLeftView);
+		}
+		if(js_Boot.__implements(this._currentLeftView,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(this._currentLeftView , feathers_skins_IProgrammaticSkin)).set_uiContext(this);
+		}
+		if(js_Boot.__implements(this._currentLeftView,feathers_core_IStateObserver)) {
+			(js_Boot.__cast(this._currentLeftView , feathers_core_IStateObserver)).set_stateContext(this);
+		}
+		this._currentLeftView.addEventListener("resize",$bind(this,this.textInput_leftView_resizeHandler),false,0,true);
+		this.addChild(this._currentLeftView);
+	}
+	,getCurrentLeftView: function() {
+		return this.get_leftView();
+	}
+	,removeCurrentLeftView: function(view) {
+		if(view == null) {
+			return;
+		}
+		view.removeEventListener("resize",$bind(this,this.textInput_leftView_resizeHandler));
+		if(js_Boot.__implements(view,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(view , feathers_skins_IProgrammaticSkin)).set_uiContext(null);
+		}
+		if(js_Boot.__implements(view,feathers_core_IStateObserver)) {
+			(js_Boot.__cast(view , feathers_core_IStateObserver)).set_stateContext(null);
+		}
+		this._leftViewMeasurements.restore(view);
+		if(view.parent == this) {
+			this.removeChild(view);
+		}
+	}
+	,refreshRightView: function() {
+		var oldView = this._currentRightView;
+		this._currentRightView = this.getCurrentRightView();
+		if(this._currentRightView == oldView) {
+			return;
+		}
+		this.removeCurrentRightView(oldView);
+		if(this._currentRightView == null) {
+			this._rightViewMeasurements = null;
+			return;
+		}
+		if(js_Boot.__implements(this._currentRightView,feathers_core_IUIControl)) {
+			(js_Boot.__cast(this._currentRightView , feathers_core_IUIControl)).initializeNow();
+		}
+		if(this._rightViewMeasurements == null) {
+			this._rightViewMeasurements = new feathers_layout_Measurements(this._currentRightView);
+		} else {
+			this._rightViewMeasurements.save(this._currentRightView);
+		}
+		if(js_Boot.__implements(this._currentRightView,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(this._currentRightView , feathers_skins_IProgrammaticSkin)).set_uiContext(this);
+		}
+		if(js_Boot.__implements(this._currentRightView,feathers_core_IStateObserver)) {
+			(js_Boot.__cast(this._currentRightView , feathers_core_IStateObserver)).set_stateContext(this);
+		}
+		this._currentRightView.addEventListener("resize",$bind(this,this.textInput_rightView_resizeHandler),false,0,true);
+		this.addChild(this._currentRightView);
+	}
+	,getCurrentRightView: function() {
+		return this.get_rightView();
+	}
+	,removeCurrentRightView: function(view) {
+		if(view == null) {
+			return;
+		}
+		view.removeEventListener("resize",$bind(this,this.textInput_rightView_resizeHandler));
+		if(js_Boot.__implements(view,feathers_skins_IProgrammaticSkin)) {
+			(js_Boot.__cast(view , feathers_skins_IProgrammaticSkin)).set_uiContext(null);
+		}
+		if(js_Boot.__implements(view,feathers_core_IStateObserver)) {
+			(js_Boot.__cast(view , feathers_core_IStateObserver)).set_stateContext(null);
+		}
+		this._rightViewMeasurements.restore(view);
+		if(view.parent == this) {
+			this.removeChild(view);
+		}
+	}
+	,measure: function() {
+		var needsWidth = this.get_explicitWidth() == null;
+		var needsHeight = this.get_explicitHeight() == null;
+		var needsMinWidth = this.get_explicitMinWidth() == null;
+		var needsMinHeight = this.get_explicitMinHeight() == null;
+		var needsMaxWidth = this.get_explicitMaxWidth() == null;
+		var needsMaxHeight = this.get_explicitMaxHeight() == null;
+		if(!needsWidth && !needsHeight && !needsMinWidth && !needsMinHeight && !needsMaxWidth && !needsMaxHeight) {
+			return false;
+		}
+		if(this._backgroundSkinMeasurements != null) {
+			feathers_utils_MeasurementsUtil.resetFluidlyWithParent(this._backgroundSkinMeasurements,this._currentBackgroundSkin,this);
+		}
+		var measureSkin = null;
+		if(js_Boot.__implements(this._currentBackgroundSkin,feathers_core_IMeasureObject)) {
+			measureSkin = js_Boot.__cast(this._currentBackgroundSkin , feathers_core_IMeasureObject);
+		}
+		if(js_Boot.__implements(this._currentBackgroundSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentBackgroundSkin , feathers_core_IValidating)).validateNow();
+		}
+		var oldIgnoreLeftViewResize = this._ignoreLeftViewResize;
+		this._ignoreLeftViewResize = true;
+		var oldIgnoreRightViewResize = this._ignoreRightViewResize;
+		this._ignoreRightViewResize = true;
+		var measureLeftView = null;
+		if(js_Boot.__implements(this._currentLeftView,feathers_core_IMeasureObject)) {
+			measureLeftView = js_Boot.__cast(this._currentLeftView , feathers_core_IMeasureObject);
+		}
+		if(js_Boot.__implements(this._currentLeftView,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentLeftView , feathers_core_IValidating)).validateNow();
+		}
+		var measureRightView = null;
+		if(js_Boot.__implements(this._currentRightView,feathers_core_IMeasureObject)) {
+			measureRightView = js_Boot.__cast(this._currentRightView , feathers_core_IMeasureObject);
+		}
+		if(js_Boot.__implements(this._currentRightView,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentRightView , feathers_core_IValidating)).validateNow();
+		}
+		this._ignoreLeftViewResize = oldIgnoreLeftViewResize;
+		this._ignoreRightViewResize = oldIgnoreRightViewResize;
+		var newWidth = this.get_explicitWidth();
+		if(needsWidth) {
+			if(this.get_autoSizeWidth() || this._measureText != null) {
+				newWidth = this._textMeasuredWidth;
+			} else {
+				newWidth = 0.0;
+			}
+			if(this._prompt != null) {
+				newWidth = Math.max(newWidth,this._promptTextMeasuredWidth);
+			}
+			if(measureLeftView != null) {
+				newWidth += measureLeftView.get_width() + this.get_leftViewGap();
+			} else if(this._leftViewMeasurements != null) {
+				newWidth += this._leftViewMeasurements.width + this.get_leftViewGap();
+			}
+			if(measureRightView != null) {
+				newWidth += measureRightView.get_width() + this.get_rightViewGap();
+			} else if(this._rightViewMeasurements != null) {
+				newWidth += this._rightViewMeasurements.width + this.get_rightViewGap();
+			}
+			newWidth += this.get_paddingLeft() + this.get_paddingRight();
+			if(this._currentBackgroundSkin != null) {
+				newWidth = Math.max(this._currentBackgroundSkin.get_width(),newWidth);
+			}
+		}
+		var newHeight = this.get_explicitHeight();
+		if(needsHeight) {
+			newHeight = this._textMeasuredHeight;
+			if(this._prompt != null) {
+				newHeight = Math.max(newHeight,this._promptTextMeasuredHeight);
+			}
+			if(measureLeftView != null && newHeight < measureLeftView.get_height()) {
+				newHeight = measureLeftView.get_height();
+			} else if(this._leftViewMeasurements != null && newHeight < this._leftViewMeasurements.height) {
+				newHeight = this._leftViewMeasurements.height;
+			}
+			if(measureRightView != null && newHeight < measureRightView.get_height()) {
+				newHeight = measureRightView.get_height();
+			} else if(this._rightViewMeasurements != null && newHeight < this._rightViewMeasurements.height) {
+				newHeight = this._rightViewMeasurements.height;
+			}
+			newHeight += this.get_paddingTop() + this.get_paddingBottom();
+			if(this._currentBackgroundSkin != null) {
+				newHeight = Math.max(this._currentBackgroundSkin.get_height(),newHeight);
+			}
+		}
+		var newMinWidth = this.get_explicitMinWidth();
+		if(needsMinWidth) {
+			if(this.get_autoSizeWidth() || this._measureText != null) {
+				newMinWidth = this._textMeasuredWidth;
+			} else {
+				newMinWidth = 0.0;
+			}
+			if(this._prompt != null) {
+				newMinWidth = Math.max(newMinWidth,this._promptTextMeasuredWidth);
+			}
+			if(measureLeftView != null) {
+				newMinWidth += measureLeftView.get_minWidth() + this.get_leftViewGap();
+			} else if(this._leftViewMeasurements != null) {
+				newMinWidth += this._leftViewMeasurements.minWidth + this.get_leftViewGap();
+			}
+			if(measureRightView != null) {
+				newMinWidth += measureRightView.get_minWidth() + this.get_rightViewGap();
+			} else if(this._rightViewMeasurements != null) {
+				newMinWidth += this._rightViewMeasurements.minWidth + this.get_rightViewGap();
+			}
+			newMinWidth += this.get_paddingLeft() + this.get_paddingRight();
+			if(measureSkin != null) {
+				newMinWidth = Math.max(measureSkin.get_minWidth(),newMinWidth);
+			} else if(this._backgroundSkinMeasurements != null) {
+				newMinWidth = Math.max(this._backgroundSkinMeasurements.minWidth,newMinWidth);
+			}
+		}
+		var newMinHeight = this.get_explicitMinHeight();
+		if(needsMinHeight) {
+			newMinHeight = this._textMeasuredHeight;
+			if(this._prompt != null) {
+				newMinHeight = Math.max(newMinHeight,this._promptTextMeasuredHeight);
+			}
+			if(measureLeftView != null && newMinHeight < measureLeftView.get_minHeight()) {
+				newMinHeight = measureLeftView.get_minHeight();
+			} else if(this._leftViewMeasurements != null && newMinHeight < this._leftViewMeasurements.minHeight) {
+				newMinHeight = this._leftViewMeasurements.minHeight;
+			}
+			if(measureRightView != null && newMinHeight < measureRightView.get_minHeight()) {
+				newMinHeight = measureRightView.get_minHeight();
+			} else if(this._rightViewMeasurements != null && newMinHeight < this._rightViewMeasurements.minHeight) {
+				newMinHeight = this._rightViewMeasurements.minHeight;
+			}
+			newMinHeight += this.get_paddingTop() + this.get_paddingBottom();
+			if(measureSkin != null) {
+				newMinHeight = Math.max(measureSkin.get_minHeight(),newMinHeight);
+			} else if(this._backgroundSkinMeasurements != null) {
+				newMinHeight = Math.max(this._backgroundSkinMeasurements.minHeight,newMinHeight);
+			}
+		}
+		var newMaxWidth = this.get_explicitMaxWidth();
+		if(needsMaxWidth) {
+			if(measureSkin != null) {
+				newMaxWidth = measureSkin.get_maxWidth();
+			} else if(this._backgroundSkinMeasurements != null) {
+				newMaxWidth = this._backgroundSkinMeasurements.maxWidth;
+			} else {
+				newMaxWidth = 1.0 / 0.0;
+			}
+		}
+		var newMaxHeight = this.get_explicitMaxHeight();
+		if(needsMaxHeight) {
+			if(measureSkin != null) {
+				newMaxHeight = measureSkin.get_maxHeight();
+			} else if(this._backgroundSkinMeasurements != null) {
+				newMaxHeight = this._backgroundSkinMeasurements.maxHeight;
+			} else {
+				newMaxHeight = 1.0 / 0.0;
+			}
+		}
+		return this.saveMeasurements(newWidth,newHeight,newMinWidth,newMinHeight,newMaxWidth,newMaxHeight);
+	}
+	,refreshTextFieldType: function() {
+		if(this._enabled && this._editable && this.textField.get_type() != 1) {
+			this.textField.set_type(1);
+		} else if((!this._enabled || !this._editable) && this.textField.get_type() == 1) {
+			this.textField.set_type(0);
+		}
+	}
+	,refreshTextStyles: function() {
+		this.refreshTextFieldType();
+		if(this.textField.get_embedFonts() != this.get_embedFonts()) {
+			this.textField.set_embedFonts(this.get_embedFonts());
+			this._updatedTextStyles = true;
+		}
+		if(this.textField.get_displayAsPassword() != this._displayAsPassword) {
+			this.textField.set_displayAsPassword(this._displayAsPassword);
+			this._updatedTextStyles = true;
+		}
+		var textFormat = this.getCurrentTextFormat();
+		var simpleTextFormat = textFormat != null ? textFormat.toSimpleTextFormat() : null;
+		if(simpleTextFormat == this._previousSimpleTextFormat) {
+			return;
+		}
+		if(this._previousTextFormat != null) {
+			this._previousTextFormat.removeEventListener("change",$bind(this,this.textInput_textFormat_changeHandler));
+		}
+		if(textFormat != null) {
+			textFormat.addEventListener("change",$bind(this,this.textInput_textFormat_changeHandler),false,0,true);
+			this.textField.set_defaultTextFormat(simpleTextFormat);
+			this._updatedTextStyles = true;
+		}
+		this._previousTextFormat = textFormat;
+		this._previousSimpleTextFormat = simpleTextFormat;
+	}
+	,refreshPrompt: function() {
+		if(this._prompt == null) {
+			if(this.promptTextField != null) {
+				this.removeChild(this.promptTextField);
+				this.promptTextField = null;
+			}
+			return;
+		}
+		if(this.promptTextField == null) {
+			this.promptTextField = new openfl_text_TextField();
+			this.addChildAt(this.promptTextField,this.getChildIndex(this.textField));
+		}
+		this.promptTextField.set_selectable(false);
+		this.promptTextField.set_mouseWheelEnabled(false);
+		this.promptTextField.mouseEnabled = false;
+		this.promptTextField.set_visible(this._text.length == 0 && (this.get_currentState() != feathers_controls_TextInputState.FOCUSED || this.get_showPromptWhenEmptyAndFocused()));
+	}
+	,refreshPromptText: function(sizeInvalid) {
+		if(this._prompt == null || this._prompt == this._previousPrompt && !this._updatedPromptStyles && !sizeInvalid) {
+			return;
+		}
+		this.promptTextField.set_autoSize(1);
+		var hasPromptText = this._prompt.length > 0;
+		if(hasPromptText) {
+			this.promptTextField.set_text(this._prompt);
+		} else {
+			this.promptTextField.set_text("​");
+		}
+		this._promptTextMeasuredWidth = this.promptTextField.get_width();
+		this._promptTextMeasuredHeight = this.promptTextField.get_height();
+		this.promptTextField.set_autoSize(2);
+		if(!hasPromptText) {
+			this.promptTextField.set_text("");
+		}
+		this._previousPrompt = this._prompt;
+	}
+	,refreshPromptStyles: function() {
+		if(this._prompt == null) {
+			return;
+		}
+		if(this.promptTextField.get_embedFonts() != this.get_embedFonts()) {
+			this.promptTextField.set_embedFonts(this.get_embedFonts());
+			this._updatedPromptStyles = true;
+		}
+		var textFormat = this.getCurrentPromptTextFormat();
+		var simpleTextFormat = textFormat != null ? textFormat.toSimpleTextFormat() : null;
+		if(simpleTextFormat == this._previousPromptSimpleTextFormat) {
+			return;
+		}
+		if(this._previousPromptTextFormat != null) {
+			this._previousPromptTextFormat.removeEventListener("change",$bind(this,this.textInput_promptTextFormat_changeHandler));
+		}
+		if(textFormat != null) {
+			textFormat.addEventListener("change",$bind(this,this.textInput_textFormat_changeHandler),false,0,true);
+			this.promptTextField.set_defaultTextFormat(simpleTextFormat);
+			this._updatedPromptStyles = true;
+		}
+		this._previousPromptTextFormat = textFormat;
+		this._previousPromptSimpleTextFormat = simpleTextFormat;
+	}
+	,getCurrentPromptTextFormat: function() {
+		var textFormat = this.get_promptTextFormat();
+		if(textFormat == null) {
+			textFormat = this.get_textFormat();
+		}
+		return textFormat;
+	}
+	,refreshText: function(forceMeasurement) {
+		this.textField.set_restrict(this.__restrict);
+		this.textField.set_maxChars(this._maxChars);
+		if(this._editable) {
+			this.textField.set_selectable(this._enabled);
+		} else {
+			this.textField.set_selectable(this._enabled && this._selectable);
+		}
+		var hasMeasureText = this._measureText != null;
+		var measureText = hasMeasureText ? this._measureText : this._text;
+		if(measureText == null || measureText.length == 0) {
+			hasMeasureText = true;
+			measureText = "​";
+		}
+		if(this._text == this._previousText && measureText == this._previousMeasureText && !this._updatedTextStyles && !forceMeasurement) {
+			return;
+		}
+		this.textField.set_autoSize(1);
+		this.textField.set_text(measureText);
+		this._textMeasuredWidth = this.textField.get_width();
+		this._textMeasuredHeight = this.textField.get_height();
+		this.textField.set_autoSize(2);
+		var finalText = null;
+		if(this._text == null || this._text.length == 0) {
+			finalText = "";
+		} else if(hasMeasureText) {
+			finalText = this._text;
+		}
+		if(finalText != null) {
+			this.textField.set_text(finalText);
+		}
+		this._previousText = this._text;
+		this._previousMeasureText = measureText;
+	}
+	,refreshSelection: function() {
+		if(this._pendingSelectionActiveIndex == -1 && this._pendingSelectionAnchorIndex == -1) {
+			return;
+		}
+		var anchorIndex = this._pendingSelectionAnchorIndex;
+		var activeIndex = this._pendingSelectionActiveIndex;
+		this._pendingSelectionAnchorIndex = -1;
+		this._pendingSelectionActiveIndex = -1;
+		this.textField.setSelection(anchorIndex,activeIndex);
+	}
+	,refreshScrollPosition: function() {
+		this.textField.set_scrollH(Math.round(this._scrollX));
+	}
+	,getCurrentTextFormat: function() {
+		var result = this._stateToTextFormat.get(this._currentState);
+		if(result != null) {
+			return result;
+		}
+		if(!this._enabled && this.get_disabledTextFormat() != null) {
+			return this.get_disabledTextFormat();
+		}
+		return this.get_textFormat();
+	}
+	,layoutContent: function() {
+		var oldIgnoreLeftViewResize = this._ignoreLeftViewResize;
+		this._ignoreLeftViewResize = true;
+		var oldIgnoreRightViewResize = this._ignoreRightViewResize;
+		this._ignoreRightViewResize = true;
+		this.layoutBackgroundSkin();
+		var textFieldHeight = this._textMeasuredHeight;
+		var maxHeight = this.actualHeight - this.get_paddingTop() - this.get_paddingBottom();
+		if(textFieldHeight > maxHeight || this.get_verticalAlign() == feathers_layout_VerticalAlign.JUSTIFY) {
+			textFieldHeight = maxHeight;
+		}
+		this.textField.set_height(textFieldHeight);
+		var leftViewOffset = 0.0;
+		if(this._currentLeftView != null) {
+			if(js_Boot.__implements(this._currentLeftView,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._currentLeftView , feathers_core_IValidating)).validateNow();
+			}
+			this._currentLeftView.set_x(this.get_paddingLeft());
+			this._currentLeftView.set_y(Math.max(this.get_paddingTop(),this.get_paddingTop() + (maxHeight - this._currentLeftView.get_height()) / 2.0));
+			leftViewOffset = this._currentLeftView.get_width() + this.get_leftViewGap();
+		}
+		var rightViewOffset = 0.0;
+		if(this._currentRightView != null) {
+			if(js_Boot.__implements(this._currentRightView,feathers_core_IValidating)) {
+				(js_Boot.__cast(this._currentRightView , feathers_core_IValidating)).validateNow();
+			}
+			this._currentRightView.set_x(this.actualWidth - this.get_paddingRight() - this._currentRightView.get_width());
+			this._currentRightView.set_y(Math.max(this.get_paddingTop(),this.get_paddingTop() + (maxHeight - this._currentRightView.get_height()) / 2.0));
+			rightViewOffset = this._currentRightView.get_width() + this.get_rightViewGap();
+		}
+		var textFieldWidth = this.actualWidth - this.get_paddingLeft() - this.get_paddingRight() - leftViewOffset - rightViewOffset;
+		this.textField.set_width(textFieldWidth);
+		this.textField.set_x(this.get_paddingLeft() + leftViewOffset);
+		var textField = this.textField;
+		switch(this.get_verticalAlign()._hx_index) {
+		case 0:
+			textField.set_y(this.get_paddingTop());
+			break;
+		case 2:
+			textField.set_y(this.actualHeight - this.get_paddingBottom() - textFieldHeight);
+			break;
+		case 3:
+			textField.set_y(this.get_paddingTop());
+			break;
+		default:
+			textField.set_y(this.get_paddingTop() + (maxHeight - textFieldHeight) / 2.0);
+		}
+		if(this.promptTextField != null) {
+			this.promptTextField.set_width(textFieldWidth);
+			var textFieldHeight = this._promptTextMeasuredHeight;
+			if(textFieldHeight > maxHeight || this.get_verticalAlign() == feathers_layout_VerticalAlign.JUSTIFY) {
+				textFieldHeight = maxHeight;
+			}
+			this.promptTextField.set_height(textFieldHeight);
+			this.promptTextField.set_x(this.get_paddingLeft() + leftViewOffset);
+			var textField = this.promptTextField;
+			switch(this.get_verticalAlign()._hx_index) {
+			case 0:
+				textField.set_y(this.get_paddingTop());
+				break;
+			case 2:
+				textField.set_y(this.actualHeight - this.get_paddingBottom() - textFieldHeight);
+				break;
+			case 3:
+				textField.set_y(this.get_paddingTop());
+				break;
+			default:
+				textField.set_y(this.get_paddingTop() + (maxHeight - textFieldHeight) / 2.0);
+			}
+		}
+		this._ignoreLeftViewResize = oldIgnoreLeftViewResize;
+		this._ignoreRightViewResize = oldIgnoreRightViewResize;
+	}
+	,alignTextField: function(textField,textFieldHeight,maxHeight) {
+		switch(this.get_verticalAlign()._hx_index) {
+		case 0:
+			textField.set_y(this.get_paddingTop());
+			break;
+		case 2:
+			textField.set_y(this.actualHeight - this.get_paddingBottom() - textFieldHeight);
+			break;
+		case 3:
+			textField.set_y(this.get_paddingTop());
+			break;
+		default:
+			textField.set_y(this.get_paddingTop() + (maxHeight - textFieldHeight) / 2.0);
+		}
+	}
+	,layoutBackgroundSkin: function() {
+		if(this._currentBackgroundSkin == null) {
+			return;
+		}
+		this._currentBackgroundSkin.set_x(0.0);
+		this._currentBackgroundSkin.set_y(0.0);
+		if(this._currentBackgroundSkin.get_width() != this.actualWidth) {
+			this._currentBackgroundSkin.set_width(this.actualWidth);
+		}
+		if(this._currentBackgroundSkin.get_height() != this.actualHeight) {
+			this._currentBackgroundSkin.set_height(this.actualHeight);
+		}
+		if(js_Boot.__implements(this._currentBackgroundSkin,feathers_core_IValidating)) {
+			(js_Boot.__cast(this._currentBackgroundSkin , feathers_core_IValidating)).validateNow();
+		}
+	}
+	,refreshErrorString: function() {
+		if(this.errorStringCallout == null) {
+			return;
+		}
+		this.errorStringCallout.set_text(this._errorString);
+		if(this._currentState == feathers_controls_TextInputState.FOCUSED && this.errorStringCallout.parent == null) {
+			feathers_core_PopUpManager.addPopUp(this.errorStringCallout,this,false,false);
+		} else if(this._currentState != feathers_controls_TextInputState.FOCUSED && this.errorStringCallout.parent != null) {
+			this.errorStringCallout.parent.removeChild(this.errorStringCallout);
+		}
+	}
+	,createErrorCallout: function() {
+		this.destroyErrorCallout();
+		if(this._errorString == null || this._errorString.length == 0) {
+			return;
+		}
+		this.errorStringCallout = new feathers_controls_TextCallout();
+		if(this.errorStringCallout.get_variant() == null) {
+			this.errorStringCallout.set_variant(this.get_customErrorCalloutVariant() != null ? this.get_customErrorCalloutVariant() : feathers_controls_TextInput.CHILD_VARIANT_ERROR_CALLOUT);
+		}
+		this.errorStringCallout.set_origin(this);
+		this.errorStringCallout.closeOnPointerOutside = false;
+	}
+	,destroyErrorCallout: function() {
+		if(this.errorStringCallout == null) {
+			return;
+		}
+		if(this.errorStringCallout.parent != null) {
+			this.errorStringCallout.parent.removeChild(this.errorStringCallout);
+		}
+		this.errorStringCallout = null;
+	}
+	,changeState: function(state) {
+		if(!this._enabled) {
+			state = feathers_controls_TextInputState.DISABLED;
+		}
+		if(this._currentState == state) {
+			return;
+		}
+		this._currentState = state;
+		this.setInvalid(feathers_core_InvalidationFlag.STATE);
+		feathers_events_FeathersEvent.dispatch(this,"stateChange");
+	}
+	,refreshState: function() {
+		if(this._enabled) {
+			if(this.stage != null && this.stage.get_focus() == this.textField) {
+				this.changeState(feathers_controls_TextInputState.FOCUSED);
+			} else if(this._errorString != null) {
+				this.changeState(feathers_controls_TextInputState.ERROR);
+			} else {
+				this.changeState(feathers_controls_TextInputState.ENABLED);
+			}
+		} else {
+			this.changeState(feathers_controls_TextInputState.DISABLED);
+		}
+	}
+	,textField_changeHandler: function(event) {
+		event.stopPropagation();
+		var oldText = this._text;
+		var newText = this.textField.get_text();
+		this._text = newText;
+		var hasMeasureText = this._measureText != null;
+		var measureText = hasMeasureText ? this._measureText : this._text;
+		if(measureText == null || measureText.length == 0) {
+			hasMeasureText = true;
+			measureText = "​";
+		}
+		var hasText = this._text != null && this._text.length > 0;
+		var hasOldText = oldText != null && oldText.length > 0;
+		var hasPrompt = this._prompt != null && this._prompt.length > 0;
+		if(this.get_autoSizeWidth() || hasPrompt && (!hasText && hasOldText || hasText && !hasOldText)) {
+			this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		} else {
+			this._previousMeasureText = measureText;
+			this._previousText = this._text;
+		}
+		feathers_events_FeathersEvent.dispatch(this,"change");
+	}
+	,textField_scrollHandler: function(event) {
+		this._scrollX = this.textField.get_scrollH();
+		feathers_events_FeathersEvent.dispatch(this,"scroll");
+	}
+	,textInput_focusInHandler: function(event) {
+		if(this.stage != null && this.stage.get_focus() != this.textField) {
+			event.stopImmediatePropagation();
+			this.stage.set_focus(this.textField);
+		}
+		this.refreshState();
+	}
+	,textInput_focusOutHandler: function(event) {
+		this.refreshState();
+	}
+	,textInput_textFormat_changeHandler: function(event) {
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+	}
+	,textInput_promptTextFormat_changeHandler: function(event) {
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+	}
+	,textInput_leftView_resizeHandler: function(event) {
+		if(this._ignoreLeftViewResize) {
+			return;
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+	}
+	,textInput_rightView_resizeHandler: function(event) {
+		if(this._ignoreRightViewResize) {
+			return;
+		}
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+	}
+	,get_backgroundSkin: function() {
+		return this.__backgroundSkin;
+	}
+	,set_backgroundSkin: function(value) {
+		if(!this.setStyle("backgroundSkin")) {
+			return this.__backgroundSkin;
+		}
+		if(this.__backgroundSkin == value) {
+			return this.__backgroundSkin;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_backgroundSkin);
+		this.__backgroundSkin = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__backgroundSkin;
+	}
+	,clearStyle_backgroundSkin: function() {
+		this.set_backgroundSkin(null);
+		return this.get_backgroundSkin();
+	}
+	,get_showPromptWhenEmptyAndFocused: function() {
+		return this.__showPromptWhenEmptyAndFocused;
+	}
+	,set_showPromptWhenEmptyAndFocused: function(value) {
+		if(!this.setStyle("showPromptWhenEmptyAndFocused")) {
+			return this.__showPromptWhenEmptyAndFocused;
+		}
+		if(this.__showPromptWhenEmptyAndFocused == value) {
+			return this.__showPromptWhenEmptyAndFocused;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_showPromptWhenEmptyAndFocused);
+		this.__showPromptWhenEmptyAndFocused = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__showPromptWhenEmptyAndFocused;
+	}
+	,clearStyle_showPromptWhenEmptyAndFocused: function() {
+		this.set_showPromptWhenEmptyAndFocused(true);
+		return this.get_showPromptWhenEmptyAndFocused();
+	}
+	,get_leftView: function() {
+		return this.__leftView;
+	}
+	,set_leftView: function(value) {
+		if(!this.setStyle("leftView")) {
+			return this.__leftView;
+		}
+		if(this.__leftView == value) {
+			return this.__leftView;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_leftView);
+		this.__leftView = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__leftView;
+	}
+	,clearStyle_leftView: function() {
+		this.set_leftView(null);
+		return this.get_leftView();
+	}
+	,get_leftViewGap: function() {
+		return this.__leftViewGap;
+	}
+	,set_leftViewGap: function(value) {
+		if(!this.setStyle("leftViewGap")) {
+			return this.__leftViewGap;
+		}
+		if(this.__leftViewGap == value) {
+			return this.__leftViewGap;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_leftViewGap);
+		this.__leftViewGap = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__leftViewGap;
+	}
+	,clearStyle_leftViewGap: function() {
+		this.set_leftViewGap(0.0);
+		return this.get_leftViewGap();
+	}
+	,get_rightView: function() {
+		return this.__rightView;
+	}
+	,set_rightView: function(value) {
+		if(!this.setStyle("rightView")) {
+			return this.__rightView;
+		}
+		if(this.__rightView == value) {
+			return this.__rightView;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_rightView);
+		this.__rightView = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__rightView;
+	}
+	,clearStyle_rightView: function() {
+		this.set_rightView(null);
+		return this.get_rightView();
+	}
+	,get_rightViewGap: function() {
+		return this.__rightViewGap;
+	}
+	,set_rightViewGap: function(value) {
+		if(!this.setStyle("rightViewGap")) {
+			return this.__rightViewGap;
+		}
+		if(this.__rightViewGap == value) {
+			return this.__rightViewGap;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_rightViewGap);
+		this.__rightViewGap = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__rightViewGap;
+	}
+	,clearStyle_rightViewGap: function() {
+		this.set_rightViewGap(0.0);
+		return this.get_rightViewGap();
+	}
+	,get_textFormat: function() {
+		return this.__textFormat;
+	}
+	,set_textFormat: function(value) {
+		if(!this.setStyle("textFormat")) {
+			return this.__textFormat;
+		}
+		if(this.__textFormat == value) {
+			return this.__textFormat;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_textFormat);
+		this.__textFormat = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__textFormat;
+	}
+	,clearStyle_textFormat: function() {
+		this.set_textFormat(null);
+		return this.get_textFormat();
+	}
+	,get_disabledTextFormat: function() {
+		return this.__disabledTextFormat;
+	}
+	,set_disabledTextFormat: function(value) {
+		if(!this.setStyle("disabledTextFormat")) {
+			return this.__disabledTextFormat;
+		}
+		if(this.__disabledTextFormat == value) {
+			return this.__disabledTextFormat;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_disabledTextFormat);
+		this.__disabledTextFormat = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__disabledTextFormat;
+	}
+	,clearStyle_disabledTextFormat: function() {
+		this.set_disabledTextFormat(null);
+		return this.get_disabledTextFormat();
+	}
+	,get_promptTextFormat: function() {
+		return this.__promptTextFormat;
+	}
+	,set_promptTextFormat: function(value) {
+		if(!this.setStyle("promptTextFormat")) {
+			return this.__promptTextFormat;
+		}
+		if(this.__promptTextFormat == value) {
+			return this.__promptTextFormat;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_promptTextFormat);
+		this.__promptTextFormat = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__promptTextFormat;
+	}
+	,clearStyle_promptTextFormat: function() {
+		this.set_promptTextFormat(null);
+		return this.get_promptTextFormat();
+	}
+	,get_embedFonts: function() {
+		return this.__embedFonts;
+	}
+	,set_embedFonts: function(value) {
+		if(!this.setStyle("embedFonts")) {
+			return this.__embedFonts;
+		}
+		if(this.__embedFonts == value) {
+			return this.__embedFonts;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_embedFonts);
+		this.__embedFonts = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__embedFonts;
+	}
+	,clearStyle_embedFonts: function() {
+		this.set_embedFonts(false);
+		return this.get_embedFonts();
+	}
+	,get_paddingTop: function() {
+		return this.__paddingTop;
+	}
+	,set_paddingTop: function(value) {
+		if(!this.setStyle("paddingTop")) {
+			return this.__paddingTop;
+		}
+		if(this.__paddingTop == value) {
+			return this.__paddingTop;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingTop);
+		this.__paddingTop = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingTop;
+	}
+	,clearStyle_paddingTop: function() {
+		this.set_paddingTop(0.0);
+		return this.get_paddingTop();
+	}
+	,get_paddingRight: function() {
+		return this.__paddingRight;
+	}
+	,set_paddingRight: function(value) {
+		if(!this.setStyle("paddingRight")) {
+			return this.__paddingRight;
+		}
+		if(this.__paddingRight == value) {
+			return this.__paddingRight;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingRight);
+		this.__paddingRight = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingRight;
+	}
+	,clearStyle_paddingRight: function() {
+		this.set_paddingRight(0.0);
+		return this.get_paddingRight();
+	}
+	,get_paddingBottom: function() {
+		return this.__paddingBottom;
+	}
+	,set_paddingBottom: function(value) {
+		if(!this.setStyle("paddingBottom")) {
+			return this.__paddingBottom;
+		}
+		if(this.__paddingBottom == value) {
+			return this.__paddingBottom;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingBottom);
+		this.__paddingBottom = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingBottom;
+	}
+	,clearStyle_paddingBottom: function() {
+		this.set_paddingBottom(0.0);
+		return this.get_paddingBottom();
+	}
+	,get_paddingLeft: function() {
+		return this.__paddingLeft;
+	}
+	,set_paddingLeft: function(value) {
+		if(!this.setStyle("paddingLeft")) {
+			return this.__paddingLeft;
+		}
+		if(this.__paddingLeft == value) {
+			return this.__paddingLeft;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_paddingLeft);
+		this.__paddingLeft = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__paddingLeft;
+	}
+	,clearStyle_paddingLeft: function() {
+		this.set_paddingLeft(0.0);
+		return this.get_paddingLeft();
+	}
+	,get_verticalAlign: function() {
+		return this.__verticalAlign;
+	}
+	,set_verticalAlign: function(value) {
+		if(!this.setStyle("verticalAlign")) {
+			return this.__verticalAlign;
+		}
+		if(this.__verticalAlign == value) {
+			return this.__verticalAlign;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_verticalAlign);
+		this.__verticalAlign = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__verticalAlign;
+	}
+	,clearStyle_verticalAlign: function() {
+		this.set_verticalAlign(feathers_layout_VerticalAlign.MIDDLE);
+		return this.get_verticalAlign();
+	}
+	,get_autoSizeWidth: function() {
+		return this.__autoSizeWidth;
+	}
+	,set_autoSizeWidth: function(value) {
+		if(!this.setStyle("autoSizeWidth")) {
+			return this.__autoSizeWidth;
+		}
+		if(this.__autoSizeWidth == value) {
+			return this.__autoSizeWidth;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_autoSizeWidth);
+		this.__autoSizeWidth = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__autoSizeWidth;
+	}
+	,clearStyle_autoSizeWidth: function() {
+		this.set_autoSizeWidth(false);
+		return this.get_autoSizeWidth();
+	}
+	,get_customErrorCalloutVariant: function() {
+		return this.__customErrorCalloutVariant;
+	}
+	,set_customErrorCalloutVariant: function(value) {
+		if(!this.setStyle("customErrorCalloutVariant")) {
+			return this.__customErrorCalloutVariant;
+		}
+		if(this.__customErrorCalloutVariant == value) {
+			return this.__customErrorCalloutVariant;
+		}
+		this._previousClearStyle = $bind(this,this.clearStyle_customErrorCalloutVariant);
+		this.__customErrorCalloutVariant = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this.__customErrorCalloutVariant;
+	}
+	,clearStyle_customErrorCalloutVariant: function() {
+		this.set_customErrorCalloutVariant(null);
+		return this.get_customErrorCalloutVariant();
+	}
+	,get_styleContext: function() {
+		return feathers_controls_TextInput;
+	}
+	,__class__: feathers_controls_TextInput
+	,__properties__: $extend(feathers_core_FeathersControl.prototype.__properties__,{set_customErrorCalloutVariant:"set_customErrorCalloutVariant",get_customErrorCalloutVariant:"get_customErrorCalloutVariant",set_autoSizeWidth:"set_autoSizeWidth",get_autoSizeWidth:"get_autoSizeWidth",set_maxChars:"set_maxChars",get_maxChars:"get_maxChars",get_selectionActiveIndex:"get_selectionActiveIndex",get_selectionAnchorIndex:"get_selectionAnchorIndex",set_scrollX:"set_scrollX",get_scrollX:"get_scrollX",set_verticalAlign:"set_verticalAlign",get_verticalAlign:"get_verticalAlign",set_paddingLeft:"set_paddingLeft",get_paddingLeft:"get_paddingLeft",set_paddingBottom:"set_paddingBottom",get_paddingBottom:"get_paddingBottom",set_paddingRight:"set_paddingRight",get_paddingRight:"get_paddingRight",set_paddingTop:"set_paddingTop",get_paddingTop:"get_paddingTop",set_embedFonts:"set_embedFonts",get_embedFonts:"get_embedFonts",set_promptTextFormat:"set_promptTextFormat",get_promptTextFormat:"get_promptTextFormat",set_disabledTextFormat:"set_disabledTextFormat",get_disabledTextFormat:"get_disabledTextFormat",set_textFormat:"set_textFormat",get_textFormat:"get_textFormat",get_errorStringCalloutOpen:"get_errorStringCalloutOpen",set_errorString:"set_errorString",get_errorString:"get_errorString",set_displayAsPassword:"set_displayAsPassword",get_displayAsPassword:"get_displayAsPassword",set_restrict:"set_restrict",get_restrict:"get_restrict",set_prompt:"set_prompt",get_prompt:"get_prompt",get_baseline:"get_baseline",set_measureText:"set_measureText",get_measureText:"get_measureText",set_text:"set_text",get_text:"get_text",set_rightViewGap:"set_rightViewGap",get_rightViewGap:"get_rightViewGap",set_rightView:"set_rightView",get_rightView:"get_rightView",set_leftViewGap:"set_leftViewGap",get_leftViewGap:"get_leftViewGap",set_leftView:"set_leftView",get_leftView:"get_leftView",set_showPromptWhenEmptyAndFocused:"set_showPromptWhenEmptyAndFocused",get_showPromptWhenEmptyAndFocused:"get_showPromptWhenEmptyAndFocused",set_backgroundSkin:"set_backgroundSkin",get_backgroundSkin:"get_backgroundSkin",get_currentState:"get_currentState",get_stageFocusTarget:"get_stageFocusTarget",set_selectable:"set_selectable",get_selectable:"get_selectable",set_editable:"set_editable",get_editable:"get_editable"})
+});
+var feathers_controls_TextInputState = $hxEnums["feathers.controls.TextInputState"] = { __ename__:"feathers.controls.TextInputState",__constructs__:null
+	,ENABLED: {_hx_name:"ENABLED",_hx_index:0,__enum__:"feathers.controls.TextInputState",toString:$estr}
+	,DISABLED: {_hx_name:"DISABLED",_hx_index:1,__enum__:"feathers.controls.TextInputState",toString:$estr}
+	,FOCUSED: {_hx_name:"FOCUSED",_hx_index:2,__enum__:"feathers.controls.TextInputState",toString:$estr}
+	,ERROR: {_hx_name:"ERROR",_hx_index:3,__enum__:"feathers.controls.TextInputState",toString:$estr}
+};
+feathers_controls_TextInputState.__constructs__ = [feathers_controls_TextInputState.ENABLED,feathers_controls_TextInputState.DISABLED,feathers_controls_TextInputState.FOCUSED,feathers_controls_TextInputState.ERROR];
 var feathers_controls_ToggleButton = function(text,selected,changeListener) {
 	if(selected == null) {
 		selected = false;
@@ -11073,15 +19723,6 @@ feathers_controls_dataRenderers_IDataRenderer.prototype = {
 	__class__: feathers_controls_dataRenderers_IDataRenderer
 	,__properties__: {set_data:"set_data",get_data:"get_data"}
 };
-var feathers_core_IFocusContainer = function() { };
-$hxClasses["feathers.core.IFocusContainer"] = feathers_core_IFocusContainer;
-feathers_core_IFocusContainer.__name__ = "feathers.core.IFocusContainer";
-feathers_core_IFocusContainer.__isInterface__ = true;
-feathers_core_IFocusContainer.__interfaces__ = [feathers_core_IFocusObject];
-feathers_core_IFocusContainer.prototype = {
-	__class__: feathers_core_IFocusContainer
-	,__properties__: {set_childFocusEnabled:"set_childFocusEnabled",get_childFocusEnabled:"get_childFocusEnabled"}
-};
 var feathers_controls_navigators_BaseNavigator = function() {
 	this.leftContentOffset = 0.0;
 	this.bottomContentOffset = 0.0;
@@ -11675,260 +20316,6 @@ feathers_controls_navigators_TabItem.prototype = {
 		}
 	}
 	,__class__: feathers_controls_navigators_TabItem
-};
-var feathers_utils_DisplayObjectFactory = function() {
-};
-$hxClasses["feathers.utils.DisplayObjectFactory"] = feathers_utils_DisplayObjectFactory;
-feathers_utils_DisplayObjectFactory.__name__ = "feathers.utils.DisplayObjectFactory";
-feathers_utils_DisplayObjectFactory.withDisplayObject = function(displayObject,destroy) {
-	var item = new feathers_utils_DisplayObjectFactory();
-	item.create = function() {
-		return displayObject;
-	};
-	item.destroy = destroy;
-	return item;
-};
-feathers_utils_DisplayObjectFactory.withClass = function(displayObjectType,destroy) {
-	if(destroy == null) {
-		destroy = function(target) {
-			if(js_Boot.__implements(target,feathers_core_IUIControl)) {
-				(js_Boot.__cast(target , feathers_core_IUIControl)).dispose();
-			}
-		};
-	}
-	var item = new feathers_utils_DisplayObjectFactory();
-	item.create = function() {
-		return Type.createInstance(displayObjectType,[]);
-	};
-	item.destroy = destroy;
-	return item;
-};
-feathers_utils_DisplayObjectFactory.withFunction = function(create,destroy) {
-	var item = new feathers_utils_DisplayObjectFactory();
-	item.create = create;
-	item.destroy = destroy;
-	return item;
-};
-feathers_utils_DisplayObjectFactory.prototype = {
-	create: function() {
-		return null;
-	}
-	,destroy: function(target) {
-	}
-	,__class__: feathers_utils_DisplayObjectFactory
-};
-var js_Boot = function() { };
-$hxClasses["js.Boot"] = js_Boot;
-js_Boot.__name__ = "js.Boot";
-js_Boot.getClass = function(o) {
-	if(o == null) {
-		return null;
-	} else if(((o) instanceof Array)) {
-		return Array;
-	} else {
-		var cl = o.__class__;
-		if(cl != null) {
-			return cl;
-		}
-		var name = js_Boot.__nativeClassName(o);
-		if(name != null) {
-			return js_Boot.__resolveNativeClass(name);
-		}
-		return null;
-	}
-};
-js_Boot.__string_rec = function(o,s) {
-	if(o == null) {
-		return "null";
-	}
-	if(s.length >= 5) {
-		return "<...>";
-	}
-	var t = typeof(o);
-	if(t == "function" && (o.__name__ || o.__ename__)) {
-		t = "object";
-	}
-	switch(t) {
-	case "function":
-		return "<function>";
-	case "object":
-		if(o.__enum__) {
-			var e = $hxEnums[o.__enum__];
-			var con = e.__constructs__[o._hx_index];
-			var n = con._hx_name;
-			if(con.__params__) {
-				s = s + "\t";
-				return n + "(" + ((function($this) {
-					var $r;
-					var _g = [];
-					{
-						var _g1 = 0;
-						var _g2 = con.__params__;
-						while(true) {
-							if(!(_g1 < _g2.length)) {
-								break;
-							}
-							var p = _g2[_g1];
-							_g1 = _g1 + 1;
-							_g.push(js_Boot.__string_rec(o[p],s));
-						}
-					}
-					$r = _g;
-					return $r;
-				}(this))).join(",") + ")";
-			} else {
-				return n;
-			}
-		}
-		if(((o) instanceof Array)) {
-			var str = "[";
-			s += "\t";
-			var _g = 0;
-			var _g1 = o.length;
-			while(_g < _g1) {
-				var i = _g++;
-				str += (i > 0 ? "," : "") + js_Boot.__string_rec(o[i],s);
-			}
-			str += "]";
-			return str;
-		}
-		var tostr;
-		try {
-			tostr = o.toString;
-		} catch( _g ) {
-			haxe_NativeStackTrace.lastError = _g;
-			return "???";
-		}
-		if(tostr != null && tostr != Object.toString && typeof(tostr) == "function") {
-			var s2 = o.toString();
-			if(s2 != "[object Object]") {
-				return s2;
-			}
-		}
-		var str = "{\n";
-		s += "\t";
-		var hasp = o.hasOwnProperty != null;
-		var k = null;
-		for( k in o ) {
-		if(hasp && !o.hasOwnProperty(k)) {
-			continue;
-		}
-		if(k == "prototype" || k == "__class__" || k == "__super__" || k == "__interfaces__" || k == "__properties__") {
-			continue;
-		}
-		if(str.length != 2) {
-			str += ", \n";
-		}
-		str += s + k + " : " + js_Boot.__string_rec(o[k],s);
-		}
-		s = s.substring(1);
-		str += "\n" + s + "}";
-		return str;
-	case "string":
-		return o;
-	default:
-		return String(o);
-	}
-};
-js_Boot.__interfLoop = function(cc,cl) {
-	if(cc == null) {
-		return false;
-	}
-	if(cc == cl) {
-		return true;
-	}
-	var intf = cc.__interfaces__;
-	if(intf != null) {
-		var _g = 0;
-		var _g1 = intf.length;
-		while(_g < _g1) {
-			var i = _g++;
-			var i1 = intf[i];
-			if(i1 == cl || js_Boot.__interfLoop(i1,cl)) {
-				return true;
-			}
-		}
-	}
-	return js_Boot.__interfLoop(cc.__super__,cl);
-};
-js_Boot.__instanceof = function(o,cl) {
-	if(cl == null) {
-		return false;
-	}
-	switch(cl) {
-	case Array:
-		return ((o) instanceof Array);
-	case Bool:
-		return typeof(o) == "boolean";
-	case Dynamic:
-		return o != null;
-	case Float:
-		return typeof(o) == "number";
-	case Int:
-		if(typeof(o) == "number") {
-			return ((o | 0) === o);
-		} else {
-			return false;
-		}
-		break;
-	case String:
-		return typeof(o) == "string";
-	default:
-		if(o != null) {
-			if(typeof(cl) == "function") {
-				if(js_Boot.__downcastCheck(o,cl)) {
-					return true;
-				}
-			} else if(typeof(cl) == "object" && js_Boot.__isNativeObj(cl)) {
-				if(((o) instanceof cl)) {
-					return true;
-				}
-			}
-		} else {
-			return false;
-		}
-		if(cl == Class ? o.__name__ != null : false) {
-			return true;
-		}
-		if(cl == Enum ? o.__ename__ != null : false) {
-			return true;
-		}
-		return o.__enum__ != null ? $hxEnums[o.__enum__] == cl : false;
-	}
-};
-js_Boot.__downcastCheck = function(o,cl) {
-	if(!((o) instanceof cl)) {
-		if(cl.__isInterface__) {
-			return js_Boot.__interfLoop(js_Boot.getClass(o),cl);
-		} else {
-			return false;
-		}
-	} else {
-		return true;
-	}
-};
-js_Boot.__implements = function(o,iface) {
-	return js_Boot.__interfLoop(js_Boot.getClass(o),iface);
-};
-js_Boot.__cast = function(o,t) {
-	if(o == null || js_Boot.__instanceof(o,t)) {
-		return o;
-	} else {
-		throw haxe_Exception.thrown("Cannot cast " + Std.string(o) + " to " + Std.string(t));
-	}
-};
-js_Boot.__nativeClassName = function(o) {
-	var name = js_Boot.__toStr.call(o).slice(8,-1);
-	if(name == "Object" || name == "Function" || name == "Math" || name == "JSON") {
-		return null;
-	}
-	return name;
-};
-js_Boot.__isNativeObj = function(o) {
-	return js_Boot.__nativeClassName(o) != null;
-};
-js_Boot.__resolveNativeClass = function(name) {
-	return $global[name];
 };
 var feathers_controls_navigators_TabNavigator = function(dataProvider) {
 	this.__customTabBarVariant = null;
@@ -12559,6 +20946,1257 @@ feathers_controls_navigators_TabNavigator.prototype = $extend(feathers_controls_
 	,__class__: feathers_controls_navigators_TabNavigator
 	,__properties__: $extend(feathers_controls_navigators_BaseNavigator.prototype.__properties__,{set_tabBarFactory:"set_tabBarFactory",get_tabBarFactory:"get_tabBarFactory",set_customTabBarVariant:"set_customTabBarVariant",get_customTabBarVariant:"get_customTabBarVariant",set_gap:"set_gap",get_gap:"get_gap",set_nextTransition:"set_nextTransition",get_nextTransition:"get_nextTransition",set_previousTransition:"set_previousTransition",get_previousTransition:"get_previousTransition",set_simulateTouch:"set_simulateTouch",get_simulateTouch:"get_simulateTouch",set_swipeEnabled:"set_swipeEnabled",get_swipeEnabled:"get_swipeEnabled",set_tabBarPosition:"set_tabBarPosition",get_tabBarPosition:"get_tabBarPosition",set_selectedItem:"set_selectedItem",get_selectedItem:"get_selectedItem",get_maxSelectedIndex:"get_maxSelectedIndex",set_selectedIndex:"set_selectedIndex",get_selectedIndex:"get_selectedIndex",set_dataProvider:"set_dataProvider",get_dataProvider:"get_dataProvider"})
 });
+var feathers_controls_supportClasses_IViewPort = function() { };
+$hxClasses["feathers.controls.supportClasses.IViewPort"] = feathers_controls_supportClasses_IViewPort;
+feathers_controls_supportClasses_IViewPort.__name__ = "feathers.controls.supportClasses.IViewPort";
+feathers_controls_supportClasses_IViewPort.__isInterface__ = true;
+feathers_controls_supportClasses_IViewPort.__interfaces__ = [feathers_core_IMeasureObject,feathers_core_IValidating,feathers_core_IUIControl];
+feathers_controls_supportClasses_IViewPort.prototype = {
+	__class__: feathers_controls_supportClasses_IViewPort
+	,__properties__: {set_scrollY:"set_scrollY",get_scrollY:"get_scrollY",set_scrollX:"set_scrollX",get_scrollX:"get_scrollX",set_maxVisibleHeight:"set_maxVisibleHeight",get_maxVisibleHeight:"get_maxVisibleHeight",set_maxVisibleWidth:"set_maxVisibleWidth",get_maxVisibleWidth:"get_maxVisibleWidth",set_minVisibleHeight:"set_minVisibleHeight",get_minVisibleHeight:"get_minVisibleHeight",set_minVisibleWidth:"set_minVisibleWidth",get_minVisibleWidth:"get_minVisibleWidth",set_visibleHeight:"set_visibleHeight",get_visibleHeight:"get_visibleHeight",set_visibleWidth:"set_visibleWidth",get_visibleWidth:"get_visibleWidth"}
+};
+var feathers_controls_supportClasses_LayoutViewPort = function() {
+	this._manageChildVisibility = false;
+	this._snapPositionsY = null;
+	this._snapPositionsX = null;
+	this._scrollY = 0.0;
+	this._scrollX = 0.0;
+	this._explicitVisibleHeight = null;
+	this._actualVisibleHeight = 0.0;
+	this._maxVisibleHeight = 1.0 / 0.0;
+	this._actualMinVisibleHeight = 0.0;
+	this._explicitVisibleWidth = null;
+	this._actualVisibleWidth = 0.0;
+	this._maxVisibleWidth = 1.0 / 0.0;
+	this._explicitMinVisibleWidth = null;
+	this._actualMinVisibleWidth = 0.0;
+	feathers_controls_LayoutGroup.call(this);
+	this._viewPortBackground = new openfl_display_Sprite();
+	this._viewPortBackground.get_graphics().beginFill(16711935,0.0);
+	this._viewPortBackground.get_graphics().drawRect(0.0,0.0,1.0,1.0);
+	this._viewPortBackground.get_graphics().endFill();
+	this._addChildAt(this._viewPortBackground,0);
+};
+$hxClasses["feathers.controls.supportClasses.LayoutViewPort"] = feathers_controls_supportClasses_LayoutViewPort;
+feathers_controls_supportClasses_LayoutViewPort.__name__ = "feathers.controls.supportClasses.LayoutViewPort";
+feathers_controls_supportClasses_LayoutViewPort.__interfaces__ = [feathers_controls_supportClasses_IViewPort];
+feathers_controls_supportClasses_LayoutViewPort.__super__ = feathers_controls_LayoutGroup;
+feathers_controls_supportClasses_LayoutViewPort.prototype = $extend(feathers_controls_LayoutGroup.prototype,{
+	get_minVisibleWidth: function() {
+		if(this._explicitMinVisibleWidth == null) {
+			return this._actualMinVisibleWidth;
+		}
+		return this._explicitMinVisibleWidth;
+	}
+	,set_minVisibleWidth: function(value) {
+		if(this._explicitMinVisibleWidth == value) {
+			return this._explicitMinVisibleWidth;
+		}
+		var oldValue = this._explicitMinVisibleWidth;
+		this._explicitMinVisibleWidth = value;
+		if(value == null) {
+			this._actualMinVisibleWidth = 0.0;
+			this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		} else {
+			this._actualMinVisibleWidth = value;
+			if(this._explicitVisibleWidth == null && (this._actualVisibleWidth < value || this._actualVisibleWidth == oldValue)) {
+				this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+			}
+		}
+		return this._explicitMinVisibleWidth;
+	}
+	,get_maxVisibleWidth: function() {
+		return this._maxVisibleWidth;
+	}
+	,set_maxVisibleWidth: function(value) {
+		if(this._maxVisibleWidth == value) {
+			return this._maxVisibleWidth;
+		}
+		if(value == null) {
+			throw new openfl_errors_ArgumentError("maxVisibleWidth cannot be null");
+		}
+		var oldValue = this._maxVisibleWidth;
+		this._maxVisibleWidth = value;
+		if(this._explicitVisibleWidth == null && (this._actualVisibleWidth > value || this._actualVisibleWidth == oldValue)) {
+			this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		}
+		return this._maxVisibleWidth;
+	}
+	,get_visibleWidth: function() {
+		if(this._explicitVisibleWidth == null) {
+			return this._actualVisibleWidth;
+		}
+		return this._explicitVisibleWidth;
+	}
+	,set_visibleWidth: function(value) {
+		if(this._explicitVisibleWidth == value) {
+			return this._explicitVisibleWidth;
+		}
+		this._explicitVisibleWidth = value;
+		if(this._actualVisibleWidth != value) {
+			this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		}
+		return this._explicitVisibleWidth;
+	}
+	,get_minVisibleHeight: function() {
+		if(this._explicitMinVisibleHeight == null) {
+			return this._actualMinVisibleHeight;
+		}
+		return this._explicitMinVisibleHeight;
+	}
+	,set_minVisibleHeight: function(value) {
+		if(this._explicitMinVisibleHeight == value) {
+			return this._explicitMinVisibleHeight;
+		}
+		var oldValue = this._explicitMinVisibleHeight;
+		this._explicitMinVisibleHeight = value;
+		if(value == null) {
+			this._actualMinVisibleHeight = 0.0;
+			this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		} else {
+			this._actualMinVisibleHeight = value;
+			if(this._explicitVisibleHeight == null && (this._actualVisibleHeight < value || this._actualVisibleHeight == oldValue)) {
+				this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+			}
+		}
+		return this._explicitMinVisibleHeight;
+	}
+	,get_maxVisibleHeight: function() {
+		return this._maxVisibleHeight;
+	}
+	,set_maxVisibleHeight: function(value) {
+		if(this._maxVisibleHeight == value) {
+			return this._maxVisibleHeight;
+		}
+		if(value == null) {
+			throw new openfl_errors_ArgumentError("maxVisibleHeight cannot be null");
+		}
+		var oldValue = this._maxVisibleHeight;
+		this._maxVisibleHeight = value;
+		if(this._explicitVisibleHeight == null && (this._actualVisibleHeight > value || this._actualVisibleHeight == oldValue)) {
+			this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		}
+		return this._maxVisibleHeight;
+	}
+	,get_visibleHeight: function() {
+		if(this._explicitVisibleHeight == null) {
+			return this._actualVisibleHeight;
+		}
+		return this._explicitVisibleHeight;
+	}
+	,set_visibleHeight: function(value) {
+		if(this._explicitVisibleHeight == value) {
+			return this._explicitVisibleHeight;
+		}
+		this._explicitVisibleHeight = value;
+		if(this._actualVisibleHeight != value) {
+			this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		}
+		return this._explicitVisibleWidth;
+	}
+	,get_scrollX: function() {
+		return this._scrollX;
+	}
+	,set_scrollX: function(value) {
+		if(this._scrollX == value) {
+			return this._scrollX;
+		}
+		this._scrollX = value;
+		if(this._manageChildVisibility || js_Boot.__implements(this._currentLayout,feathers_layout_IScrollLayout)) {
+			this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		}
+		return this._scrollX;
+	}
+	,get_scrollY: function() {
+		return this._scrollY;
+	}
+	,set_scrollY: function(value) {
+		if(this._scrollY == value) {
+			return this._scrollY;
+		}
+		this._scrollY = value;
+		if(this._manageChildVisibility || js_Boot.__implements(this._currentLayout,feathers_layout_IScrollLayout)) {
+			this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		}
+		return this._scrollY;
+	}
+	,get_snapPositionsX: function() {
+		return this._snapPositionsX;
+	}
+	,get_snapPositionsY: function() {
+		return this._snapPositionsY;
+	}
+	,refreshViewPortBounds: function() {
+		var needsWidth = this._explicitVisibleWidth == null;
+		var needsHeight = this._explicitVisibleHeight == null;
+		var needsMinWidth = this._explicitMinVisibleWidth == null;
+		var needsMinHeight = this._explicitMinVisibleHeight == null;
+		var needsMaxWidth = this._maxVisibleWidth == null;
+		var needsMaxHeight = this._maxVisibleHeight == null;
+		if(this._currentBackgroundSkin != null) {
+			feathers_utils_MeasurementsUtil.resetFluidlyWithParent(this._backgroundSkinMeasurements,this._currentBackgroundSkin,this);
+		}
+		var needsToMeasureContent = this.get_autoSizeMode() == feathers_layout_AutoSizeMode.CONTENT || this.stage == null;
+		var stageWidth = 0.0;
+		var stageHeight = 0.0;
+		if(!needsToMeasureContent) {
+			var topLeft = this.globalToLocal(new openfl_geom_Point());
+			var bottomRight = this.globalToLocal(new openfl_geom_Point(this.stage.stageWidth,this.stage.stageHeight));
+			stageWidth = bottomRight.x - topLeft.x;
+			stageHeight = bottomRight.y - topLeft.y;
+		}
+		if(needsWidth && !needsToMeasureContent) {
+			this._layoutMeasurements.width = stageWidth;
+		} else {
+			this._layoutMeasurements.width = this._explicitVisibleWidth;
+		}
+		if(needsHeight && !needsToMeasureContent) {
+			this._layoutMeasurements.height = stageHeight;
+		} else {
+			this._layoutMeasurements.height = this._explicitVisibleHeight;
+		}
+		var viewPortMinWidth = this._explicitMinVisibleWidth;
+		if(needsMinWidth) {
+			viewPortMinWidth = 0.0;
+		}
+		var viewPortMinHeight = this._explicitMinVisibleHeight;
+		if(needsMinHeight) {
+			viewPortMinHeight = 0.0;
+		}
+		var viewPortMaxWidth = this._maxVisibleWidth;
+		if(needsMaxWidth) {
+			viewPortMaxWidth = 1.0 / 0.0;
+		}
+		var viewPortMaxHeight = this._maxVisibleHeight;
+		if(needsMaxHeight) {
+			viewPortMaxHeight = 1.0 / 0.0;
+		}
+		if(this._currentBackgroundSkin != null) {
+			if(this._currentBackgroundSkin.get_width() > viewPortMinWidth) {
+				viewPortMinWidth = this._currentBackgroundSkin.get_width();
+			}
+			if(this._currentBackgroundSkin.get_height() > viewPortMinHeight) {
+				viewPortMinHeight = this._currentBackgroundSkin.get_height();
+			}
+		}
+		this._layoutMeasurements.minWidth = viewPortMinWidth;
+		this._layoutMeasurements.minHeight = viewPortMinHeight;
+		this._layoutMeasurements.maxWidth = viewPortMaxWidth;
+		this._layoutMeasurements.maxHeight = viewPortMaxHeight;
+	}
+	,handleCustomLayout: function() {
+		var oldIgnoreLayoutChanges = this._ignoreLayoutChanges;
+		this._ignoreLayoutChanges = true;
+		if(js_Boot.__implements(this._currentLayout,feathers_layout_IScrollLayout)) {
+			var scrollLayout = js_Boot.__cast(this._currentLayout , feathers_layout_IScrollLayout);
+			scrollLayout.set_scrollX(this._scrollX);
+			scrollLayout.set_scrollY(this._scrollY);
+		}
+		this._ignoreLayoutChanges = oldIgnoreLayoutChanges;
+		feathers_controls_LayoutGroup.prototype.handleCustomLayout.call(this);
+	}
+	,handleLayoutResult: function() {
+		this.saveMeasurements(this._layoutResult.contentWidth,this._layoutResult.contentHeight,this._layoutResult.contentMinWidth,this._layoutResult.contentMinHeight);
+		var viewPortWidth = this._layoutResult.viewPortWidth;
+		var viewPortHeight = this._layoutResult.viewPortHeight;
+		this._actualVisibleWidth = viewPortWidth;
+		this._actualVisibleHeight = viewPortHeight;
+		this._actualMinVisibleWidth = this._layoutResult.contentMinWidth;
+		this._actualMinVisibleHeight = this._layoutResult.contentMinHeight;
+		this._viewPortBackground.set_x(Math.min(this.get_scrollX(),0.0));
+		this._viewPortBackground.set_y(Math.min(this.get_scrollY(),0.0));
+		this._viewPortBackground.set_width(Math.max(this.actualWidth,this._actualVisibleWidth));
+		this._viewPortBackground.set_height(Math.max(this.actualHeight,this._actualVisibleHeight));
+		if(js_Boot.__implements(this.get_layout(),feathers_layout_ISnapLayout)) {
+			var snapLayout = js_Boot.__cast(this.get_layout() , feathers_layout_ISnapLayout);
+			this._snapPositionsX = snapLayout.getSnapPositionsX(this.items,this._actualVisibleWidth,this._actualVisibleHeight,this._snapPositionsX);
+			this._snapPositionsY = snapLayout.getSnapPositionsY(this.items,this._actualVisibleWidth,this._actualVisibleHeight,this._snapPositionsY);
+		} else {
+			this._snapPositionsX = null;
+			this._snapPositionsY = null;
+		}
+	}
+	,get_manageChildVisibility: function() {
+		return this._manageChildVisibility;
+	}
+	,set_manageChildVisibility: function(value) {
+		if(this._manageChildVisibility == value) {
+			return this._manageChildVisibility;
+		}
+		this._manageChildVisibility = value;
+		if(this._manageChildVisibility) {
+			this.setInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		} else {
+			var _g = 0;
+			var _g1 = this.items;
+			while(_g < _g1.length) {
+				var child = _g1[_g];
+				++_g;
+				child.set_visible(true);
+			}
+		}
+		return this._manageChildVisibility;
+	}
+	,update: function() {
+		var layoutInvalid = this.isInvalid(feathers_core_InvalidationFlag.LAYOUT);
+		var sizeInvalid = this.isInvalid(feathers_core_InvalidationFlag.SIZE);
+		var scrollInvalid = this.isInvalid(feathers_core_InvalidationFlag.SCROLL);
+		feathers_controls_LayoutGroup.prototype.update.call(this);
+		if(layoutInvalid || sizeInvalid || scrollInvalid) {
+			if(this._manageChildVisibility) {
+				var maxX = this._scrollX + this._actualVisibleWidth;
+				var maxY = this._scrollY + this._actualVisibleHeight;
+				var _g = 0;
+				var _g1 = this.items;
+				while(_g < _g1.length) {
+					var child = _g1[_g];
+					++_g;
+					child.set_visible(!(child.get_x() > maxX || child.get_x() + child.get_width() < this._scrollX || child.get_y() > maxY || child.get_y() + child.get_height() < this._scrollY));
+				}
+			}
+		}
+	}
+	,refreshChildVisibility: function() {
+		if(!this._manageChildVisibility) {
+			return;
+		}
+		var maxX = this._scrollX + this._actualVisibleWidth;
+		var maxY = this._scrollY + this._actualVisibleHeight;
+		var _g = 0;
+		var _g1 = this.items;
+		while(_g < _g1.length) {
+			var child = _g1[_g];
+			++_g;
+			child.set_visible(!(child.get_x() > maxX || child.get_x() + child.get_width() < this._scrollX || child.get_y() > maxY || child.get_y() + child.get_height() < this._scrollY));
+		}
+	}
+	,removeChild: function(child) {
+		if(this._manageChildVisibility && child != null) {
+			child.set_visible(true);
+		}
+		return feathers_controls_LayoutGroup.prototype.removeChild.call(this,child);
+	}
+	,removeChildAt: function(index) {
+		var child = feathers_controls_LayoutGroup.prototype.removeChildAt.call(this,index);
+		if(this._manageChildVisibility && child != null) {
+			child.set_visible(true);
+		}
+		return child;
+	}
+	,__class__: feathers_controls_supportClasses_LayoutViewPort
+	,__properties__: $extend(feathers_controls_LayoutGroup.prototype.__properties__,{set_manageChildVisibility:"set_manageChildVisibility",get_manageChildVisibility:"get_manageChildVisibility",get_snapPositionsY:"get_snapPositionsY",get_snapPositionsX:"get_snapPositionsX",set_scrollY:"set_scrollY",get_scrollY:"get_scrollY",set_scrollX:"set_scrollX",get_scrollX:"get_scrollX",set_visibleHeight:"set_visibleHeight",get_visibleHeight:"get_visibleHeight",set_maxVisibleHeight:"set_maxVisibleHeight",get_maxVisibleHeight:"get_maxVisibleHeight",set_minVisibleHeight:"set_minVisibleHeight",get_minVisibleHeight:"get_minVisibleHeight",set_visibleWidth:"set_visibleWidth",get_visibleWidth:"get_visibleWidth",set_maxVisibleWidth:"set_maxVisibleWidth",get_maxVisibleWidth:"get_maxVisibleWidth",set_minVisibleWidth:"set_minVisibleWidth",get_minVisibleWidth:"get_minVisibleWidth"})
+});
+var feathers_controls_supportClasses_TextFieldViewPort = function() {
+	this._ignoreTextFieldScroll = false;
+	this._textFieldHasFocus = false;
+	this._pendingSelectionActiveIndex = -1;
+	this._pendingSelectionAnchorIndex = -1;
+	this._scrollY = 0.0;
+	this._scrollX = 0.0;
+	this._explicitVisibleHeight = null;
+	this._actualVisibleHeight = 0.0;
+	this._maxVisibleHeight = 1.0 / 0.0;
+	this._actualMinVisibleHeight = 0.0;
+	this._explicitVisibleWidth = null;
+	this._actualVisibleWidth = 0.0;
+	this._maxVisibleWidth = 1.0 / 0.0;
+	this._explicitMinVisibleWidth = null;
+	this._actualMinVisibleWidth = 0.0;
+	this._paddingLeft = 0.0;
+	this._paddingBottom = 0.0;
+	this._paddingRight = 0.0;
+	this._paddingTop = 0.0;
+	this._embedFonts = false;
+	this._savedLineMetrics = null;
+	this._previousWidth = null;
+	this._previousTextFormat = null;
+	this._previousText = null;
+	this._updatedTextStyles = false;
+	this._smoothScrolling = false;
+	this._selectable = true;
+	this._maxChars = 0;
+	this._displayAsPassword = false;
+	this._multiline = false;
+	this._wordWrap = false;
+	this._textFieldType = 0;
+	feathers_core_FeathersControl.call(this);
+	this.addEventListener("focusIn",$bind(this,this.textFieldViewPort_focusInHandler));
+};
+$hxClasses["feathers.controls.supportClasses.TextFieldViewPort"] = feathers_controls_supportClasses_TextFieldViewPort;
+feathers_controls_supportClasses_TextFieldViewPort.__name__ = "feathers.controls.supportClasses.TextFieldViewPort";
+feathers_controls_supportClasses_TextFieldViewPort.__interfaces__ = [feathers_core_IStageFocusDelegate,feathers_core_IFocusManagerAware,feathers_core_ITextControl,feathers_controls_supportClasses_IViewPort];
+feathers_controls_supportClasses_TextFieldViewPort.__super__ = feathers_core_FeathersControl;
+feathers_controls_supportClasses_TextFieldViewPort.prototype = $extend(feathers_core_FeathersControl.prototype,{
+	get_textField: function() {
+		return this._textField;
+	}
+	,get_textFieldType: function() {
+		return this._textFieldType;
+	}
+	,set_textFieldType: function(value) {
+		if(this._textFieldType == value) {
+			return this._textFieldType;
+		}
+		this._textFieldType = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._textFieldType;
+	}
+	,get_text: function() {
+		return this._text;
+	}
+	,set_text: function(value) {
+		if(this._text == value) {
+			return this._text;
+		}
+		this._text = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		feathers_events_FeathersEvent.dispatch(this,"change");
+		return this._text;
+	}
+	,get_baseline: function() {
+		if(this._textField == null) {
+			return 0.0;
+		}
+		var hasText = this._text != null && this._text.length > 0;
+		if(!hasText) {
+			this.get_textField().set_text("​");
+			var result = this.get_textField().get_y() + this.get_textField().getLineMetrics(0).ascent;
+			this.get_textField().set_text("");
+			return result;
+		}
+		return this._textField.get_y() + this._textField.getLineMetrics(0).ascent;
+	}
+	,get_wordWrap: function() {
+		return this._wordWrap;
+	}
+	,set_wordWrap: function(value) {
+		if(this._wordWrap == value) {
+			return this._wordWrap;
+		}
+		this._wordWrap = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._wordWrap;
+	}
+	,get_multiline: function() {
+		return this._multiline;
+	}
+	,set_multiline: function(value) {
+		if(this._multiline == value) {
+			return this._multiline;
+		}
+		this._multiline = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._multiline;
+	}
+	,get_restrict: function() {
+		return this.__restrict;
+	}
+	,set_restrict: function(value) {
+		if(this.__restrict == value) {
+			return this.__restrict;
+		}
+		this.__restrict = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this.__restrict;
+	}
+	,get_displayAsPassword: function() {
+		return this._displayAsPassword;
+	}
+	,set_displayAsPassword: function(value) {
+		if(this._displayAsPassword == value) {
+			return this._displayAsPassword;
+		}
+		this._displayAsPassword = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._displayAsPassword;
+	}
+	,get_maxChars: function() {
+		return this._maxChars;
+	}
+	,set_maxChars: function(value) {
+		if(this._maxChars == value) {
+			return this._maxChars;
+		}
+		this._maxChars = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._maxChars;
+	}
+	,get_selectable: function() {
+		return this._selectable;
+	}
+	,set_selectable: function(value) {
+		if(this._selectable == value) {
+			return this._selectable;
+		}
+		this._selectable = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._selectable;
+	}
+	,get_smoothScrolling: function() {
+		return this._smoothScrolling;
+	}
+	,set_smoothScrolling: function(value) {
+		if(this._smoothScrolling == value) {
+			return this._smoothScrolling;
+		}
+		this._smoothScrolling = value;
+		this.setInvalid(feathers_core_InvalidationFlag.DATA);
+		return this._smoothScrolling;
+	}
+	,get_textFormat: function() {
+		return this._textFormat;
+	}
+	,set_textFormat: function(value) {
+		if(this._textFormat == value) {
+			return this._textFormat;
+		}
+		this._textFormat = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this._textFormat;
+	}
+	,get_embedFonts: function() {
+		return this._embedFonts;
+	}
+	,set_embedFonts: function(value) {
+		if(this._embedFonts == value) {
+			return this._embedFonts;
+		}
+		this._embedFonts = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this._embedFonts;
+	}
+	,get_paddingTop: function() {
+		return this._paddingTop;
+	}
+	,set_paddingTop: function(value) {
+		if(this._paddingTop == value) {
+			return this._paddingTop;
+		}
+		this._paddingTop = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this._paddingTop;
+	}
+	,get_paddingRight: function() {
+		return this._paddingRight;
+	}
+	,set_paddingRight: function(value) {
+		if(this._paddingRight == value) {
+			return this._paddingRight;
+		}
+		this._paddingRight = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this._paddingRight;
+	}
+	,get_paddingBottom: function() {
+		return this._paddingBottom;
+	}
+	,set_paddingBottom: function(value) {
+		if(this._paddingBottom == value) {
+			return this._paddingBottom;
+		}
+		this._paddingBottom = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this._paddingBottom;
+	}
+	,get_paddingLeft: function() {
+		return this._paddingLeft;
+	}
+	,set_paddingLeft: function(value) {
+		if(this._paddingLeft == value) {
+			return this._paddingLeft;
+		}
+		this._paddingLeft = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this._paddingLeft;
+	}
+	,get_stageFocusTarget: function() {
+		return this._textField;
+	}
+	,get_minVisibleWidth: function() {
+		if(this._explicitMinVisibleWidth == null) {
+			return this._actualMinVisibleWidth;
+		}
+		return this._explicitMinVisibleWidth;
+	}
+	,set_minVisibleWidth: function(value) {
+		if(this._explicitMinVisibleWidth == value) {
+			return this._explicitMinVisibleWidth;
+		}
+		var oldValue = this._explicitMinVisibleWidth;
+		this._explicitMinVisibleWidth = value;
+		if(value == null) {
+			this._actualMinVisibleWidth = 0.0;
+			this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		} else {
+			this._actualMinVisibleWidth = value;
+			if(this._explicitVisibleWidth == null && (this._actualVisibleWidth < value || this._actualVisibleWidth == oldValue)) {
+				this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+			}
+		}
+		return this._explicitMinVisibleWidth;
+	}
+	,get_maxVisibleWidth: function() {
+		return this._maxVisibleWidth;
+	}
+	,set_maxVisibleWidth: function(value) {
+		if(this._maxVisibleWidth == value) {
+			return this._maxVisibleWidth;
+		}
+		if(value == null) {
+			throw new openfl_errors_ArgumentError("maxVisibleWidth cannot be null");
+		}
+		var oldValue = this._maxVisibleWidth;
+		this._maxVisibleWidth = value;
+		if(this._explicitVisibleWidth == null && (this._actualVisibleWidth > value || this._actualVisibleWidth == oldValue)) {
+			this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		}
+		return this._maxVisibleWidth;
+	}
+	,get_visibleWidth: function() {
+		if(this._explicitVisibleWidth == null) {
+			return this._actualVisibleWidth;
+		}
+		return this._explicitVisibleWidth;
+	}
+	,set_visibleWidth: function(value) {
+		if(this._explicitVisibleWidth == value) {
+			return this._explicitVisibleWidth;
+		}
+		this._explicitVisibleWidth = value;
+		if(this._actualVisibleWidth != value) {
+			this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		}
+		return this._explicitVisibleWidth;
+	}
+	,get_minVisibleHeight: function() {
+		if(this._explicitMinVisibleHeight == null) {
+			return this._actualMinVisibleHeight;
+		}
+		return this._explicitMinVisibleHeight;
+	}
+	,set_minVisibleHeight: function(value) {
+		if(this._explicitMinVisibleHeight == value) {
+			return this._explicitMinVisibleHeight;
+		}
+		var oldValue = this._explicitMinVisibleHeight;
+		this._explicitMinVisibleHeight = value;
+		if(value == null) {
+			this._actualMinVisibleHeight = 0.0;
+			this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		} else {
+			this._actualMinVisibleHeight = value;
+			if(this._explicitVisibleHeight == null && (this._actualVisibleHeight < value || this._actualVisibleHeight == oldValue)) {
+				this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+			}
+		}
+		return this._explicitMinVisibleHeight;
+	}
+	,get_maxVisibleHeight: function() {
+		return this._maxVisibleHeight;
+	}
+	,set_maxVisibleHeight: function(value) {
+		if(this._maxVisibleHeight == value) {
+			return this._maxVisibleHeight;
+		}
+		if(value == null) {
+			throw new openfl_errors_ArgumentError("maxVisibleHeight cannot be null");
+		}
+		var oldValue = this._maxVisibleHeight;
+		this._maxVisibleHeight = value;
+		if(this._explicitVisibleHeight == null && (this._actualVisibleHeight > value || this._actualVisibleHeight == oldValue)) {
+			this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		}
+		return this._maxVisibleHeight;
+	}
+	,get_visibleHeight: function() {
+		if(this._explicitVisibleHeight == null) {
+			return this._actualVisibleHeight;
+		}
+		return this._explicitVisibleHeight;
+	}
+	,set_visibleHeight: function(value) {
+		if(this._explicitVisibleHeight == value) {
+			return this._explicitVisibleHeight;
+		}
+		this._explicitVisibleHeight = value;
+		if(this._actualVisibleHeight != value) {
+			this.setInvalid(feathers_core_InvalidationFlag.SIZE);
+		}
+		return this._explicitVisibleWidth;
+	}
+	,get_scrollX: function() {
+		return this._scrollX;
+	}
+	,set_scrollX: function(value) {
+		if(this._scrollX == value) {
+			return this._scrollX;
+		}
+		this._scrollX = value;
+		this.setInvalid(feathers_core_InvalidationFlag.SCROLL);
+		return this._scrollX;
+	}
+	,get_scrollY: function() {
+		return this._scrollY;
+	}
+	,set_scrollY: function(value) {
+		if(this._scrollY == value) {
+			return this._scrollY;
+		}
+		this._scrollY = value;
+		this.setInvalid(feathers_core_InvalidationFlag.SCROLL);
+		return this._scrollY;
+	}
+	,get_selectionAnchorIndex: function() {
+		if(this._textField != null && this._pendingSelectionAnchorIndex == -1) {
+			if(this._textField.get_caretIndex() == this._textField.get_selectionBeginIndex()) {
+				return this._textField.get_selectionEndIndex();
+			}
+			return this._textField.get_selectionBeginIndex();
+		}
+		return this._pendingSelectionAnchorIndex;
+	}
+	,get_selectionActiveIndex: function() {
+		if(this._textField != null && this._pendingSelectionActiveIndex == -1) {
+			return this._textField.get_caretIndex();
+		}
+		return this._pendingSelectionActiveIndex;
+	}
+	,setPadding: function(value) {
+		this.set_paddingTop(value);
+		this.set_paddingRight(value);
+		this.set_paddingBottom(value);
+		this.set_paddingLeft(value);
+	}
+	,selectRange: function(anchorIndex,activeIndex) {
+		this._pendingSelectionAnchorIndex = anchorIndex;
+		this._pendingSelectionActiveIndex = activeIndex;
+		this.setInvalid(feathers_core_InvalidationFlag.SELECTION);
+	}
+	,initialize: function() {
+		feathers_core_FeathersControl.prototype.initialize.call(this);
+		if(this._textField == null) {
+			this._textField = new openfl_text_TextField();
+			this.addChild(this._textField);
+		}
+		this._textField.set_selectable(true);
+		this._textField.set_tabEnabled(false);
+		this._textField.set_mouseWheelEnabled(false);
+		this._textField.addEventListener("change",$bind(this,this.textField_changeHandler));
+		this._textField.addEventListener("scroll",$bind(this,this.textField_scrollHandler));
+		this._textField.addEventListener("focusIn",$bind(this,this.textField_focusInHandler));
+		this._textField.addEventListener("focusOut",$bind(this,this.textField_focusOutHandler));
+	}
+	,update: function() {
+		var dataInvalid = this.isInvalid(feathers_core_InvalidationFlag.DATA);
+		var selectionInvalid = this.isInvalid(feathers_core_InvalidationFlag.SELECTION);
+		var sizeInvalid = this.isInvalid(feathers_core_InvalidationFlag.SIZE);
+		var stylesInvalid = this.isInvalid(feathers_core_InvalidationFlag.STYLES);
+		this._updatedTextStyles = false;
+		var oldIgnoreTextFieldScroll = this._ignoreTextFieldScroll;
+		this._ignoreTextFieldScroll = true;
+		if(stylesInvalid) {
+			this.refreshTextStyles();
+		}
+		if(dataInvalid || sizeInvalid || stylesInvalid) {
+			this.refreshText();
+		}
+		this.measure();
+		if(selectionInvalid) {
+			this.refreshSelection();
+		}
+		this.layoutTextField();
+		this._ignoreTextFieldScroll = oldIgnoreTextFieldScroll;
+	}
+	,measureSelf: function() {
+		var needsWidth = this._explicitVisibleWidth == null;
+		var needsHeight = this.get_explicitHeight() == null;
+		var needsMinWidth = this._explicitMinVisibleWidth == null;
+		var needsMinHeight = this.get_explicitMinHeight() == null;
+		var needsMaxWidth = this.get_explicitMaxWidth() == null;
+		var needsMaxHeight = this.get_explicitMaxHeight() == null;
+		if(!needsWidth && !needsHeight && !needsMinWidth && !needsMinHeight && !needsMaxWidth && !needsMaxHeight) {
+			return false;
+		}
+		var newWidth = this._explicitVisibleWidth;
+		if(needsWidth) {
+			newWidth = this._paddingLeft + this._paddingRight;
+		}
+		var newHeight = this.get_explicitHeight();
+		if(needsHeight) {
+			newHeight = this._textMeasuredHeight + this._paddingTop + this._paddingBottom;
+		}
+		var newMinWidth = this._explicitMinVisibleWidth;
+		if(needsMinWidth) {
+			newMinWidth = this._paddingLeft + this._paddingRight;
+		}
+		var newMinHeight = this.get_explicitMinHeight();
+		if(needsMinHeight) {
+			newMinHeight = this._textMeasuredHeight + this._paddingTop + this._paddingBottom;
+		}
+		var newMaxWidth = this.get_explicitMaxWidth();
+		if(needsMaxWidth) {
+			newMaxWidth = 1.0 / 0.0;
+		}
+		var newMaxHeight = this.get_explicitMaxHeight();
+		if(needsMaxHeight) {
+			newMaxHeight = 1.0 / 0.0;
+		}
+		return this.saveMeasurements(newWidth,newHeight,newMinWidth,newMinHeight,newMaxWidth,newMaxHeight);
+	}
+	,measure: function() {
+		var result = this.measureSelf();
+		var needsVisibleWidth = this._explicitVisibleWidth == null;
+		var needsVisibleHeight = this._explicitVisibleHeight == null;
+		var needsVisibleMinWidth = this._explicitMinVisibleWidth == null;
+		var needsVisibleMinHeight = this._explicitMinVisibleHeight == null;
+		if(needsVisibleWidth) {
+			this._actualVisibleWidth = this.actualWidth;
+		} else {
+			this._actualVisibleWidth = this._explicitVisibleWidth;
+		}
+		if(needsVisibleHeight) {
+			this._actualVisibleHeight = this.actualHeight;
+		} else {
+			this._actualVisibleHeight = this._explicitVisibleHeight;
+		}
+		if(needsVisibleMinWidth) {
+			this._actualMinVisibleWidth = this.actualMinWidth;
+		} else {
+			this._actualMinVisibleWidth = this._explicitMinVisibleWidth;
+		}
+		if(needsVisibleMinHeight) {
+			this._actualMinVisibleHeight = this.actualMinHeight;
+		} else {
+			this._actualMinVisibleHeight = this._explicitMinVisibleHeight;
+		}
+		return result;
+	}
+	,refreshTextStyles: function() {
+		if(this._textField.get_embedFonts() != this._embedFonts) {
+			this._textField.set_embedFonts(this._embedFonts);
+			this._updatedTextStyles = true;
+		}
+		if(this._textFormat != this._previousTextFormat) {
+			this._textField.set_defaultTextFormat(this._textFormat);
+			this._updatedTextStyles = true;
+			this._previousTextFormat = this._textFormat;
+		}
+	}
+	,refreshText: function() {
+		var textFieldType = this._enabled ? this._textFieldType : 0;
+		if(this._textField.get_type() != textFieldType) {
+			this._textField.set_type(textFieldType);
+		}
+		var calculatedWordWrap = this._explicitVisibleWidth != null && this._wordWrap;
+		if(this._textField.get_wordWrap() != calculatedWordWrap) {
+			this._textField.set_wordWrap(calculatedWordWrap);
+			this._updatedTextStyles = true;
+		}
+		if(this._textField.get_multiline() != this._multiline) {
+			this._textField.set_multiline(this._multiline);
+			this._updatedTextStyles = true;
+		}
+		this._textField.set_restrict(this.__restrict);
+		this._textField.set_displayAsPassword(this._displayAsPassword);
+		this._textField.set_maxChars(this._maxChars);
+		this._textField.set_selectable(this._selectable);
+		var calculatedWidth = this._explicitVisibleWidth;
+		if(calculatedWidth != null) {
+			calculatedWidth -= this._paddingLeft + this._paddingRight;
+		}
+		if(this._text == this._previousText && !this._updatedTextStyles && calculatedWidth == this._previousWidth) {
+			return;
+		}
+		if(calculatedWidth != null) {
+			this._textField.set_width(calculatedWidth);
+		}
+		this._textField.set_autoSize(1);
+		var hasText = this._text != null && this._text.length > 0;
+		if(hasText) {
+			this._textField.set_text(this._text);
+		} else {
+			this._textField.set_text("​");
+		}
+		this._savedLineMetrics = this._textField.getLineMetrics(0);
+		this._textMeasuredWidth = this._textField.get_width();
+		this._textMeasuredHeight = 4 + (this._savedLineMetrics.height + this._savedLineMetrics.leading) * this._textField.get_numLines();
+		this._textField.set_autoSize(2);
+		if(!hasText) {
+			this._textField.set_text("");
+		}
+		this._previousText = this._text;
+		this._previousWidth = calculatedWidth;
+	}
+	,refreshSelection: function() {
+		if(this._pendingSelectionActiveIndex == -1 && this._pendingSelectionAnchorIndex == -1) {
+			return;
+		}
+		var anchorIndex = this._pendingSelectionAnchorIndex;
+		var activeIndex = this._pendingSelectionActiveIndex;
+		this._pendingSelectionAnchorIndex = -1;
+		this._pendingSelectionActiveIndex = -1;
+		this._textField.setSelection(anchorIndex,activeIndex);
+	}
+	,layoutTextField: function() {
+		if(this._smoothScrolling) {
+			this._textField.set_x(this._paddingLeft);
+			this._textField.set_y(this._paddingTop);
+			var calculatedWidth = Math.max(this.actualWidth,this._actualVisibleWidth);
+			var calculatedHeight = Math.max(this.actualHeight,this._actualVisibleHeight);
+			this._textField.set_width(calculatedWidth - this._paddingLeft - this._paddingRight);
+			this._textField.set_height(calculatedHeight - this._paddingTop - this._paddingBottom);
+			this._textField.set_scrollV(1);
+		} else {
+			this._textField.set_x(this._paddingLeft + this._scrollX);
+			this._textField.set_y(this._paddingTop + this._scrollY);
+			this._textField.set_width(this._actualVisibleWidth - this._paddingLeft - this._paddingRight);
+			this._textField.set_height(this._actualVisibleHeight - this._paddingTop - this._paddingBottom);
+			var textFieldHeight = this._textField.get_textHeight();
+			var maxScrollX = Math.max(0.0,this.actualWidth - this._actualVisibleWidth);
+			var maxScrollY = Math.max(0.0,this.actualHeight - this._actualVisibleHeight);
+			if(this._textField.get_maxScrollV() == 1 || maxScrollY == 0.0) {
+				this._textField.set_scrollV(1);
+			} else {
+				this._textField.set_scrollV(1 + Math.ceil(this._scrollY / (this._savedLineMetrics.height + this._savedLineMetrics.leading)));
+			}
+			if(this._textField.get_maxScrollH() == 0 || maxScrollX == 0.0) {
+				this._textField.set_scrollH(0);
+			} else {
+				this._textField.set_scrollH(Math.round(this._textField.get_maxScrollH() * (this._scrollX / maxScrollX)));
+			}
+		}
+	}
+	,textField_changeHandler: function(event) {
+		event.stopPropagation();
+		this.set_text(this._textField.get_text());
+		if(this._textFieldHasFocus) {
+			var container = js_Boot.__cast(this.parent , feathers_controls_supportClasses_BaseScrollContainer);
+			container.validateNow();
+			if(container.get_maxScrollY() > 0.0) {
+				var lineIndex = -1;
+				var caretIndex = this._textField.get_caretIndex();
+				if(caretIndex == this._textField.get_length()) {
+					if(caretIndex == 0) {
+						return;
+					}
+					--caretIndex;
+					lineIndex = this._textField.getLineIndexOfChar(caretIndex);
+					var charAtIndex = this._textField.get_text().charAt(caretIndex);
+					if(charAtIndex == "\n" || charAtIndex == "\r") {
+						++lineIndex;
+					}
+				} else {
+					lineIndex = this._textField.getLineIndexOfChar(caretIndex);
+				}
+				if(this._smoothScrolling) {
+					var lineHeight = this._savedLineMetrics.height + this._savedLineMetrics.leading;
+					var minScrollYForLine = container.get_maxScrollY() - (this._textField.get_numLines() - lineIndex - 1) * lineHeight;
+					var maxScrollYForLine = minScrollYForLine + (this._textField.get_numLines() - Math.floor(this.get_visibleHeight() / lineHeight)) * lineHeight;
+					var targetScrollY = this._scrollY;
+					if(minScrollYForLine - targetScrollY > 0.0) {
+						targetScrollY = minScrollYForLine;
+					} else if(targetScrollY - maxScrollYForLine > 0.0) {
+						targetScrollY = maxScrollYForLine;
+					}
+					container.set_scrollY(targetScrollY);
+				} else if(this._textField.get_maxScrollV() > 1) {
+					var minScrollVForLine = this._textField.get_maxScrollV() - (this._textField.get_numLines() - lineIndex - 1);
+					var maxScrollVForLine = minScrollVForLine + (this._textField.get_numLines() - this._textField.get_maxScrollV());
+					if(maxScrollVForLine > this._textField.get_maxScrollV()) {
+						maxScrollVForLine = this._textField.get_maxScrollV();
+					}
+					var targetScrollV = this._textField.get_scrollV();
+					if(minScrollVForLine - targetScrollV > 0) {
+						targetScrollV = minScrollVForLine;
+					} else if(targetScrollV - maxScrollVForLine > 0) {
+						targetScrollV = maxScrollVForLine;
+					}
+					if(targetScrollV != this._textField.get_scrollV()) {
+						container.set_scrollY((targetScrollV - 1) * (this._savedLineMetrics.height + this._savedLineMetrics.leading));
+					}
+				}
+			}
+		}
+	}
+	,textField_focusInHandler: function(event) {
+		this._textFieldHasFocus = true;
+	}
+	,textField_focusOutHandler: function(event) {
+		this._textFieldHasFocus = false;
+	}
+	,textField_scrollHandler: function(event) {
+		if(this._ignoreTextFieldScroll || this._smoothScrolling) {
+			return;
+		}
+		var container = js_Boot.__cast(this.parent , feathers_controls_supportClasses_BaseScrollContainer);
+		if(container.get_maxScrollY() > 0.0 && this._textField.get_maxScrollV() > 1) {
+			container.set_scrollY((this._textField.get_scrollV() - 1) * (this._savedLineMetrics.height + this._savedLineMetrics.leading));
+		}
+	}
+	,textFieldViewPort_focusInHandler: function(event) {
+		if(this.stage != null && this.stage.get_focus() != this._textField) {
+			event.stopImmediatePropagation();
+			this.stage.set_focus(this._textField);
+		}
+	}
+	,__class__: feathers_controls_supportClasses_TextFieldViewPort
+	,__properties__: $extend(feathers_core_FeathersControl.prototype.__properties__,{get_selectionActiveIndex:"get_selectionActiveIndex",get_selectionAnchorIndex:"get_selectionAnchorIndex",set_scrollY:"set_scrollY",get_scrollY:"get_scrollY",set_scrollX:"set_scrollX",get_scrollX:"get_scrollX",set_visibleHeight:"set_visibleHeight",get_visibleHeight:"get_visibleHeight",set_maxVisibleHeight:"set_maxVisibleHeight",get_maxVisibleHeight:"get_maxVisibleHeight",set_minVisibleHeight:"set_minVisibleHeight",get_minVisibleHeight:"get_minVisibleHeight",set_visibleWidth:"set_visibleWidth",get_visibleWidth:"get_visibleWidth",set_maxVisibleWidth:"set_maxVisibleWidth",get_maxVisibleWidth:"get_maxVisibleWidth",set_minVisibleWidth:"set_minVisibleWidth",get_minVisibleWidth:"get_minVisibleWidth",get_stageFocusTarget:"get_stageFocusTarget",set_paddingLeft:"set_paddingLeft",get_paddingLeft:"get_paddingLeft",set_paddingBottom:"set_paddingBottom",get_paddingBottom:"get_paddingBottom",set_paddingRight:"set_paddingRight",get_paddingRight:"get_paddingRight",set_paddingTop:"set_paddingTop",get_paddingTop:"get_paddingTop",set_embedFonts:"set_embedFonts",get_embedFonts:"get_embedFonts",set_textFormat:"set_textFormat",get_textFormat:"get_textFormat",set_smoothScrolling:"set_smoothScrolling",get_smoothScrolling:"get_smoothScrolling",set_selectable:"set_selectable",get_selectable:"get_selectable",set_maxChars:"set_maxChars",get_maxChars:"get_maxChars",set_displayAsPassword:"set_displayAsPassword",get_displayAsPassword:"get_displayAsPassword",set_restrict:"set_restrict",get_restrict:"get_restrict",set_multiline:"set_multiline",get_multiline:"get_multiline",set_wordWrap:"set_wordWrap",get_wordWrap:"get_wordWrap",get_baseline:"get_baseline",set_text:"set_text",get_text:"get_text",set_textFieldType:"set_textFieldType",get_textFieldType:"get_textFieldType",get_textField:"get_textField"})
+});
+var feathers_core_IPopUpManager = function() { };
+$hxClasses["feathers.core.IPopUpManager"] = feathers_core_IPopUpManager;
+feathers_core_IPopUpManager.__name__ = "feathers.core.IPopUpManager";
+feathers_core_IPopUpManager.__isInterface__ = true;
+feathers_core_IPopUpManager.prototype = {
+	__class__: feathers_core_IPopUpManager
+	,__properties__: {get_topLevelPopUpCount:"get_topLevelPopUpCount",get_popUpCount:"get_popUpCount",set_root:"set_root",get_root:"get_root",set_overlayFactory:"set_overlayFactory",get_overlayFactory:"get_overlayFactory"}
+};
+var feathers_core_DefaultPopUpManager = function(root) {
+	this._popUpToOverlay = new haxe_ds_ObjectMap();
+	this._centeredPopUps = [];
+	this.popUps = [];
+	this._ignoreRemoval = false;
+	this.set_root(root);
+};
+$hxClasses["feathers.core.DefaultPopUpManager"] = feathers_core_DefaultPopUpManager;
+feathers_core_DefaultPopUpManager.__name__ = "feathers.core.DefaultPopUpManager";
+feathers_core_DefaultPopUpManager.__interfaces__ = [feathers_core_IPopUpManager];
+feathers_core_DefaultPopUpManager.defaultOverlayFactory = function() {
+	var overlay = new openfl_display_Sprite();
+	overlay.get_graphics().beginFill(8421504,0.75);
+	overlay.get_graphics().drawRect(0,0,1,1);
+	overlay.get_graphics().endFill();
+	return overlay;
+};
+feathers_core_DefaultPopUpManager.prototype = {
+	get_root: function() {
+		return this._root;
+	}
+	,set_root: function(value) {
+		if(this._root == value) {
+			return this._root;
+		}
+		if(value.stage == null) {
+			throw new openfl_errors_ArgumentError("DefaultPopUpManager root's stage property must not be null.");
+		}
+		var oldIgnoreRemoval = this._ignoreRemoval;
+		this._ignoreRemoval = true;
+		var _g = 0;
+		var _g1 = this.popUps;
+		while(_g < _g1.length) {
+			var popUp = _g1[_g];
+			++_g;
+			this._root.removeChild(popUp);
+			var overlay = this._popUpToOverlay.h[popUp.__id__];
+			if(overlay != null) {
+				this._root.removeChild(overlay);
+			}
+		}
+		this._ignoreRemoval = oldIgnoreRemoval;
+		this._root = value;
+		var _g = 0;
+		var _g1 = this.popUps;
+		while(_g < _g1.length) {
+			var popUp = _g1[_g];
+			++_g;
+			var overlay = this._popUpToOverlay.h[popUp.__id__];
+			if(overlay != null) {
+				this._root.addChild(overlay);
+			}
+			this._root.addChild(popUp);
+		}
+		return this._root;
+	}
+	,get_overlayFactory: function() {
+		return this._overlayFactory;
+	}
+	,set_overlayFactory: function(value) {
+		if(this._overlayFactory == value) {
+			return this._overlayFactory;
+		}
+		this._overlayFactory = value;
+		return this._overlayFactory;
+	}
+	,get_popUpCount: function() {
+		return this.popUps.length;
+	}
+	,get_topLevelPopUpCount: function() {
+		var count = 0;
+		var i = this.popUps.length - 1;
+		while(i >= 0) {
+			++count;
+			var popUp = this.popUps[i];
+			var overlay = this._popUpToOverlay.h[popUp.__id__];
+			if(overlay != null) {
+				return count;
+			}
+			--i;
+		}
+		return count;
+	}
+	,getPopUpAt: function(index) {
+		return this.popUps[index];
+	}
+	,isPopUp: function(target) {
+		return this.popUps.indexOf(target) != -1;
+	}
+	,isTopLevelPopUp: function(target) {
+		var i = this.popUps.length - 1;
+		while(i >= 0) {
+			var otherPopUp = this.popUps[i];
+			if(otherPopUp == target) {
+				return true;
+			}
+			var overlay = this._popUpToOverlay.h[otherPopUp.__id__];
+			if(overlay != null) {
+				return false;
+			}
+			--i;
+		}
+		return false;
+	}
+	,isModal: function(target) {
+		if(target == null) {
+			return false;
+		}
+		return this._popUpToOverlay.h[target.__id__] != null;
+	}
+	,hasModalPopUps: function() {
+		var map = this._popUpToOverlay;
+		var inlMapKeyValueIterator_map = map;
+		var inlMapKeyValueIterator_keys = map.keys();
+		return inlMapKeyValueIterator_keys.hasNext();
+	}
+	,addPopUp: function(popUp,isModal,isCentered,customOverlayFactory) {
+		if(isCentered == null) {
+			isCentered = true;
+		}
+		if(isModal == null) {
+			isModal = true;
+		}
+		var index = this.popUps.indexOf(popUp);
+		if(index != -1) {
+			this.cleanupOverlay(popUp);
+			this.popUps.splice(index,1);
+		}
+		if(isModal) {
+			if(customOverlayFactory == null) {
+				customOverlayFactory = this._overlayFactory;
+			}
+			if(customOverlayFactory == null) {
+				customOverlayFactory = feathers_core_DefaultPopUpManager.defaultOverlayFactory;
+			}
+			var overlay = customOverlayFactory();
+			var stage = this._root.stage;
+			var stageTopLeft = this._root.globalToLocal(new openfl_geom_Point());
+			var stageBottomRight = this._root.globalToLocal(new openfl_geom_Point(stage.stageWidth,stage.stageHeight));
+			overlay.set_x(stageTopLeft.x);
+			overlay.set_y(stageTopLeft.y);
+			overlay.set_width(stageBottomRight.x - stageTopLeft.x);
+			overlay.set_height(stageBottomRight.y - stageTopLeft.y);
+			this._root.addChild(overlay);
+			this._popUpToOverlay.set(popUp,overlay);
+		}
+		this.popUps.push(popUp);
+		var result = this._root.addChild(popUp);
+		if(popUp.parent == null) {
+			this.cleanupOverlay(popUp);
+			HxOverrides.remove(this.popUps,popUp);
+			return null;
+		}
+		popUp.addEventListener("removedFromStage",$bind(this,this.defaultPopUpManager_popUp_removedFromStageHandler));
+		if(this.popUps.length == 1) {
+			this._root.stage.addEventListener("resize",$bind(this,this.defaultPopUpManager_stage_resizeHandler),false,0,true);
+		}
+		if(isCentered) {
+			if(js_Boot.__implements(popUp,feathers_core_IMeasureObject)) {
+				var measurePopUp = js_Boot.__cast(popUp , feathers_core_IMeasureObject);
+				measurePopUp.addEventListener("resize",$bind(this,this.defaultPopUpManager_popUp_resizeHandler));
+			}
+			this._centeredPopUps.push(popUp);
+			this.centerPopUp(popUp);
+		}
+		return result;
+	}
+	,removePopUp: function(popUp) {
+		var index = this.popUps.indexOf(popUp);
+		if(index == -1) {
+			return popUp;
+		}
+		return this._root.removeChild(popUp);
+	}
+	,removeAllPopUps: function() {
+		var popUps = this.popUps.slice();
+		var _g = 0;
+		while(_g < popUps.length) {
+			var popUp = popUps[_g];
+			++_g;
+			if(this.isPopUp(popUp)) {
+				this.removePopUp(popUp);
+			}
+		}
+	}
+	,centerPopUp: function(popUp) {
+		if(js_Boot.__implements(popUp,feathers_core_IValidating)) {
+			(js_Boot.__cast(popUp , feathers_core_IValidating)).validateNow();
+		}
+		var stage = this._root.stage;
+		var stageTopLeft = this._root.globalToLocal(new openfl_geom_Point());
+		var stageBottomRight = this._root.globalToLocal(new openfl_geom_Point(stage.stageWidth,stage.stageHeight));
+		popUp.set_x(stageTopLeft.x + (stageBottomRight.x - stageTopLeft.x - popUp.get_width()) / 2.0);
+		popUp.set_y(stageTopLeft.y + (stageBottomRight.y - stageTopLeft.y - popUp.get_height()) / 2.0);
+	}
+	,cleanupOverlay: function(popUp) {
+		var overlay = this._popUpToOverlay.h[popUp.__id__];
+		if(overlay == null) {
+			return;
+		}
+		this._root.removeChild(overlay);
+		this._popUpToOverlay.remove(popUp);
+	}
+	,defaultPopUpManager_popUp_removedFromStageHandler: function(event) {
+		if(this._ignoreRemoval) {
+			return;
+		}
+		var popUp = js_Boot.__cast(event.currentTarget , openfl_display_DisplayObject);
+		popUp.removeEventListener("removedFromStage",$bind(this,this.defaultPopUpManager_popUp_removedFromStageHandler));
+		HxOverrides.remove(this.popUps,popUp);
+		this.cleanupOverlay(popUp);
+		if(this.popUps.length == 0) {
+			this._root.stage.removeEventListener("resize",$bind(this,this.defaultPopUpManager_stage_resizeHandler));
+		}
+	}
+	,defaultPopUpManager_popUp_resizeHandler: function(event) {
+		var popUp = js_Boot.__cast(event.currentTarget , openfl_display_DisplayObject);
+		this.centerPopUp(popUp);
+	}
+	,defaultPopUpManager_stage_resizeHandler: function(event) {
+		var stage = js_Boot.__cast(event.currentTarget , openfl_display_Stage);
+		var stageTopLeft = this._root.globalToLocal(new openfl_geom_Point());
+		var stageBottomRight = this._root.globalToLocal(new openfl_geom_Point(stage.stageWidth,stage.stageHeight));
+		var _g = 0;
+		var _g1 = this.popUps;
+		while(_g < _g1.length) {
+			var popUp = _g1[_g];
+			++_g;
+			var overlay = this._popUpToOverlay.h[popUp.__id__];
+			if(overlay != null) {
+				overlay.set_x(stageTopLeft.x);
+				overlay.set_y(stageTopLeft.y);
+				overlay.set_width(stageBottomRight.x - stageTopLeft.x);
+				overlay.set_height(stageBottomRight.y - stageTopLeft.y);
+			}
+		}
+		var _g = 0;
+		var _g1 = this._centeredPopUps;
+		while(_g < _g1.length) {
+			var popUp = _g1[_g];
+			++_g;
+			this.centerPopUp(popUp);
+		}
+	}
+	,__class__: feathers_core_DefaultPopUpManager
+	,__properties__: {get_topLevelPopUpCount:"get_topLevelPopUpCount",get_popUpCount:"get_popUpCount",set_overlayFactory:"set_overlayFactory",get_overlayFactory:"get_overlayFactory",set_root:"set_root",get_root:"get_root"}
+};
 var feathers_core__$FeathersControl_StyleDefinition = $hxEnums["feathers.core._FeathersControl.StyleDefinition"] = { __ename__:"feathers.core._FeathersControl.StyleDefinition",__constructs__:null
 	,Name: ($_=function(name) { return {_hx_index:0,name:name,__enum__:"feathers.core._FeathersControl.StyleDefinition",toString:$estr}; },$_._hx_name="Name",$_.__params__ = ["name"],$_)
 	,NameAndState: ($_=function(name,state) { return {_hx_index:1,name:name,state:state,__enum__:"feathers.core._FeathersControl.StyleDefinition",toString:$estr}; },$_._hx_name="NameAndState",$_.__params__ = ["name","state"],$_)
@@ -12580,6 +22218,123 @@ feathers_core_IStateObserver.__isInterface__ = true;
 feathers_core_IStateObserver.prototype = {
 	__class__: feathers_core_IStateObserver
 	,__properties__: {set_stateContext:"set_stateContext",get_stateContext:"get_stateContext"}
+};
+var feathers_core_PopUpManager = function() { };
+$hxClasses["feathers.core.PopUpManager"] = feathers_core_PopUpManager;
+feathers_core_PopUpManager.__name__ = "feathers.core.PopUpManager";
+feathers_core_PopUpManager.__properties__ = {get_popUpCount:"get_popUpCount",set_root:"set_root"};
+feathers_core_PopUpManager.set_root = function(value) {
+	var popUpManager = feathers_core_PopUpManager.forStage(value.stage);
+	popUpManager.set_root(value);
+	return value;
+};
+feathers_core_PopUpManager.get_popUpCount = function() {
+	var count = 0;
+	var popUpManager = feathers_core_PopUpManager.stageToManager.iterator();
+	while(popUpManager.hasNext()) {
+		var popUpManager1 = popUpManager.next();
+		count += popUpManager1.get_popUpCount();
+	}
+	return count;
+};
+feathers_core_PopUpManager.forStage = function(stage) {
+	if(stage == null) {
+		throw new openfl_errors_ArgumentError("PopUpManager stage argument must not be null.");
+	}
+	var popUpManager = feathers_core_PopUpManager.stageToManager.h[stage.__id__];
+	if(popUpManager == null) {
+		var factory = feathers_core_PopUpManager.popUpManagerFactory;
+		if(factory == null) {
+			factory = feathers_core_PopUpManager.defaultPopUpManagerFactory;
+		}
+		popUpManager = factory(stage);
+		feathers_core_PopUpManager.stageToManager.set(stage,popUpManager);
+	}
+	return popUpManager;
+};
+feathers_core_PopUpManager.dispose = function() {
+	feathers_core_PopUpManager.removeAllPopUps();
+	var stage = feathers_core_PopUpManager.stageToManager.keys();
+	while(stage.hasNext()) {
+		var stage1 = stage.next();
+		feathers_core_PopUpManager.stageToManager.remove(stage1);
+	}
+};
+feathers_core_PopUpManager.addPopUp = function(popUp,owner,isModal,isCentered,customOverlayFactory) {
+	if(isCentered == null) {
+		isCentered = true;
+	}
+	if(isModal == null) {
+		isModal = true;
+	}
+	if(owner == null) {
+		throw new openfl_errors_ArgumentError("The pop-up's owner must not be null.");
+	}
+	var stage = owner.stage;
+	if(stage == null) {
+		throw new openfl_errors_ArgumentError("The stage property of a pop-up's owner must not be null.");
+	}
+	var popUpManager = feathers_core_PopUpManager.forStage(stage);
+	return popUpManager.addPopUp(popUp,isModal,isCentered,customOverlayFactory);
+};
+feathers_core_PopUpManager.removePopUp = function(popUp) {
+	var stage = popUp.stage;
+	if(stage == null) {
+		return popUp;
+	}
+	var popUpManager = feathers_core_PopUpManager.forStage(stage);
+	return popUpManager.removePopUp(popUp);
+};
+feathers_core_PopUpManager.removeAllPopUps = function() {
+	var popUpManager = feathers_core_PopUpManager.stageToManager.iterator();
+	while(popUpManager.hasNext()) {
+		var popUpManager1 = popUpManager.next();
+		popUpManager1.removeAllPopUps();
+	}
+};
+feathers_core_PopUpManager.centerPopUp = function(target) {
+	var stage = target.stage;
+	if(stage == null) {
+		throw new openfl_errors_ArgumentError("A pop-up's stage property must not be null.");
+	}
+	var popUpManager = feathers_core_PopUpManager.forStage(stage);
+	popUpManager.centerPopUp(target);
+};
+feathers_core_PopUpManager.isPopUp = function(target) {
+	if(target == null) {
+		return false;
+	}
+	var stage = target.stage;
+	if(stage == null) {
+		return false;
+	}
+	var popUpManager = feathers_core_PopUpManager.forStage(stage);
+	return popUpManager.isPopUp(target);
+};
+feathers_core_PopUpManager.isModal = function(target) {
+	if(target == null) {
+		return false;
+	}
+	var stage = target.stage;
+	if(stage == null) {
+		return false;
+	}
+	var popUpManager = feathers_core_PopUpManager.forStage(stage);
+	return popUpManager.isModal(target);
+};
+feathers_core_PopUpManager.isTopLevelPopUp = function(target) {
+	if(target == null) {
+		return false;
+	}
+	var stage = target.stage;
+	if(stage == null) {
+		return false;
+	}
+	var popUpManager = feathers_core_PopUpManager.forStage(stage);
+	return popUpManager.isTopLevelPopUp(target);
+};
+feathers_core_PopUpManager.defaultPopUpManagerFactory = function(stage) {
+	return new feathers_core_DefaultPopUpManager(stage);
 };
 var feathers_core_ValidationQueue = function(stage) {
 	this._validating = false;
@@ -13292,6 +23047,55 @@ feathers_events_FlatCollectionEvent.prototype = $extend(openfl_events_Event.prot
 	}
 	,__class__: feathers_events_FlatCollectionEvent
 });
+var feathers_events_ScrollEvent = function(type,bubbles,cancelable,x,y) {
+	if(y == null) {
+		y = 0.0;
+	}
+	if(x == null) {
+		x = 0.0;
+	}
+	if(cancelable == null) {
+		cancelable = false;
+	}
+	if(bubbles == null) {
+		bubbles = false;
+	}
+	openfl_events_Event.call(this,type,bubbles,cancelable);
+	this.x = x;
+	this.y = y;
+};
+$hxClasses["feathers.events.ScrollEvent"] = feathers_events_ScrollEvent;
+feathers_events_ScrollEvent.__name__ = "feathers.events.ScrollEvent";
+feathers_events_ScrollEvent.dispatch = function(dispatcher,type,bubbles,cancelable,x,y) {
+	if(y == null) {
+		y = 0.0;
+	}
+	if(x == null) {
+		x = 0.0;
+	}
+	if(cancelable == null) {
+		cancelable = false;
+	}
+	if(bubbles == null) {
+		bubbles = false;
+	}
+	var event = feathers_events_ScrollEvent._pool.get();
+	event.type = type;
+	event.bubbles = bubbles;
+	event.cancelable = cancelable;
+	event.x = x;
+	event.y = y;
+	var result = dispatcher.dispatchEvent(event);
+	feathers_events_ScrollEvent._pool.release(event);
+	return result;
+};
+feathers_events_ScrollEvent.__super__ = openfl_events_Event;
+feathers_events_ScrollEvent.prototype = $extend(openfl_events_Event.prototype,{
+	clone: function() {
+		return new feathers_events_ScrollEvent(this.type,this.bubbles,this.cancelable,this.x,this.y);
+	}
+	,__class__: feathers_events_ScrollEvent
+});
 var feathers_events_StyleProviderEvent = function(type,affectsTarget) {
 	openfl_events_Event.call(this,type);
 	this.affectsTarget = affectsTarget != null ? affectsTarget : feathers_events_StyleProviderEvent.defaultAffectsTarget;
@@ -13590,6 +23394,12 @@ var feathers_layout_AutoSizeMode = $hxEnums["feathers.layout.AutoSizeMode"] = { 
 	,CONTENT: {_hx_name:"CONTENT",_hx_index:1,__enum__:"feathers.layout.AutoSizeMode",toString:$estr}
 };
 feathers_layout_AutoSizeMode.__constructs__ = [feathers_layout_AutoSizeMode.STAGE,feathers_layout_AutoSizeMode.CONTENT];
+var feathers_layout_Direction = $hxEnums["feathers.layout.Direction"] = { __ename__:"feathers.layout.Direction",__constructs__:null
+	,VERTICAL: {_hx_name:"VERTICAL",_hx_index:0,__enum__:"feathers.layout.Direction",toString:$estr}
+	,HORIZONTAL: {_hx_name:"HORIZONTAL",_hx_index:1,__enum__:"feathers.layout.Direction",toString:$estr}
+	,NONE: {_hx_name:"NONE",_hx_index:2,__enum__:"feathers.layout.Direction",toString:$estr}
+};
+feathers_layout_Direction.__constructs__ = [feathers_layout_Direction.VERTICAL,feathers_layout_Direction.HORIZONTAL,feathers_layout_Direction.NONE];
 var feathers_layout_HorizontalAlign = $hxEnums["feathers.layout.HorizontalAlign"] = { __ename__:"feathers.layout.HorizontalAlign",__constructs__:null
 	,LEFT: {_hx_name:"LEFT",_hx_index:0,__enum__:"feathers.layout.HorizontalAlign",toString:$estr}
 	,CENTER: {_hx_name:"CENTER",_hx_index:1,__enum__:"feathers.layout.HorizontalAlign",toString:$estr}
@@ -14340,6 +24150,23 @@ feathers_layout_ILayoutIndexObject.prototype = {
 	__class__: feathers_layout_ILayoutIndexObject
 	,__properties__: {set_layoutIndex:"set_layoutIndex",get_layoutIndex:"get_layoutIndex"}
 };
+var feathers_layout_IScrollLayout = function() { };
+$hxClasses["feathers.layout.IScrollLayout"] = feathers_layout_IScrollLayout;
+feathers_layout_IScrollLayout.__name__ = "feathers.layout.IScrollLayout";
+feathers_layout_IScrollLayout.__isInterface__ = true;
+feathers_layout_IScrollLayout.__interfaces__ = [feathers_layout_ILayout];
+feathers_layout_IScrollLayout.prototype = {
+	__class__: feathers_layout_IScrollLayout
+	,__properties__: {get_elasticLeft:"get_elasticLeft",get_elasticBottom:"get_elasticBottom",get_elasticRight:"get_elasticRight",get_elasticTop:"get_elasticTop",set_scrollY:"set_scrollY",get_scrollY:"get_scrollY",set_scrollX:"set_scrollX",get_scrollX:"get_scrollX"}
+};
+var feathers_layout_ISnapLayout = function() { };
+$hxClasses["feathers.layout.ISnapLayout"] = feathers_layout_ISnapLayout;
+feathers_layout_ISnapLayout.__name__ = "feathers.layout.ISnapLayout";
+feathers_layout_ISnapLayout.__isInterface__ = true;
+feathers_layout_ISnapLayout.__interfaces__ = [feathers_layout_ILayout];
+feathers_layout_ISnapLayout.prototype = {
+	__class__: feathers_layout_ISnapLayout
+};
 var feathers_layout_LayoutBoundsResult = function() {
 	this.reset();
 };
@@ -14451,6 +24278,13 @@ var feathers_layout_RelativePosition = $hxEnums["feathers.layout.RelativePositio
 	,MANUAL: {_hx_name:"MANUAL",_hx_index:4,__enum__:"feathers.layout.RelativePosition",toString:$estr}
 };
 feathers_layout_RelativePosition.__constructs__ = [feathers_layout_RelativePosition.TOP,feathers_layout_RelativePosition.RIGHT,feathers_layout_RelativePosition.BOTTOM,feathers_layout_RelativePosition.LEFT,feathers_layout_RelativePosition.MANUAL];
+var feathers_layout_RelativePositions = {};
+feathers_layout_RelativePositions._new = function(positions) {
+	return positions;
+};
+feathers_layout_RelativePositions.fromRelativePosition = function(position) {
+	return [position];
+};
 var feathers_layout_VerticalAlign = $hxEnums["feathers.layout.VerticalAlign"] = { __ename__:"feathers.layout.VerticalAlign",__constructs__:null
 	,TOP: {_hx_name:"TOP",_hx_index:0,__enum__:"feathers.layout.VerticalAlign",toString:$estr}
 	,MIDDLE: {_hx_name:"MIDDLE",_hx_index:1,__enum__:"feathers.layout.VerticalAlign",toString:$estr}
@@ -16494,6 +26328,40 @@ feathers_skins_BaseGraphicsPathSkin.prototype = $extend(feathers_skins_Programma
 	,__class__: feathers_skins_BaseGraphicsPathSkin
 	,__properties__: $extend(feathers_skins_ProgrammaticSkin.prototype.__properties__,{set_selectedBorder:"set_selectedBorder",get_selectedBorder:"get_selectedBorder",set_disabledBorder:"set_disabledBorder",get_disabledBorder:"get_disabledBorder",set_border:"set_border",get_border:"get_border",set_selectedFill:"set_selectedFill",get_selectedFill:"get_selectedFill",set_disabledFill:"set_disabledFill",get_disabledFill:"get_disabledFill",set_fill:"set_fill",get_fill:"get_fill"})
 });
+var feathers_skins_PillSkin = function(fill,border,capDirection) {
+	if(capDirection == null) {
+		capDirection = feathers_layout_Direction.HORIZONTAL;
+	}
+	feathers_skins_BaseGraphicsPathSkin.call(this,fill,border);
+	this._capDirection = capDirection;
+};
+$hxClasses["feathers.skins.PillSkin"] = feathers_skins_PillSkin;
+feathers_skins_PillSkin.__name__ = "feathers.skins.PillSkin";
+feathers_skins_PillSkin.__super__ = feathers_skins_BaseGraphicsPathSkin;
+feathers_skins_PillSkin.prototype = $extend(feathers_skins_BaseGraphicsPathSkin.prototype,{
+	get_capDirection: function() {
+		return this._capDirection;
+	}
+	,set_capDirection: function(value) {
+		if(this._capDirection == value) {
+			return this._capDirection;
+		}
+		this._capDirection = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this._capDirection;
+	}
+	,drawPath: function() {
+		var currentBorder = this.getCurrentBorder();
+		var thickness = this.getLineThickness(currentBorder);
+		var thicknessOffset = thickness / 2.0;
+		var drawWidth = Math.max(0.0,this.actualWidth - thickness);
+		var drawHeight = Math.max(0.0,this.actualHeight - thickness);
+		var ellipseSize = this.get_capDirection() == feathers_layout_Direction.VERTICAL ? this.actualWidth : this.actualHeight;
+		this.get_graphics().drawRoundRect(thicknessOffset,thicknessOffset,drawWidth,drawHeight,ellipseSize);
+	}
+	,__class__: feathers_skins_PillSkin
+	,__properties__: $extend(feathers_skins_BaseGraphicsPathSkin.prototype.__properties__,{set_capDirection:"set_capDirection",get_capDirection:"get_capDirection"})
+});
 var feathers_skins_RectangleSkin = function(fill,border) {
 	this._cornerRadius = 0.0;
 	feathers_skins_BaseGraphicsPathSkin.call(this,fill,border);
@@ -16658,6 +26526,114 @@ feathers_skins_TabSkin.prototype = $extend(feathers_skins_BaseGraphicsPathSkin.p
 	}
 	,__class__: feathers_skins_TabSkin
 	,__properties__: $extend(feathers_skins_BaseGraphicsPathSkin.prototype.__properties__,{set_cornerRadius:"set_cornerRadius",get_cornerRadius:"get_cornerRadius",set_drawBaseBorder:"set_drawBaseBorder",get_drawBaseBorder:"get_drawBaseBorder",set_cornerRadiusPosition:"set_cornerRadiusPosition",get_cornerRadiusPosition:"get_cornerRadiusPosition"})
+});
+var feathers_skins_TriangleSkin = function(fill,border) {
+	this._drawBaseBorder = true;
+	this._pointPosition = feathers_layout_RelativePosition.TOP;
+	feathers_skins_BaseGraphicsPathSkin.call(this,fill,border);
+};
+$hxClasses["feathers.skins.TriangleSkin"] = feathers_skins_TriangleSkin;
+feathers_skins_TriangleSkin.__name__ = "feathers.skins.TriangleSkin";
+feathers_skins_TriangleSkin.__super__ = feathers_skins_BaseGraphicsPathSkin;
+feathers_skins_TriangleSkin.prototype = $extend(feathers_skins_BaseGraphicsPathSkin.prototype,{
+	get_pointPosition: function() {
+		return this._pointPosition;
+	}
+	,set_pointPosition: function(value) {
+		if(this._pointPosition == value) {
+			return this._pointPosition;
+		}
+		this._pointPosition = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this._pointPosition;
+	}
+	,get_drawBaseBorder: function() {
+		return this._drawBaseBorder;
+	}
+	,set_drawBaseBorder: function(value) {
+		if(this._drawBaseBorder == value) {
+			return this._drawBaseBorder;
+		}
+		this._drawBaseBorder = value;
+		this.setInvalid(feathers_core_InvalidationFlag.STYLES);
+		return this._drawBaseBorder;
+	}
+	,drawPath: function() {
+		var currentBorder = this.getCurrentBorder();
+		var thicknessOffset = this.getLineThickness(currentBorder) / 2.0;
+		var maxX = Math.max(0.0,this.actualWidth - thicknessOffset);
+		var maxY = Math.max(0.0,this.actualHeight - thicknessOffset);
+		switch(this._pointPosition._hx_index) {
+		case 0:
+			this.get_graphics().moveTo(this.actualWidth / 2.0,thicknessOffset);
+			if(this._drawBaseBorder) {
+				this.get_graphics().lineTo(maxX,maxY);
+				this.get_graphics().lineTo(thicknessOffset,maxY);
+			} else {
+				this.get_graphics().lineTo(maxX,this.actualHeight);
+				this.get_graphics().lineStyle(0.0,null,0.0,null,null,null,null,0.0);
+				this.get_graphics().lineTo(thicknessOffset,this.actualHeight);
+				this.applyLineStyle(currentBorder);
+			}
+			this.get_graphics().lineTo(this.actualWidth / 2.0,thicknessOffset);
+			break;
+		case 1:
+			if(this._drawBaseBorder) {
+				this.get_graphics().moveTo(thicknessOffset,thicknessOffset);
+			} else {
+				this.get_graphics().moveTo(0.0,thicknessOffset);
+			}
+			this.get_graphics().lineTo(maxX,this.actualHeight / 2.0);
+			if(this._drawBaseBorder) {
+				this.get_graphics().lineTo(thicknessOffset,maxY);
+				this.get_graphics().lineTo(thicknessOffset,thicknessOffset);
+			} else {
+				this.get_graphics().lineTo(0.0,maxY);
+				this.get_graphics().lineStyle(0.0,null,0.0,null,null,null,null,0.0);
+				this.get_graphics().lineTo(0.0,thicknessOffset);
+				this.applyLineStyle(currentBorder);
+			}
+			break;
+		case 2:
+			if(this._drawBaseBorder) {
+				this.get_graphics().moveTo(thicknessOffset,thicknessOffset);
+				this.get_graphics().lineTo(maxX,thicknessOffset);
+			} else {
+				this.get_graphics().lineStyle(0.0,null,0.0,null,null,null,null,0.0);
+				this.get_graphics().moveTo(thicknessOffset,0.0);
+				this.get_graphics().lineTo(maxX,0.0);
+				this.applyLineStyle(currentBorder);
+			}
+			this.get_graphics().lineTo(this.actualWidth / 2.0,maxY);
+			if(this._drawBaseBorder) {
+				this.get_graphics().lineTo(thicknessOffset,thicknessOffset);
+			} else {
+				this.get_graphics().lineTo(thicknessOffset,0.0);
+			}
+			break;
+		case 3:
+			if(this._drawBaseBorder) {
+				this.get_graphics().moveTo(maxX,thicknessOffset);
+				this.get_graphics().lineTo(maxX,maxY);
+			} else {
+				this.get_graphics().moveTo(this.actualWidth,thicknessOffset);
+				this.get_graphics().lineStyle(0.0,null,0.0,null,null,null,null,0.0);
+				this.get_graphics().lineTo(this.actualWidth,maxY);
+				this.applyLineStyle(currentBorder);
+			}
+			this.get_graphics().lineTo(thicknessOffset,this.actualHeight / 2.0);
+			if(this._drawBaseBorder) {
+				this.get_graphics().lineTo(maxX,thicknessOffset);
+			} else {
+				this.get_graphics().lineTo(this.actualWidth,thicknessOffset);
+			}
+			break;
+		default:
+			throw new openfl_errors_ArgumentError("Triangle pointPosition not supported: " + Std.string(this._pointPosition));
+		}
+	}
+	,__class__: feathers_skins_TriangleSkin
+	,__properties__: $extend(feathers_skins_BaseGraphicsPathSkin.prototype.__properties__,{set_drawBaseBorder:"set_drawBaseBorder",get_drawBaseBorder:"get_drawBaseBorder",set_pointPosition:"set_pointPosition",get_pointPosition:"get_pointPosition"})
 });
 var feathers_style_IStyleProvider = function() { };
 $hxClasses["feathers.style.IStyleProvider"] = feathers_style_IStyleProvider;
@@ -16840,245 +26816,6 @@ feathers_style_Theme.getTheme = function(object) {
 	}
 	return feathers_style_Theme.get_fallbackTheme();
 };
-var feathers_text_TextFormat = function(font,size,color,bold,italic,underline,url,target,align,leftMargin,rightMargin,indent,leading) {
-	openfl_events_EventDispatcher.call(this);
-	this._textFormat = new openfl_text_TextFormat(font,size,color,bold,italic,underline,url,target,align,leftMargin,rightMargin,indent,leading);
-};
-$hxClasses["feathers.text.TextFormat"] = feathers_text_TextFormat;
-feathers_text_TextFormat.__name__ = "feathers.text.TextFormat";
-feathers_text_TextFormat.__super__ = openfl_events_EventDispatcher;
-feathers_text_TextFormat.prototype = $extend(openfl_events_EventDispatcher.prototype,{
-	get_font: function() {
-		return this._textFormat.font;
-	}
-	,set_font: function(value) {
-		if(this._textFormat.font == value) {
-			return this._textFormat.font;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.font = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.font;
-	}
-	,get_size: function() {
-		return this._textFormat.size;
-	}
-	,set_size: function(value) {
-		if(this._textFormat.size == value) {
-			return this._textFormat.size;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.size = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.size;
-	}
-	,get_color: function() {
-		return this._textFormat.color;
-	}
-	,set_color: function(value) {
-		if(this._textFormat.color == value) {
-			return this._textFormat.color;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.color = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.color;
-	}
-	,get_bold: function() {
-		return this._textFormat.bold;
-	}
-	,set_bold: function(value) {
-		if(this._textFormat.bold == value) {
-			return this._textFormat.bold;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.bold = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.bold;
-	}
-	,get_italic: function() {
-		return this._textFormat.italic;
-	}
-	,set_italic: function(value) {
-		if(this._textFormat.italic == value) {
-			return this._textFormat.italic;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.italic = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.italic;
-	}
-	,get_underline: function() {
-		return this._textFormat.underline;
-	}
-	,set_underline: function(value) {
-		if(this._textFormat.underline == value) {
-			return this._textFormat.underline;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.underline = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.underline;
-	}
-	,get_url: function() {
-		return this._textFormat.url;
-	}
-	,set_url: function(value) {
-		if(this._textFormat.url == value) {
-			return this._textFormat.url;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.url = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.url;
-	}
-	,get_target: function() {
-		return this._textFormat.target;
-	}
-	,set_target: function(value) {
-		if(this._textFormat.target == value) {
-			return this._textFormat.target;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.target = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.target;
-	}
-	,get_align: function() {
-		return this._textFormat.align;
-	}
-	,set_align: function(value) {
-		if(this._textFormat.align == value) {
-			return this._textFormat.align;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.align = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.align;
-	}
-	,get_leftMargin: function() {
-		return this._textFormat.leftMargin;
-	}
-	,set_leftMargin: function(value) {
-		if(this._textFormat.leftMargin == value) {
-			return this._textFormat.leftMargin;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.leftMargin = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.leftMargin;
-	}
-	,get_rightMargin: function() {
-		return this._textFormat.rightMargin;
-	}
-	,set_rightMargin: function(value) {
-		if(this._textFormat.rightMargin == value) {
-			return this._textFormat.rightMargin;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.rightMargin = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.rightMargin;
-	}
-	,get_indent: function() {
-		return this._textFormat.indent;
-	}
-	,set_indent: function(value) {
-		if(this._textFormat.indent == value) {
-			return this._textFormat.indent;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.indent = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.indent;
-	}
-	,get_leading: function() {
-		return this._textFormat.leading;
-	}
-	,set_leading: function(value) {
-		if(this._textFormat.leading == value) {
-			return this._textFormat.leading;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.leading = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.leading;
-	}
-	,get_blockIndent: function() {
-		return this._textFormat.blockIndent;
-	}
-	,set_blockIndent: function(value) {
-		if(this._textFormat.blockIndent == value) {
-			return this._textFormat.blockIndent;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.blockIndent = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.blockIndent;
-	}
-	,get_bullet: function() {
-		return this._textFormat.bullet;
-	}
-	,set_bullet: function(value) {
-		if(this._textFormat.bullet == value) {
-			return this._textFormat.bullet;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.bullet = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.bullet;
-	}
-	,get_kerning: function() {
-		return this._textFormat.kerning;
-	}
-	,set_kerning: function(value) {
-		if(this._textFormat.kerning == value) {
-			return this._textFormat.kerning;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.kerning = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.kerning;
-	}
-	,get_letterSpacing: function() {
-		return this._textFormat.letterSpacing;
-	}
-	,set_letterSpacing: function(value) {
-		if(this._textFormat.letterSpacing == value) {
-			return this._textFormat.letterSpacing;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.letterSpacing = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.letterSpacing;
-	}
-	,get_tabStops: function() {
-		return this._textFormat.tabStops;
-	}
-	,set_tabStops: function(value) {
-		if(this._textFormat.tabStops == value) {
-			return this._textFormat.tabStops;
-		}
-		this._textFormat = feathers_utils_TextFormatUtil.clone(this._textFormat);
-		this._textFormat.tabStops = value;
-		feathers_events_FeathersEvent.dispatch(this,"change");
-		return this._textFormat.tabStops;
-	}
-	,clone: function() {
-		var clone = new feathers_text_TextFormat(this.get_font(),this.get_size(),this.get_color(),this.get_bold(),this.get_italic(),this.get_underline(),this.get_url(),this.get_target(),this.get_align(),this.get_leftMargin(),this.get_rightMargin(),this.get_indent(),this.get_leading());
-		clone._textFormat.blockIndent = this.get_blockIndent();
-		clone._textFormat.bullet = this.get_bullet();
-		clone._textFormat.kerning = this.get_kerning();
-		clone._textFormat.letterSpacing = this.get_letterSpacing();
-		clone._textFormat.tabStops = this.get_tabStops();
-		return clone;
-	}
-	,toSimpleTextFormat: function() {
-		return this._textFormat;
-	}
-	,__class__: feathers_text_TextFormat
-	,__properties__: {set_tabStops:"set_tabStops",get_tabStops:"get_tabStops",set_letterSpacing:"set_letterSpacing",get_letterSpacing:"get_letterSpacing",set_kerning:"set_kerning",get_kerning:"get_kerning",set_bullet:"set_bullet",get_bullet:"get_bullet",set_blockIndent:"set_blockIndent",get_blockIndent:"get_blockIndent",set_leading:"set_leading",get_leading:"get_leading",set_indent:"set_indent",get_indent:"get_indent",set_rightMargin:"set_rightMargin",get_rightMargin:"get_rightMargin",set_leftMargin:"set_leftMargin",get_leftMargin:"get_leftMargin",set_align:"set_align",get_align:"get_align",set_target:"set_target",get_target:"get_target",set_url:"set_url",get_url:"get_url",set_underline:"set_underline",get_underline:"get_underline",set_italic:"set_italic",get_italic:"get_italic",set_bold:"set_bold",get_bold:"get_bold",set_color:"set_color",get_color:"get_color",set_size:"set_size",get_size:"get_size",set_font:"set_font",get_font:"get_font"}
-});
 var feathers_text_AbstractTextFormat = {};
 feathers_text_AbstractTextFormat.fromSimpleTextFormat = function(textFormat) {
 	var clone = new feathers_text_TextFormat(textFormat.font,textFormat.size,textFormat.color,textFormat.bold,textFormat.italic,textFormat.underline,textFormat.url,textFormat.target,textFormat.align,textFormat.leftMargin,textFormat.rightMargin,textFormat.indent,textFormat.leading);
@@ -17618,6 +27355,164 @@ feathers_themes_steel_components_SteelButtonStyles.initialize = function(theme) 
 		});
 	}
 };
+var feathers_themes_steel_components_SteelCalloutStyles = function() { };
+$hxClasses["feathers.themes.steel.components.SteelCalloutStyles"] = feathers_themes_steel_components_SteelCalloutStyles;
+feathers_themes_steel_components_SteelCalloutStyles.__name__ = "feathers.themes.steel.components.SteelCalloutStyles";
+feathers_themes_steel_components_SteelCalloutStyles.initialize = function(theme) {
+	if(theme == null) {
+		var value = feathers_style_Theme.get_fallbackTheme();
+		theme = ((value) instanceof feathers_themes_steel_BaseSteelTheme) ? value : null;
+	}
+	if(theme == null) {
+		return;
+	}
+	var styleProvider = theme.styleProvider;
+	if(styleProvider.getStyleFunction(feathers_controls_Callout,null) == null) {
+		styleProvider.setStyleFunction(feathers_controls_Callout,null,function(callout) {
+			if(callout.get_backgroundSkin() == null) {
+				var backgroundSkin = new feathers_skins_RectangleSkin();
+				backgroundSkin.set_fill(theme.getContainerFill());
+				backgroundSkin.set_border(theme.getContainerBorder());
+				callout.set_backgroundSkin(backgroundSkin);
+			}
+			if(callout.get_topArrowSkin() == null) {
+				var topArrowSkin = new feathers_skins_TriangleSkin();
+				topArrowSkin.set_pointPosition(feathers_layout_RelativePosition.TOP);
+				topArrowSkin.set_drawBaseBorder(false);
+				topArrowSkin.set_fill(theme.getContainerFill());
+				topArrowSkin.set_border(theme.getContainerBorder());
+				topArrowSkin.set_width(14.0);
+				topArrowSkin.set_height(8.0);
+				callout.set_topArrowSkin(topArrowSkin);
+			}
+			if(callout.get_rightArrowSkin() == null) {
+				var rightArrowSkin = new feathers_skins_TriangleSkin();
+				rightArrowSkin.set_pointPosition(feathers_layout_RelativePosition.RIGHT);
+				rightArrowSkin.set_drawBaseBorder(false);
+				rightArrowSkin.set_fill(theme.getContainerFill());
+				rightArrowSkin.set_border(theme.getContainerBorder());
+				rightArrowSkin.set_width(8.0);
+				rightArrowSkin.set_height(14.0);
+				callout.set_rightArrowSkin(rightArrowSkin);
+			}
+			if(callout.get_bottomArrowSkin() == null) {
+				var bottomArrowSkin = new feathers_skins_TriangleSkin();
+				bottomArrowSkin.set_pointPosition(feathers_layout_RelativePosition.BOTTOM);
+				bottomArrowSkin.set_drawBaseBorder(false);
+				bottomArrowSkin.set_fill(theme.getContainerFill());
+				bottomArrowSkin.set_border(theme.getContainerBorder());
+				bottomArrowSkin.set_width(14.0);
+				bottomArrowSkin.set_height(8.0);
+				callout.set_bottomArrowSkin(bottomArrowSkin);
+			}
+			if(callout.get_leftArrowSkin() == null) {
+				var leftArrowSkin = new feathers_skins_TriangleSkin();
+				leftArrowSkin.set_pointPosition(feathers_layout_RelativePosition.LEFT);
+				leftArrowSkin.set_drawBaseBorder(false);
+				leftArrowSkin.set_fill(theme.getContainerFill());
+				leftArrowSkin.set_border(theme.getContainerBorder());
+				leftArrowSkin.set_width(8.0);
+				leftArrowSkin.set_height(14.0);
+				callout.set_leftArrowSkin(leftArrowSkin);
+			}
+			callout.set_topArrowGap(-1.0);
+			callout.set_rightArrowGap(-1.0);
+			callout.set_bottomArrowGap(-1.0);
+			callout.set_leftArrowGap(-1.0);
+			callout.set_paddingTop(1.0);
+			callout.set_paddingRight(1.0);
+			callout.set_paddingBottom(1.0);
+			callout.set_paddingLeft(1.0);
+			callout.set_marginTop(10.0);
+			callout.set_marginRight(10.0);
+			callout.set_marginBottom(10.0);
+			callout.set_marginLeft(10.0);
+		});
+	}
+};
+var feathers_themes_steel_components_SteelHScrollBarStyles = function() { };
+$hxClasses["feathers.themes.steel.components.SteelHScrollBarStyles"] = feathers_themes_steel_components_SteelHScrollBarStyles;
+feathers_themes_steel_components_SteelHScrollBarStyles.__name__ = "feathers.themes.steel.components.SteelHScrollBarStyles";
+feathers_themes_steel_components_SteelHScrollBarStyles.initialize = function(theme) {
+	if(theme == null) {
+		var value = feathers_style_Theme.get_fallbackTheme();
+		theme = ((value) instanceof feathers_themes_steel_BaseSteelTheme) ? value : null;
+	}
+	if(theme == null) {
+		return;
+	}
+	var styleProvider = theme.styleProvider;
+	if(styleProvider.getStyleFunction(feathers_controls_HScrollBar,null) == null) {
+		styleProvider.setStyleFunction(feathers_controls_HScrollBar,null,function(scrollBar) {
+			var isDesktop = feathers_utils_DeviceUtil.isDesktop();
+			if(scrollBar.get_thumbSkin() == null) {
+				var thumbSkin = new feathers_skins_RectangleSkin();
+				thumbSkin.set_fill(theme.getScrollBarThumbFill());
+				thumbSkin.set_disabledFill(theme.getScrollBarThumbDisabledFill());
+				var size = isDesktop ? 6.0 : 4.0;
+				thumbSkin.set_width(size);
+				thumbSkin.set_height(size);
+				thumbSkin.set_minWidth(size);
+				thumbSkin.set_minHeight(size);
+				thumbSkin.set_cornerRadius(size / 2.0);
+				var thumb = new feathers_controls_BasicButton();
+				thumb.set_keepDownStateOnRollOut(true);
+				thumb.set_backgroundSkin(thumbSkin);
+				scrollBar.set_thumbSkin(thumb);
+			}
+			if(isDesktop && scrollBar.get_trackSkin() == null) {
+				var trackSkin = new feathers_skins_RectangleSkin();
+				trackSkin.set_fill(theme.getControlFill());
+				trackSkin.set_disabledFill(theme.getControlDisabledFill());
+				trackSkin.set_width(12.0);
+				trackSkin.set_height(12.0);
+				trackSkin.set_minWidth(12.0);
+				trackSkin.set_minHeight(12.0);
+				scrollBar.set_trackSkin(trackSkin);
+			}
+			scrollBar.set_paddingTop(2.0);
+			scrollBar.set_paddingRight(2.0);
+			scrollBar.set_paddingBottom(2.0);
+			scrollBar.set_paddingLeft(2.0);
+		});
+	}
+};
+var feathers_themes_steel_components_SteelHeaderStyles = function() { };
+$hxClasses["feathers.themes.steel.components.SteelHeaderStyles"] = feathers_themes_steel_components_SteelHeaderStyles;
+feathers_themes_steel_components_SteelHeaderStyles.__name__ = "feathers.themes.steel.components.SteelHeaderStyles";
+feathers_themes_steel_components_SteelHeaderStyles.initialize = function(theme) {
+	if(theme == null) {
+		var value = feathers_style_Theme.get_fallbackTheme();
+		theme = ((value) instanceof feathers_themes_steel_BaseSteelTheme) ? value : null;
+	}
+	if(theme == null) {
+		return;
+	}
+	var styleProvider = theme.styleProvider;
+	if(styleProvider.getStyleFunction(feathers_controls_Header,null) == null) {
+		styleProvider.setStyleFunction(feathers_controls_Header,null,function(header) {
+			if(header.get_backgroundSkin() == null) {
+				var backgroundSkin = new feathers_skins_RectangleSkin();
+				backgroundSkin.set_fill(theme.getHeaderFill());
+				backgroundSkin.set_width(44.0);
+				backgroundSkin.set_height(44.0);
+				backgroundSkin.set_minHeight(44.0);
+				header.set_backgroundSkin(backgroundSkin);
+			}
+			if(header.get_textFormat() == null) {
+				header.set_textFormat(theme.getHeaderTextFormat());
+			}
+			if(header.get_disabledTextFormat() == null) {
+				header.set_disabledTextFormat(theme.getDisabledHeaderTextFormat());
+			}
+			header.set_paddingTop(10.0);
+			header.set_paddingRight(10.0);
+			header.set_paddingBottom(10.0);
+			header.set_paddingLeft(10.0);
+			header.set_minGap(10.0);
+		});
+	}
+};
 var feathers_themes_steel_components_SteelLabelStyles = function() { };
 $hxClasses["feathers.themes.steel.components.SteelLabelStyles"] = feathers_themes_steel_components_SteelLabelStyles;
 feathers_themes_steel_components_SteelLabelStyles.__name__ = "feathers.themes.steel.components.SteelLabelStyles";
@@ -17703,6 +27598,62 @@ feathers_themes_steel_components_SteelLayoutGroupStyles.initialize = function(th
 				layout.set_paddingLeft(10.0);
 				layout.set_gap(4.0);
 				group.set_layout(layout);
+			}
+		});
+	}
+};
+var feathers_themes_steel_components_SteelPanelStyles = function() { };
+$hxClasses["feathers.themes.steel.components.SteelPanelStyles"] = feathers_themes_steel_components_SteelPanelStyles;
+feathers_themes_steel_components_SteelPanelStyles.__name__ = "feathers.themes.steel.components.SteelPanelStyles";
+feathers_themes_steel_components_SteelPanelStyles.initialize = function(theme) {
+	if(theme == null) {
+		var value = feathers_style_Theme.get_fallbackTheme();
+		theme = ((value) instanceof feathers_themes_steel_BaseSteelTheme) ? value : null;
+	}
+	if(theme == null) {
+		return;
+	}
+	var styleProvider = theme.styleProvider;
+	if(styleProvider.getStyleFunction(feathers_controls_Panel,null) == null) {
+		styleProvider.setStyleFunction(feathers_controls_Panel,null,function(panel) {
+			var isDesktop = feathers_utils_DeviceUtil.isDesktop();
+			panel.set_autoHideScrollBars(!isDesktop);
+			panel.set_fixedScrollBars(isDesktop);
+			if(panel.get_backgroundSkin() == null) {
+				var backgroundSkin = new feathers_skins_RectangleSkin();
+				backgroundSkin.set_fill(theme.getContainerFill());
+				panel.set_backgroundSkin(backgroundSkin);
+			}
+		});
+	}
+};
+var feathers_themes_steel_components_SteelScrollContainerStyles = function() { };
+$hxClasses["feathers.themes.steel.components.SteelScrollContainerStyles"] = feathers_themes_steel_components_SteelScrollContainerStyles;
+feathers_themes_steel_components_SteelScrollContainerStyles.__name__ = "feathers.themes.steel.components.SteelScrollContainerStyles";
+feathers_themes_steel_components_SteelScrollContainerStyles.initialize = function(theme) {
+	if(theme == null) {
+		var value = feathers_style_Theme.get_fallbackTheme();
+		theme = ((value) instanceof feathers_themes_steel_BaseSteelTheme) ? value : null;
+	}
+	if(theme == null) {
+		return;
+	}
+	var styleProvider = theme.styleProvider;
+	if(styleProvider.getStyleFunction(feathers_controls_ScrollContainer,null) == null) {
+		styleProvider.setStyleFunction(feathers_controls_ScrollContainer,null,function(container) {
+			var isDesktop = feathers_utils_DeviceUtil.isDesktop();
+			container.set_autoHideScrollBars(!isDesktop);
+			container.set_fixedScrollBars(isDesktop);
+			if(container.get_backgroundSkin() == null) {
+				var backgroundSkin = new feathers_skins_RectangleSkin();
+				backgroundSkin.set_fill(theme.getContainerFill());
+				container.set_backgroundSkin(backgroundSkin);
+			}
+			if(container.get_focusRectSkin() == null) {
+				var focusRectSkin = new feathers_skins_RectangleSkin();
+				focusRectSkin.set_fill(null);
+				focusRectSkin.set_border(theme.getFocusBorder());
+				container.set_focusRectSkin(focusRectSkin);
 			}
 		});
 	}
@@ -17809,6 +27760,281 @@ feathers_themes_steel_components_SteelTabNavigatorStyles.initialize = function(t
 		});
 	}
 };
+var feathers_themes_steel_components_SteelTextAreaStyles = function() { };
+$hxClasses["feathers.themes.steel.components.SteelTextAreaStyles"] = feathers_themes_steel_components_SteelTextAreaStyles;
+feathers_themes_steel_components_SteelTextAreaStyles.__name__ = "feathers.themes.steel.components.SteelTextAreaStyles";
+feathers_themes_steel_components_SteelTextAreaStyles.initialize = function(theme) {
+	if(theme == null) {
+		var value = feathers_style_Theme.get_fallbackTheme();
+		theme = ((value) instanceof feathers_themes_steel_BaseSteelTheme) ? value : null;
+	}
+	if(theme == null) {
+		return;
+	}
+	var styleProvider = theme.styleProvider;
+	if(styleProvider.getStyleFunction(feathers_controls_TextArea,null) == null) {
+		styleProvider.setStyleFunction(feathers_controls_TextArea,null,function(textArea) {
+			var isDesktop = feathers_utils_DeviceUtil.isDesktop();
+			textArea.set_autoHideScrollBars(!isDesktop);
+			textArea.set_fixedScrollBars(isDesktop);
+			if(textArea.get_backgroundSkin() == null) {
+				var backgroundSkin = new feathers_skins_RectangleSkin();
+				backgroundSkin.set_cornerRadius(3.0);
+				backgroundSkin.set_width(160.0);
+				backgroundSkin.set_height(120.0);
+				backgroundSkin.set_fill(theme.getInsetFill());
+				backgroundSkin.set_border(theme.getInsetBorder());
+				backgroundSkin.setBorderForState(feathers_controls_TextInputState.FOCUSED,theme.getThemeBorder());
+				backgroundSkin.setBorderForState(feathers_controls_TextInputState.ERROR,theme.getDangerBorder());
+				textArea.set_backgroundSkin(backgroundSkin);
+			}
+			if(textArea.get_textFormat() == null) {
+				textArea.set_textFormat(theme.getTextFormat());
+			}
+			if(textArea.get_disabledTextFormat() == null) {
+				textArea.set_disabledTextFormat(theme.getDisabledTextFormat());
+			}
+			if(textArea.get_promptTextFormat() == null) {
+				textArea.set_promptTextFormat(theme.getSecondaryTextFormat());
+			}
+			textArea.set_paddingTop(1.0);
+			textArea.set_paddingRight(1.0);
+			textArea.set_paddingBottom(1.0);
+			textArea.set_paddingLeft(1.0);
+			textArea.set_textPaddingTop(4.0);
+			textArea.set_textPaddingRight(9.0);
+			textArea.set_textPaddingBottom(5.0);
+			textArea.set_textPaddingLeft(9.0);
+		});
+	}
+	if(styleProvider.getStyleFunction(feathers_controls_TextCallout,feathers_controls_TextArea.CHILD_VARIANT_ERROR_CALLOUT) == null) {
+		styleProvider.setStyleFunction(feathers_controls_TextCallout,feathers_controls_TextArea.CHILD_VARIANT_ERROR_CALLOUT,function(callout) {
+			(theme.styleProvider.getStyleFunction(feathers_controls_TextCallout,feathers_controls_TextCallout.VARIANT_DANGER))(callout);
+		});
+	}
+};
+var feathers_themes_steel_components_SteelTextCalloutStyles = function() { };
+$hxClasses["feathers.themes.steel.components.SteelTextCalloutStyles"] = feathers_themes_steel_components_SteelTextCalloutStyles;
+feathers_themes_steel_components_SteelTextCalloutStyles.__name__ = "feathers.themes.steel.components.SteelTextCalloutStyles";
+feathers_themes_steel_components_SteelTextCalloutStyles.initialize = function(theme) {
+	if(theme == null) {
+		var value = feathers_style_Theme.get_fallbackTheme();
+		theme = ((value) instanceof feathers_themes_steel_BaseSteelTheme) ? value : null;
+	}
+	if(theme == null) {
+		return;
+	}
+	var styleProvider = theme.styleProvider;
+	if(styleProvider.getStyleFunction(feathers_controls_TextCallout,null) == null) {
+		styleProvider.setStyleFunction(feathers_controls_TextCallout,null,function(callout) {
+			if(callout.get_textFormat() == null) {
+				callout.set_textFormat(theme.getTextFormat());
+			}
+			if(callout.get_disabledTextFormat() == null) {
+				callout.set_disabledTextFormat(theme.getDisabledTextFormat());
+			}
+			if(callout.get_backgroundSkin() == null) {
+				var backgroundSkin = new feathers_skins_RectangleSkin();
+				backgroundSkin.set_fill(theme.getContainerFill());
+				backgroundSkin.set_border(theme.getContainerBorder());
+				callout.set_backgroundSkin(backgroundSkin);
+			}
+			if(callout.get_topArrowSkin() == null) {
+				var topArrowSkin = new feathers_skins_TriangleSkin();
+				topArrowSkin.set_pointPosition(feathers_layout_RelativePosition.TOP);
+				topArrowSkin.set_drawBaseBorder(false);
+				topArrowSkin.set_fill(theme.getContainerFill());
+				topArrowSkin.set_border(theme.getContainerBorder());
+				topArrowSkin.set_width(10.0);
+				topArrowSkin.set_height(6.0);
+				callout.set_topArrowSkin(topArrowSkin);
+			}
+			if(callout.get_rightArrowSkin() == null) {
+				var rightArrowSkin = new feathers_skins_TriangleSkin();
+				rightArrowSkin.set_pointPosition(feathers_layout_RelativePosition.RIGHT);
+				rightArrowSkin.set_drawBaseBorder(false);
+				rightArrowSkin.set_fill(theme.getContainerFill());
+				rightArrowSkin.set_border(theme.getContainerBorder());
+				rightArrowSkin.set_width(6.0);
+				rightArrowSkin.set_height(10.0);
+				callout.set_rightArrowSkin(rightArrowSkin);
+			}
+			if(callout.get_bottomArrowSkin() == null) {
+				var bottomArrowSkin = new feathers_skins_TriangleSkin();
+				bottomArrowSkin.set_pointPosition(feathers_layout_RelativePosition.BOTTOM);
+				bottomArrowSkin.set_drawBaseBorder(false);
+				bottomArrowSkin.set_fill(theme.getContainerFill());
+				bottomArrowSkin.set_border(theme.getContainerBorder());
+				bottomArrowSkin.set_width(10.0);
+				bottomArrowSkin.set_height(6.0);
+				callout.set_bottomArrowSkin(bottomArrowSkin);
+			}
+			if(callout.get_leftArrowSkin() == null) {
+				var leftArrowSkin = new feathers_skins_TriangleSkin();
+				leftArrowSkin.set_pointPosition(feathers_layout_RelativePosition.LEFT);
+				leftArrowSkin.set_drawBaseBorder(false);
+				leftArrowSkin.set_fill(theme.getContainerFill());
+				leftArrowSkin.set_border(theme.getContainerBorder());
+				leftArrowSkin.set_width(6.0);
+				leftArrowSkin.set_height(10.0);
+				callout.set_leftArrowSkin(leftArrowSkin);
+			}
+			callout.set_topArrowGap(-1.0);
+			callout.set_rightArrowGap(-1.0);
+			callout.set_bottomArrowGap(-1.0);
+			callout.set_leftArrowGap(-1.0);
+			callout.set_paddingTop(1.0);
+			callout.set_paddingRight(1.0);
+			callout.set_paddingBottom(1.0);
+			callout.set_paddingLeft(1.0);
+			callout.set_marginTop(10.0);
+			callout.set_marginRight(10.0);
+			callout.set_marginBottom(10.0);
+			callout.set_marginLeft(10.0);
+		});
+	}
+	if(styleProvider.getStyleFunction(feathers_controls_TextCallout,feathers_controls_TextCallout.VARIANT_DANGER) == null) {
+		styleProvider.setStyleFunction(feathers_controls_TextCallout,feathers_controls_TextCallout.VARIANT_DANGER,function(callout) {
+			if(callout.get_textFormat() == null) {
+				callout.set_textFormat(theme.getTextFormat());
+			}
+			if(callout.get_disabledTextFormat() == null) {
+				callout.set_disabledTextFormat(theme.getDisabledTextFormat());
+			}
+			if(callout.get_backgroundSkin() == null) {
+				var backgroundSkin = new feathers_skins_RectangleSkin();
+				backgroundSkin.set_fill(theme.getDangerFill());
+				backgroundSkin.set_border(theme.getDangerBorder());
+				callout.set_backgroundSkin(backgroundSkin);
+			}
+			if(callout.get_topArrowSkin() == null) {
+				var topArrowSkin = new feathers_skins_TriangleSkin();
+				topArrowSkin.set_pointPosition(feathers_layout_RelativePosition.TOP);
+				topArrowSkin.set_drawBaseBorder(false);
+				topArrowSkin.set_fill(theme.getDangerFill());
+				topArrowSkin.set_border(theme.getDangerBorder());
+				topArrowSkin.set_width(10.0);
+				topArrowSkin.set_height(6.0);
+				callout.set_topArrowSkin(topArrowSkin);
+			}
+			if(callout.get_rightArrowSkin() == null) {
+				var rightArrowSkin = new feathers_skins_TriangleSkin();
+				rightArrowSkin.set_pointPosition(feathers_layout_RelativePosition.RIGHT);
+				rightArrowSkin.set_drawBaseBorder(false);
+				rightArrowSkin.set_fill(theme.getDangerFill());
+				rightArrowSkin.set_border(theme.getDangerBorder());
+				rightArrowSkin.set_width(6.0);
+				rightArrowSkin.set_height(10.0);
+				callout.set_rightArrowSkin(rightArrowSkin);
+			}
+			if(callout.get_bottomArrowSkin() == null) {
+				var bottomArrowSkin = new feathers_skins_TriangleSkin();
+				bottomArrowSkin.set_pointPosition(feathers_layout_RelativePosition.BOTTOM);
+				bottomArrowSkin.set_drawBaseBorder(false);
+				bottomArrowSkin.set_fill(theme.getDangerFill());
+				bottomArrowSkin.set_border(theme.getDangerBorder());
+				bottomArrowSkin.set_width(10.0);
+				bottomArrowSkin.set_height(6.0);
+				callout.set_bottomArrowSkin(bottomArrowSkin);
+			}
+			if(callout.get_leftArrowSkin() == null) {
+				var leftArrowSkin = new feathers_skins_TriangleSkin();
+				leftArrowSkin.set_pointPosition(feathers_layout_RelativePosition.LEFT);
+				leftArrowSkin.set_drawBaseBorder(false);
+				leftArrowSkin.set_fill(theme.getDangerFill());
+				leftArrowSkin.set_border(theme.getDangerBorder());
+				leftArrowSkin.set_width(6.0);
+				leftArrowSkin.set_height(10.0);
+				callout.set_leftArrowSkin(leftArrowSkin);
+			}
+			callout.set_topArrowGap(-1.0);
+			callout.set_rightArrowGap(-1.0);
+			callout.set_bottomArrowGap(-1.0);
+			callout.set_leftArrowGap(-1.0);
+			callout.set_paddingTop(1.0);
+			callout.set_paddingRight(1.0);
+			callout.set_paddingBottom(1.0);
+			callout.set_paddingLeft(1.0);
+			callout.set_marginTop(10.0);
+			callout.set_marginRight(10.0);
+			callout.set_marginBottom(10.0);
+			callout.set_marginLeft(10.0);
+		});
+	}
+};
+var feathers_themes_steel_components_SteelTextInputStyles = function() { };
+$hxClasses["feathers.themes.steel.components.SteelTextInputStyles"] = feathers_themes_steel_components_SteelTextInputStyles;
+feathers_themes_steel_components_SteelTextInputStyles.__name__ = "feathers.themes.steel.components.SteelTextInputStyles";
+feathers_themes_steel_components_SteelTextInputStyles.initialize = function(theme) {
+	if(theme == null) {
+		var value = feathers_style_Theme.get_fallbackTheme();
+		theme = ((value) instanceof feathers_themes_steel_BaseSteelTheme) ? value : null;
+	}
+	if(theme == null) {
+		return;
+	}
+	var styleProvider = theme.styleProvider;
+	if(styleProvider.getStyleFunction(feathers_controls_TextInput,null) == null) {
+		styleProvider.setStyleFunction(feathers_controls_TextInput,null,function(input) {
+			if(input.get_backgroundSkin() == null) {
+				var inputSkin = new feathers_skins_RectangleSkin();
+				inputSkin.set_cornerRadius(3.0);
+				inputSkin.set_width(160.0);
+				inputSkin.set_fill(theme.getInsetFill());
+				inputSkin.set_border(theme.getInsetBorder());
+				inputSkin.set_disabledFill(theme.getDisabledInsetFill());
+				inputSkin.setBorderForState(feathers_controls_TextInputState.FOCUSED,theme.getThemeBorder());
+				inputSkin.setBorderForState(feathers_controls_TextInputState.ERROR,theme.getDangerBorder());
+				input.set_backgroundSkin(inputSkin);
+			}
+			if(input.get_textFormat() == null) {
+				input.set_textFormat(theme.getTextFormat());
+			}
+			if(input.get_disabledTextFormat() == null) {
+				input.set_disabledTextFormat(theme.getDisabledTextFormat());
+			}
+			if(input.get_promptTextFormat() == null) {
+				input.set_promptTextFormat(theme.getSecondaryTextFormat());
+			}
+			input.set_paddingTop(6.0);
+			input.set_paddingRight(10.0);
+			input.set_paddingBottom(6.0);
+			input.set_paddingLeft(10.0);
+		});
+	}
+	if(styleProvider.getStyleFunction(feathers_controls_TextInput,feathers_controls_TextInput.VARIANT_SEARCH) == null) {
+		styleProvider.setStyleFunction(feathers_controls_TextInput,feathers_controls_TextInput.VARIANT_SEARCH,function(input) {
+			if(input.get_backgroundSkin() == null) {
+				var inputSkin = new feathers_skins_PillSkin();
+				inputSkin.set_capDirection(feathers_layout_Direction.HORIZONTAL);
+				inputSkin.set_width(160.0);
+				inputSkin.set_fill(theme.getInsetFill());
+				inputSkin.set_border(theme.getInsetBorder());
+				inputSkin.set_disabledFill(theme.getDisabledInsetFill());
+				inputSkin.setBorderForState(feathers_controls_TextInputState.FOCUSED,theme.getThemeBorder());
+				input.set_backgroundSkin(inputSkin);
+			}
+			if(input.get_textFormat() == null) {
+				input.set_textFormat(theme.getTextFormat());
+			}
+			if(input.get_disabledTextFormat() == null) {
+				input.set_disabledTextFormat(theme.getDisabledTextFormat());
+			}
+			if(input.get_promptTextFormat() == null) {
+				input.set_promptTextFormat(theme.getSecondaryTextFormat());
+			}
+			input.set_paddingTop(6.0);
+			input.set_paddingRight(10.0);
+			input.set_paddingBottom(6.0);
+			input.set_paddingLeft(10.0);
+		});
+	}
+	if(styleProvider.getStyleFunction(feathers_controls_TextCallout,feathers_controls_TextInput.CHILD_VARIANT_ERROR_CALLOUT) == null) {
+		styleProvider.setStyleFunction(feathers_controls_TextCallout,feathers_controls_TextInput.CHILD_VARIANT_ERROR_CALLOUT,function(callout) {
+			(theme.styleProvider.getStyleFunction(feathers_controls_TextCallout,feathers_controls_TextCallout.VARIANT_DANGER))(callout);
+		});
+	}
+};
 var feathers_themes_steel_components_SteelToggleButtonStyles = function() { };
 $hxClasses["feathers.themes.steel.components.SteelToggleButtonStyles"] = feathers_themes_steel_components_SteelToggleButtonStyles;
 feathers_themes_steel_components_SteelToggleButtonStyles.__name__ = "feathers.themes.steel.components.SteelToggleButtonStyles";
@@ -17855,6 +28081,53 @@ feathers_themes_steel_components_SteelToggleButtonStyles.initialize = function(t
 			button.set_paddingBottom(4.0);
 			button.set_paddingLeft(10.0);
 			button.set_gap(4.0);
+		});
+	}
+};
+var feathers_themes_steel_components_SteelVScrollBarStyles = function() { };
+$hxClasses["feathers.themes.steel.components.SteelVScrollBarStyles"] = feathers_themes_steel_components_SteelVScrollBarStyles;
+feathers_themes_steel_components_SteelVScrollBarStyles.__name__ = "feathers.themes.steel.components.SteelVScrollBarStyles";
+feathers_themes_steel_components_SteelVScrollBarStyles.initialize = function(theme) {
+	if(theme == null) {
+		var value = feathers_style_Theme.get_fallbackTheme();
+		theme = ((value) instanceof feathers_themes_steel_BaseSteelTheme) ? value : null;
+	}
+	if(theme == null) {
+		return;
+	}
+	var styleProvider = theme.styleProvider;
+	if(styleProvider.getStyleFunction(feathers_controls_VScrollBar,null) == null) {
+		styleProvider.setStyleFunction(feathers_controls_VScrollBar,null,function(scrollBar) {
+			var isDesktop = feathers_utils_DeviceUtil.isDesktop();
+			if(scrollBar.get_thumbSkin() == null) {
+				var thumbSkin = new feathers_skins_RectangleSkin();
+				thumbSkin.set_fill(theme.getScrollBarThumbFill());
+				thumbSkin.set_disabledFill(theme.getScrollBarThumbDisabledFill());
+				var size = isDesktop ? 6.0 : 4.0;
+				thumbSkin.set_width(size);
+				thumbSkin.set_height(size);
+				thumbSkin.set_minWidth(size);
+				thumbSkin.set_minHeight(size);
+				thumbSkin.set_cornerRadius(size / 2.0);
+				var thumb = new feathers_controls_BasicButton();
+				thumb.set_keepDownStateOnRollOut(true);
+				thumb.set_backgroundSkin(thumbSkin);
+				scrollBar.set_thumbSkin(thumb);
+			}
+			if(isDesktop && scrollBar.get_trackSkin() == null) {
+				var trackSkin = new feathers_skins_RectangleSkin();
+				trackSkin.set_fill(theme.getControlFill());
+				trackSkin.set_disabledFill(theme.getControlDisabledFill());
+				trackSkin.set_width(12.0);
+				trackSkin.set_height(12.0);
+				trackSkin.set_minWidth(12.0);
+				trackSkin.set_minHeight(12.0);
+				scrollBar.set_trackSkin(trackSkin);
+			}
+			scrollBar.set_paddingTop(2.0);
+			scrollBar.set_paddingRight(2.0);
+			scrollBar.set_paddingBottom(2.0);
+			scrollBar.set_paddingLeft(2.0);
 		});
 	}
 };
@@ -18974,6 +29247,49 @@ feathers_utils_KeyToState.prototype = {
 	,__class__: feathers_utils_KeyToState
 	,__properties__: {set_enabled:"set_enabled",get_enabled:"get_enabled",set_downState:"set_downState",get_downState:"get_downState",set_upState:"set_upState",get_upState:"get_upState",get_currentState:"get_currentState",set_callback:"set_callback",get_callback:"get_callback",set_target:"set_target",get_target:"get_target"}
 };
+var feathers_utils_MathUtil = function() { };
+$hxClasses["feathers.utils.MathUtil"] = feathers_utils_MathUtil;
+feathers_utils_MathUtil.__name__ = "feathers.utils.MathUtil";
+feathers_utils_MathUtil.roundDownToNearest = function(number,nearest) {
+	if(nearest == null) {
+		nearest = 1.0;
+	}
+	if(nearest == 0) {
+		return number;
+	}
+	return Math.floor(feathers_utils_MathUtil.roundToPrecision(number / nearest,10)) * nearest;
+};
+feathers_utils_MathUtil.roundUpToNearest = function(number,nearest) {
+	if(nearest == null) {
+		nearest = 1.0;
+	}
+	if(nearest == 0) {
+		return number;
+	}
+	return Math.ceil(feathers_utils_MathUtil.roundToPrecision(number / nearest,10)) * nearest;
+};
+feathers_utils_MathUtil.roundToNearest = function(number,nearest) {
+	if(nearest == null) {
+		nearest = 1.0;
+	}
+	if(nearest == 0) {
+		return number;
+	}
+	return Math.round(feathers_utils_MathUtil.roundToPrecision(number / nearest,10)) * nearest;
+};
+feathers_utils_MathUtil.roundToPrecision = function(number,precision) {
+	if(precision == null) {
+		precision = 0;
+	}
+	var decimalPlaces = Math.pow(10,precision);
+	return Math.round(decimalPlaces * number) / decimalPlaces;
+};
+feathers_utils_MathUtil.fuzzyEquals = function(n1,n2,maxDifference) {
+	if(maxDifference == null) {
+		maxDifference = 0.000001;
+	}
+	return Math.abs(n1 - n2) <= maxDifference;
+};
 var feathers_utils_MeasurementsUtil = function() { };
 $hxClasses["feathers.utils.MeasurementsUtil"] = feathers_utils_MeasurementsUtil;
 feathers_utils_MeasurementsUtil.__name__ = "feathers.utils.MeasurementsUtil";
@@ -19327,6 +29643,1021 @@ feathers_utils_PointerTrigger.prototype = {
 	,__class__: feathers_utils_PointerTrigger
 	,__properties__: {set_customHitTest:"set_customHitTest",get_customHitTest:"get_customHitTest",set_enabled:"set_enabled",get_enabled:"get_enabled",set_eventFactory:"set_eventFactory",get_eventFactory:"get_eventFactory",set_target:"set_target",get_target:"get_target"}
 };
+var feathers_utils_Scroller = function(target) {
+	this._touchPointIsSimulated = false;
+	this._touchPointID = null;
+	this._previousTouchPointID = null;
+	this.snappingToEdge = false;
+	this.targetScrollY = 0.0;
+	this.targetScrollX = 0.0;
+	this.animateScrollYEndRatio = 1.0;
+	this.animateScrollXEndRatio = 1.0;
+	this.animateScrollY = null;
+	this.animateScrollX = null;
+	this.savedScrollMoves = [];
+	this.startScrollY = 0.0;
+	this.startScrollX = 0.0;
+	this.startTouchY = 0.0;
+	this.startTouchX = 0.0;
+	this.restoreMouseChildren = false;
+	this._fixedThrowDuration = 2.996998998998728;
+	this._logDecelerationRate = -0.0020020026706730793;
+	this.snapPositionsY = null;
+	this.snapPositionsX = null;
+	this._decelerationRate = 0.998;
+	this.simulateTouch = false;
+	this.mouseWheelDuration = 0.0;
+	this._mouseWheelDeltaMode = 1;
+	this.mouseWheelYScrollsX = false;
+	this.mouseWheelDeltaY = 10.0;
+	this.mouseWheelDeltaX = 10.0;
+	this.bounceEase = null;
+	this.ease = motion_easing_Quart.easeOut;
+	this.elasticSnapDuration = 0.5;
+	this.throwElasticity = 0.05;
+	this.elasticity = 0.33;
+	this.forceElasticLeft = false;
+	this.forceElasticBottom = false;
+	this.forceElasticRight = false;
+	this.forceElasticTop = false;
+	this.elasticEdges = true;
+	this.minDragDistance = 6.0;
+	this._draggingY = false;
+	this._draggingX = false;
+	this._scrolling = false;
+	this._contentHeight = 0.0;
+	this._contentWidth = 0.0;
+	this._visibleHeight = 0.0;
+	this._visibleWidth = 0.0;
+	this._maxScrollY = 0.0;
+	this._maxScrollX = 0.0;
+	this._minScrollY = 0.0;
+	this._minScrollX = 0.0;
+	this._scrollY = 0.0;
+	this._scrollX = 0.0;
+	this.enabledY = true;
+	this.enabledX = true;
+	openfl_events_EventDispatcher.call(this);
+	this.set_target(target);
+};
+$hxClasses["feathers.utils.Scroller"] = feathers_utils_Scroller;
+feathers_utils_Scroller.__name__ = "feathers.utils.Scroller";
+feathers_utils_Scroller.__super__ = openfl_events_EventDispatcher;
+feathers_utils_Scroller.prototype = $extend(openfl_events_EventDispatcher.prototype,{
+	get_scrollX: function() {
+		return this._scrollX;
+	}
+	,set_scrollX: function(value) {
+		if(this._scrollX == value) {
+			return this._scrollX;
+		}
+		this._scrollX = value;
+		feathers_events_ScrollEvent.dispatch(this,"scroll",false,false,this._scrollX,this._scrollY);
+		return this._scrollX;
+	}
+	,get_scrollY: function() {
+		return this._scrollY;
+	}
+	,set_scrollY: function(value) {
+		if(this._scrollY == value) {
+			return this._scrollY;
+		}
+		this._scrollY = value;
+		feathers_events_ScrollEvent.dispatch(this,"scroll",false,false,this._scrollX,this._scrollY);
+		return this._scrollY;
+	}
+	,get_restrictedScrollX: function() {
+		return this._scrollX;
+	}
+	,set_restrictedScrollX: function(value) {
+		if(value < this._minScrollX) {
+			value = this._minScrollX;
+		} else if(value > this._maxScrollX) {
+			value = this._maxScrollX;
+		}
+		if(this._scrollX == value) {
+			return this._scrollX;
+		}
+		this._scrollX = value;
+		feathers_events_ScrollEvent.dispatch(this,"scroll",false,false,this._scrollX,this._scrollY);
+		return this._scrollX;
+	}
+	,get_restrictedScrollY: function() {
+		return this._scrollY;
+	}
+	,set_restrictedScrollY: function(value) {
+		if(value < this._minScrollY) {
+			value = this._minScrollY;
+		} else if(value > this._maxScrollY) {
+			value = this._maxScrollY;
+		}
+		if(this._scrollY == value) {
+			return this._scrollY;
+		}
+		this._scrollY = value;
+		feathers_events_ScrollEvent.dispatch(this,"scroll",false,false,this._scrollX,this._scrollY);
+		return this._scrollY;
+	}
+	,get_minScrollX: function() {
+		return this._minScrollX;
+	}
+	,get_minScrollY: function() {
+		return this._minScrollY;
+	}
+	,get_maxScrollX: function() {
+		return this._maxScrollX;
+	}
+	,get_maxScrollY: function() {
+		return this._maxScrollY;
+	}
+	,get_visibleWidth: function() {
+		return this._visibleWidth;
+	}
+	,get_visibleHeight: function() {
+		return this._visibleHeight;
+	}
+	,get_contentWidth: function() {
+		return this._contentWidth;
+	}
+	,get_contentHeight: function() {
+		return this._contentHeight;
+	}
+	,get_scrolling: function() {
+		return this._scrolling;
+	}
+	,get_draggingX: function() {
+		return this._draggingX;
+	}
+	,get_draggingY: function() {
+		return this._draggingY;
+	}
+	,get_decelerationRate: function() {
+		return this._decelerationRate;
+	}
+	,set_decelerationRate: function(value) {
+		if(this._decelerationRate == value) {
+			return this._decelerationRate;
+		}
+		this._decelerationRate = value;
+		this._logDecelerationRate = Math.log(this._decelerationRate);
+		this._fixedThrowDuration = -0.1 / Math.log(Math.pow(this._decelerationRate,16.666666666666668));
+		return this._decelerationRate;
+	}
+	,get_target: function() {
+		return this._target;
+	}
+	,set_target: function(value) {
+		if(this._target == value) {
+			return this._target;
+		}
+		if(this._target != null) {
+			this.cleanupAfterDrag();
+			this._target.removeEventListener("removedFromStage",$bind(this,this.scroller_target_removedFromStageHandler));
+			this._target.removeEventListener("mouseDown",$bind(this,this.scroller_target_mouseDownHandler));
+			this._target.removeEventListener("mouseDown",$bind(this,this.scroller_target_mouseDownCaptureHandler),true);
+			this._target.removeEventListener("mouseWheel",$bind(this,this.scroller_target_mouseWheelHandler));
+			var $window = js_Boot.__cast($global , Window);
+			$window.removeEventListener("wheel",$bind(this,this.scroller_window_wheelCaptureHandler),{ capture : true});
+			this._target.removeEventListener("touchBegin",$bind(this,this.scroller_target_touchBeginHandler));
+			this._target.removeEventListener("touchBegin",$bind(this,this.scroller_target_touchBeginCaptureHandler),true);
+			this._target.removeEventListener("click",$bind(this,this.scroller_target_clickCaptureHandler),true);
+			this._target.removeEventListener("touchTap",$bind(this,this.scroller_target_touchTapCaptureHandler),true);
+		}
+		this._target = value;
+		if(this._target != null) {
+			this._target.addEventListener("mouseDown",$bind(this,this.scroller_target_mouseDownHandler),false,0,true);
+			this._target.addEventListener("mouseDown",$bind(this,this.scroller_target_mouseDownCaptureHandler),true,0,true);
+			this._target.addEventListener("mouseWheel",$bind(this,this.scroller_target_mouseWheelHandler),false,0,true);
+			var $window = js_Boot.__cast($global , Window);
+			$window.addEventListener("wheel",$bind(this,this.scroller_window_wheelCaptureHandler),{ capture : true});
+			this._target.addEventListener("touchBegin",$bind(this,this.scroller_target_touchBeginHandler),false,0,true);
+			this._target.addEventListener("touchBegin",$bind(this,this.scroller_target_touchBeginCaptureHandler),true,0,true);
+			this._target.addEventListener("click",$bind(this,this.scroller_target_clickCaptureHandler),true,0,true);
+			this._target.addEventListener("touchTap",$bind(this,this.scroller_target_touchTapCaptureHandler),true,0,true);
+		}
+		return this._target;
+	}
+	,get_touchPointID: function() {
+		return this._touchPointID;
+	}
+	,get_touchPointIsSimulated: function() {
+		return this._touchPointIsSimulated;
+	}
+	,setDimensions: function(visibleWidth,visibleHeight,contentWidth,contentHeight) {
+		this._visibleWidth = visibleWidth != null ? visibleWidth : 0.0;
+		this._visibleHeight = visibleHeight != null ? visibleHeight : 0.0;
+		this._contentWidth = contentWidth != null ? contentWidth : 0.0;
+		this._contentHeight = contentHeight != null ? contentHeight : 0.0;
+		this.calculateMinAndMax();
+	}
+	,applyScrollRestrictions: function() {
+		var scrollChanged = false;
+		if(this._scrollX < this._minScrollX) {
+			this._scrollX = this._minScrollX;
+			scrollChanged = true;
+		} else if(this._scrollX > this._maxScrollX) {
+			this._scrollX = this._maxScrollX;
+			scrollChanged = true;
+		}
+		if(this._scrollY < this._minScrollY) {
+			this._scrollY = this._minScrollY;
+			scrollChanged = true;
+		} else if(this._scrollY > this._maxScrollY) {
+			this._scrollY = this._maxScrollY;
+			scrollChanged = true;
+		}
+		if(scrollChanged) {
+			feathers_events_ScrollEvent.dispatch(this,"scroll",false,false,this._scrollX,this._scrollY);
+		}
+	}
+	,stop: function() {
+		if(this.animateScrollX != null) {
+			motion_Actuate.stop(this.animateScrollX,null,false,false);
+			this.animateScrollX = null;
+		}
+		if(this.animateScrollY != null) {
+			motion_Actuate.stop(this.animateScrollY,null,false,false);
+			this.animateScrollY = null;
+		}
+		this.cleanupAfterDrag();
+		this._draggingX = false;
+		this._draggingY = false;
+		this.completeScroll();
+	}
+	,applyLayoutShift: function(x,y) {
+		if(x != null) {
+			var animateScrollX = this.animateScrollX;
+			this.animateScrollX = null;
+			if(animateScrollX != null) {
+				motion_Actuate.stop(animateScrollX,null,false,false);
+			}
+			this.startScrollX += x;
+			this.set_scrollX(this.get_scrollX() + x);
+			var i = 0;
+			while(i < this.savedScrollMoves.length) {
+				this.savedScrollMoves[i] += x;
+				i += 3;
+			}
+			if(animateScrollX != null) {
+				var newTargetScrollX = this.targetScrollX + x;
+				var position = openfl_Lib.getTimer() / 1000.0 - animateScrollX.startTime;
+				var newDuration = animateScrollX.duration - position;
+				this.throwTo(newTargetScrollX,null,newDuration,animateScrollX._ease);
+			}
+		}
+		if(y != null) {
+			var animateScrollY = this.animateScrollY;
+			this.animateScrollY = null;
+			if(animateScrollY != null) {
+				motion_Actuate.stop(animateScrollY,null,false,false);
+			}
+			this.startScrollY += y;
+			this.set_scrollY(this.get_scrollY() + y);
+			var i = 1;
+			while(i < this.savedScrollMoves.length) {
+				this.savedScrollMoves[i] += y;
+				i += 3;
+			}
+			if(animateScrollY != null) {
+				var newTargetScrollY = this.targetScrollY + y;
+				var position = openfl_Lib.getTimer() / 1000.0 - animateScrollY.startTime;
+				var newDuration = animateScrollY.duration - position;
+				this.throwTo(null,newTargetScrollY,newDuration,animateScrollY._ease);
+			}
+		}
+	}
+	,throwTo: function(scrollX,scrollY,duration,ease) {
+		var _gthis = this;
+		if(duration == null) {
+			duration = this._fixedThrowDuration;
+		}
+		if(ease == null) {
+			ease = this.ease;
+		}
+		var scrollChanged = false;
+		if(scrollX != null) {
+			if(this.animateScrollX != null) {
+				motion_Actuate.stop(this.animateScrollX,null,false,false);
+				this.animateScrollX = null;
+			}
+			if(this._scrollX != scrollX) {
+				scrollChanged = true;
+				this.startScroll();
+				if(duration == 0.0) {
+					this.set_scrollX(scrollX);
+				} else {
+					this.startScrollX = this._scrollX;
+					this.targetScrollX = scrollX;
+					var tween = motion_Actuate.update(function(scrollX) {
+						if(scrollX == null) {
+							scrollX = _gthis.targetScrollX;
+						}
+						return _gthis.set_scrollX(scrollX);
+					},duration,[this._scrollX],[this.targetScrollX],true);
+					this.animateScrollX = js_Boot.__cast(tween , motion_actuators_SimpleActuator);
+					this.animateScrollX.ease(ease);
+					this.animateScrollX.onComplete($bind(this,this.animateScrollX_onComplete));
+					this.refreshAnimateScrollXEndRatio();
+				}
+			} else {
+				this.finishScrollX();
+			}
+		}
+		if(scrollY != null) {
+			if(this.animateScrollY != null) {
+				motion_Actuate.stop(this.animateScrollY,null,false,false);
+				this.animateScrollY = null;
+			}
+			if(this._scrollY != scrollY) {
+				scrollChanged = true;
+				this.startScroll();
+				if(duration == 0.0) {
+					this.set_scrollY(scrollY);
+				} else {
+					this.startScrollY = this._scrollY;
+					this.targetScrollY = scrollY;
+					var tween = motion_Actuate.update(function(scrollY) {
+						if(scrollY == null) {
+							scrollY = _gthis.targetScrollY;
+						}
+						return _gthis.set_scrollY(scrollY);
+					},duration,[this._scrollY],[this.targetScrollY],true);
+					this.animateScrollY = js_Boot.__cast(tween , motion_actuators_SimpleActuator);
+					this.animateScrollY.ease(ease);
+					this.animateScrollY.onComplete($bind(this,this.animateScrollY_onComplete));
+					this.refreshAnimateScrollYEndRatio();
+				}
+			} else {
+				this.finishScrollY();
+			}
+		}
+		if(scrollChanged && duration == 0.0) {
+			this.completeScroll();
+		}
+	}
+	,throwWithVelocity: function(velocityX,velocityY) {
+		var targetX = null;
+		var targetY = null;
+		if(velocityX != null) {
+			if(Math.abs(velocityX) <= feathers_utils_Scroller.MINIMUM_VELOCITY) {
+				this.finishScrollX();
+			} else if(this.snapPositionsX != null) {
+				var _g = 0;
+				var _g1 = this.snapPositionsX.length;
+				while(_g < _g1) {
+					var i = _g++;
+					var posX = this.snapPositionsX[i];
+					if(velocityX < 0.0) {
+						targetX = posX;
+						if(posX > this._scrollX) {
+							break;
+						}
+					}
+					if(velocityX > 0.0) {
+						targetX = i == 0 ? posX : this.snapPositionsX[i - 1];
+						if(posX >= this._scrollX) {
+							break;
+						}
+					}
+				}
+			} else {
+				targetX = this._scrollX + this.calculateDistanceFromVelocity(velocityX);
+			}
+		}
+		if(velocityY != null) {
+			if(Math.abs(velocityY) <= feathers_utils_Scroller.MINIMUM_VELOCITY) {
+				this.finishScrollY();
+			} else if(this.snapPositionsY != null) {
+				var _g = 0;
+				var _g1 = this.snapPositionsY.length;
+				while(_g < _g1) {
+					var i = _g++;
+					var posY = this.snapPositionsY[i];
+					if(velocityY < 0.0) {
+						targetY = posY;
+						if(posY > this._scrollY) {
+							break;
+						}
+					}
+					if(velocityY > 0.0) {
+						targetY = i == 0 ? posY : this.snapPositionsY[i - 1];
+						if(posY >= this._scrollY) {
+							break;
+						}
+					}
+				}
+			} else {
+				targetY = this._scrollY + this.calculateDistanceFromVelocity(velocityY);
+			}
+		}
+		this.throwTo(targetX,targetY,this._fixedThrowDuration);
+	}
+	,calculateDistanceFromVelocity: function(velocity) {
+		return (velocity - feathers_utils_Scroller.MINIMUM_VELOCITY) / this._logDecelerationRate;
+	}
+	,refreshAnimateScrollXEndRatio: function() {
+		var distance = Math.abs(this.targetScrollX - this.startScrollX);
+		var ratioOutOfBounds = 0.0;
+		if(this.targetScrollX > this._maxScrollX) {
+			ratioOutOfBounds = (this.targetScrollX - this._maxScrollX) / distance;
+		} else if(this.targetScrollX < this._minScrollX) {
+			ratioOutOfBounds = (this._minScrollX - this.targetScrollX) / distance;
+		}
+		if(ratioOutOfBounds > 0.0) {
+			if(this.elasticEdges) {
+				this.animateScrollXEndRatio = 1.0 - ratioOutOfBounds + ratioOutOfBounds * this.throwElasticity;
+			} else {
+				this.animateScrollXEndRatio = 1.0 - ratioOutOfBounds;
+			}
+		} else {
+			this.animateScrollXEndRatio = 1.0;
+		}
+		if(this.animateScrollX != null) {
+			if(this.animateScrollXEndRatio < 1.0) {
+				this.animateScrollX.onUpdate($bind(this,this.animateScrollX_endRatio_onUpdate));
+			} else {
+				this.animateScrollX.onUpdate(null);
+			}
+		}
+	}
+	,refreshAnimateScrollYEndRatio: function() {
+		var distance = Math.abs(this.targetScrollY - this.startScrollY);
+		var ratioOutOfBounds = 0.0;
+		if(this.targetScrollY > this._maxScrollY) {
+			ratioOutOfBounds = (this.targetScrollY - this._maxScrollY) / distance;
+		} else if(this.targetScrollY < this._minScrollY) {
+			ratioOutOfBounds = (this._minScrollY - this.targetScrollY) / distance;
+		}
+		if(ratioOutOfBounds > 0.0) {
+			if(this.elasticEdges) {
+				this.animateScrollYEndRatio = 1.0 - ratioOutOfBounds + ratioOutOfBounds * this.throwElasticity;
+			} else {
+				this.animateScrollYEndRatio = 1.0 - ratioOutOfBounds;
+			}
+		} else {
+			this.animateScrollYEndRatio = 1.0;
+		}
+		if(this.animateScrollY != null) {
+			if(this.animateScrollYEndRatio < 1.0) {
+				this.animateScrollY.onUpdate($bind(this,this.animateScrollY_endRatio_onUpdate));
+			} else {
+				this.animateScrollY.onUpdate(null);
+			}
+		}
+	}
+	,calculateMinAndMax: function() {
+		var oldMinScrollX = this._minScrollX;
+		var oldMaxScrollX = this._maxScrollX;
+		var oldMinScrollY = this._minScrollY;
+		var oldMaxScrollY = this._maxScrollY;
+		this._minScrollX = 0.0;
+		this._minScrollY = 0.0;
+		this._maxScrollX = Math.max(this._contentWidth,this._visibleWidth) - this._visibleWidth;
+		this._maxScrollY = Math.max(this._contentHeight,this._visibleHeight) - this._visibleHeight;
+		if(oldMinScrollX != this._minScrollX || oldMaxScrollX != this._maxScrollX) {
+			this.refreshAnimateScrollXEndRatio();
+		}
+		if(oldMinScrollY != this._minScrollY || oldMaxScrollY != this._maxScrollY) {
+			this.refreshAnimateScrollYEndRatio();
+		}
+	}
+	,startScroll: function() {
+		if(this._scrolling) {
+			return;
+		}
+		this._scrolling = true;
+		if(((this._target) instanceof openfl_display_DisplayObjectContainer)) {
+			var container = js_Boot.__cast(this._target , openfl_display_DisplayObjectContainer);
+			this.restoreMouseChildren = container.mouseChildren;
+			container.mouseChildren = false;
+		}
+		feathers_events_ScrollEvent.dispatch(this,"scrollStart",false,false,this._scrollX,this._scrollY);
+	}
+	,completeScroll: function() {
+		if(!this._scrolling || this._draggingX || this._draggingY || this.animateScrollX != null || this.animateScrollY != null) {
+			return;
+		}
+		this._scrolling = false;
+		if(((this._target) instanceof openfl_display_DisplayObjectContainer)) {
+			var container = js_Boot.__cast(this._target , openfl_display_DisplayObjectContainer);
+			container.mouseChildren = this.restoreMouseChildren;
+		}
+		feathers_events_ScrollEvent.dispatch(this,"scrollComplete",false,false,this._scrollX,this._scrollY);
+	}
+	,finishScrollX: function() {
+		this._draggingX = false;
+		var targetScrollX = null;
+		if(this.snapPositionsX != null) {
+			var minOffsetX = Infinity;
+			var _g = 0;
+			var _g1 = this.snapPositionsX;
+			while(_g < _g1.length) {
+				var snapX = _g1[_g];
+				++_g;
+				var offsetX = Math.abs(snapX - this._scrollX);
+				if(minOffsetX > offsetX) {
+					minOffsetX = offsetX;
+					targetScrollX = snapX;
+				}
+			}
+			if(targetScrollX == this._scrollX) {
+				targetScrollX = null;
+			}
+		}
+		if(this._scrollX < this._minScrollX) {
+			targetScrollX = this._minScrollX;
+		} else if(this._scrollX > this._maxScrollX) {
+			targetScrollX = this._maxScrollX;
+		}
+		if(targetScrollX == null) {
+			this.completeScroll();
+		} else {
+			var duration = Math.abs(this._scrollX - targetScrollX) >= 1.0 ? this.elasticSnapDuration : 0.0;
+			this.throwTo(targetScrollX,null,duration,this.bounceEase);
+		}
+	}
+	,finishScrollY: function() {
+		this._draggingY = false;
+		var targetScrollY = null;
+		if(this.snapPositionsY != null) {
+			var minOffsetY = Infinity;
+			var _g = 0;
+			var _g1 = this.snapPositionsY;
+			while(_g < _g1.length) {
+				var snapY = _g1[_g];
+				++_g;
+				var offsetY = Math.abs(snapY - this._scrollY);
+				if(minOffsetY > offsetY) {
+					minOffsetY = offsetY;
+					targetScrollY = snapY;
+				}
+			}
+			if(targetScrollY == this._scrollY) {
+				targetScrollY = null;
+			}
+		}
+		if(this._scrollY < this._minScrollY) {
+			targetScrollY = this._minScrollY;
+		} else if(this._scrollY > this._maxScrollY) {
+			targetScrollY = this._maxScrollY;
+		}
+		if(targetScrollY == null) {
+			this.completeScroll();
+		} else {
+			var duration = Math.abs(this._scrollY - targetScrollY) >= 1.0 ? this.elasticSnapDuration : 0.0;
+			this.throwTo(null,targetScrollY,duration,this.bounceEase);
+		}
+	}
+	,animateScrollX_endRatio_onUpdate: function() {
+		var time = openfl_Lib.getTimer() / 1000.0;
+		var currentTime = time - this.animateScrollX.startTime;
+		var ratio = currentTime / this.animateScrollX.duration;
+		var ease = this.animateScrollX._ease;
+		if(ease != null) {
+			ratio = ease.calculate(ratio);
+		}
+		if(ratio >= this.animateScrollXEndRatio && currentTime < this.animateScrollX.duration) {
+			if(!this.elasticEdges) {
+				if(this._scrollX < this._minScrollX) {
+					this.set_scrollX(this._minScrollX);
+				} else if(this._scrollX > this._maxScrollX) {
+					this.set_scrollX(this._maxScrollX);
+				}
+			}
+			motion_Actuate.stop(this.animateScrollX,null,false,false);
+			this.animateScrollX = null;
+			this.finishScrollX();
+			return;
+		}
+	}
+	,animateScrollX_onComplete: function() {
+		this.animateScrollX = null;
+		this.finishScrollX();
+	}
+	,animateScrollY_endRatio_onUpdate: function() {
+		var time = openfl_Lib.getTimer() / 1000.0;
+		var currentTime = time - this.animateScrollY.startTime;
+		var ratio = currentTime / this.animateScrollY.duration;
+		var ease = this.animateScrollY._ease;
+		if(ease != null) {
+			ratio = ease.calculate(ratio);
+		}
+		if(ratio >= this.animateScrollYEndRatio && currentTime < this.animateScrollY.duration) {
+			if(!this.elasticEdges) {
+				if(this._scrollY < this._minScrollY) {
+					this.set_scrollY(this._minScrollY);
+				} else if(this._scrollY > this._maxScrollY) {
+					this.set_scrollY(this._maxScrollY);
+				}
+			}
+			motion_Actuate.stop(this.animateScrollY,null,false,false);
+			this.animateScrollY = null;
+			this.finishScrollY();
+			return;
+		}
+	}
+	,animateScrollY_onComplete: function() {
+		this.animateScrollY = null;
+		this.finishScrollY();
+	}
+	,cleanupAfterDrag: function() {
+		if(this._touchPointID == null) {
+			return;
+		}
+		this._previousTouchPointID = this._scrolling ? this._touchPointID : null;
+		this._touchPointID = null;
+		this._touchPointIsSimulated = false;
+		this._target.removeEventListener("removedFromStage",$bind(this,this.scroller_target_removedFromStageHandler));
+		if(this._target.stage != null) {
+			this._target.stage.removeEventListener("mouseMove",$bind(this,this.scroller_target_stage_mouseMoveHandler));
+			this._target.stage.removeEventListener("mouseUp",$bind(this,this.scroller_target_stage_mouseUpHandler));
+			this._target.stage.removeEventListener("touchMove",$bind(this,this.scroller_target_stage_touchMoveHandler));
+			this._target.stage.removeEventListener("touchEnd",$bind(this,this.scroller_target_stage_touchEndHandler));
+		}
+	}
+	,scroller_target_removedFromStageHandler: function(event) {
+		this.cleanupAfterDrag();
+	}
+	,touchBegin: function(touchPointID,simulatedTouch,stageX,stageY) {
+		if(simulatedTouch && !this.simulateTouch) {
+			return;
+		}
+		if(this._touchPointID != null) {
+			return;
+		}
+		if(this.animateScrollX != null) {
+			motion_Actuate.stop(this.animateScrollX,null,false,false);
+			this.animateScrollX = null;
+		}
+		if(this.animateScrollY != null) {
+			motion_Actuate.stop(this.animateScrollY,null,false,false);
+			this.animateScrollY = null;
+		}
+		this._target.addEventListener("removedFromStage",$bind(this,this.scroller_target_removedFromStageHandler),false,0,true);
+		this._target.stage.addEventListener("mouseMove",$bind(this,this.scroller_target_stage_mouseMoveHandler),false,0,true);
+		this._target.stage.addEventListener("mouseUp",$bind(this,this.scroller_target_stage_mouseUpHandler),false,0,true);
+		this._target.stage.addEventListener("touchMove",$bind(this,this.scroller_target_stage_touchMoveHandler),false,0,true);
+		this._target.stage.addEventListener("touchEnd",$bind(this,this.scroller_target_stage_touchEndHandler),false,0,true);
+		if(((this._target) instanceof openfl_display_DisplayObjectContainer)) {
+			var container = js_Boot.__cast(this._target , openfl_display_DisplayObjectContainer);
+			if(this._scrolling) {
+				container.mouseChildren = false;
+			}
+		}
+		this._previousTouchPointID = null;
+		this._touchPointID = touchPointID;
+		this._touchPointIsSimulated = simulatedTouch;
+		this.startTouchX = stageX;
+		this.startTouchY = stageY;
+		this.startScrollX = this._scrollX;
+		this.startScrollY = this._scrollY;
+		this.savedScrollMoves.length = 0;
+	}
+	,touchMove: function(touchPointID,simulatedTouch,stageX,stageY) {
+		if(this._touchPointID == null) {
+			return;
+		}
+		if(this._touchPointID != touchPointID) {
+			return;
+		}
+		if(this._touchPointIsSimulated != simulatedTouch) {
+			return;
+		}
+		var touchOffsetX = stageX - this.startTouchX;
+		var touchOffsetY = stageY - this.startTouchY;
+		var scaleX = 1.0;
+		var scaleY = 1.0;
+		var current = this._target;
+		while(current != current.stage) {
+			scaleX /= current.get_scaleX();
+			scaleY /= current.get_scaleY();
+			current = current.parent;
+		}
+		touchOffsetX *= scaleX;
+		touchOffsetY *= scaleY;
+		var canDragX = this.canDragX();
+		var canDragY = this.canDragY();
+		if(!this._draggingX && canDragX && Math.abs(touchOffsetX) > this.minDragDistance) {
+			this.startTouchX = stageX;
+			touchOffsetX = 0.0;
+			this._draggingX = true;
+			if(!this._draggingY) {
+				this.startScroll();
+				if(this._touchPointID == null) {
+					return;
+				}
+			}
+		}
+		if(!this._draggingY && canDragY && Math.abs(touchOffsetY) > this.minDragDistance) {
+			this.startTouchY = stageY;
+			touchOffsetY = 0.0;
+			this._draggingY = true;
+			if(!this._draggingX) {
+				this.startScroll();
+				if(this._touchPointID == null) {
+					return;
+				}
+			}
+		}
+		if(!this._draggingX && !this._draggingY) {
+			return;
+		}
+		var scrollX = this.startScrollX;
+		if(canDragX) {
+			scrollX -= touchOffsetX;
+			if(this.elasticEdges) {
+				var minElasticScrollX = this._minScrollX;
+				if(minElasticScrollX > this.startScrollX) {
+					minElasticScrollX = this.startScrollX;
+				}
+				var maxElasticScrollX = this._maxScrollX;
+				if(maxElasticScrollX < this.startScrollX) {
+					maxElasticScrollX = this.startScrollX;
+				}
+				if(scrollX < this._minScrollX) {
+					if(this._maxScrollX > this._minScrollX || this.forceElasticLeft) {
+						scrollX -= (scrollX - minElasticScrollX) * (1.0 - this.elasticity);
+					} else {
+						scrollX = this._minScrollX;
+					}
+				} else if(scrollX > this._maxScrollX) {
+					if(this._maxScrollX > this._minScrollX || this.forceElasticRight) {
+						scrollX -= (scrollX - maxElasticScrollX) * (1.0 - this.elasticity);
+					} else {
+						scrollX = this._maxScrollX;
+					}
+				}
+			} else if(scrollX < this._minScrollX) {
+				scrollX = this._minScrollX;
+			} else if(scrollX > this._maxScrollX) {
+				scrollX = this._maxScrollX;
+			}
+		}
+		var scrollY = this.startScrollY;
+		if(canDragY) {
+			scrollY -= touchOffsetY;
+			if(this.elasticEdges) {
+				var minElasticScrollY = this._minScrollY;
+				if(minElasticScrollY > this.startScrollY) {
+					minElasticScrollY = this.startScrollY;
+				}
+				var maxElasticScrollY = this._maxScrollY;
+				if(maxElasticScrollY < this.startScrollY) {
+					maxElasticScrollY = this.startScrollY;
+				}
+				if(scrollY < this._minScrollY) {
+					if(this._maxScrollY > this._minScrollY || this.forceElasticTop) {
+						scrollY -= (scrollY - minElasticScrollY) * (1.0 - this.elasticity);
+					} else {
+						scrollY = this._minScrollY;
+					}
+				} else if(scrollY > this._maxScrollY) {
+					if(this._maxScrollY > this._minScrollY || this.forceElasticBottom) {
+						scrollY -= (scrollY - maxElasticScrollY) * (1.0 - this.elasticity);
+					} else {
+						scrollY = this._maxScrollY;
+					}
+				}
+			} else if(scrollY < this._minScrollY) {
+				scrollY = this._minScrollY;
+			} else if(scrollY > this._maxScrollY) {
+				scrollY = this._maxScrollY;
+			}
+		}
+		this.set_scrollX(scrollX);
+		this.set_scrollY(scrollY);
+		if(this.savedScrollMoves.length > 60) {
+			this.savedScrollMoves.length = 30;
+		}
+		this.savedScrollMoves.push(scrollX);
+		this.savedScrollMoves.push(scrollY);
+		this.savedScrollMoves.push(openfl_Lib.getTimer());
+	}
+	,touchEnd: function(touchPointID,simulatedTouch) {
+		if(this._touchPointID == null) {
+			return;
+		}
+		if(this._touchPointID != touchPointID) {
+			return;
+		}
+		if(this._touchPointIsSimulated != simulatedTouch) {
+			return;
+		}
+		this.cleanupAfterDrag();
+		var finishingX = !this.canDragX();
+		var finishingY = !this.canDragY();
+		if(this._scrollX < this._minScrollX || this._scrollX > this._maxScrollX) {
+			finishingX = true;
+			this.finishScrollX();
+		}
+		if(this._scrollY < this._minScrollY || this._scrollY > this._maxScrollY) {
+			finishingY = true;
+			this.finishScrollY();
+		}
+		if(finishingX && finishingY) {
+			return;
+		}
+		if(!this._draggingX && !this._draggingY) {
+			return;
+		}
+		var targetTime = openfl_Lib.getTimer() - 100;
+		var endIndex = this.savedScrollMoves.length - 1;
+		var startIndex = endIndex;
+		var i = endIndex;
+		while(endIndex > 0 && this.savedScrollMoves[i] > targetTime) {
+			startIndex = i;
+			i -= 3;
+		}
+		if(startIndex == endIndex) {
+			if(!finishingX && this._draggingX) {
+				this.finishScrollX();
+			}
+			if(!finishingY && this._draggingY) {
+				this.finishScrollY();
+			}
+			return;
+		}
+		var timeOffset = this.savedScrollMoves[endIndex] - this.savedScrollMoves[startIndex];
+		var velocityX = null;
+		var velocityY = null;
+		if(timeOffset > 0.0) {
+			if(!finishingX && this._draggingX) {
+				var movedX = this._scrollX - this.savedScrollMoves[startIndex - 2];
+				velocityX = -movedX / timeOffset;
+			}
+			if(!finishingY && this._draggingY) {
+				var movedY = this._scrollY - this.savedScrollMoves[startIndex - 1];
+				velocityY = -movedY / timeOffset;
+			}
+		}
+		if(velocityX != null || velocityY != null) {
+			this.throwWithVelocity(velocityX,velocityY);
+		}
+		if(velocityX == null && this._draggingX) {
+			this.finishScrollX();
+		}
+		if(velocityY == null && this._draggingY) {
+			this.finishScrollY();
+		}
+	}
+	,canDragX: function() {
+		if(this.enabledX) {
+			if(!(this._maxScrollX > this._minScrollX || this.forceElasticLeft)) {
+				return this.forceElasticRight;
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
+	}
+	,canDragY: function() {
+		if(this.enabledY) {
+			if(!(this._maxScrollY > this._minScrollY || this.forceElasticTop)) {
+				return this.forceElasticBottom;
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
+	}
+	,scroller_target_touchBeginCaptureHandler: function(event) {
+		if(!this._scrolling) {
+			return;
+		}
+		event.stopImmediatePropagation();
+		this.scroller_target_touchBeginHandler(event);
+	}
+	,scroller_target_touchBeginHandler: function(event) {
+		if(this.simulateTouch && event.isPrimaryTouchPoint) {
+			return;
+		}
+		this.touchBegin(event.touchPointID,false,event.stageX,event.stageY);
+	}
+	,scroller_target_mouseDownCaptureHandler: function(event) {
+		if(!this._scrolling) {
+			return;
+		}
+		event.stopImmediatePropagation();
+		this.scroller_target_mouseDownHandler(event);
+	}
+	,scroller_target_mouseDownHandler: function(event) {
+		var stage = this._target.stage;
+		if(stage == null) {
+			return;
+		}
+		this.touchBegin(feathers_utils_Scroller.POINTER_ID_MOUSE,true,stage.get_mouseX(),stage.get_mouseY());
+	}
+	,scroller_target_stage_touchMoveHandler: function(event) {
+		this.touchMove(event.touchPointID,false,event.stageX,event.stageY);
+	}
+	,scroller_target_stage_mouseMoveHandler: function(event) {
+		var stage = js_Boot.__cast(event.currentTarget , openfl_display_Stage);
+		this.touchMove(feathers_utils_Scroller.POINTER_ID_MOUSE,true,stage.get_mouseX(),stage.get_mouseY());
+	}
+	,scroller_target_stage_touchEndHandler: function(event) {
+		this.touchEnd(event.touchPointID,false);
+	}
+	,scroller_target_clickCaptureHandler: function(event) {
+		if(this._previousTouchPointID == null) {
+			return;
+		}
+		this._previousTouchPointID = null;
+		event.stopImmediatePropagation();
+	}
+	,scroller_target_touchTapCaptureHandler: function(event) {
+		if(this._previousTouchPointID == null || this._previousTouchPointID != event.touchPointID) {
+			return;
+		}
+		if(event.isPrimaryTouchPoint) {
+			this._previousTouchPointID = feathers_utils_Scroller.POINTER_ID_MOUSE;
+			return;
+		}
+		this._previousTouchPointID = null;
+		event.stopImmediatePropagation();
+	}
+	,scroller_target_stage_mouseUpHandler: function(event) {
+		this.touchEnd(feathers_utils_Scroller.POINTER_ID_MOUSE,true);
+	}
+	,scroller_window_wheelCaptureHandler: function(event) {
+		this._mouseWheelDeltaMode = event.deltaMode;
+	}
+	,scroller_target_mouseWheelHandler: function(event) {
+		if(this._scrolling) {
+			event.stopImmediatePropagation();
+			this.stop();
+		}
+		var deltaLines = event.delta;
+		switch(this._mouseWheelDeltaMode) {
+		case 0:
+			if(deltaLines < 0) {
+				deltaLines = Math.min(-1.0,deltaLines / 40) | 0;
+			} else {
+				deltaLines = Math.max(1.0,deltaLines / 40) | 0;
+			}
+			break;
+		case 2:
+			deltaLines *= 16;
+			break;
+		}
+		var newScrollX = null;
+		var newScrollY = null;
+		if(this.mouseWheelYScrollsX) {
+			var targetScrollX = this._scrollX;
+			if(this.animateScrollX != null) {
+				targetScrollX = this.targetScrollX;
+			}
+			newScrollX = targetScrollX - deltaLines * this.mouseWheelDeltaX;
+			if(newScrollX < this._minScrollX) {
+				newScrollX = this._minScrollX;
+			} else if(newScrollX > this._maxScrollX) {
+				newScrollX = this._maxScrollX;
+			}
+		} else {
+			var targetScrollY = this._scrollY;
+			if(this.animateScrollY != null) {
+				targetScrollY = this.targetScrollY;
+			}
+			newScrollY = targetScrollY - deltaLines * this.mouseWheelDeltaY;
+			if(newScrollY < this._minScrollY) {
+				newScrollY = this._minScrollY;
+			} else if(newScrollY > this._maxScrollY) {
+				newScrollY = this._maxScrollY;
+			}
+		}
+		if((newScrollX == null || newScrollX == this._scrollX) && (newScrollY == null || newScrollY == this._scrollY)) {
+			return;
+		}
+		event.preventDefault();
+		if(!this._scrolling) {
+			event.stopImmediatePropagation();
+			this.stop();
+		}
+		if(newScrollX != null) {
+			this._draggingX = true;
+		}
+		if(newScrollY != null) {
+			this._draggingY = true;
+		}
+		if(this.mouseWheelDuration > 0.0) {
+			this.throwTo(newScrollX,newScrollY,this.mouseWheelDuration,this.ease);
+		} else {
+			this.startScroll();
+			if(newScrollX != null) {
+				this.set_scrollX(newScrollX);
+			}
+			if(newScrollY != null) {
+				this.set_scrollY(newScrollY);
+			}
+			this._draggingX = false;
+			this._draggingY = false;
+			this.completeScroll();
+		}
+	}
+	,__class__: feathers_utils_Scroller
+	,__properties__: {get_touchPointIsSimulated:"get_touchPointIsSimulated",get_touchPointID:"get_touchPointID",set_target:"set_target",get_target:"get_target",set_decelerationRate:"set_decelerationRate",get_decelerationRate:"get_decelerationRate",get_draggingY:"get_draggingY",get_draggingX:"get_draggingX",get_scrolling:"get_scrolling",get_contentHeight:"get_contentHeight",get_contentWidth:"get_contentWidth",get_visibleHeight:"get_visibleHeight",get_visibleWidth:"get_visibleWidth",get_maxScrollY:"get_maxScrollY",get_maxScrollX:"get_maxScrollX",get_minScrollY:"get_minScrollY",get_minScrollX:"get_minScrollX",set_restrictedScrollY:"set_restrictedScrollY",get_restrictedScrollY:"get_restrictedScrollY",set_restrictedScrollX:"set_restrictedScrollX",get_restrictedScrollX:"get_restrictedScrollX",set_scrollY:"set_scrollY",get_scrollY:"get_scrollY",set_scrollX:"set_scrollX",get_scrollX:"get_scrollX"}
+});
 var feathers_utils_TextFormatUtil = function() { };
 $hxClasses["feathers.utils.TextFormatUtil"] = feathers_utils_TextFormatUtil;
 feathers_utils_TextFormatUtil.__name__ = "feathers.utils.TextFormatUtil";
@@ -38568,7 +49899,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 81223;
+	this.version = 683046;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -84487,109 +95818,6 @@ openfl_text_TextFieldType.toString = function(this1) {
 		return null;
 	}
 };
-var openfl_text_TextFormat = function(font,size,color,bold,italic,underline,url,target,align,leftMargin,rightMargin,indent,leading) {
-	this.font = font;
-	this.size = size;
-	this.color = color;
-	this.bold = bold;
-	this.italic = italic;
-	this.underline = underline;
-	this.url = url;
-	this.target = target;
-	this.align = align;
-	this.leftMargin = leftMargin;
-	this.rightMargin = rightMargin;
-	this.indent = indent;
-	this.leading = leading;
-};
-$hxClasses["openfl.text.TextFormat"] = openfl_text_TextFormat;
-openfl_text_TextFormat.__name__ = "openfl.text.TextFormat";
-openfl_text_TextFormat.prototype = {
-	clone: function() {
-		var newFormat = new openfl_text_TextFormat(this.font,this.size,this.color,this.bold,this.italic,this.underline,this.url,this.target);
-		newFormat.align = this.align;
-		newFormat.leftMargin = this.leftMargin;
-		newFormat.rightMargin = this.rightMargin;
-		newFormat.indent = this.indent;
-		newFormat.leading = this.leading;
-		newFormat.blockIndent = this.blockIndent;
-		newFormat.bullet = this.bullet;
-		newFormat.kerning = this.kerning;
-		newFormat.letterSpacing = this.letterSpacing;
-		newFormat.tabStops = this.tabStops;
-		newFormat.__ascent = this.__ascent;
-		newFormat.__descent = this.__descent;
-		newFormat.__cacheKey = this.__toCacheKey();
-		return newFormat;
-	}
-	,__merge: function(format) {
-		if(format.font != null) {
-			this.font = format.font;
-		}
-		if(format.size != null) {
-			this.size = format.size;
-		}
-		if(format.color != null) {
-			this.color = format.color;
-		}
-		if(format.bold != null) {
-			this.bold = format.bold;
-		}
-		if(format.italic != null) {
-			this.italic = format.italic;
-		}
-		if(format.underline != null) {
-			this.underline = format.underline;
-		}
-		if(format.url != null) {
-			this.url = format.url;
-		}
-		if(format.target != null) {
-			this.target = format.target;
-		}
-		if(format.align != null) {
-			this.align = format.align;
-		}
-		if(format.leftMargin != null) {
-			this.leftMargin = format.leftMargin;
-		}
-		if(format.rightMargin != null) {
-			this.rightMargin = format.rightMargin;
-		}
-		if(format.indent != null) {
-			this.indent = format.indent;
-		}
-		if(format.leading != null) {
-			this.leading = format.leading;
-		}
-		if(format.blockIndent != null) {
-			this.blockIndent = format.blockIndent;
-		}
-		if(format.bullet != null) {
-			this.bullet = format.bullet;
-		}
-		if(format.kerning != null) {
-			this.kerning = format.kerning;
-		}
-		if(format.letterSpacing != null) {
-			this.letterSpacing = format.letterSpacing;
-		}
-		if(format.tabStops != null) {
-			this.tabStops = format.tabStops;
-		}
-		if(format.__ascent != null) {
-			this.__ascent = format.__ascent;
-		}
-		if(format.__descent != null) {
-			this.__descent = format.__descent;
-		}
-		this.__toCacheKey();
-	}
-	,__toCacheKey: function() {
-		return this.__cacheKey = "" + this.font + this.size + Std.string(this.bold) + Std.string(this.italic);
-	}
-	,__class__: openfl_text_TextFormat
-};
 var openfl_text_TextFormatAlign = {};
 openfl_text_TextFormatAlign.fromString = function(value) {
 	switch(value) {
@@ -90436,9 +101664,17 @@ Main.TV_SHOW_PREVIEW_START_Y = 40;
 feathers_core_FeathersControl.__meta__ = { fields : { layoutData : { style : null}, focusRectSkin : { style : null}, focusPaddingTop : { style : null}, focusPaddingRight : { style : null}, focusPaddingBottom : { style : null}, focusPaddingLeft : { style : null}}};
 feathers_controls_LayoutGroup.__meta__ = { obj : { defaultXmlProperty : ["xmlContent"]}};
 feathers_controls_LayoutGroup.VARIANT_TOOL_BAR = "toolBar";
+openfl_text_TextFormat.__meta__ = { fields : { clone : { SuppressWarnings : ["checkstyle:FieldDocComment"]}}};
 CompanyLayoutGroup.IMG_DIR_PATH = "assets/img/companies/";
-CompanyLayoutGroup.LOGO_HEIGHT = 100;
+CompanyLayoutGroup.LOGO_HEIGHT = 200;
 CompanyLayoutGroup.GAP_BETWEEN_FIELDS = 10;
+CompanyLayoutGroup.LEFT_PADDING = 10;
+CompanyLayoutGroup.keyTextFormat = new feathers_text_TextFormat("Helvetica",18,12895686);
+CompanyLayoutGroup.valueTextFormat = new feathers_text_TextFormat("Helvetica",18,16579836);
+DateTools.DAY_SHORT_NAMES = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+DateTools.DAY_NAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+DateTools.MONTH_SHORT_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+DateTools.MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 TVShowsLayoutGroup.IMG_DIR_PATH = "assets/img/shows/";
 Xml.Element = 0;
 Xml.PCData = 1;
@@ -90452,20 +101688,37 @@ feathers_controls_BasicToggleButton.__meta__ = { fields : { setSkinForState : { 
 feathers_controls_Button.__meta__ = { obj : { defaultXmlProperty : ["text"]}, fields : { setTextFormatForState : { style : null}, setIconForState : { style : null}}};
 feathers_controls_Button.VARIANT_PRIMARY = "primary";
 feathers_controls_Button.VARIANT_DANGER = "danger";
+feathers_controls_Callout.__meta__ = { obj : { defaultXmlProperty : ["content"]}};
+feathers_controls_Callout.INVALIDATION_FLAG_ORIGIN = feathers_core_InvalidationFlag.CUSTOM("origin");
 feathers_controls_Label.__meta__ = { obj : { defaultXmlProperty : ["text"]}};
 feathers_controls_Label.VARIANT_HEADING = "heading";
 feathers_controls_Label.VARIANT_DETAIL = "detail";
 feathers_controls_Label.VARIANT_DANGER = "danger";
+feathers_controls_supportClasses_BaseScrollContainer.INVALIDATION_FLAG_SCROLLER_FACTORY = feathers_core_InvalidationFlag.CUSTOM("scrollerFactory");
+feathers_controls_supportClasses_BaseScrollContainer.INVALIDATION_FLAG_SCROLL_BAR_FACTORY = feathers_core_InvalidationFlag.CUSTOM("scrollBarFactory");
+feathers_controls_supportClasses_BaseScrollContainer.defaultScrollBarXFactory = feathers_utils_DisplayObjectFactory.withClass(feathers_controls_HScrollBar);
+feathers_controls_supportClasses_BaseScrollContainer.defaultScrollBarYFactory = feathers_utils_DisplayObjectFactory.withClass(feathers_controls_VScrollBar);
+feathers_controls_ScrollContainer.__meta__ = { obj : { defaultXmlProperty : ["xmlContent"]}};
 feathers_controls_TabBar.__meta__ = { obj : { defaultXmlProperty : ["dataProvider"]}};
 feathers_controls_TabBar.INVALIDATION_FLAG_TAB_FACTORY = feathers_core_InvalidationFlag.CUSTOM("tabFactory");
 feathers_controls_TabBar.CHILD_VARIANT_TAB = "tabBar_tab";
 feathers_controls_TabBar.RESET_TAB_STATE = new feathers_data_TabBarItemState();
+feathers_controls_TextArea.__meta__ = { obj : { defaultXmlProperty : ["text"]}, fields : { setSkinForState : { style : null}, setTextFormatForState : { style : null}}};
+feathers_controls_TextArea.INVALIDATION_FLAG_ERROR_CALLOUT_FACTORY = feathers_core_InvalidationFlag.CUSTOM("errorCalloutFactory");
+feathers_controls_TextArea.CHILD_VARIANT_ERROR_CALLOUT = "textArea_errorCallout";
+feathers_controls_TextCallout.__meta__ = { obj : { defaultXmlProperty : ["text"]}};
+feathers_controls_TextCallout.VARIANT_DANGER = "danger";
+feathers_controls_TextInput.__meta__ = { obj : { defaultXmlProperty : ["text"]}, fields : { setSkinForState : { style : null}, setTextFormatForState : { style : null}}};
+feathers_controls_TextInput.INVALIDATION_FLAG_ERROR_CALLOUT_FACTORY = feathers_core_InvalidationFlag.CUSTOM("errorCalloutFactory");
+feathers_controls_TextInput.VARIANT_SEARCH = "search";
+feathers_controls_TextInput.CHILD_VARIANT_ERROR_CALLOUT = "textInput_errorCallout";
 feathers_controls_ToggleButton.__meta__ = { obj : { defaultXmlProperty : ["text"]}, fields : { setTextFormatForState : { style : null}, setIconForState : { style : null}}};
 feathers_controls_navigators_TabItem.internalIDCounter = 0;
 feathers_controls_navigators_TabNavigator.__meta__ = { obj : { defaultXmlProperty : ["dataProvider"]}};
 feathers_controls_navigators_TabNavigator.INVALIDATION_FLAG_TAB_BAR_FACTORY = feathers_core_InvalidationFlag.CUSTOM("tabBarFactory");
 feathers_controls_navigators_TabNavigator.CHILD_VARIANT_TAB_BAR = "tabNavigator_tabBar";
 feathers_controls_navigators_TabNavigator.defaultTabBarFactory = feathers_utils_DisplayObjectFactory.withClass(feathers_controls_TabBar);
+feathers_core_PopUpManager.stageToManager = new haxe_ds_ObjectMap();
 feathers_core_ValidationQueue.STAGE_TO_VALIDATION_QUEUE = new haxe_ds_ObjectMap();
 feathers_data_ArrayCollection.__meta__ = { obj : { defaultXmlProperty : ["array"]}};
 openfl_events_Event.ACTIVATE = "activate";
@@ -90541,6 +101794,18 @@ feathers_events_FlatCollectionEvent._pool = new lime_utils_ObjectPool(function()
 	event.addedItem = null;
 	event.removedItem = null;
 });
+feathers_events_ScrollEvent.SCROLL_START = "scrollStart";
+feathers_events_ScrollEvent.SCROLL_COMPLETE = "scrollComplete";
+feathers_events_ScrollEvent.SCROLL = "scroll";
+feathers_events_ScrollEvent._pool = new lime_utils_ObjectPool(function() {
+	return new feathers_events_ScrollEvent(null,false,false);
+},function(event) {
+	event.target = null;
+	event.currentTarget = null;
+	event.__preventDefault = false;
+	event.__isCanceled = false;
+	event.__isCanceledNow = false;
+});
 feathers_events_StyleProviderEvent.STYLES_CHANGE = "stylesChange";
 feathers_events_StyleProviderEvent._pool = new lime_utils_ObjectPool(function() {
 	return new feathers_events_StyleProviderEvent(null,null);
@@ -90599,6 +101864,8 @@ feathers_utils_DeviceUtil.MEDIA_QUERY_MOBILE = "screen and (hover: none) and (po
 feathers_utils_EdgePuller.MINIMUM_VELOCITY = 0.02;
 feathers_utils_EdgePuller.POINTER_ID_MOUSE = -1000;
 feathers_utils_ExclusivePointer.stageToObject = new haxe_ds_ObjectMap();
+feathers_utils_Scroller.MINIMUM_VELOCITY = 0.02;
+feathers_utils_Scroller.POINTER_ID_MOUSE = -1000;
 haxe_Serializer.USE_CACHE = false;
 haxe_Serializer.USE_ENUM_INDEX = false;
 haxe_Serializer.BASE64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%:";
@@ -92374,7 +103641,6 @@ openfl_text_TextFieldAutoSize.NONE = 2;
 openfl_text_TextFieldAutoSize.RIGHT = 3;
 openfl_text_TextFieldType.DYNAMIC = 0;
 openfl_text_TextFieldType.INPUT = 1;
-openfl_text_TextFormat.__meta__ = { fields : { clone : { SuppressWarnings : ["checkstyle:FieldDocComment"]}}};
 openfl_text_TextFormatAlign.CENTER = 0;
 openfl_text_TextFormatAlign.END = 1;
 openfl_text_TextFormatAlign.JUSTIFY = 2;

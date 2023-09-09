@@ -58,7 +58,7 @@ class TVShowsTxtParser {
 
         var startDate = getIntValueFromStrLine(line, "startDate");
         if (startDate != 0) {
-            tvShowBuilder.withStartDate(year);
+            tvShowBuilder.withStartDate(startDate);
         }  
         
         var endDate = getIntValueFromStrLine(line, "endDate");

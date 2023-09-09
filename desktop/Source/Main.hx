@@ -93,11 +93,7 @@ class Main extends Sprite {
 
 		for (i in 0...tabsContainers.length) {
 			var tabContainer = tabsContainers.get(i);
-			var visible:Bool = (i == activeTabId);
-			
-			tabContainer.visible = visible;
-
-			trace('Container\'s №${i} (${tabContainer} visibility is ${tabContainer.visible})');
+			tabContainer.visible = (i == activeTabId);
 		}
 	}
 }
