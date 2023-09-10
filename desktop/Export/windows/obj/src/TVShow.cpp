@@ -5,18 +5,18 @@
 #include <TVShow.h>
 #endif
 
-HX_DEFINE_STACK_FRAME(_hx_pos_295e276594f5dd65_70_new,"TVShow","new",0x6aa39011,"TVShow.new","TVShow.hx",70,0xb701dc7f)
+HX_DEFINE_STACK_FRAME(_hx_pos_295e276594f5dd65_71_new,"TVShow","new",0x6aa39011,"TVShow.new","TVShow.hx",71,0xb701dc7f)
 
-void TVShow_obj::__construct(int showId,int channelId,::String showName,int year,::String description,int startDate,int endDate,::String imgName){
-            	HX_STACKFRAME(&_hx_pos_295e276594f5dd65_70_new)
-HXLINE(  71)		this->showId = showId;
-HXLINE(  72)		this->channelId = channelId;
-HXLINE(  73)		this->showName = showName;
-HXLINE(  74)		this->year = year;
-HXLINE(  75)		this->description = description;
-HXLINE(  76)		this->startDate = startDate;
-HXLINE(  77)		this->endDate = endDate;
-HXLINE(  78)		this->imgName = imgName;
+void TVShow_obj::__construct(int showId,int channelId,::String showName,int year,::String description,Float startDate,Float endDate,::String imgName){
+            	HX_STACKFRAME(&_hx_pos_295e276594f5dd65_71_new)
+HXLINE(  72)		this->showId = showId;
+HXLINE(  73)		this->channelId = channelId;
+HXLINE(  74)		this->showName = showName;
+HXLINE(  75)		this->year = year;
+HXLINE(  76)		this->description = description;
+HXLINE(  77)		this->startDate = startDate;
+HXLINE(  78)		this->endDate = endDate;
+HXLINE(  79)		this->imgName = imgName;
             	}
 
 Dynamic TVShow_obj::__CreateEmpty() { return new TVShow_obj; }
@@ -101,7 +101,7 @@ void TVShow_obj::__Visit(HX_VISIT_PARAMS)
 		if (HX_FIELD_EQ(inName,"showId") ) { showId=inValue.Cast< int >(); return inValue; }
 		break;
 	case 7:
-		if (HX_FIELD_EQ(inName,"endDate") ) { endDate=inValue.Cast< int >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"endDate") ) { endDate=inValue.Cast< Float >(); return inValue; }
 		if (HX_FIELD_EQ(inName,"imgName") ) { imgName=inValue.Cast< ::String >(); return inValue; }
 		break;
 	case 8:
@@ -109,7 +109,7 @@ void TVShow_obj::__Visit(HX_VISIT_PARAMS)
 		break;
 	case 9:
 		if (HX_FIELD_EQ(inName,"channelId") ) { channelId=inValue.Cast< int >(); return inValue; }
-		if (HX_FIELD_EQ(inName,"startDate") ) { startDate=inValue.Cast< int >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"startDate") ) { startDate=inValue.Cast< Float >(); return inValue; }
 		break;
 	case 11:
 		if (HX_FIELD_EQ(inName,"description") ) { description=inValue.Cast< ::String >(); return inValue; }
@@ -137,8 +137,8 @@ static ::hx::StorageInfo TVShow_obj_sMemberStorageInfo[] = {
 	{::hx::fsString,(int)offsetof(TVShow_obj,showName),HX_("showName",e8,35,86,b0)},
 	{::hx::fsInt,(int)offsetof(TVShow_obj,year),HX_("year",bd,c9,47,50)},
 	{::hx::fsString,(int)offsetof(TVShow_obj,description),HX_("description",fc,08,1d,5f)},
-	{::hx::fsInt,(int)offsetof(TVShow_obj,startDate),HX_("startDate",b0,cf,56,fb)},
-	{::hx::fsInt,(int)offsetof(TVShow_obj,endDate),HX_("endDate",a9,0f,88,24)},
+	{::hx::fsFloat,(int)offsetof(TVShow_obj,startDate),HX_("startDate",b0,cf,56,fb)},
+	{::hx::fsFloat,(int)offsetof(TVShow_obj,endDate),HX_("endDate",a9,0f,88,24)},
 	{::hx::fsString,(int)offsetof(TVShow_obj,imgName),HX_("imgName",ee,67,52,25)},
 	{ ::hx::fsUnknown, 0, null()}
 };

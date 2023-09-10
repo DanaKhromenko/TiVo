@@ -240,7 +240,7 @@ void TVShowsLayoutGroup_obj::drawCell( ::TVShow tvShow,int x,int y){
             		HX_BEGIN_LOCAL_FUNC_S3(::hx::LocalFunc,_hx_Closure_0,::String,imgPath, ::TVShowsLayoutGroup,_gthis, ::TVShow,tvShow) HXARGC(1)
             		void _hx_run( ::feathers::events::TriggerEvent event){
             			HX_GC_STACKFRAME(&_hx_pos_6550f762465377d9_100_drawCell)
-HXLINE( 101)			if ((_gthis->activePreviewIndex >= 0)) {
+HXLINE( 101)			if ((_gthis->activePreviewIndex > 0)) {
 HXLINE( 102)				_gthis->container->removeChildAt(_gthis->activePreviewInfoIndex);
 HXLINE( 103)				_gthis->container->removeChildAt(_gthis->activePreviewIndex);
 HXLINE( 104)				_gthis->activePreviewIndex = -1;

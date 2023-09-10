@@ -49,6 +49,7 @@ HX_LOCAL_STACK_FRAME(_hx_pos_dd15533d5ace917c_15_getTVShows,"TVShowsXmlParser","
 HX_LOCAL_STACK_FRAME(_hx_pos_dd15533d5ace917c_31_parseTVShow,"TVShowsXmlParser","parseTVShow",0xe5769d26,"TVShowsXmlParser.parseTVShow","TVShowsXmlParser.hx",31,0xc5a89c7c)
 HX_LOCAL_STACK_FRAME(_hx_pos_dd15533d5ace917c_77_getStringValueFromXml,"TVShowsXmlParser","getStringValueFromXml",0xca3a65d7,"TVShowsXmlParser.getStringValueFromXml","TVShowsXmlParser.hx",77,0xc5a89c7c)
 HX_LOCAL_STACK_FRAME(_hx_pos_dd15533d5ace917c_84_getIntValueFromXml,"TVShowsXmlParser","getIntValueFromXml",0xf5172421,"TVShowsXmlParser.getIntValueFromXml","TVShowsXmlParser.hx",84,0xc5a89c7c)
+HX_LOCAL_STACK_FRAME(_hx_pos_dd15533d5ace917c_90_getFlaotValueFromXml,"TVShowsXmlParser","getFlaotValueFromXml",0xc0884872,"TVShowsXmlParser.getFlaotValueFromXml","TVShowsXmlParser.hx",90,0xc5a89c7c)
 
 void TVShowsXmlParser_obj::__construct(::String fileName){
             	HX_STACKFRAME(&_hx_pos_dd15533d5ace917c_12_new)
@@ -132,11 +133,11 @@ HXLINE(  54)		::String description = this->getStringValueFromXml(elements,HX_("d
 HXLINE(  55)		if ((description != HX_("",00,00,00,00))) {
 HXLINE(  56)			tvShowBuilder->withDescription(description);
             		}
-HXLINE(  59)		int startDate = this->getIntValueFromXml(elements,HX_("startDate",b0,cf,56,fb));
+HXLINE(  59)		Float startDate = this->getFlaotValueFromXml(elements,HX_("startDate",b0,cf,56,fb));
 HXLINE(  60)		if ((startDate != 0)) {
 HXLINE(  61)			tvShowBuilder->withStartDate(startDate);
             		}
-HXLINE(  64)		int endDate = this->getIntValueFromXml(elements,HX_("endDate",a9,0f,88,24));
+HXLINE(  64)		Float endDate = this->getFlaotValueFromXml(elements,HX_("endDate",a9,0f,88,24));
 HXLINE(  65)		if ((endDate != 0)) {
 HXLINE(  66)			tvShowBuilder->withEndDate(endDate);
             		}
@@ -202,6 +203,37 @@ HXDLIN(  87)		return 0;
 
 HX_DEFINE_DYNAMIC_FUNC2(TVShowsXmlParser_obj,getIntValueFromXml,return )
 
+Float TVShowsXmlParser_obj::getFlaotValueFromXml( ::Xml elements,::String name){
+            	HX_STACKFRAME(&_hx_pos_dd15533d5ace917c_90_getFlaotValueFromXml)
+HXLINE(  91)		::String strValue = this->getStringValueFromXml(elements,name);
+HXLINE(  92)		 ::Dynamic floatValue;
+HXLINE(  93)		try {
+            			HX_STACK_CATCHABLE( ::Dynamic, 0);
+HXLINE(  94)			return ::Std_obj::parseFloat(strValue);
+            		} catch( ::Dynamic _hx_e) {
+            			if (_hx_e.IsClass<  ::Dynamic >() ){
+            				HX_STACK_BEGIN_CATCH
+            				 ::Dynamic _g = _hx_e;
+HXLINE(  95)				{
+HXLINE(  95)					null();
+            				}
+HXDLIN(  95)				 ::Dynamic e = _g;
+HXLINE(  96)				{
+HXLINE(  96)					 ::Dynamic _hx_tmp = ::haxe::Log_obj::trace;
+HXDLIN(  96)					::String _hx_tmp1 = (HX_("Cannot parse ",ea,ab,3a,ac) + ::Std_obj::string(e));
+HXDLIN(  96)					_hx_tmp(_hx_tmp1,::hx::SourceInfo(HX_("Source/TVShowsXmlParser.hx",28,7a,60,0d),96,HX_("TVShowsXmlParser",82,43,34,32),HX_("getFlaotValueFromXml",06,3c,37,fd)));
+            				}
+            			}
+            			else {
+            				HX_STACK_DO_THROW(_hx_e);
+            			}
+            		}
+HXLINE(  98)		return ( (Float)(0) );
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC2(TVShowsXmlParser_obj,getFlaotValueFromXml,return )
+
 
 ::hx::ObjectPtr< TVShowsXmlParser_obj > TVShowsXmlParser_obj::__new(::String fileName) {
 	::hx::ObjectPtr< TVShowsXmlParser_obj > __this = new TVShowsXmlParser_obj();
@@ -247,6 +279,9 @@ void TVShowsXmlParser_obj::__Visit(HX_VISIT_PARAMS)
 	case 18:
 		if (HX_FIELD_EQ(inName,"getIntValueFromXml") ) { return ::hx::Val( getIntValueFromXml_dyn() ); }
 		break;
+	case 20:
+		if (HX_FIELD_EQ(inName,"getFlaotValueFromXml") ) { return ::hx::Val( getFlaotValueFromXml_dyn() ); }
+		break;
 	case 21:
 		if (HX_FIELD_EQ(inName,"getStringValueFromXml") ) { return ::hx::Val( getStringValueFromXml_dyn() ); }
 	}
@@ -282,6 +317,7 @@ static ::String TVShowsXmlParser_obj_sMemberFields[] = {
 	HX_("parseTVShow",12,6c,44,98),
 	HX_("getStringValueFromXml",c3,93,a0,a6),
 	HX_("getIntValueFromXml",b5,4a,40,38),
+	HX_("getFlaotValueFromXml",06,3c,37,fd),
 	::String(null()) };
 
 ::hx::Class TVShowsXmlParser_obj::__mClass;

@@ -62,6 +62,9 @@ class HXCPP_CLASS_ATTRIBUTES TVShowsXmlParser_obj : public ::hx::Object
 		int getIntValueFromXml( ::Xml elements,::String name);
 		::Dynamic getIntValueFromXml_dyn();
 
+		Float getFlaotValueFromXml( ::Xml elements,::String name);
+		::Dynamic getFlaotValueFromXml_dyn();
+
 };
 
 

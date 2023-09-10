@@ -214,7 +214,7 @@ HXLINE(  65)		 ::TVShowsXmlParser tvShowsXmlParser =  ::TVShowsXmlParser_obj::__
 HXLINE(  66)		tvShows->addAll(tvShowsXmlParser->getTVShows());
 HXLINE(  68)		 ::TVShowsTxtParser tvShowsTxtParser =  ::TVShowsTxtParser_obj::__alloc( HX_CTX ,HX_("assets/shows/shows.txt",53,68,36,de));
 HXLINE(  69)		tvShows->addAll(tvShowsTxtParser->getTVShows());
-HXLINE(  72)		 ::TabDto tabDto = ::TVShowsView_obj::getTVShowsTabDto(tvShows,this->rootContainer,4,370,60,10,400,1900,400,10,40);
+HXLINE(  72)		 ::TabDto tabDto = ::TVShowsView_obj::getTVShowsTabDto(tvShows,this->rootContainer,4,370,60,10,450,1900,400,10,40);
 HXLINE(  76)		tabs->add(tabDto->tabItem);
 HXLINE(  77)		this->tabsContainers->add(tabDto->container);
 HXLINE(  80)		 ::CompaniesXmlParser companiesXmlParser =  ::CompaniesXmlParser_obj::__alloc( HX_CTX ,HX_("assets/companies/companies.xml",84,04,e6,f0));
@@ -501,7 +501,7 @@ HXDLIN(  29)		TV_SHOW_CELLS_START_X = 10;
             	}
 {
             	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_30_boot)
-HXDLIN(  30)		TV_SHOW_CELLS_START_Y = 400;
+HXDLIN(  30)		TV_SHOW_CELLS_START_Y = 450;
             	}
 {
             	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_31_boot)

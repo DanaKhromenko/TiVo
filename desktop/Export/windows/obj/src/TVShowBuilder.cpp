@@ -8,19 +8,19 @@
 #include <TVShowBuilder.h>
 #endif
 
-HX_DEFINE_STACK_FRAME(_hx_pos_c0650bdd1897b58c_13_new,"TVShowBuilder","new",0x3924002e,"TVShowBuilder.new","TVShow.hx",13,0xb701dc7f)
-HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_15_withShowId,"TVShowBuilder","withShowId",0xdcf5c6d0,"TVShowBuilder.withShowId","TVShow.hx",15,0xb701dc7f)
-HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_20_withChannelId,"TVShowBuilder","withChannelId",0x943bede6,"TVShowBuilder.withChannelId","TVShow.hx",20,0xb701dc7f)
-HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_25_withShowName,"TVShowBuilder","withShowName",0x5e5d4480,"TVShowBuilder.withShowName","TVShow.hx",25,0xb701dc7f)
-HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_30_withYear,"TVShowBuilder","withYear",0x1b9dac55,"TVShowBuilder.withYear","TVShow.hx",30,0xb701dc7f)
-HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_35_withDescription,"TVShowBuilder","withDescription",0x571b2964,"TVShowBuilder.withDescription","TVShow.hx",35,0xb701dc7f)
-HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_40_withStartDate,"TVShowBuilder","withStartDate",0x69ac8618,"TVShowBuilder.withStartDate","TVShow.hx",40,0xb701dc7f)
-HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_45_withEndDate,"TVShowBuilder","withEndDate",0x2303dc11,"TVShowBuilder.withEndDate","TVShow.hx",45,0xb701dc7f)
-HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_50_withImgName,"TVShowBuilder","withImgName",0x23ce3456,"TVShowBuilder.withImgName","TVShow.hx",50,0xb701dc7f)
-HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_56_build,"TVShowBuilder","build",0xec011a7c,"TVShowBuilder.build","TVShow.hx",56,0xb701dc7f)
+HX_DEFINE_STACK_FRAME(_hx_pos_c0650bdd1897b58c_14_new,"TVShowBuilder","new",0x3924002e,"TVShowBuilder.new","TVShow.hx",14,0xb701dc7f)
+HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_16_withShowId,"TVShowBuilder","withShowId",0xdcf5c6d0,"TVShowBuilder.withShowId","TVShow.hx",16,0xb701dc7f)
+HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_21_withChannelId,"TVShowBuilder","withChannelId",0x943bede6,"TVShowBuilder.withChannelId","TVShow.hx",21,0xb701dc7f)
+HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_26_withShowName,"TVShowBuilder","withShowName",0x5e5d4480,"TVShowBuilder.withShowName","TVShow.hx",26,0xb701dc7f)
+HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_31_withYear,"TVShowBuilder","withYear",0x1b9dac55,"TVShowBuilder.withYear","TVShow.hx",31,0xb701dc7f)
+HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_36_withDescription,"TVShowBuilder","withDescription",0x571b2964,"TVShowBuilder.withDescription","TVShow.hx",36,0xb701dc7f)
+HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_41_withStartDate,"TVShowBuilder","withStartDate",0x69ac8618,"TVShowBuilder.withStartDate","TVShow.hx",41,0xb701dc7f)
+HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_46_withEndDate,"TVShowBuilder","withEndDate",0x2303dc11,"TVShowBuilder.withEndDate","TVShow.hx",46,0xb701dc7f)
+HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_51_withImgName,"TVShowBuilder","withImgName",0x23ce3456,"TVShowBuilder.withImgName","TVShow.hx",51,0xb701dc7f)
+HX_LOCAL_STACK_FRAME(_hx_pos_c0650bdd1897b58c_57_build,"TVShowBuilder","build",0xec011a7c,"TVShowBuilder.build","TVShow.hx",57,0xb701dc7f)
 
 void TVShowBuilder_obj::__construct(){
-            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_13_new)
+            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_14_new)
             	}
 
 Dynamic TVShowBuilder_obj::__CreateEmpty() { return new TVShowBuilder_obj; }
@@ -39,80 +39,80 @@ bool TVShowBuilder_obj::_hx_isInstanceOf(int inClassId) {
 }
 
  ::TVShowBuilder TVShowBuilder_obj::withShowId(int showId){
-            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_15_withShowId)
-HXLINE(  16)		this->showId = showId;
-HXLINE(  17)		return ::hx::ObjectPtr<OBJ_>(this);
+            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_16_withShowId)
+HXLINE(  17)		this->showId = showId;
+HXLINE(  18)		return ::hx::ObjectPtr<OBJ_>(this);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(TVShowBuilder_obj,withShowId,return )
 
  ::TVShowBuilder TVShowBuilder_obj::withChannelId(int channelId){
-            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_20_withChannelId)
-HXLINE(  21)		this->channelId = channelId;
-HXLINE(  22)		return ::hx::ObjectPtr<OBJ_>(this);
+            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_21_withChannelId)
+HXLINE(  22)		this->channelId = channelId;
+HXLINE(  23)		return ::hx::ObjectPtr<OBJ_>(this);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(TVShowBuilder_obj,withChannelId,return )
 
  ::TVShowBuilder TVShowBuilder_obj::withShowName(::String showName){
-            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_25_withShowName)
-HXLINE(  26)		this->showName = showName;
-HXLINE(  27)		return ::hx::ObjectPtr<OBJ_>(this);
+            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_26_withShowName)
+HXLINE(  27)		this->showName = showName;
+HXLINE(  28)		return ::hx::ObjectPtr<OBJ_>(this);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(TVShowBuilder_obj,withShowName,return )
 
  ::TVShowBuilder TVShowBuilder_obj::withYear(int year){
-            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_30_withYear)
-HXLINE(  31)		this->year = year;
-HXLINE(  32)		return ::hx::ObjectPtr<OBJ_>(this);
+            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_31_withYear)
+HXLINE(  32)		this->year = year;
+HXLINE(  33)		return ::hx::ObjectPtr<OBJ_>(this);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(TVShowBuilder_obj,withYear,return )
 
  ::TVShowBuilder TVShowBuilder_obj::withDescription(::String description){
-            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_35_withDescription)
-HXLINE(  36)		this->description = description;
-HXLINE(  37)		return ::hx::ObjectPtr<OBJ_>(this);
+            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_36_withDescription)
+HXLINE(  37)		this->description = description;
+HXLINE(  38)		return ::hx::ObjectPtr<OBJ_>(this);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(TVShowBuilder_obj,withDescription,return )
 
- ::TVShowBuilder TVShowBuilder_obj::withStartDate(int startDate){
-            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_40_withStartDate)
-HXLINE(  41)		this->startDate = startDate;
-HXLINE(  42)		return ::hx::ObjectPtr<OBJ_>(this);
+ ::TVShowBuilder TVShowBuilder_obj::withStartDate(Float startDate){
+            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_41_withStartDate)
+HXLINE(  42)		this->startDate = startDate;
+HXLINE(  43)		return ::hx::ObjectPtr<OBJ_>(this);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(TVShowBuilder_obj,withStartDate,return )
 
- ::TVShowBuilder TVShowBuilder_obj::withEndDate(int endDate){
-            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_45_withEndDate)
-HXLINE(  46)		this->endDate = endDate;
-HXLINE(  47)		return ::hx::ObjectPtr<OBJ_>(this);
+ ::TVShowBuilder TVShowBuilder_obj::withEndDate(Float endDate){
+            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_46_withEndDate)
+HXLINE(  47)		this->endDate = endDate;
+HXLINE(  48)		return ::hx::ObjectPtr<OBJ_>(this);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(TVShowBuilder_obj,withEndDate,return )
 
  ::TVShowBuilder TVShowBuilder_obj::withImgName(::String imgName){
-            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_50_withImgName)
-HXLINE(  51)		this->imgName = imgName;
-HXLINE(  52)		return ::hx::ObjectPtr<OBJ_>(this);
+            	HX_STACKFRAME(&_hx_pos_c0650bdd1897b58c_51_withImgName)
+HXLINE(  52)		this->imgName = imgName;
+HXLINE(  53)		return ::hx::ObjectPtr<OBJ_>(this);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(TVShowBuilder_obj,withImgName,return )
 
  ::TVShow TVShowBuilder_obj::build(){
-            	HX_GC_STACKFRAME(&_hx_pos_c0650bdd1897b58c_56_build)
-HXDLIN(  56)		return  ::TVShow_obj::__alloc( HX_CTX ,this->showId,this->channelId,this->showName,this->year,this->description,this->startDate,this->endDate,this->imgName);
+            	HX_GC_STACKFRAME(&_hx_pos_c0650bdd1897b58c_57_build)
+HXDLIN(  57)		return  ::TVShow_obj::__alloc( HX_CTX ,this->showId,this->channelId,this->showName,this->year,this->description,this->startDate,this->endDate,this->imgName);
             	}
 
 
@@ -144,9 +144,9 @@ void TVShowBuilder_obj::__Mark(HX_MARK_PARAMS)
 	HX_MARK_MEMBER_NAME(showName,"showName");
 	HX_MARK_MEMBER_NAME(year,"year");
 	HX_MARK_MEMBER_NAME(description,"description");
+	HX_MARK_MEMBER_NAME(imgName,"imgName");
 	HX_MARK_MEMBER_NAME(startDate,"startDate");
 	HX_MARK_MEMBER_NAME(endDate,"endDate");
-	HX_MARK_MEMBER_NAME(imgName,"imgName");
 	HX_MARK_END_CLASS();
 }
 
@@ -157,9 +157,9 @@ void TVShowBuilder_obj::__Visit(HX_VISIT_PARAMS)
 	HX_VISIT_MEMBER_NAME(showName,"showName");
 	HX_VISIT_MEMBER_NAME(year,"year");
 	HX_VISIT_MEMBER_NAME(description,"description");
+	HX_VISIT_MEMBER_NAME(imgName,"imgName");
 	HX_VISIT_MEMBER_NAME(startDate,"startDate");
 	HX_VISIT_MEMBER_NAME(endDate,"endDate");
-	HX_VISIT_MEMBER_NAME(imgName,"imgName");
 }
 
 ::hx::Val TVShowBuilder_obj::__Field(const ::String &inName,::hx::PropertyAccess inCallProp)
@@ -175,8 +175,8 @@ void TVShowBuilder_obj::__Visit(HX_VISIT_PARAMS)
 		if (HX_FIELD_EQ(inName,"showId") ) { return ::hx::Val( showId ); }
 		break;
 	case 7:
-		if (HX_FIELD_EQ(inName,"endDate") ) { return ::hx::Val( endDate ); }
 		if (HX_FIELD_EQ(inName,"imgName") ) { return ::hx::Val( imgName ); }
+		if (HX_FIELD_EQ(inName,"endDate") ) { return ::hx::Val( endDate ); }
 		break;
 	case 8:
 		if (HX_FIELD_EQ(inName,"showName") ) { return ::hx::Val( showName ); }
@@ -217,15 +217,15 @@ void TVShowBuilder_obj::__Visit(HX_VISIT_PARAMS)
 		if (HX_FIELD_EQ(inName,"showId") ) { showId=inValue.Cast< int >(); return inValue; }
 		break;
 	case 7:
-		if (HX_FIELD_EQ(inName,"endDate") ) { endDate=inValue.Cast< int >(); return inValue; }
 		if (HX_FIELD_EQ(inName,"imgName") ) { imgName=inValue.Cast< ::String >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"endDate") ) { endDate=inValue.Cast< Float >(); return inValue; }
 		break;
 	case 8:
 		if (HX_FIELD_EQ(inName,"showName") ) { showName=inValue.Cast< ::String >(); return inValue; }
 		break;
 	case 9:
 		if (HX_FIELD_EQ(inName,"channelId") ) { channelId=inValue.Cast< int >(); return inValue; }
-		if (HX_FIELD_EQ(inName,"startDate") ) { startDate=inValue.Cast< int >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"startDate") ) { startDate=inValue.Cast< Float >(); return inValue; }
 		break;
 	case 11:
 		if (HX_FIELD_EQ(inName,"description") ) { description=inValue.Cast< ::String >(); return inValue; }
@@ -240,9 +240,9 @@ void TVShowBuilder_obj::__GetFields(Array< ::String> &outFields)
 	outFields->push(HX_("showName",e8,35,86,b0));
 	outFields->push(HX_("year",bd,c9,47,50));
 	outFields->push(HX_("description",fc,08,1d,5f));
+	outFields->push(HX_("imgName",ee,67,52,25));
 	outFields->push(HX_("startDate",b0,cf,56,fb));
 	outFields->push(HX_("endDate",a9,0f,88,24));
-	outFields->push(HX_("imgName",ee,67,52,25));
 	super::__GetFields(outFields);
 };
 
@@ -253,9 +253,9 @@ static ::hx::StorageInfo TVShowBuilder_obj_sMemberStorageInfo[] = {
 	{::hx::fsString,(int)offsetof(TVShowBuilder_obj,showName),HX_("showName",e8,35,86,b0)},
 	{::hx::fsInt,(int)offsetof(TVShowBuilder_obj,year),HX_("year",bd,c9,47,50)},
 	{::hx::fsString,(int)offsetof(TVShowBuilder_obj,description),HX_("description",fc,08,1d,5f)},
-	{::hx::fsInt,(int)offsetof(TVShowBuilder_obj,startDate),HX_("startDate",b0,cf,56,fb)},
-	{::hx::fsInt,(int)offsetof(TVShowBuilder_obj,endDate),HX_("endDate",a9,0f,88,24)},
 	{::hx::fsString,(int)offsetof(TVShowBuilder_obj,imgName),HX_("imgName",ee,67,52,25)},
+	{::hx::fsFloat,(int)offsetof(TVShowBuilder_obj,startDate),HX_("startDate",b0,cf,56,fb)},
+	{::hx::fsFloat,(int)offsetof(TVShowBuilder_obj,endDate),HX_("endDate",a9,0f,88,24)},
 	{ ::hx::fsUnknown, 0, null()}
 };
 static ::hx::StaticInfo *TVShowBuilder_obj_sStaticStorageInfo = 0;
@@ -267,9 +267,9 @@ static ::String TVShowBuilder_obj_sMemberFields[] = {
 	HX_("showName",e8,35,86,b0),
 	HX_("year",bd,c9,47,50),
 	HX_("description",fc,08,1d,5f),
+	HX_("imgName",ee,67,52,25),
 	HX_("startDate",b0,cf,56,fb),
 	HX_("endDate",a9,0f,88,24),
-	HX_("imgName",ee,67,52,25),
 	HX_("withShowId",de,40,3a,12),
 	HX_("withChannelId",98,b0,c0,ae),
 	HX_("withShowName",0e,de,3e,c9),

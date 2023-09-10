@@ -891,7 +891,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "4";
+	app.meta.h["build"] = "8";
 	app.meta.h["company"] = "Company Name";
 	app.meta.h["file"] = "TiVo";
 	app.meta.h["name"] = "TiVo";
@@ -3358,7 +3358,7 @@ Main.prototype = $extend(openfl_display_Sprite.prototype,{
 		tvShows.addAll(tvShowsXmlParser.getTVShows());
 		var tvShowsTxtParser = new TVShowsTxtParser("assets/shows/shows.txt");
 		tvShows.addAll(tvShowsTxtParser.getTVShows());
-		var tabDto = TVShowsView.getTVShowsTabDto(tvShows,this.rootContainer,4,370,60,10,400,1900,400,10,40);
+		var tabDto = TVShowsView.getTVShowsTabDto(tvShows,this.rootContainer,4,370,60,10,450,1900,400,10,40);
 		tabs.add(tabDto.tabItem);
 		this.tabsContainers.add(tabDto.container);
 		var companiesXmlParser = new CompaniesXmlParser("assets/companies/companies.xml");
@@ -49906,7 +49906,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 974824;
+	this.version = 771709;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -101663,7 +101663,7 @@ Main.TV_SHOW_CELLS_IN_ROW = 4;
 Main.TV_SHOW_CELL_WIDTH = 370;
 Main.TV_SHOW_CELL_HEIGHT = 60;
 Main.TV_SHOW_CELLS_START_X = 10;
-Main.TV_SHOW_CELLS_START_Y = 400;
+Main.TV_SHOW_CELLS_START_Y = 450;
 Main.TV_SHOW_PREVIEW_WIDTH = 1900;
 Main.TV_SHOW_PREVIEW_HEIGHT = 400;
 Main.TV_SHOW_PREVIEW_START_X = 10;

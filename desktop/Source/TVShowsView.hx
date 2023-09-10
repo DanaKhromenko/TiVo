@@ -98,9 +98,9 @@ class TVShowsLayoutGroup extends LayoutGroup {
 		button.height = cellHeight;
 
 		button.addEventListener(TriggerEvent.TRIGGER, (event) -> {
-			if (activePreviewIndex >= 0) {
-				container.removeChildAt(activePreviewInfoIndex);
-				container.removeChildAt(activePreviewIndex);
+			if (activePreviewIndex > 0) {
+				container.removeChildAt(activePreviewInfoIndex); // preview info: text and 1st button
+				container.removeChildAt(activePreviewIndex); // preview picture and 2nd button
 				activePreviewIndex = -1;
 			}
 

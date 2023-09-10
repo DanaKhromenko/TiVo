@@ -6,11 +6,12 @@ class TVShowBuilder {
 	private var showName:String;
 	private var year:Int;
 	private var description:String;
-	private var startDate:Int;
-	private var endDate:Int;
 	private var imgName:String;
-
-	public function new() { }
+	// Note: Type float is used here due to it's max value only.
+	private var startDate:Float;
+	private var endDate:Float;
+	
+	public function new() {}
 
 	public function withShowId(showId:Int):TVShowBuilder {
 		this.showId = showId;
@@ -37,12 +38,12 @@ class TVShowBuilder {
 		return this;
 	}
 
-	public function withStartDate(startDate:Int):TVShowBuilder {
+	public function withStartDate(startDate:Float):TVShowBuilder {
 		this.startDate = startDate;
 		return this;
 	}
 
-	public function withEndDate(endDate:Int):TVShowBuilder {
+	public function withEndDate(endDate:Float):TVShowBuilder {
 		this.endDate = endDate;
 		return this;
 	}
@@ -63,11 +64,11 @@ class TVShow {
 	public var showName:String;
 	public var year:Int;
 	public var description:String;
-	public var startDate:Int;
-	public var endDate:Int;
+	public var startDate:Float;
+	public var endDate:Float;
 	public var imgName:String;
 
-	public function new(showId:Int, channelId:Int, showName:String, year:Int, description:String, startDate:Int, endDate:Int, imgName:String) {
+	public function new(showId:Int, channelId:Int, showName:String, year:Int, description:String, startDate:Float, endDate:Float, imgName:String) {
 		this.showId = showId;
 		this.channelId = channelId;
 		this.showName = showName;

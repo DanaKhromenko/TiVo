@@ -46,6 +46,7 @@ HX_LOCAL_STACK_FRAME(_hx_pos_6bb51b0cab6f2cd0_14_getTVShows,"TVShowsTxtParser","
 HX_LOCAL_STACK_FRAME(_hx_pos_6bb51b0cab6f2cd0_31_parseTVShow,"TVShowsTxtParser","parseTVShow",0xad84b7ff,"TVShowsTxtParser.parseTVShow","TVShowsTxtParser.hx",31,0x4a8d40c3)
 HX_LOCAL_STACK_FRAME(_hx_pos_6bb51b0cab6f2cd0_77_getStringValueFromStrLine,"TVShowsTxtParser","getStringValueFromStrLine",0xb29195de,"TVShowsTxtParser.getStringValueFromStrLine","TVShowsTxtParser.hx",77,0x4a8d40c3)
 HX_LOCAL_STACK_FRAME(_hx_pos_6bb51b0cab6f2cd0_86_getIntValueFromStrLine,"TVShowsTxtParser","getIntValueFromStrLine",0x40524e56,"TVShowsTxtParser.getIntValueFromStrLine","TVShowsTxtParser.hx",86,0x4a8d40c3)
+HX_LOCAL_STACK_FRAME(_hx_pos_6bb51b0cab6f2cd0_92_getFloatValueFromStrLine,"TVShowsTxtParser","getFloatValueFromStrLine",0x7157ba43,"TVShowsTxtParser.getFloatValueFromStrLine","TVShowsTxtParser.hx",92,0x4a8d40c3)
 
 void TVShowsTxtParser_obj::__construct(::String fileName){
             	HX_STACKFRAME(&_hx_pos_6bb51b0cab6f2cd0_11_new)
@@ -131,11 +132,11 @@ HXLINE(  54)		::String description = this->getStringValueFromStrLine(line,HX_("d
 HXLINE(  55)		if ((description != HX_("",00,00,00,00))) {
 HXLINE(  56)			tvShowBuilder->withDescription(description);
             		}
-HXLINE(  59)		int startDate = this->getIntValueFromStrLine(line,HX_("startDate",b0,cf,56,fb));
+HXLINE(  59)		Float startDate = this->getFloatValueFromStrLine(line,HX_("startDate",b0,cf,56,fb));
 HXLINE(  60)		if ((startDate != 0)) {
 HXLINE(  61)			tvShowBuilder->withStartDate(startDate);
             		}
-HXLINE(  64)		int endDate = this->getIntValueFromStrLine(line,HX_("endDate",a9,0f,88,24));
+HXLINE(  64)		Float endDate = this->getFloatValueFromStrLine(line,HX_("endDate",a9,0f,88,24));
 HXLINE(  65)		if ((endDate != 0)) {
 HXLINE(  66)			tvShowBuilder->withEndDate(endDate);
             		}
@@ -179,6 +180,37 @@ HXDLIN(  89)		return 0;
 
 
 HX_DEFINE_DYNAMIC_FUNC2(TVShowsTxtParser_obj,getIntValueFromStrLine,return )
+
+Float TVShowsTxtParser_obj::getFloatValueFromStrLine(::String line,::String name){
+            	HX_STACKFRAME(&_hx_pos_6bb51b0cab6f2cd0_92_getFloatValueFromStrLine)
+HXLINE(  93)		::String strValue = this->getStringValueFromStrLine(line,name);
+HXLINE(  94)		Float floatValue;
+HXLINE(  95)		try {
+            			HX_STACK_CATCHABLE( ::Dynamic, 0);
+HXLINE(  96)			return ::Std_obj::parseFloat(strValue);
+            		} catch( ::Dynamic _hx_e) {
+            			if (_hx_e.IsClass<  ::Dynamic >() ){
+            				HX_STACK_BEGIN_CATCH
+            				 ::Dynamic _g = _hx_e;
+HXLINE(  97)				{
+HXLINE(  97)					null();
+            				}
+HXDLIN(  97)				 ::Dynamic e = _g;
+HXLINE(  98)				{
+HXLINE(  98)					 ::Dynamic _hx_tmp = ::haxe::Log_obj::trace;
+HXDLIN(  98)					::String _hx_tmp1 = (HX_("Cannot parse ",ea,ab,3a,ac) + ::Std_obj::string(e));
+HXDLIN(  98)					_hx_tmp(_hx_tmp1,::hx::SourceInfo(HX_("Source/TVShowsTxtParser.hx",6f,1e,45,92),98,HX_("TVShowsTxtParser",db,3c,45,a8),HX_("getFloatValueFromStrLine",50,b6,b4,cc)));
+            				}
+            			}
+            			else {
+            				HX_STACK_DO_THROW(_hx_e);
+            			}
+            		}
+HXLINE( 100)		return ( (Float)(0) );
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC2(TVShowsTxtParser_obj,getFloatValueFromStrLine,return )
 
 
 ::hx::ObjectPtr< TVShowsTxtParser_obj > TVShowsTxtParser_obj::__new(::String fileName) {
@@ -225,6 +257,9 @@ void TVShowsTxtParser_obj::__Visit(HX_VISIT_PARAMS)
 	case 22:
 		if (HX_FIELD_EQ(inName,"getIntValueFromStrLine") ) { return ::hx::Val( getIntValueFromStrLine_dyn() ); }
 		break;
+	case 24:
+		if (HX_FIELD_EQ(inName,"getFloatValueFromStrLine") ) { return ::hx::Val( getFloatValueFromStrLine_dyn() ); }
+		break;
 	case 25:
 		if (HX_FIELD_EQ(inName,"getStringValueFromStrLine") ) { return ::hx::Val( getStringValueFromStrLine_dyn() ); }
 	}
@@ -260,6 +295,7 @@ static ::String TVShowsTxtParser_obj_sMemberFields[] = {
 	HX_("parseTVShow",12,6c,44,98),
 	HX_("getStringValueFromStrLine",31,25,91,48),
 	HX_("getIntValueFromStrLine",23,3d,3c,da),
+	HX_("getFloatValueFromStrLine",50,b6,b4,cc),
 	::String(null()) };
 
 ::hx::Class TVShowsTxtParser_obj::__mClass;

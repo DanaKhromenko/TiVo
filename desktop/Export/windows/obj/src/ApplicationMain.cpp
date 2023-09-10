@@ -169,7 +169,7 @@ HXLINE( 119)			::ApplicationMain_obj::start(stage);
             	HX_GC_STACKFRAME(&_hx_pos_6fcf922b66429816_31_create)
 HXLINE(  32)		 ::openfl::display::Application app =  ::openfl::display::Application_obj::__alloc( HX_CTX );
 HXLINE(  35)		::ManifestResources_obj::init(config);
-HXLINE(  38)		app->meta->set(HX_("build",2e,db,ea,ba),HX_("6",36,00,00,00));
+HXLINE(  38)		app->meta->set(HX_("build",2e,db,ea,ba),HX_("8",38,00,00,00));
 HXLINE(  39)		app->meta->set(HX_("company",3d,15,69,83),HX_("Company Name",4e,48,0d,cb));
 HXLINE(  40)		app->meta->set(HX_("file",7c,ce,bb,43),HX_("TiVo",2e,e4,d5,37));
 HXLINE(  41)		app->meta->set(HX_("name",4b,72,ff,48),HX_("TiVo",2e,e4,d5,37));

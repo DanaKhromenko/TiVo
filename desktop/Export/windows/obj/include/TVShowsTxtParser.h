@@ -61,6 +61,9 @@ class HXCPP_CLASS_ATTRIBUTES TVShowsTxtParser_obj : public ::hx::Object
 		int getIntValueFromStrLine(::String line,::String name);
 		::Dynamic getIntValueFromStrLine_dyn();
 
+		Float getFloatValueFromStrLine(::String line,::String name);
+		::Dynamic getFloatValueFromStrLine_dyn();
+
 };
 
 

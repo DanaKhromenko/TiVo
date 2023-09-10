@@ -56,12 +56,12 @@ class TVShowsXmlParser {
 			tvShowBuilder.withDescription(description);
 		}
 
-		var startDate = getIntValueFromXml(elements, "startDate");
+		var startDate = getFlaotValueFromXml(elements, "startDate");
 		if (startDate != 0) {
 			tvShowBuilder.withStartDate(startDate);
 		}
 
-		var endDate = getIntValueFromXml(elements, "endDate");
+		var endDate = getFlaotValueFromXml(elements, "endDate");
 		if (endDate != 0) {
 			tvShowBuilder.withEndDate(endDate);
 		}
@@ -85,5 +85,16 @@ class TVShowsXmlParser {
 		var strValue = getStringValueFromXml(elements, name);
 		var intValue = Std.parseInt(strValue);
 		return (intValue == null ? 0 : intValue);
+	}
+
+	private function getFlaotValueFromXml(elements:Xml, name:String):Float {
+		var strValue = getStringValueFromXml(elements, name);
+		var floatValue;
+		try {
+			return Std.parseFloat(strValue);
+		} catch (e:Dynamic) {
+			trace("Cannot parse " + e);
+		}
+		return 0;
 	}
 }

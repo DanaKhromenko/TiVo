@@ -6,7 +6,7 @@
 #include <hxcpp.h>
 #endif
 
-HX_DECLARE_STACK_FRAME(_hx_pos_295e276594f5dd65_70_new)
+HX_DECLARE_STACK_FRAME(_hx_pos_295e276594f5dd65_71_new)
 HX_DECLARE_CLASS0(TVShow)
 
 
@@ -21,31 +21,31 @@ class HXCPP_CLASS_ATTRIBUTES TVShow_obj : public ::hx::Object
 	public:
 		enum { _hx_ClassId = 0x1933fac3 };
 
-		void __construct(int showId,int channelId,::String showName,int year,::String description,int startDate,int endDate,::String imgName);
+		void __construct(int showId,int channelId,::String showName,int year,::String description,Float startDate,Float endDate,::String imgName);
 		inline void *operator new(size_t inSize, bool inContainer=true,const char *inName="TVShow")
 			{ return ::hx::Object::operator new(inSize,inContainer,inName); }
 		inline void *operator new(size_t inSize, int extra)
 			{ return ::hx::Object::operator new(inSize+extra,true,"TVShow"); }
 
-		inline static ::hx::ObjectPtr< TVShow_obj > __new(int showId,int channelId,::String showName,int year,::String description,int startDate,int endDate,::String imgName) {
+		inline static ::hx::ObjectPtr< TVShow_obj > __new(int showId,int channelId,::String showName,int year,::String description,Float startDate,Float endDate,::String imgName) {
 			::hx::ObjectPtr< TVShow_obj > __this = new TVShow_obj();
 			__this->__construct(showId,channelId,showName,year,description,startDate,endDate,imgName);
 			return __this;
 		}
 
-		inline static ::hx::ObjectPtr< TVShow_obj > __alloc(::hx::Ctx *_hx_ctx,int showId,int channelId,::String showName,int year,::String description,int startDate,int endDate,::String imgName) {
+		inline static ::hx::ObjectPtr< TVShow_obj > __alloc(::hx::Ctx *_hx_ctx,int showId,int channelId,::String showName,int year,::String description,Float startDate,Float endDate,::String imgName) {
 			TVShow_obj *__this = (TVShow_obj*)(::hx::Ctx::alloc(_hx_ctx, sizeof(TVShow_obj), true, "TVShow"));
 			*(void **)__this = TVShow_obj::_hx_vtable;
 {
-            	HX_STACKFRAME(&_hx_pos_295e276594f5dd65_70_new)
-HXLINE(  71)		( ( ::TVShow)(__this) )->showId = showId;
-HXLINE(  72)		( ( ::TVShow)(__this) )->channelId = channelId;
-HXLINE(  73)		( ( ::TVShow)(__this) )->showName = showName;
-HXLINE(  74)		( ( ::TVShow)(__this) )->year = year;
-HXLINE(  75)		( ( ::TVShow)(__this) )->description = description;
-HXLINE(  76)		( ( ::TVShow)(__this) )->startDate = startDate;
-HXLINE(  77)		( ( ::TVShow)(__this) )->endDate = endDate;
-HXLINE(  78)		( ( ::TVShow)(__this) )->imgName = imgName;
+            	HX_STACKFRAME(&_hx_pos_295e276594f5dd65_71_new)
+HXLINE(  72)		( ( ::TVShow)(__this) )->showId = showId;
+HXLINE(  73)		( ( ::TVShow)(__this) )->channelId = channelId;
+HXLINE(  74)		( ( ::TVShow)(__this) )->showName = showName;
+HXLINE(  75)		( ( ::TVShow)(__this) )->year = year;
+HXLINE(  76)		( ( ::TVShow)(__this) )->description = description;
+HXLINE(  77)		( ( ::TVShow)(__this) )->startDate = startDate;
+HXLINE(  78)		( ( ::TVShow)(__this) )->endDate = endDate;
+HXLINE(  79)		( ( ::TVShow)(__this) )->imgName = imgName;
             	}
 		
 			return __this;
@@ -71,8 +71,8 @@ HXLINE(  78)		( ( ::TVShow)(__this) )->imgName = imgName;
 		::String showName;
 		int year;
 		::String description;
-		int startDate;
-		int endDate;
+		Float startDate;
+		Float endDate;
 		::String imgName;
 };
 

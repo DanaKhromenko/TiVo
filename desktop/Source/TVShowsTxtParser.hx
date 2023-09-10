@@ -56,12 +56,12 @@ class TVShowsTxtParser {
             tvShowBuilder.withDescription(description);
         }
 
-        var startDate = getIntValueFromStrLine(line, "startDate");
+        var startDate = getFloatValueFromStrLine(line, "startDate");
         if (startDate != 0) {
             tvShowBuilder.withStartDate(startDate);
         }  
         
-        var endDate = getIntValueFromStrLine(line, "endDate");
+        var endDate = getFloatValueFromStrLine(line, "endDate");
         if (endDate != 0) {
             tvShowBuilder.withEndDate(endDate);
         }
@@ -87,5 +87,16 @@ class TVShowsTxtParser {
 		var strValue = getStringValueFromStrLine(line, name);
         var intValue = Std.parseInt(strValue);
         return (intValue == null ? 0 : intValue);
+	}
+
+    private function getFloatValueFromStrLine(line:String, name:String):Float {
+		var strValue = getStringValueFromStrLine(line, name);
+        var floatValue:Float;
+        try {
+            return Std.parseFloat(strValue);
+        } catch (e:Dynamic) {
+            trace("Cannot parse " + e);
+        }
+        return 0;
 	}
 }

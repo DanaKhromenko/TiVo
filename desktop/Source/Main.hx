@@ -27,7 +27,7 @@ class Main extends Sprite {
 	static inline var TV_SHOW_CELL_WIDTH:Int = 370;
 	static inline var TV_SHOW_CELL_HEIGHT:Int = 60;
 	static inline var TV_SHOW_CELLS_START_X:Int = 10;
-	static inline var TV_SHOW_CELLS_START_Y:Int = 400;
+	static inline var TV_SHOW_CELLS_START_Y:Int = 450;
 	static inline var TV_SHOW_PREVIEW_WIDTH:Int = 1900;
 	static inline var TV_SHOW_PREVIEW_HEIGHT:Int = 400;
 	static inline var TV_SHOW_PREVIEW_START_X:Int = 10;

@@ -48,9 +48,9 @@ class HXCPP_CLASS_ATTRIBUTES TVShowBuilder_obj : public ::hx::Object
 		::String showName;
 		int year;
 		::String description;
-		int startDate;
-		int endDate;
 		::String imgName;
+		Float startDate;
+		Float endDate;
 		 ::TVShowBuilder withShowId(int showId);
 		::Dynamic withShowId_dyn();
 
@@ -66,10 +66,10 @@ class HXCPP_CLASS_ATTRIBUTES TVShowBuilder_obj : public ::hx::Object
 		 ::TVShowBuilder withDescription(::String description);
 		::Dynamic withDescription_dyn();
 
-		 ::TVShowBuilder withStartDate(int startDate);
+		 ::TVShowBuilder withStartDate(Float startDate);
 		::Dynamic withStartDate_dyn();
 
-		 ::TVShowBuilder withEndDate(int endDate);
+		 ::TVShowBuilder withEndDate(Float endDate);
 		::Dynamic withEndDate_dyn();
 
 		 ::TVShowBuilder withImgName(::String imgName);
