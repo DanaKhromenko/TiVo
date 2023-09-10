@@ -48,14 +48,7 @@ class Main extends Sprite {
 		
 		var bitmapData = Assets.getBitmapData("assets/img/wallpapers.jpg");
 		rootContainer.backgroundSkin = new Bitmap(bitmapData);
-
 		scrollContainer.addChild(rootContainer);
-
-		// var bgSprite:Sprite = new Sprite();
-		// bgSprite.graphics.beginFill(0x2A2A2A);
-		// bgSprite.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
-		// bgSprite.graphics.endFill();
-		// rootContainer.addChild(bgSprite);
 
 		navigator = new TabNavigator();
 		navigator.dataProvider = getAllTabs();
