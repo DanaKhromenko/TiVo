@@ -1,0 +1,111 @@
+<shows>
+    <show>
+        <showId>81346544</showId>
+        <channelId>5124</channelId>
+        <showName>Mortal Kombat</showName>
+        <description>Mortal Kombat is a 1995 American martial arts fantasy action film directed by Paul W. S. Anderson and written by Kevin Droney. Based on the video game franchise of the same name, it is the first installment in the Mortal Kombat film series. Starring Linden Ashby, Cary-Hiroyuki Tagawa, Robin Shou, Bridgette Wilson, Talisa Soto, and Christopher Lambert, the film follows a group of heroes who participate in the eponymous Mortal Kombat tournament to protect Earth from being conquered by malevolent forces. Its story primarily adapts the original 1992 game, while also using elements from the game Mortal Kombat II (1993). The film premiered in the United States on August 18, 1995. It received mixed reviews from critics, who praised the martial art sequences, atmosphere, and production values, but criticized the performances, script, and toned-down violence from the games. Despite the mixed critical response, the film was well-received by fans of the series. It was also a commercial success, grossing $122 million on an $20 million budget. The film premiered in the United States on August 18, 1995. It received mixed reviews from critics, who praised the martial art sequences, atmosphere, and production values, but criticized the performances, script, and toned-down violence from the games. Despite the mixed critical response, the film was well-received by fans of the series. It was also a commercial success, grossing $122 million on an $20 million budget.</description>
+        <startDate>20231013203010</startDate>
+        <endDate>20231013222515</endDate>
+        <imgName>mortal-combat.jpg</imgName>
+    </show>
+    <show>
+        <showId>314641</showId>
+        <channelId>5124</channelId>
+        <showName>Pulp Fiction</showName>
+        <year>1994</year>
+        <description>The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.</description>
+        <startDate>20231013215501</startDate>
+        <endDate>20231013233847</endDate>
+        <imgName>pulp-fiction.jpg</imgName>
+    </show>
+    <show>
+        <showId>8532636</showId>
+        <channelId>5127</channelId>
+        <showName>Insidious</showName>
+        <year>2010</year>
+        <description>From the makers of Paranormal Activity, INSIDIOUS is the terrifying story of a family who, shortly after moving, discovers that dark spirits have possessed their home and that their son has inexplicably fallen into a coma.</description>
+        <startDate>20231013234530</startDate>
+        <endDate>20231014020208</endDate>
+        <imgName>insidious.jpg</imgName>
+    </show>
+    <show>
+        <showId>8451356</showId>
+        <channelId>1415</channelId>
+        <showName>The Hobbit: An Unexpected Journey</showName>
+        <year>2012</year>
+        <description>An Unexpected Journey tells the tale of Bilbo Baggins (Martin Freeman), who is convinced by the wizard Gandalf (Ian McKellen) to accompany thirteen Dwarves, led by Thorin Oakenshield (Richard Armitage), on a quest to reclaim the Lonely Mountain from the dragon Smaug.</description>
+        <startDate>20230910120000</startDate>
+        <endDate>20230910145346</endDate>
+        <imgName>the-hobbit-an-unexpected-journey.jpg</imgName>
+    </show>
+    <show>
+        <showId>8451357</showId>
+        <channelId>1415</channelId>
+        <showName>The Hobbit: The Desolation of Smaug</showName>
+        <year>2013</year>
+        <description>The Hobbit: The Desolation of Smaug continues the adventure of the title character Bilbo Baggins as he journeys with the Wizard Gandalf and thirteen Dwarves, led by Thorin Oakenshield, on an epic quest to reclaim the Lonely Mountain and the lost Dwarf Kingdom of Erebor.</description>
+        <startDate>20230910150000</startDate>
+        <endDate>20230910171229</endDate>
+        <imgName>the-hobbit-the-desolation-of-smaug.jpg</imgName>
+    </show>
+    <show>
+        <showId>8451358</showId>
+        <channelId>1415</channelId>
+        <showName>The Hobbit: The Battle of the Five Armies</showName>
+        <year>2014</year>
+        <description>Bilbo and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness. After the Dragon leaves the Lonely Mountain, the people of Lake-town see a threat coming. Orcs, dwarves, elves and people prepare for war.</description>
+        <startDate>20230910173000</startDate>
+        <endDate>20230910194703</endDate>
+        <imgName>the-hobbit-the-battle-of-the-five-armies.jpg</imgName>
+    </show>
+    <show>
+        <showId>21645</showId>
+        <channelId>654</channelId>
+        <showName>Phineas and Ferb</showName>
+        <year>2007</year>
+        <description>Phineas and Ferb, an animated comedy series, follows the adventures of Phineas Flynn and his English stepbrother, Ferb Fletcher, on their summer vacation. Each day, the boys and their friends take on some ambitious new project, sometimes to help someone in need, but often just to create something fun.</description>
+        <startDate>20230909114504</startDate>
+        <endDate>20230909185347</endDate>
+        <imgName>phineas-and-ferb.jpg</imgName>
+    </show>
+    <show>
+        <showId>21639</showId>
+        <channelId>654</channelId>
+        <showName>Gravity Falls</showName>
+        <year>2012</year>
+        <description>The series follows the adventures of Dipper Pines (Jason Ritter) and his twin sister Mabel (Kristen Schaal) who are sent to spend the summer with their great-uncle (or "Grunkle") Stan (Hirsch) in Gravity Falls, Oregon, a mysterious town full of paranormal incidents and supernatural creatures.</description>
+        <startDate>20230909190000</startDate>
+        <endDate>20230910024639</endDate>
+        <imgName>gravity-falls.jpg</imgName>
+    </show>
+    <show>
+        <showId>98465</showId>
+        <channelId>1415</channelId>
+        <showName>Hell Kitchen</showName>
+        <year>2005</year>
+        <description></description>
+        <startDate>20230911104952</startDate>
+        <endDate>20230911113814</endDate>
+        <imgName>hell-kitchen.jpg</imgName>
+    </show>
+    <show>
+        <showId>98465</showId>
+        <channelId>1514</channelId>
+        <showName>Desperate Housewives</showName>
+        <year>2004</year>
+        <description>Set on Wisteria Lane, a street in the fictional town of Fairview in the fictional Eagle State, Desperate Housewives follows the lives of a group of women as seen through the eyes of their friend and neighbor who took her life by suicide in the pilot episode.</description>
+        <startDate>20230910150004</startDate>
+        <endDate>20230910184847</endDate>
+        <imgName>desperate-housewives.jpg</imgName>
+    </show>
+    <show>
+        <showId>1684664</showId>
+        <channelId>1514</channelId>
+        <showName>House</showName>
+        <year>2004</year>
+        <description>The series' main character is Dr. Gregory House (Hugh Laurie), an unconventional, misanthropic medical genius who, despite his dependence on pain medication, leads a team of diagnosticians at the fictional Princeton–Plainsboro Teaching Hospital (PPTH) in New Jersey.</description>
+        <startDate>20230910190002</startDate>
+        <endDate>20230910234708</endDate>
+        <imgName>dr-house.jpg</imgName>
+    </show>
+</shows>
