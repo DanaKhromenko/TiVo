@@ -49,8 +49,8 @@ class CompanyLayoutGroup extends LayoutGroup {
 	private function printCompanyInfo() {
 		addLabel("Company name", company.companyName);
 		addLabel("Description", company.description);
-		addLabel("Website", company.website);
-		
+		addLabel("Website", company.website, true);
+
 		var bitmapData = Assets.getBitmapData(IMG_DIR_PATH + company.imgUri);
 		var scaleFactor = LOGO_HEIGHT / bitmapData.height;
 		var bitmap = new Bitmap(bitmapData);
@@ -63,7 +63,7 @@ class CompanyLayoutGroup extends LayoutGroup {
 		labelY += Math.round(bitmap.height);
 	}
 
-	private function addLabel(key:String, value:String) {
+	private function addLabel(key:String, value:String, isUri:Bool = false) {
 		var labelKey = new Label();
 		labelKey.text = key + ": ";
 		labelKey.textFormat = keyTextFormat;
@@ -75,10 +75,15 @@ class CompanyLayoutGroup extends LayoutGroup {
 
 		var labelValue = new Label();
 		labelValue.text = value;
-		labelValue.textFormat = valueTextFormat;
+		if (isUri) {
+			labelValue.textFormat = new TextFormat("Helvetica", 18, 0x502af9, true, false, true, value);
+		} else {
+			labelValue.textFormat = valueTextFormat;
+		}
 		labelValue.x = LEFT_PADDING + labelWidth;
 		labelValue.y = labelY;
 		labelValue.height = labelHeight;
+
 		container.addChild(labelValue);
 
 		labelY += labelHeight;

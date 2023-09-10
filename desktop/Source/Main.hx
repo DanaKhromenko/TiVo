@@ -3,6 +3,7 @@ package;
 import feathers.controls.LayoutGroup;
 import feathers.controls.navigators.TabItem;
 import feathers.controls.navigators.TabNavigator;
+import feathers.controls.ScrollContainer;
 import feathers.data.ArrayCollection;
 import openfl.display.Sprite;
 import openfl.events.Event;
@@ -14,13 +15,16 @@ import TVShowsTxtParser;
 import TVShowsView;
 import TVShowsXmlParser;
 
+import openfl.Assets;
+import openfl.display.Bitmap;
+
 class Main extends Sprite {
 	static inline var XML_COMPANIES_FILE_PATH:String = "assets/companies/companies.xml";
 	static inline var TXT_TV_SHOWS_FILE_PATH:String = "assets/shows/shows.txt";
 	static inline var XML_TV_SHOWS_FILE_PATH:String = "assets/shows/shows.xml";
 
 	static inline var TV_SHOW_CELLS_IN_ROW:Int = 4;
-	static inline var TV_SHOW_CELL_WIDTH:Int = 380;
+	static inline var TV_SHOW_CELL_WIDTH:Int = 370;
 	static inline var TV_SHOW_CELL_HEIGHT:Int = 60;
 	static inline var TV_SHOW_CELLS_START_X:Int = 10;
 	static inline var TV_SHOW_CELLS_START_Y:Int = 400;
@@ -36,14 +40,22 @@ class Main extends Sprite {
 	public function new() {
 		super();
 
-		rootContainer = new LayoutGroup();
-		addChild(rootContainer);
+		var scrollContainer = new ScrollContainer();
+		scrollContainer.autoSizeMode = STAGE;
+		addChild(scrollContainer);
 
-		var bgSprite:Sprite = new Sprite();
-		bgSprite.graphics.beginFill(0x2A2A2A);
-		bgSprite.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
-		bgSprite.graphics.endFill();
-		rootContainer.addChild(bgSprite);
+		rootContainer = new LayoutGroup();
+		
+		var bitmapData = Assets.getBitmapData("assets/img/wallpapers.jpg");
+		rootContainer.backgroundSkin = new Bitmap(bitmapData);
+
+		scrollContainer.addChild(rootContainer);
+
+		// var bgSprite:Sprite = new Sprite();
+		// bgSprite.graphics.beginFill(0x2A2A2A);
+		// bgSprite.graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
+		// bgSprite.graphics.endFill();
+		// rootContainer.addChild(bgSprite);
 
 		navigator = new TabNavigator();
 		navigator.dataProvider = getAllTabs();

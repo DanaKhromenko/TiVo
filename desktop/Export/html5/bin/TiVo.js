@@ -891,7 +891,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "2";
+	app.meta.h["build"] = "3";
 	app.meta.h["company"] = "Company Name";
 	app.meta.h["file"] = "TiVo";
 	app.meta.h["name"] = "TiVo";
@@ -3335,13 +3335,13 @@ openfl_display_Sprite.prototype = $extend(openfl_display_DisplayObjectContainer.
 var Main = function() {
 	this.tabsContainers = new feathers_data_ArrayCollection();
 	openfl_display_Sprite.call(this);
+	var scrollContainer = new feathers_controls_ScrollContainer();
+	scrollContainer.set_autoSizeMode(feathers_layout_AutoSizeMode.STAGE);
+	this.addChild(scrollContainer);
 	this.rootContainer = new feathers_controls_LayoutGroup();
-	this.addChild(this.rootContainer);
-	var bgSprite = new openfl_display_Sprite();
-	bgSprite.get_graphics().beginFill(2763306);
-	bgSprite.get_graphics().drawRect(0,0,this.stage.stageWidth,this.stage.stageHeight);
-	bgSprite.get_graphics().endFill();
-	this.rootContainer.addChild(bgSprite);
+	var bitmapData = openfl_utils_Assets.getBitmapData("assets/img/wallpapers.jpg");
+	this.rootContainer.set_backgroundSkin(new openfl_display_Bitmap(bitmapData));
+	scrollContainer.addChild(this.rootContainer);
 	this.navigator = new feathers_controls_navigators_TabNavigator();
 	this.navigator.set_dataProvider(this.getAllTabs());
 	this.navigator.addEventListener("change",$bind(this,this.tabNavigatorChangeHandler));
@@ -3358,7 +3358,7 @@ Main.prototype = $extend(openfl_display_Sprite.prototype,{
 		tvShows.addAll(tvShowsXmlParser.getTVShows());
 		var tvShowsTxtParser = new TVShowsTxtParser("assets/shows/shows.txt");
 		tvShows.addAll(tvShowsTxtParser.getTVShows());
-		var tabDto = TVShowsView.getTVShowsTabDto(tvShows,this.rootContainer,4,380,60,10,400,1900,400,10,40);
+		var tabDto = TVShowsView.getTVShowsTabDto(tvShows,this.rootContainer,4,370,60,10,400,1900,400,10,40);
 		tabs.add(tabDto.tabItem);
 		this.tabsContainers.add(tabDto.container);
 		var companiesXmlParser = new CompaniesXmlParser("assets/companies/companies.xml");
@@ -5687,7 +5687,7 @@ CompanyLayoutGroup.prototype = $extend(feathers_controls_LayoutGroup.prototype,{
 	printCompanyInfo: function() {
 		this.addLabel("Company name",this.company.companyName);
 		this.addLabel("Description",this.company.description);
-		this.addLabel("Website",this.company.website);
+		this.addLabel("Website",this.company.website,true);
 		var bitmapData = openfl_utils_Assets.getBitmapData("assets/img/companies/" + this.company.imgUri);
 		var scaleFactor = 200 / bitmapData.height;
 		var bitmap = new openfl_display_Bitmap(bitmapData);
@@ -5698,7 +5698,10 @@ CompanyLayoutGroup.prototype = $extend(feathers_controls_LayoutGroup.prototype,{
 		this.container.addChild(bitmap);
 		this.labelY += Math.round(bitmap.get_height());
 	}
-	,addLabel: function(key,value) {
+	,addLabel: function(key,value,isUri) {
+		if(isUri == null) {
+			isUri = false;
+		}
 		var labelKey = new feathers_controls_Label();
 		labelKey.set_text(key + ": ");
 		labelKey.set_textFormat(CompanyLayoutGroup.keyTextFormat);
@@ -5709,7 +5712,11 @@ CompanyLayoutGroup.prototype = $extend(feathers_controls_LayoutGroup.prototype,{
 		this.container.addChild(labelKey);
 		var labelValue = new feathers_controls_Label();
 		labelValue.set_text(value);
-		labelValue.set_textFormat(CompanyLayoutGroup.valueTextFormat);
+		if(isUri) {
+			labelValue.set_textFormat(new feathers_text_TextFormat("Helvetica",18,5253881,true,false,true,value));
+		} else {
+			labelValue.set_textFormat(CompanyLayoutGroup.valueTextFormat);
+		}
 		labelValue.set_x(10 + this.labelWidth);
 		labelValue.set_y(this.labelY);
 		labelValue.set_height(this.labelHeight);
@@ -5983,7 +5990,7 @@ ManifestResources.init = function(config) {
 		ManifestResources.rootPath = "./";
 	}
 	var bundle;
-	var data = "{\"name\":null,\"assets\":\"aoy4:pathy34:assets%2Fcompanies%2Fcompanies.xmly4:sizei504y4:typey4:TEXTy2:idR1y7:preloadtgoR0y35:assets%2Fimg%2Fcompanies%2Ftivo.pngR2i72178R3y5:IMAGER5R7R6tgoR0y34:assets%2Fimg%2Fcompanies%2Ftpe.jpgR2i5147R3R8R5R9R6tgoR0y47:assets%2Fimg%2Fshows%2Fdesperate-housewives.jpgR2i122952R3R8R5R10R6tgoR0y35:assets%2Fimg%2Fshows%2Fdr-house.jpgR2i523400R3R8R5R11R6tgoR0y40:assets%2Fimg%2Fshows%2Fgravity-falls.jpgR2i346909R3R8R5R12R6tgoR0y39:assets%2Fimg%2Fshows%2Fhell-kitchen.jpgR2i1571740R3R8R5R13R6tgoR0y36:assets%2Fimg%2Fshows%2Finsidious.jpgR2i105400R3R8R5R14R6tgoR0y31:assets%2Fimg%2Fshows%2Fleon.jpgR2i2211479R3R8R5R15R6tgoR0y34:assets%2Fimg%2Fshows%2Fmatilda.jpgR2i71555R3R8R5R16R6tgoR0y40:assets%2Fimg%2Fshows%2Fmortal-combat.jpgR2i1565309R3R8R5R17R6tgoR0y43:assets%2Fimg%2Fshows%2Fphineas-and-ferb.jpgR2i404628R3R8R5R18R6tgoR0y39:assets%2Fimg%2Fshows%2Fpulp-fiction.jpgR2i1039506R3R8R5R19R6tgoR0y46:assets%2Fimg%2Fshows%2Fshakespeare-in-love.jpgR2i368123R3R8R5R20R6tgoR0y34:assets%2Fimg%2Fshows%2Fshining.jpgR2i724987R3R8R5R21R6tgoR0y33:assets%2Fimg%2Fshows%2Fsnatch.jpgR2i656451R3R8R5R22R6tgoR0y59:assets%2Fimg%2Fshows%2Fthe-hobbit-an-unexpected-journey.jpgR2i86592R3R8R5R23R6tgoR0y67:assets%2Fimg%2Fshows%2Fthe-hobbit-the-battle-of-the-five-armies.jpgR2i160288R3R8R5R24R6tgoR0y61:assets%2Fimg%2Fshows%2Fthe-hobbit-the-desolation-of-smaug.jpgR2i21069R3R8R5R25R6tgoR0y26:assets%2Fshows%2Fshows.txtR2i1168R3R4R5R26R6tgoR0y26:assets%2Fshows%2Fshows.xmlR2i7643R3R4R5R27R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
+	var data = "{\"name\":null,\"assets\":\"aoy4:pathy34:assets%2Fcompanies%2Fcompanies.xmly4:sizei504y4:typey4:TEXTy2:idR1y7:preloadtgoR0y35:assets%2Fimg%2Fcompanies%2Ftivo.pngR2i71730R3y5:IMAGER5R7R6tgoR0y34:assets%2Fimg%2Fcompanies%2Ftpe.jpgR2i5147R3R8R5R9R6tgoR0y47:assets%2Fimg%2Fshows%2Fdesperate-housewives.jpgR2i122952R3R8R5R10R6tgoR0y35:assets%2Fimg%2Fshows%2Fdr-house.jpgR2i523400R3R8R5R11R6tgoR0y40:assets%2Fimg%2Fshows%2Fgravity-falls.jpgR2i346909R3R8R5R12R6tgoR0y39:assets%2Fimg%2Fshows%2Fhell-kitchen.jpgR2i1571740R3R8R5R13R6tgoR0y36:assets%2Fimg%2Fshows%2Finsidious.jpgR2i105400R3R8R5R14R6tgoR0y31:assets%2Fimg%2Fshows%2Fleon.jpgR2i2211479R3R8R5R15R6tgoR0y34:assets%2Fimg%2Fshows%2Fmatilda.jpgR2i71555R3R8R5R16R6tgoR0y40:assets%2Fimg%2Fshows%2Fmortal-combat.jpgR2i1565309R3R8R5R17R6tgoR0y43:assets%2Fimg%2Fshows%2Fphineas-and-ferb.jpgR2i404628R3R8R5R18R6tgoR0y39:assets%2Fimg%2Fshows%2Fpulp-fiction.jpgR2i1039506R3R8R5R19R6tgoR0y46:assets%2Fimg%2Fshows%2Fshakespeare-in-love.jpgR2i368123R3R8R5R20R6tgoR0y34:assets%2Fimg%2Fshows%2Fshining.jpgR2i724987R3R8R5R21R6tgoR0y33:assets%2Fimg%2Fshows%2Fsnatch.jpgR2i656451R3R8R5R22R6tgoR0y59:assets%2Fimg%2Fshows%2Fthe-hobbit-an-unexpected-journey.jpgR2i86592R3R8R5R23R6tgoR0y67:assets%2Fimg%2Fshows%2Fthe-hobbit-the-battle-of-the-five-armies.jpgR2i160288R3R8R5R24R6tgoR0y61:assets%2Fimg%2Fshows%2Fthe-hobbit-the-desolation-of-smaug.jpgR2i21069R3R8R5R25R6tgoR0y29:assets%2Fimg%2Fwallpapers.jpgR2i32876R3R8R5R26R6tgoR0y26:assets%2Fshows%2Fshows.txtR2i1168R3R4R5R27R6tgoR0y26:assets%2Fshows%2Fshows.xmlR2i7643R3R4R5R28R6tgh\",\"rootPath\":null,\"version\":2,\"libraryArgs\":[],\"libraryType\":null}";
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
 	lime_utils_Assets.registerLibrary("default",library);
@@ -49899,7 +49906,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 683046;
+	this.version = 256332;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -101653,7 +101660,7 @@ Main.XML_COMPANIES_FILE_PATH = "assets/companies/companies.xml";
 Main.TXT_TV_SHOWS_FILE_PATH = "assets/shows/shows.txt";
 Main.XML_TV_SHOWS_FILE_PATH = "assets/shows/shows.xml";
 Main.TV_SHOW_CELLS_IN_ROW = 4;
-Main.TV_SHOW_CELL_WIDTH = 380;
+Main.TV_SHOW_CELL_WIDTH = 370;
 Main.TV_SHOW_CELL_HEIGHT = 60;
 Main.TV_SHOW_CELLS_START_X = 10;
 Main.TV_SHOW_CELLS_START_Y = 400;
